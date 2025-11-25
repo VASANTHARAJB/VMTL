@@ -1,0 +1,457 @@
+.custom-footer {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #ffffff;
+    padding: 60px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.custom-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.footer-brand {
+    max-width: 300px;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.logo .dot {
+    color: #1176FF;
+}
+
+.footer-description {
+    color: #cccccc;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #999999;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #1176FF;
+}
+
+.contact-section-footer {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 300px;
+    gap: 30px;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background: #1176FF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.contact-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.contact-info p {
+    color: #cccccc;
+    font-size: 14px;
+}
+
+.schedule-btn {
+    background: linear-gradient(135deg, #1176FF, #010e20);
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(82, 27, 232, 0.3);
+}
+
+.schedule-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(82, 27, 232, 0.3);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.copyright {
+    color: #999999;
+    font-size: 14px;
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #1176FF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(82, 27, 232, 0.3);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    z-index: 1000;
+}
+
+.scroll-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(82, 27, 232, 0.3);
+}
+
+/* Responsive Design for Hero */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+    .fti-hero-2-title {
+        font-size: 70px;
+        line-height: 72px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .fti-hero-2-title {
+        font-size: 60px;
+        line-height: 60px;
+    }
+    
+    .fti-hero-2-wrap {
+        gap: 60px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .fti-hero-2-title {
+        font-size: 55px;
+        line-height: 55px;
+    }
+    
+    .fti-hero-2-wrap {
+        gap: 30px;
+    }
+    
+    .fti-hero-2-left {
+        margin-top: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .main-navigation ul {
+        gap: 25px;
+    }
+    
+    .fti-header-2-wrap {
+        max-width: 100%;
+        padding: 0 25px 0 35px;
+    }
+}
+
+@media (max-width: 991px) {
+    .fti-menu-btn-2 {
+        display: block;
+    }
+    
+    .main-navigation {
+        display: none;
+    }
+    
+    .btn-wrap {
+        display: none;
+    }
+    
+    .fti-header-2-wrap {
+        padding: 15px 20px 15px 25px;
+    }
+    
+    .fti-header-2-wrap::after {
+        width: 170px;
+        height: 70px;
+    }
+    
+    
+    body {
+        padding-top: 70px;
+    }
+    
+    .fti-header-2-area {
+        height: 70px;
+    }
+    
+    .fti-header-2-row {
+        height: 70px;
+    }
+    
+    .fti-hero-2-area {
+        margin-top: -70px;
+        padding-top: 70px;
+    }
+    
+    .fti-header-2-logo img {
+        max-height: 40px;
+    }
+    
+    .fti-hero-2-title {
+        font-size: 45px;
+        line-height: 45px;
+    }
+    
+    .fti-hero-2-wrap {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-bottom: 100px;
+    }
+    
+    .fti-hero-2-left {
+        margin-top: 0;
+    }
+    
+    .fti-hero-2-right {
+        max-width: 296px;
+        margin: 0 auto;
+    }
+    
+    .fti-hero-2-pagination-btn {
+        right: 25px;
+    }
+    
+    .fti-hero-2-marquee {
+        margin-left: 0;
+    }
+    
+    .fti-hero-2-marquee .logo {
+        width: 120px;
+        height: 65px;
+        border-radius: 10px;
+    }
+    
+    .marquee-content {
+        gap: 20px;
+    }
+    
+    .bg-gradient-orb-1 {
+        width: 400px;
+        height: 400px;
+        top: -100px;
+        right: -100px;
+    }
+    
+    .bg-gradient-orb-2 {
+        width: 500px;
+        height: 500px;
+        bottom: -200px;
+        left: -200px;
+    }
+    
+    .machine-scroll-container {
+        bottom: 80px;
+        padding: 10px 0;
+    }
+    
+    .machine-item {
+        padding: 10px 15px;
+        gap: 5px;
+    }
+    
+    .machine-item i {
+        font-size: 1.5rem;
+    }
+    
+    .machine-item span {
+        font-size: 0.8rem;
+    }
+    
+    .machine-scroll {
+        gap: 30px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .contact-section-footer {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-card,
+    .experience-card {
+        margin-bottom: 2rem;
+    }
+    
+    .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .mobile-nav-menu li {
+        margin: 15px 0;
+    }
+    
+    .mobile-nav-menu li > a {
+        font-size: 1.2rem;
+    }
+    
+    .hero-video-container video {
+        filter: brightness(0.3) contrast(1.2);
+    }
+    
+    .fti-hero-2-left {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .video-overlay {
+        background: linear-gradient(
+            180deg, 
+            rgba(0, 0, 0, 0.8) 0%, 
+            rgba(0, 0, 0, 0.4) 50%, 
+            rgba(0, 0, 0, 0.8) 100%
+        );
+    }
+}
+
+@media (max-width: 576px) {
+    .fti-header-2-wrap {
+        padding: 10px 15px 10px 20px;
+    }
+    
+    .stat-item h3 {
+        font-size: 1.5rem;
+    }
+    
+    .contact-form {
+        padding: 2rem 1.5rem;
+    }
+    
+    .clients-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-navigation .dropdown-menu {
+        min-width: 250px;
+    }
+    
+    .mobile-nav-content {
+        width: 95%;
+    }
+    
+    .mobile-nav-menu li > a {
+        font-size: 1.1rem;
+    }
+    
+    .fti-header-2-logo img {
+        max-height: 35px;
+    }
+    
+    .fti-hero-2-item {
+        padding: 100px 0 30px 0;
+    }
+    
+    .fti-para-2 {
+        font-size: 16px;
+    }
+    
+    .fti-btn-pr-3 {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+    
+    .machine-scroll-container {
+        bottom: 60px;
+    }
+    
+    .machine-item span {
+        display: none;
+    }
+    
+    .machine-item {
+        padding: 8px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .floating-particles span {
+        width: 2px;
+        height: 2px;
+    }
+}

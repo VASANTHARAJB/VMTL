@@ -1,0 +1,205 @@
+
+    :root {
+      --theme-color: #0d00ff;
+      --white: #fff;
+      --heading-color: #141515;
+      --fti-heading-2: #4654ba;
+      --fti-para-2: #555555;
+      --fti-pr-1: #04004d;
+      --fti-pr-2: #131212;
+      --fti-pr-3: #ff5317;
+      --epilogue: "Epilogue", sans-serif;
+    }
+
+    body {
+      font-family: var(--epilogue);
+      margin: 0;
+      background: #f9f9f9;
+    }
+
+    /* Section Styling */
+    section.services-section {
+      padding: 80px 40px;
+      background: #f9f9f9;
+      text-align: center;
+    }
+
+    .services-section .section-title {
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+
+    .services-section h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: var(--heading-color);
+    }
+
+    .services-section p {
+      font-size: 16px;
+      color: var(--fti-para-2);
+      margin: 0;
+    }
+
+    /* Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .fti-services-2-item {
+      position: relative;
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s ease forwards;
+    }
+
+    /* Create staggered animation for all items */
+    .fti-services-2-item {
+      animation-delay: calc(0.1s * var(--animation-order, 0));
+    }
+
+    /* Apply animation order through CSS custom properties */
+    .fti-services-2-item:nth-child(1) { --animation-order: 1; }
+    .fti-services-2-item:nth-child(2) { --animation-order: 2; }
+    .fti-services-2-item:nth-child(3) { --animation-order: 3; }
+    .fti-services-2-item:nth-child(4) { --animation-order: 4; }
+    .fti-services-2-item:nth-child(5) { --animation-order: 5; }
+    .fti-services-2-item:nth-child(6) { --animation-order: 6; }
+    .fti-services-2-item:nth-child(7) { --animation-order: 7; }
+    .fti-services-2-item:nth-child(8) { --animation-order: 8; }
+    .fti-services-2-item:nth-child(9) { --animation-order: 9; }
+    .fti-services-2-item:nth-child(10) { --animation-order: 10; }
+    .fti-services-2-item:nth-child(11) { --animation-order: 11; }
+    .fti-services-2-item:nth-child(12) { --animation-order: 12; }
+    .fti-services-2-item:nth-child(13) { --animation-order: 13; }
+    .fti-services-2-item:nth-child(14) { --animation-order: 14; }
+    .fti-services-2-item:nth-child(15) { --animation-order: 15; }
+    .fti-services-2-item:nth-child(16) { --animation-order: 16; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fti-services-2-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 14px 26px rgba(0,0,0,0.15);
+    }
+
+    .fti-services-2-item .main-img {
+      overflow: hidden;
+    }
+
+    .fti-services-2-item .main-img img {
+      width: 100%;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .fti-services-2-item:hover .main-img img {
+      transform: scale(1.1);
+    }
+
+    .fti-services-2-item .content {
+      padding: 20px;
+      text-align: left;
+    }
+
+    .fti-services-2-item .icon-wrap {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .fti-services-2-item .icon-wrap .icon-1 i {
+      font-size: 32px;
+      color: var(--fti-pr-1);
+      transition: transform 0.3s ease;
+    }
+
+    .fti-services-2-item:hover .icon-wrap .icon-1 i {
+      transform: rotate(15deg) scale(1.2);
+    }
+
+    .fti-services-2-item .icon-wrap .divider {
+      flex: 1;
+      height: 2px;
+      background: #000000;
+      margin-left: 10px;
+    }
+
+    .fti-services-2-item .title-wrap h5 {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+    .fti-services-2-item .title-wrap h5 a {
+      text-decoration: none;
+      color: var(--fti-heading-2);
+      transition: color 0.3s ease;
+    }
+
+    .fti-services-2-item .title-wrap h5 a:hover {
+      color: var(--fti-pr-2);
+    }
+
+    .fti-services-2-item .title-wrap p {
+      font-size: 15px;
+      color: var(--fti-para-2);
+      margin-bottom: 20px;
+    }
+
+    .services-2-btn {
+      display: inline-flex;
+      align-items: center;
+      background: var(--theme-color);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: all 0.4s ease;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .services-2-btn .btn-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .services-2-btn::before {
+      content: "";
+      position: absolute;
+      left: -100%;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--fti-pr-2);
+      transition: left 0.4s ease;
+      z-index: 1;
+    }
+
+    .services-2-btn:hover::before {
+      left: 0;
+    }
+
+    .services-2-btn .icon {
+      margin-left: 8px;
+      position: relative;
+      z-index: 2;
+      transition: transform 0.3s ease;
+    }
+
+    .services-2-btn:hover .icon {
+      transform: translateX(4px);
+    }
