@@ -44,6 +44,7 @@
       justify-content: center;
       height: 90px;
       transition: all 0.3s ease;
+      
     }
 
     .fti-header-2-wrap {
@@ -52,6 +53,7 @@
       position: relative;
       width: 100%;
       max-width: 1400px;
+      border-radius: 0 0 30px 30px;
       transition: all 0.3s ease;
     }
 
@@ -79,7 +81,7 @@
       width: 260px;
       background-color: var(--text-white);
       clip-path: polygon(0 1%, 100% 0%, 80% 100%, 0% 100%);
-      border-radius: 0 0 0 30px;
+      border-radius: 0 0 30px 30px;
     }
 
     .fti-header-2-row {
