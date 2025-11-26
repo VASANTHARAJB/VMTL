@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Achievements - VMTL | Virmodello Technologies</title>
-    <meta name="description" content="Explore the awards, certifications, and milestones achieved by Virmodello Technologies.">
+    <title>Associations - VMTL | Virmodello Technologies</title>
+    <meta name="description" content="VMTL Associations: Startup India, MSME, ADCAI, Indian Railways, HAL, and global engineering partners.">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -16,28 +16,34 @@
     <link rel="stylesheet" href="./ASSETS/css/base.css">
 
     <style>
-        /* --- Page Banner --- */
+        /* --- Internal Page Styles --- */
+        :root {
+            --primary-color: #2E86AB;
+            --accent-color: #F18F01;
+            --dark-bg: #1F1F1F;
+            --card-dark: #262626;
+        }
+
+        /* Banner */
         .page-banner {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             padding: 220px 0 120px 0;
             text-align: center;
             color: #fff;
-            position: relative;
-            margin-top: -90px; /* Pulls banner behind the fixed header */
+            margin-top: -90px;
         }
 
         .banner-title {
             font-family: 'Teko', sans-serif;
             font-size: 5rem;
-            line-height: 1;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 20px;
             color: #ffffff;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
             opacity: 0;
             animation: fadeUp 0.8s ease forwards;
         }
@@ -64,195 +70,112 @@
             font-weight: 600;
         }
 
-        .breadcrumb-list li a {
-            color: #fff;
-            text-decoration: none;
-            transition: 0.3s;
-        }
+        .breadcrumb-list li a { color: #fff; text-decoration: none; transition: 0.3s; }
+        .breadcrumb-list li a:hover { color: var(--accent-color); }
+        .breadcrumb-list li.active { color: var(--accent-color); }
+        .breadcrumb-list li+li::before { content: "/"; color: rgba(255, 255, 255, 0.5); margin-right: 15px; }
 
-        .breadcrumb-list li a:hover {
-            color: #F18F01;
-        }
-
-        .breadcrumb-list li.active {
-            color: #F18F01;
-        }
-
-        .breadcrumb-list li+li::before {
-            content: "/";
-            color: rgba(255, 255, 255, 0.5);
-            margin-right: 15px;
-        }
-
-        /* --- Stats Strip --- */
-        .stats-strip {
-            background: #1a1a1a;
-            padding: 60px 0;
-            border-bottom: 1px solid #333;
-        }
-
-        .stat-box {
-            text-align: center;
-            padding: 20px;
-            border-right: 1px solid #333;
-        }
-
-        .stat-box:last-child { border-right: none; }
-
-        .stat-box h3 {
-            font-family: 'Teko', sans-serif;
-            font-size: 3.5rem;
-            color: #2E86AB;
-            line-height: 1;
-            margin-bottom: 5px;
-        }
-
-        .stat-box p {
-            color: #aaa;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        /* --- Achievements Section (Custom Styles) --- */
-        .achievements-wrap {
+        /* Content Section */
+        .associations-wrap {
+            background-color: #1a1a1a;
             padding: 100px 0;
-            background-color: #f4f4f4;
         }
 
-        .section-title-wrap {
-            text-align: center;
-            margin-bottom: 60px;
-        }
+        .section-title-wrap { text-align: center; margin-bottom: 60px; }
+        .section-subtitle { color: var(--primary-color); font-weight: 700; letter-spacing: 2px; font-size: 14px; display: block; margin-bottom: 10px; }
+        .section-title { font-family: 'Teko', sans-serif; font-size: 3.5rem; color: #fff; text-transform: uppercase; }
 
-        .section-subtitle {
-            color: #2E86AB;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 14px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .section-title {
-            font-family: 'Teko', sans-serif;
-            font-size: 3.5rem;
-            color: #1a1a1a;
-            text-transform: uppercase;
-        }
-
-        /* Renamed class to avoid conflicts with style.css */
-        .vmtl-ach-card {
-            background: #fff;
-            border-radius: 15px;
+        /* Partner Card Style */
+        .partner-card {
+            background: var(--card-dark);
+            border: 1px solid #333;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             transition: all 0.4s ease;
             height: 100%;
-            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
             display: flex;
             flex-direction: column;
-            /* Ensuring width stays within grid */
-            width: 100%; 
-            max-width: 100%;
         }
 
-        .vmtl-ach-card:hover {
+        .partner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+            z-index: 2;
+        }
+
+        .partner-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(46, 134, 171, 0.15);
-            border-color: #2E86AB;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: #444;
         }
 
-        .card-img-container {
-            position: relative;
-            height: 250px;
-            overflow: hidden;
-            background: #fff;
+        .partner-card:hover::before { transform: scaleX(1); }
+
+        .logo-container {
+            background: #fff; /* White background is essential for logos */
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            border-bottom: 1px solid #f0f0f0;
+            padding: 30px;
+            position: relative;
+            border-bottom: 1px solid #333;
         }
 
-        .card-img-container img {
+        .logo-container img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
             transition: transform 0.5s ease;
+            filter: grayscale(0); /* Keep logos colored */
         }
 
-        .vmtl-ach-card:hover .card-img-container img {
-            transform: scale(1.08);
+        .partner-card:hover .logo-container img {
+            transform: scale(1.1);
         }
 
-        .award-badge {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 2;
-        }
-
-        .card-content {
-            padding: 30px 25px;
+        .partner-info {
+            padding: 25px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            text-align: center;
         }
 
-        .ach-year {
+        .partner-name {
             font-family: 'Teko', sans-serif;
-            font-size: 1.4rem;
-            color: #F18F01;
-            margin-bottom: 5px;
-            font-weight: 500;
-            display: block;
-        }
-
-        .ach-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.8rem;
+            color: #fff;
             margin-bottom: 10px;
-            color: #1F1F1F;
-            line-height: 1.4;
+            line-height: 1.2;
         }
 
-        .ach-desc {
-            color: #666;
+        .partner-role {
+            color: var(--primary-color);
             font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .view-btn {
-            margin-top: auto;
-            text-decoration: none;
-            color: #2E86AB;
             font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0;
         }
 
-        .view-btn:hover {
-            color: #A23B72;
-            gap: 10px;
+        .card-link-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
         }
 
         @keyframes fadeUp {
@@ -262,8 +185,6 @@
 
         @media (max-width: 768px) {
             .banner-title { font-size: 3.5rem; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .stat-box { border-right: none; border-bottom: 1px solid #333; }
         }
     </style>
 </head>
@@ -276,13 +197,11 @@
                 <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
                     <img src="./ASSETS/IMAGES/logo.png" alt="VMTL - Virmodello Technologies" />
                 </a>
-
                 <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
                     </svg>
                 </button>
-
                 <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
                     <ul>
                         <li><a href="index.html">HOME</a></li>
@@ -290,9 +209,9 @@
                             <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
                             <div class="dropdown-menu">
                                 <div class="dropdown-divider"></div>
-                                <a href="achievements.html" class="dropdown-item active">Achievements</a>
+                                <a href="achievements.html" class="dropdown-item">Achievements</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="associations.html" class="dropdown-item">Associations</a>
+                                <a href="associations.html" class="dropdown-item active">Associations</a>
                                 <div class="dropdown-divider"></div>
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             </div>
@@ -325,7 +244,6 @@
                         <li><a href="contact.html">CONTACT</a></li>
                     </ul>
                 </nav>
-
                 <div class="btn-wrap">
                     <a class="fti-header-2-btn" href="contact.html" aria-label="Get in touch">
                         <span class="btn-text">Get in touch</span>
@@ -382,158 +300,145 @@
     <main>
         <section class="page-banner">
             <div class="container">
-                <h1 class="banner-title">Our Achievements</h1>
+                <h1 class="banner-title">Our Associations</h1>
                 <div class="breadcrumb-nav">
                     <ul class="breadcrumb-list">
                         <li><a href="index.html">Home</a></li>
                         <li>About Us</li>
-                        <li class="active">Achievements</li>
+                        <li class="active">Associations</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <div class="stats-strip">
-            <div class="container">
-                <div class="row">
-                    <div class="col-6 col-md-3">
-                        <div class="stat-box fade-in">
-                            <h3>100%</h3>
-                            <p>Quality Certified</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="stat-box fade-in">
-                            <h3>500+</h3>
-                            <p>Startup Awards</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="stat-box fade-in">
-                            <h3>ISO</h3>
-                            <p>9001:2015</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="stat-box fade-in">
-                            <h3>Top</h3>
-                            <p>Entrepreneur 20-21</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <section class="achievements-wrap">
+        <section class="associations-wrap">
             <div class="container">
                 <div class="section-title-wrap fade-in">
-                    <div class="section-subtitle">RECOGNITION</div>
-                    <h2 class="section-title">Certifications & Awards</h2>
-                    <p class="mt-3" style="max-width: 700px; margin: 0 auto; color: #666;">
-                        Our commitment to quality and innovation has been recognized by leading institutions and organizations.
+                    <div class="section-subtitle">PARTNERSHIPS</div>
+                    <h2 class="section-title">Trusted By Industry Leaders</h2>
+                    <p class="mt-3" style="max-width: 700px; margin: 0 auto; color: #888;">
+                        We are proud to be associated with prestigious government bodies and industry giants.
                     </p>
                 </div>
 
                 <div class="row g-4">
+                    
                     <div class="col-lg-4 col-md-6 fade-in">
-                        <div class="vmtl-ach-card">
-                            <div class="card-img-container">
-                                <img src="./ASSETS/IMAGES/certificate_adcai.jpg" alt="Entrepreneur Award" onerror="this.src='https://placehold.co/600x400?text=Entrepreneur+Award'">
-                                <div class="award-badge"><i class="fas fa-trophy"></i></div>
+                        <div class="partner-card">
+                            <div class="logo-container">
+                                <img src="./ASSETS/IMAGES/dipp.jpg" alt="Startup India Recognition" onerror="this.src='https://placehold.co/600x300?text=Startup+India'">
                             </div>
-                            <div class="card-content">
-                                <span class="ach-year">2020 - 21</span>
-                                <h3 class="ach-title">Entrepreneur of the Year Award</h3>
-                                <p class="ach-desc">Recognized by the Aerospace & Defence Consultants Association of India.</p>
+                            <div class="partner-info">
+                                <h3 class="partner-name">Startup India</h3>
+                                <p class="partner-role">Recognised by DIPP, India</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 fade-in">
-                        <div class="vmtl-ach-card">
-                            <div class="card-img-container">
-                                <img src="./ASSETS/IMAGES/india500.jpg" alt="India 500 Startup" onerror="this.src='https://placehold.co/600x400?text=India+500'">
-                                <div class="award-badge"><i class="fas fa-rocket"></i></div>
+                        <div class="partner-card">
+                            <div class="logo-container">
+                                <img src="./ASSETS/IMAGES/msme.jpg" alt="MSME India" onerror="this.src='https://placehold.co/600x300?text=MSME'">
                             </div>
-                            <div class="card-content">
-                                <span class="ach-year">2019</span>
-                                <h3 class="ach-title">India 500 Startup Award</h3>
-                                <p class="ach-desc">Recognized for excellence and contribution as a promising startup in India.</p>
+                            <div class="partner-info">
+                                <h3 class="partner-name">MSME</h3>
+                                <p class="partner-role">Registered Member</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 fade-in">
-                        <div class="vmtl-ach-card">
-                            <div class="card-img-container">
-                                <img src="./ASSETS/IMAGES/certificate_eam.jpg" alt="Energy Management" onerror="this.src='https://placehold.co/600x400?text=Energy+Auditing'">
-                                <div class="award-badge"><i class="fas fa-university"></i></div>
+                        <div class="partner-card">
+                            <a href="https://cdiic.in/" target="_blank" class="card-link-overlay"></a>
+                            <div class="logo-container">
+                                <img src="./ASSETS/IMAGES/cdiic.png" alt="CDIIC Coimbatore" onerror="this.src='https://placehold.co/600x300?text=CDIIC'">
                             </div>
-                            <div class="card-content">
-                                <span class="ach-year">Certification</span>
-                                <h3 class="ach-title">Energy Auditing & Management</h3>
-                                <p class="ach-desc">Certified by Periyar University for Energy Management protocols.</p>
+                            <div class="partner-info">
+                                <h3 class="partner-name">CDIIC Coimbatore</h3>
+                                <p class="partner-role">Incubation Partner</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 fade-in">
-                        <a href="GMP Certificate-6.pdf" target="_blank" class="text-decoration-none">
-                            <div class="vmtl-ach-card">
-                                <div class="card-img-container">
-                                    <img src="./ASSETS/IMAGES/certificate_msme.jpg" alt="MSME" onerror="this.src='https://placehold.co/600x400?text=MSME'">
-                                    <div class="award-badge"><i class="fas fa-industry"></i></div>
-                                </div>
-                                <div class="card-content">
-                                    <span class="ach-year">Certification</span>
-                                    <h3 class="ach-title">MSME Technology Development Centre</h3>
-                                    <p class="ach-desc">Government of India recognized certification.</p>
-                                    <span class="view-btn">View Certificate <i class="fas fa-arrow-right"></i></span>
-                                </div>
+                        <div class="partner-card">
+                            <a href="http://www.adcai.in/" target="_blank" class="card-link-overlay"></a>
+                            <div class="logo-container">
+                                <img src="./ASSETS/IMAGES/adcai.jpg" alt="ADCAI" onerror="this.src='https://placehold.co/600x300?text=ADCAI'">
                             </div>
-                        </a>
+                            <div class="partner-info">
+                                <h3 class="partner-name">ADCAI</h3>
+                                <p class="partner-role">Associate Member</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 fade-in">
-                        <a href="ISO Certificate.jpg" target="_blank" class="text-decoration-none">
-                            <div class="vmtl-ach-card">
-                                <div class="card-img-container">
-                                    <img src="./ASSETS/IMAGES/certificate_iso.jpg" alt="ISO" onerror="this.src='https://placehold.co/600x400?text=ISO+9001'">
-                                    <div class="award-badge"><i class="fas fa-certificate"></i></div>
-                                </div>
-                                <div class="card-content">
-                                    <span class="ach-year">ISO 9001:2015</span>
-                                    <h3 class="ach-title">ISO 9001:2015 Certification</h3>
-                                    <p class="ach-desc">Certified Quality Management System.</p>
-                                    <span class="view-btn">View Certificate <i class="fas fa-arrow-right"></i></span>
-                                </div>
+                        <div class="partner-card">
+                            <a href="https://in.linkedin.com/company/design-galaxy-engineering-services-and-training" target="_blank" class="card-link-overlay"></a>
+                            <div class="logo-container">
+                                <img src="./ASSETS/IMAGES/dg.jpg" alt="Design Galaxy" onerror="this.src='https://placehold.co/600x300?text=Design+Galaxy'">
                             </div>
-                        </a>
+                            <div class="partner-info">
+                                <h3 class="partner-name">Design Galaxy</h3>
+                                <p class="partner-role">Strategic Partner (Coimbatore)</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 fade-in">
-                        <a href="VMTL-QULAITY-POLICY.pdf" target="_blank" class="text-decoration-none">
-                            <div class="vmtl-ach-card">
-                                <div class="card-img-container">
-                                    <img src="./ASSETS/IMAGES/vmtl_quality_cerifiy.jpg" alt="Quality Policy" onerror="this.src='https://placehold.co/600x400?text=Quality+Policy'">
-                                    <div class="award-badge"><i class="fas fa-book-reader"></i></div>
-                                </div>
-                                <div class="card-content">
-                                    <span class="ach-year">Policy</span>
-                                    <h3 class="ach-title">Quality System Manual</h3>
-                                    <p class="ach-desc">Comprehensive VMTL Quality Policy documentation.</p>
-                                    <span class="view-btn">View Policy <i class="fas fa-arrow-right"></i></span>
-                                </div>
+                        <div class="partner-card">
+                            <a href="https://broadtechengineering.com" target="_blank" class="card-link-overlay"></a>
+                            <div class="logo-container">
+                                <img src="./ASSETS/IMAGES/clinets7.png" alt="Broadtech Engineering" onerror="this.src='https://placehold.co/600x300?text=Broadtech'">
                             </div>
-                        </a>
+                            <div class="partner-info">
+                                <h3 class="partner-name">Broadtech Engineering</h3>
+                                <p class="partner-role">Partner (Singapore)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="partner-card">
+                            <div class="logo-container">
+                                <img src="./ASSETS/IMAGES/indian_railways.png" alt="Indian Railways" onerror="this.src='https://placehold.co/600x300?text=Indian+Railways'">
+                            </div>
+                            <div class="partner-info">
+                                <h3 class="partner-name">Indian Railways</h3>
+                                <p class="partner-role">Official Vendor</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="partner-card">
+                            <div class="logo-container">
+                                <img src="./ASSETS/IMAGES/hal.jpg" alt="HAL" onerror="this.src='https://placehold.co/600x300?text=HAL'">
+                            </div>
+                            <div class="partner-info">
+                                <h3 class="partner-name">Hindustan Aeronautics Ltd</h3>
+                                <p class="partner-role">Vendor</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="partner-card">
+                            <div class="logo-container">
+                                <img src="./ASSETS/IMAGES/sadisstia.jpg" alt="SADISSTIA" onerror="this.src='https://placehold.co/600x300?text=SADISSTIA'">
+                            </div>
+                            <div class="partner-info">
+                                <h3 class="partner-name">SADISSTIA</h3>
+                                <p class="partner-role">Industry Association</p>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
             </div>
         </section>
-
     </main>
-
 
     <footer class="custom-footer">
         <div class="container">
@@ -616,8 +521,6 @@
         ↑
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="./ASSETS/js/script.js"></script>
@@ -640,8 +543,8 @@
 
             document.querySelectorAll('.fade-in').forEach(el => {
                 el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 observer.observe(el);
             });
         });

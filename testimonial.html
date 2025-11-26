@@ -4,21 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Achievements - VMTL | Virmodello Technologies</title>
-    <meta name="description" content="Explore the awards, certifications, and milestones achieved by Virmodello Technologies.">
+    <title>Testimonials - VMTL | Virmodello Technologies</title>
+    <meta name="description" content="See what our clients say about Virmodello Technologies. Reviews on our Engineering, CAD, and Manufacturing services.">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="./ASSETS/css/base.css">
 
     <style>
+        /* --- CSS Variables --- */
+        :root {
+            --primary-color: #2E86AB;
+            --accent-color: #F18F01;
+            --dark-bg: #1F1F1F;
+            --card-dark: #262626;
+            --text-gray: #b0b0b0;
+        }
+
         /* --- Page Banner --- */
         .page-banner {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -26,18 +35,17 @@
             text-align: center;
             color: #fff;
             position: relative;
-            margin-top: -90px; /* Pulls banner behind the fixed header */
+            margin-top: -90px; /* Pull behind fixed header */
         }
 
         .banner-title {
             font-family: 'Teko', sans-serif;
             font-size: 5rem;
-            line-height: 1;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 20px;
             color: #ffffff;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
             opacity: 0;
             animation: fadeUp 0.8s ease forwards;
         }
@@ -64,197 +72,131 @@
             font-weight: 600;
         }
 
-        .breadcrumb-list li a {
-            color: #fff;
-            text-decoration: none;
-            transition: 0.3s;
-        }
+        .breadcrumb-list li a { color: #fff; text-decoration: none; transition: 0.3s; }
+        .breadcrumb-list li a:hover { color: var(--accent-color); }
+        .breadcrumb-list li.active { color: var(--accent-color); }
+        .breadcrumb-list li+li::before { content: "/"; color: rgba(255, 255, 255, 0.5); margin-right: 15px; }
 
-        .breadcrumb-list li a:hover {
-            color: #F18F01;
-        }
-
-        .breadcrumb-list li.active {
-            color: #F18F01;
-        }
-
-        .breadcrumb-list li+li::before {
-            content: "/";
-            color: rgba(255, 255, 255, 0.5);
-            margin-right: 15px;
-        }
-
-        /* --- Stats Strip --- */
-        .stats-strip {
-            background: #1a1a1a;
-            padding: 60px 0;
-            border-bottom: 1px solid #333;
-        }
-
-        .stat-box {
-            text-align: center;
-            padding: 20px;
-            border-right: 1px solid #333;
-        }
-
-        .stat-box:last-child { border-right: none; }
-
-        .stat-box h3 {
-            font-family: 'Teko', sans-serif;
-            font-size: 3.5rem;
-            color: #2E86AB;
-            line-height: 1;
-            margin-bottom: 5px;
-        }
-
-        .stat-box p {
-            color: #aaa;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        /* --- Achievements Section (Custom Styles) --- */
-        .achievements-wrap {
+        /* --- Content Section --- */
+        .testimonials-wrap {
+            background-color: #1a1a1a;
             padding: 100px 0;
-            background-color: #f4f4f4;
+            position: relative;
         }
 
-        .section-title-wrap {
-            text-align: center;
-            margin-bottom: 60px;
-        }
+        .section-title-wrap { text-align: center; margin-bottom: 70px; }
+        .section-subtitle { color: var(--primary-color); font-weight: 700; letter-spacing: 2px; font-size: 14px; display: block; margin-bottom: 10px; }
+        .section-title { font-family: 'Teko', sans-serif; font-size: 3.5rem; color: #fff; text-transform: uppercase; }
 
-        .section-subtitle {
-            color: #2E86AB;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 14px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .section-title {
-            font-family: 'Teko', sans-serif;
-            font-size: 3.5rem;
-            color: #1a1a1a;
-            text-transform: uppercase;
-        }
-
-        /* Renamed class to avoid conflicts with style.css */
-        .vmtl-ach-card {
-            background: #fff;
+        /* --- Testimonial Card Style --- */
+        .review-card {
+            background: var(--card-dark);
+            border: 1px solid #333;
             border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 40px 35px;
+            position: relative;
             transition: all 0.4s ease;
             height: 100%;
-            border: 1px solid rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
-            /* Ensuring width stays within grid */
-            width: 100%; 
-            max-width: 100%;
-        }
-
-        .vmtl-ach-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(46, 134, 171, 0.15);
-            border-color: #2E86AB;
-        }
-
-        .card-img-container {
-            position: relative;
-            height: 250px;
             overflow: hidden;
-            background: #fff;
+        }
+
+        /* Top Gradient Border */
+        .review-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: #444;
+            background: #2a2a2a;
+        }
+
+        .review-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Large Quote Icon Background */
+        .quote-bg-icon {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.03);
+            font-family: serif;
+            line-height: 1;
+            pointer-events: none;
+            transition: all 0.4s ease;
+        }
+
+        .review-card:hover .quote-bg-icon {
+            color: rgba(46, 134, 171, 0.1);
+            transform: scale(1.1);
+        }
+
+        /* Content Styles */
+        .review-text {
+            color: #d1d1d1;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            flex-grow: 1;
+        }
+
+        .client-info {
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
-            border-bottom: 1px solid #f0f0f0;
+            gap: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 25px;
         }
 
-        .card-img-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            transition: transform 0.5s ease;
-        }
-
-        .vmtl-ach-card:hover .card-img-container img {
-            transform: scale(1.08);
-        }
-
-        .award-badge {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
+        .client-avatar {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
+            background: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #fff;
             font-size: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 2;
-        }
-
-        .card-content {
-            padding: 30px 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .ach-year {
-            font-family: 'Teko', sans-serif;
-            font-size: 1.4rem;
-            color: #F18F01;
-            margin-bottom: 5px;
-            font-weight: 500;
-            display: block;
-        }
-
-        .ach-title {
-            font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: #1F1F1F;
-            line-height: 1.4;
+            flex-shrink: 0;
         }
 
-        .ach-desc {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
+        .client-details h4 {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+            margin: 0;
+            line-height: 1;
+            letter-spacing: 0.5px;
         }
 
-        .view-btn {
-            margin-top: auto;
-            text-decoration: none;
-            color: #2E86AB;
+        .client-details span {
+            font-size: 0.85rem;
+            color: var(--accent-color);
             font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .view-btn:hover {
-            color: #A23B72;
-            gap: 10px;
-        }
-
+        /* Animation */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -262,8 +204,7 @@
 
         @media (max-width: 768px) {
             .banner-title { font-size: 3.5rem; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .stat-box { border-right: none; border-bottom: 1px solid #333; }
+            .review-card { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -290,11 +231,11 @@
                             <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
                             <div class="dropdown-menu">
                                 <div class="dropdown-divider"></div>
-                                <a href="achievements.html" class="dropdown-item active">Achievements</a>
+                                <a href="achievements.html" class="dropdown-item">Achievements</a>
                                 <div class="dropdown-divider"></div>
                                 <a href="associations.html" class="dropdown-item">Associations</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="testimonial.html" class="dropdown-item active">Testimonial</a>
                             </div>
                         </li>
                         <li class="dropdown">
@@ -382,158 +323,97 @@
     <main>
         <section class="page-banner">
             <div class="container">
-                <h1 class="banner-title">Our Achievements</h1>
+                <h1 class="banner-title">Testimonials</h1>
                 <div class="breadcrumb-nav">
                     <ul class="breadcrumb-list">
                         <li><a href="index.html">Home</a></li>
                         <li>About Us</li>
-                        <li class="active">Achievements</li>
+                        <li class="active">Testimonials</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <div class="stats-strip">
-            <div class="container">
-                <div class="row">
-                    <div class="col-6 col-md-3">
-                        <div class="stat-box fade-in">
-                            <h3>100%</h3>
-                            <p>Quality Certified</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="stat-box fade-in">
-                            <h3>500+</h3>
-                            <p>Startup Awards</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="stat-box fade-in">
-                            <h3>ISO</h3>
-                            <p>9001:2015</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="stat-box fade-in">
-                            <h3>Top</h3>
-                            <p>Entrepreneur 20-21</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <section class="achievements-wrap">
+        <section class="testimonials-wrap">
             <div class="container">
                 <div class="section-title-wrap fade-in">
-                    <div class="section-subtitle">RECOGNITION</div>
-                    <h2 class="section-title">Certifications & Awards</h2>
-                    <p class="mt-3" style="max-width: 700px; margin: 0 auto; color: #666;">
-                        Our commitment to quality and innovation has been recognized by leading institutions and organizations.
+                    <div class="section-subtitle">CLIENT REVIEWS</div>
+                    <h2 class="section-title">What Our Clients Say</h2>
+                    <p class="mt-3" style="max-width: 700px; margin: 0 auto; color: #b0b0b0;">
+                        Feedback from our valued partners and clients across the globe.
                     </p>
                 </div>
 
                 <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 fade-in">
-                        <div class="vmtl-ach-card">
-                            <div class="card-img-container">
-                                <img src="./ASSETS/IMAGES/certificate_adcai.jpg" alt="Entrepreneur Award" onerror="this.src='https://placehold.co/600x400?text=Entrepreneur+Award'">
-                                <div class="award-badge"><i class="fas fa-trophy"></i></div>
-                            </div>
-                            <div class="card-content">
-                                <span class="ach-year">2020 - 21</span>
-                                <h3 class="ach-title">Entrepreneur of the Year Award</h3>
-                                <p class="ach-desc">Recognized by the Aerospace & Defence Consultants Association of India.</p>
+                    
+                    <div class="col-lg-6 fade-in">
+                        <div class="review-card">
+                            <div class="quote-bg-icon">“</div>
+                            <p class="review-text">
+                                "VMTL completed the work as per the contract and services provided were professional with industry standards. We appreciate their Quality of Work and timely completion."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-avatar">DT</div>
+                                <div class="client-details">
+                                    <h4>Daniel Tan</h4>
+                                    <span>Singapore</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 fade-in">
-                        <div class="vmtl-ach-card">
-                            <div class="card-img-container">
-                                <img src="./ASSETS/IMAGES/india500.jpg" alt="India 500 Startup" onerror="this.src='https://placehold.co/600x400?text=India+500'">
-                                <div class="award-badge"><i class="fas fa-rocket"></i></div>
-                            </div>
-                            <div class="card-content">
-                                <span class="ach-year">2019</span>
-                                <h3 class="ach-title">India 500 Startup Award</h3>
-                                <p class="ach-desc">Recognized for excellence and contribution as a promising startup in India.</p>
+                    <div class="col-lg-6 fade-in">
+                        <div class="review-card">
+                            <div class="quote-bg-icon">“</div>
+                            <p class="review-text">
+                                "VMTL have created niche for themselves in the fields of Simulation, Reverse Engineering and 3-D modelling by supporting many OEMs."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-avatar">JK</div>
+                                <div class="client-details">
+                                    <h4>Wing Commander. Jayakumar</h4>
+                                    <span>NROOT Technologies, India</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 fade-in">
-                        <div class="vmtl-ach-card">
-                            <div class="card-img-container">
-                                <img src="./ASSETS/IMAGES/certificate_eam.jpg" alt="Energy Management" onerror="this.src='https://placehold.co/600x400?text=Energy+Auditing'">
-                                <div class="award-badge"><i class="fas fa-university"></i></div>
-                            </div>
-                            <div class="card-content">
-                                <span class="ach-year">Certification</span>
-                                <h3 class="ach-title">Energy Auditing & Management</h3>
-                                <p class="ach-desc">Certified by Periyar University for Energy Management protocols.</p>
+                    <div class="col-lg-6 fade-in">
+                        <div class="review-card">
+                            <div class="quote-bg-icon">“</div>
+                            <p class="review-text">
+                                "The Contribution from Mr.Joel, VMTL to the project as of today is appreciable and we are looking forward to the same in the future also."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-avatar">SS</div>
+                                <div class="client-details">
+                                    <h4>Professor S. Sundarraj</h4>
+                                    <span>Sri Krishna College of Technology, India</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 fade-in">
-                        <a href="GMP Certificate-6.pdf" target="_blank" class="text-decoration-none">
-                            <div class="vmtl-ach-card">
-                                <div class="card-img-container">
-                                    <img src="./ASSETS/IMAGES/certificate_msme.jpg" alt="MSME" onerror="this.src='https://placehold.co/600x400?text=MSME'">
-                                    <div class="award-badge"><i class="fas fa-industry"></i></div>
-                                </div>
-                                <div class="card-content">
-                                    <span class="ach-year">Certification</span>
-                                    <h3 class="ach-title">MSME Technology Development Centre</h3>
-                                    <p class="ach-desc">Government of India recognized certification.</p>
-                                    <span class="view-btn">View Certificate <i class="fas fa-arrow-right"></i></span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 fade-in">
-                        <a href="ISO Certificate.jpg" target="_blank" class="text-decoration-none">
-                            <div class="vmtl-ach-card">
-                                <div class="card-img-container">
-                                    <img src="./ASSETS/IMAGES/certificate_iso.jpg" alt="ISO" onerror="this.src='https://placehold.co/600x400?text=ISO+9001'">
-                                    <div class="award-badge"><i class="fas fa-certificate"></i></div>
-                                </div>
-                                <div class="card-content">
-                                    <span class="ach-year">ISO 9001:2015</span>
-                                    <h3 class="ach-title">ISO 9001:2015 Certification</h3>
-                                    <p class="ach-desc">Certified Quality Management System.</p>
-                                    <span class="view-btn">View Certificate <i class="fas fa-arrow-right"></i></span>
+                    <div class="col-lg-6 fade-in">
+                        <div class="review-card">
+                            <div class="quote-bg-icon">“</div>
+                            <p class="review-text">
+                                "Timely & cost effective Design support by VMTL team was Excellent."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-avatar">MV</div>
+                                <div class="client-details">
+                                    <h4>Mr. Veeramahendran</h4>
+                                    <span>Flamencotech, India</span>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 fade-in">
-                        <a href="VMTL-QULAITY-POLICY.pdf" target="_blank" class="text-decoration-none">
-                            <div class="vmtl-ach-card">
-                                <div class="card-img-container">
-                                    <img src="./ASSETS/IMAGES/vmtl_quality_cerifiy.jpg" alt="Quality Policy" onerror="this.src='https://placehold.co/600x400?text=Quality+Policy'">
-                                    <div class="award-badge"><i class="fas fa-book-reader"></i></div>
-                                </div>
-                                <div class="card-content">
-                                    <span class="ach-year">Policy</span>
-                                    <h3 class="ach-title">Quality System Manual</h3>
-                                    <p class="ach-desc">Comprehensive VMTL Quality Policy documentation.</p>
-                                    <span class="view-btn">View Policy <i class="fas fa-arrow-right"></i></span>
-                                </div>
-                            </div>
-                        </a>
+                        </div>
                     </div>
 
                 </div>
             </div>
         </section>
-
     </main>
-
 
     <footer class="custom-footer">
         <div class="container">
@@ -616,8 +496,6 @@
         ↑
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="./ASSETS/js/script.js"></script>
@@ -640,8 +518,8 @@
 
             document.querySelectorAll('.fade-in').forEach(el => {
                 el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 observer.observe(el);
             });
         });
