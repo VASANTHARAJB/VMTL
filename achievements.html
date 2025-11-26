@@ -45,6 +45,7 @@
         .breadcrumb-nav {
             display: inline-block;
             background: rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
             padding: 10px 30px;
             border-radius: 30px;
@@ -142,6 +143,12 @@
             font-size: 3.5rem;
             color: #1a1a1a;
             text-transform: uppercase;
+        }
+
+        .achievements-desc {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
         }
 
         /* Renamed class to avoid conflicts with style.css */
@@ -321,7 +328,7 @@
                                 <a href="video-gallery.html" class="dropdown-item">Video Gallery</a>
                             </div>
                         </li>
-                        <li><a href="https://virmodello.blogspot.com/" target="_blank">BLOG</a></li>
+                        <li><a href="https://virmodello.blogspot.com/" target="_blank" rel="noopener">BLOG</a></li>
                         <li><a href="contact.html">CONTACT</a></li>
                     </ul>
                 </nav>
@@ -367,7 +374,7 @@
                         <a href="video-gallery.html">Video Gallery</a>
                     </div>
                 </li>
-                <li><a href="https://virmodello.blogspot.com/" target="_blank">BLOG</a></li>
+                <li><a href="https://virmodello.blogspot.com/" target="_blank" rel="noopener">BLOG</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
             <div class="mobile-cta">
@@ -423,13 +430,11 @@
                 </div>
             </div>
         </div>
-
-        <section class="achievements-wrap">
-            <div class="container">
+                    
                 <div class="section-title-wrap fade-in">
                     <div class="section-subtitle">RECOGNITION</div>
                     <h2 class="section-title">Certifications & Awards</h2>
-                    <p class="mt-3" style="max-width: 700px; margin: 0 auto; color: #666;">
+                    <p class="mt-3 achievements-desc">
                         Our commitment to quality and innovation has been recognized by leading institutions and organizations.
                     </p>
                 </div>
