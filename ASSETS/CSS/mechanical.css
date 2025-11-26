@@ -54,6 +54,7 @@
       position: relative;
       width: 100%;
       max-width: 1400px;
+      border-radius: 0 0 30px 30px;
       height: 100%;
       /* Ensure full height */
     }
