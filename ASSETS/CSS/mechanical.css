@@ -1,3 +1,4 @@
+
     :root {
       --primary-color: #2E86AB;
       --secondary-color: #A23B72;
@@ -24,12 +25,11 @@
     }
 
     /* =========================================
-           HEADER & NAVIGATION
-           ========================================= */
+       1. HEADER & NAVIGATION (Synchronized with CFD Page)
+       ========================================= */
     .fti-header-2-area {
       background-color: transparent;
-      position: absolute;
-      /* Changed to fixed for sticky behavior */
+      position: absolute; /* Matches CFD style */
       top: 0;
       left: 0;
       z-index: 1000;
@@ -39,13 +39,6 @@
       justify-content: center;
       height: 90px;
       transition: all 0.3s ease;
-      
-    }
-
-    .fti-header-2-area.scrolled {
-      background-color: rgba(31, 31, 31, 0.98);
-      backdrop-filter: blur(10px);
-
     }
 
     .fti-header-2-wrap {
@@ -55,38 +48,34 @@
       width: 100%;
       max-width: 1400px;
       border-radius: 0 0 30px 30px;
-      height: 100%;
-      /* Ensure full height */
+      transition: all 0.3s ease;
     }
 
-    /* Header Decorative Borders - Hidden on small mobile to prevent overflow */
-    @media (min-width: 768px) {
-      .fti-header-2-wrap::before {
-        content: "";
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        border-bottom: 1px solid var(--border-color);
-        border-left: 1px solid var(--border-color);
-        border-right: 1px solid var(--border-color);
-        border-radius: 0 0 30px 30px;
-        z-index: 1;
-      }
+    /* Header Decorative Borders */
+    .fti-header-2-wrap::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-bottom: 1px solid var(--border-color);
+      border-left: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      border-radius: 0 0 30px 30px;
+      z-index: 1;
+    }
 
-      .fti-header-2-wrap::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: 90px;
-        width: 260px;
-        background-color: var(--text-white);
-        clip-path: polygon(0 1%, 100% 0%, 80% 100%, 0% 100%);
-        border-radius: 0 0 30px 30px;
-        pointer-events: none;
-      }
+    .fti-header-2-wrap::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 90px;
+      width: 260px;
+      background-color: var(--text-white);
+      clip-path: polygon(0 1%, 100% 0%, 80% 100%, 0% 100%);
+      border-radius: 0 0 30px 30px;
     }
 
     .fti-header-2-row {
@@ -95,13 +84,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 100%;
+      height: 90px;
     }
 
     .fti-header-2-logo {
       flex-shrink: 0;
       margin-right: 40px;
-      z-index: 5;
     }
 
     .fti-header-2-logo img {
@@ -139,7 +127,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 10px 0;
+      padding: 25px 0;
       white-space: nowrap;
     }
 
@@ -150,7 +138,7 @@
     /* Dropdown Styles */
     .main-navigation .dropdown-menu {
       position: absolute;
-      top: calc(100% + 15px);
+      top: 100%;
       left: 0;
       background: var(--dark-bg);
       border: 1px solid var(--primary-color);
@@ -179,6 +167,7 @@
       display: block;
       font-size: 0.9rem;
       font-weight: 500;
+      transition: all 0.3s ease;
       border: none;
       background: none;
     }
@@ -191,13 +180,15 @@
     .main-navigation .dropdown-divider {
       height: 1px;
       background: rgba(46, 134, 171, 0.3);
-      margin: 5px 0;
+      margin: 8px 0;
+      border: none;
     }
 
     .main-navigation .dropdown-toggle i {
       font-size: 0.7rem;
       transition: transform 0.3s ease;
       margin-left: 6px;
+      color: var(--text-white);
     }
 
     .main-navigation .dropdown:hover .dropdown-toggle i {
@@ -225,6 +216,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
       text-decoration: none;
       white-space: nowrap;
     }
@@ -233,6 +225,7 @@
       background-color: var(--primary-color);
       color: #fff;
       transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(46, 134, 171, 0.3);
     }
 
     /* Mobile Menu Toggle */
@@ -242,44 +235,43 @@
       border: none;
       cursor: pointer;
       display: none;
-      /* Hidden on Desktop */
       flex-shrink: 0;
       padding: 0;
     }
 
     .fti-menu-btn-2 svg {
-      width: 100%;
+      width: 30px;
       height: 30px;
     }
 
     .fti-menu-btn-2 .svg-path {
       fill: none;
-      stroke: var(--primary-color);
+      stroke: #fff;
       stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
     /* =========================================
-           MOBILE OVERLAY MENU
-           ========================================= */
+       2. MOBILE OVERLAY MENU
+       ========================================= */
     .mobile-nav-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100vh;
-      background-color: rgba(31, 31, 31, 0.98);
-      backdrop-filter: blur(15px);
+      background: rgba(10, 25, 47, 0.98);
+      backdrop-filter: blur(10px);
       z-index: 2000;
-      /* Higher than header */
       display: flex;
-      align-items: flex-start;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 80px;
+      align-items: center;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s ease;
-      padding-top: 60px;
+      transition: all 0.4s ease;
       overflow-y: auto;
     }
 
@@ -288,57 +280,48 @@
       visibility: visible;
     }
 
-    .mobile-nav-content {
-      text-align: center;
-      transform: translateY(30px);
-      transition: transform 0.3s ease;
-      width: 90%;
-      max-width: 400px;
-      padding-bottom: 50px;
-    }
-
-    .mobile-nav-overlay.active .mobile-nav-content {
-      transform: translateY(0);
-    }
-
     .mobile-close-btn {
       position: absolute;
       top: 25px;
       right: 25px;
+      color: #fff;
+      font-size: 2.5rem;
       background: none;
       border: none;
-      color: white;
-      font-size: 2rem;
       cursor: pointer;
-      transition: color 0.3s;
     }
 
-    .mobile-close-btn:hover {
-      color: var(--primary-color);
+    .mobile-nav-content {
+      width: 100%;
+      max-width: 500px;
+      padding-bottom: 50px;
     }
 
     .mobile-nav-menu {
       list-style: none;
-      padding: 0;
-      margin: 0 0 30px 0;
+      padding: 0 20px;
+      text-align: center;
+      width: 100%;
+      margin: 0;
     }
 
     .mobile-nav-menu li {
       margin: 15px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      padding-bottom: 15px;
+      width: 100%;
     }
 
     .mobile-nav-menu li>a {
-      color: var(--text-white);
-      text-decoration: none;
+      color: #fff;
       font-size: 1.2rem;
+      text-decoration: none;
       font-weight: 600;
-      transition: color 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
+      padding: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: color 0.3s ease;
     }
 
     .mobile-nav-menu li>a:hover {
@@ -347,25 +330,28 @@
 
     /* Mobile Dropdown */
     .mobile-dropdown-menu {
-      background: rgba(46, 134, 171, 0.1);
-      margin-top: 15px;
-      padding: 0;
+      background: rgba(255, 255, 255, 0.05);
+      margin-top: 5px;
+      padding: 10px 0;
       border-radius: 10px;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-out;
-      /* Smooth slide */
+      display: none;
     }
 
     .mobile-dropdown-menu.active {
-      max-height: 500px;
-      /* Arbitrary large height */
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .mobile-dropdown-menu a {
-      color: rgba(255, 255, 255, 0.8);
       font-size: 1rem;
-      padding: 10px 0;
+      color: #ccc;
+      border: none;
+      padding: 8px;
       display: block;
       text-decoration: none;
     }
@@ -373,11 +359,12 @@
     .mobile-cta {
       display: flex;
       justify-content: center;
+      margin-top: 30px;
     }
 
     /* =========================================
-           HERO SECTION (IMAGE INSTEAD OF VIDEO)
-           ========================================= */
+       3. HERO SECTION (Parallax)
+       ========================================= */
     .header-section {
       position: relative;
       min-height: 550px;
@@ -386,17 +373,13 @@
       justify-content: center;
       color: white;
       overflow: hidden;
-      background-position: center;
-      background-attachment: fixed;
       margin-top: 0;
       padding: 120px 20px 60px;
-      /* Replaced video with background image */
       background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1500&q=80');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      /* Parallax effect */
     }
 
     .header-content {
@@ -419,6 +402,8 @@
       background: transparent;
       padding: 0;
       margin-bottom: 0;
+      display: flex;
+      align-items: center;
     }
 
     .breadcrumb a {
@@ -442,10 +427,9 @@
       font-weight: 600;
     }
 
-
     /* =========================================
-           SERVICES GRID
-           ========================================= */
+       4. SERVICES GRID
+       ========================================= */
     .services-intro-section {
       padding: 80px 0;
       background-color: #fff;
@@ -517,8 +501,8 @@
     }
 
     /* =========================================
-           PREMIUM LIST
-           ========================================= */
+       5. PREMIUM LIST
+       ========================================= */
     .premium-list-wrapper {
       background-color: var(--bg-offwhite);
       padding: 80px 0;
@@ -583,8 +567,8 @@
     }
 
     /* =========================================
-           PROCESS SECTION
-           ========================================= */
+       6. PROCESS SECTION
+       ========================================= */
     .process-section {
       padding: 80px 0;
       background: var(--royal-gradient);
@@ -662,8 +646,8 @@
     }
 
     /* =========================================
-           INDUSTRIES SECTION
-           ========================================= */
+       7. INDUSTRIES SECTION
+       ========================================= */
     .industries-section {
       padding: 80px 0;
       background-color: var(--dark-bg-section);
@@ -703,8 +687,8 @@
     }
 
     /* =========================================
-           CONTACT SECTION
-           ========================================= */
+       8. CONTACT SECTION
+       ========================================= */
     .contact-expert-section {
       padding: 80px 0;
       background: #f8faff;
@@ -833,8 +817,8 @@
     }
 
     /* =========================================
-   4. FOOTER STYLES
-   ========================================= */
+       9. FOOTER STYLES
+       ========================================= */
     .custom-footer {
       background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
       color: #ffffff;
@@ -852,6 +836,7 @@
       bottom: 0;
       background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
       opacity: 0.3;
+      pointer-events: none;
     }
 
     .custom-footer .container {
@@ -895,6 +880,7 @@
 
     .footer-links {
       list-style: none;
+      padding: 0;
     }
 
     .footer-links li {
@@ -1006,6 +992,15 @@
       font-weight: bold;
       font-size: 18px;
       z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+    }
+
+    .scroll-top.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
 
     .scroll-top:hover {
@@ -1013,120 +1008,102 @@
     }
 
     /* =========================================
-           RESPONSIVE MEDIA QUERIES
-           ========================================= */
+       10. RESPONSIVE MEDIA QUERIES
+       ========================================= */
     @media (max-width: 1200px) {
       .main-navigation ul {
         gap: 25px;
       }
-
       .fti-header-2-wrap {
         max-width: 100%;
         padding: 0 25px 0 35px;
       }
-
-      /* Process Grid Adjustment */
       .process-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 40px;
         row-gap: 50px;
       }
-
       .process-step-item:not(:nth-child(3n)) .step-circle-box::after {
         content: '\f178';
       }
-
       .process-step-item:nth-child(3n) .step-circle-box::after {
         display: none;
       }
     }
 
     @media (max-width: 991px) {
-
-      /* Header Elements */
+      /* Toggle Mobile Elements */
       .fti-menu-btn-2 {
         display: block;
       }
-
       .main-navigation,
       .btn-wrap {
         display: none;
       }
-
-      /* Header Sizing */
-      .fti-header-2-area {
+      /* Adjust Header Sizing - Matches CFD Page */
+      body {
+        padding-top: 0px;
+      }
+      .fti-header-2-area,
+      .fti-header-2-row {
         height: 70px;
       }
-
-      .fti-header-2-row {
-        height: 100%;
-      }
-
       .fti-header-2-wrap {
-        padding: 0 20px;
+        padding: 15px 20px 15px 25px; /* Tuned padding for logo */
       }
-
-      /* Contact Section */
+      .fti-header-2-wrap::after {
+        width: 170px;
+        height: 70px;
+      }
+      .fti-header-2-logo img {
+        max-height: 40px; /* Scaled down logo */
+      }
+      /* Contact & Footer */
       .contact-wrapper {
         flex-direction: column;
       }
-
-      .contact-info,
-      .contact-form {
+      .contact-info, .contact-form {
         width: 100%;
       }
-    }
-
-    @media (max-width: 768px) {
-
-      /* Process Grid Mobile */
-      .process-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .process-step-item .step-circle-box::after {
-        display: none !important;
-      }
-
-      .step-title {
-        min-height: auto;
-      }
-
-      /* Adjust Footer Layout */
       .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
       }
-
       .contact-section-footer {
         grid-template-columns: 1fr;
         gap: 20px;
         text-align: center;
       }
-
       .contact-item {
         justify-content: center;
       }
+      .schedule-btn {
+        width: 100%;
+      }
     }
 
+    @media (max-width: 768px) {
+      .process-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .process-step-item .step-circle-box::after {
+        display: none !important;
+      }
+      .step-title {
+        min-height: auto;
+      }
+      .header-title {
+        font-size: 2.5rem;
+      }
+    }
 
     @media (max-width: 576px) {
       .fti-header-2-wrap {
-        padding: 0 15px;
+        padding: 10px 15px;
       }
-
       .fti-header-2-logo img {
         max-height: 35px;
-      }
-
-      .header-title {
-        font-size: 2.2rem;
-      }
-
-      /* Hide fancy clip path on very small screens to avoid overflow */
-      .fti-header-2-wrap::after {
-        display: none;
       }
     }
 
