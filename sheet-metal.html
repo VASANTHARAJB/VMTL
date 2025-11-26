@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sheet Metal Design Services - VMTL</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./ASSETS/CSS/cfd_service.css">
+  <link rel="stylesheet" href="./ASSETS/CSS/scroll.css">
+
+  <style>
+    /* Clean Service Card Style (From Image 1) */
+    .sheet-service-card {
+        background: #fff;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        height: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-left: 1px solid #eee;
+    }
+
+    .sheet-service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border-left: 4px solid #3b9cfa; /* Brand Red accent */
+    }
+
+    .sheet-service-card h4 {
+        color: #333;
+        margin-bottom: 20px;
+        font-weight: 600;
+        font-size: 1.25rem;
+    }
+
+    .sheet-service-card p {
+        color: #666;
+        line-height: 1.7;
+        font-size: 0.95rem;
+        margin-bottom: 0;
+    }
+
+    /* Systematic Approach Steps (Pill Shape from Image 2) */
+    .process-step-card {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border: 1px solid #e1e1e1;
+        border-radius: 60px; /* Pill shape */
+        padding: 10px;
+        margin-bottom: 25px;
+        transition: all 0.3s ease;
+    }
+
+    .process-step-card:hover {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        border-color: #5dabc6;
+    }
+
+    .step-number {
+         /* Fallback */
+        background: #5dabc6; /* Teal color from screenshot */
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-right: 20px;
+        margin-left: 5px;
+    }
+
+    .step-content {
+        padding-right: 20px;
+        font-weight: 500;
+        color: #444;
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    /* Additional Services List (Checkmarks from Image 2 bottom) */
+    .checklist-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        font-size: 1rem;
+        color: #555;
+    }
+
+    .checklist-item i {
+        color: #333; /* Dark color for checkmark */
+        margin-right: 12px;
+        font-size: 1.1rem;
+    }
+
+    /* Responsive Tweaks */
+    @media (max-width: 768px) {
+        .process-step-card {
+            border-radius: 15px; /* Less rounded on mobile for text fit */
+            padding: 15px;
+        }
+        .step-number {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="fti-header-2-area">
+    <div class="fti-header-2-wrap">
+      <div class="fti-header-2-row">
+        <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
+          <img src="./ASSETS/IMAGES/logo.png" alt="VMTL - Virmodello Technologies" onerror="this.src='https://via.placeholder.com/150x50?text=VMTL'"/>
+        </a>
+        <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
+          </svg>
+        </button>
+        <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+              <div class="dropdown-menu">
+                <div class="dropdown-divider"></div>
+                <a href="achievements.html" class="dropdown-item">Achievements</a>
+                <div class="dropdown-divider"></div>
+                <a href="associations.html" class="dropdown-item">Associations</a>
+                <div class="dropdown-divider"></div>
+                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+              </div>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle active">SERVICES <i class="fas fa-chevron-down"></i></a>
+              <div class="dropdown-menu">
+                <a href="reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
+                <div class="dropdown-divider"></div>
+                <a href="manufacturing.html" class="dropdown-item">Manufacturing</a>
+                <div class="dropdown-divider"></div>
+                <a href="cad-services.html" class="dropdown-item">CAD Services</a>
+                <div class="dropdown-divider"></div>
+                <a href="mechanical-engineering.html" class="dropdown-item">Mechanical Engineering</a>
+                <div class="dropdown-divider"></div>
+                <a href="electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
+                <div class="dropdown-divider"></div>
+                <a href="engineering-simulation.html" class="dropdown-item">Engineering Simulation</a>
+                <div class="dropdown-divider"></div>
+                <a href="machine-design.html" class="dropdown-item">Machine Design & Dev</a>
+                <div class="dropdown-divider"></div>
+                <a href="sheet-metal-design.html" class="dropdown-item active">Sheet Metal Design</a>
+              </div>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+              <div class="dropdown-menu">
+                <a href="projects.html" class="dropdown-item">Projects</a>
+                <div class="dropdown-divider"></div>
+                <a href="video-gallery.html" class="dropdown-item">Video Gallery</a>
+              </div>
+            </li>
+            <li><a href="https://virmodello.blogspot.com/" target="_blank" rel="noopener noreferrer">BLOG</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </nav>
+        <div class="btn-wrap">
+          <a class="fti-header-2-btn" href="contact.html" aria-label="Get in touch">
+            <span class="btn-text">Get in touch</span>
+            <span class="btn-icon">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <button class="mobile-close-btn">&times;</button>
+    <div class="mobile-nav-content">
+      <ul class="mobile-nav-menu">
+        <li><a href="index.html">HOME</a></li>
+        <li class="mobile-dropdown">
+          <a href="#" class="mobile-dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+          <div class="mobile-dropdown-menu">
+            <a href="about-us.html">Our Team</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="associations.html">Associations</a>
+            <a href="testimonial.html">Testimonial</a>
+          </div>
+        </li>
+        <li class="mobile-dropdown">
+          <a href="#" class="mobile-dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+          <div class="mobile-dropdown-menu">
+            <a href="reverse-engineering.html">Reverse Engineering</a>
+            <a href="manufacturing.html">Manufacturing</a>
+            <a href="cad-services.html">CAD Services</a>
+            <a href="mechanical-engineering.html">Mechanical Engineering</a>
+            <a href="electrical-engineering.html">Electrical Engineering</a>
+            <a href="machine-design.html">Machine Design & Dev</a>
+            <a href="sheet-metal-design.html">Sheet Metal Design</a>
+          </div>
+        </li>
+        <li><a href="clients.html">OUR CLIENTS</a></li>
+        <li class="mobile-dropdown">
+          <a href="#" class="mobile-dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+          <div class="mobile-dropdown-menu">
+            <a href="projects.html">Projects</a>
+            <a href="video-gallery.html">Video Gallery</a>
+          </div>
+        </li>
+        <li><a href="https://virmodello.blogspot.com/" target="_blank">BLOG</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+      <div class="mobile-cta">
+        <a class="fti-header-2-btn" href="contact.html" style="color:white; border-color:white;">
+          <span class="btn-text">Get in touch</span>
+          <span class="btn-icon">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <section class="header-section">
+    <div class="hero-img-container">
+      <img src="https://i.pinimg.com/1200x/4f/f2/e7/4ff2e754a89628efdce9d3e8c608583b.jpg" alt="Sheet Metal Design Services">
+    </div>
+
+    <div class="header-content">
+      <h1 class="header-title">Sheet Metal Design Services</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="arrow">&#x2192;</span>
+        <a href="#">Services</a>
+        <span class="arrow">&#x2192;</span>
+        <span>Sheet Metal Design</span>
+      </div>
+    </div>
+  </section>
+  <section class="services-intro-section">
+    <div class="container">
+      <div class="section-head">
+        <h2 style="color: #3b9cfa;">Sheet Metal Design Services We Offer</h2>
+        <p>At VMTL, we have always delivered high-quality robust designs that are compliant with international standards. We have provided quality services to businesses across various industry sectors such as automobile, aerospace, electronics, power, transport, and telecom. Some of the key sheet metal product design services we offer include -</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="sheet-service-card fade-in">
+            <h4>Component Designing</h4>
+            <p>Our team of mechanical engineers has the required skills, expertise, and resources to provide our clients with comprehensive product design services. Right from prototype development, metal selection, sheet cutting design, to helping you with designing parts and assemblies, we can help you at every stage.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="sheet-service-card fade-in">
+            <h4>CAD/CAM Solutions</h4>
+            <p>Our team of engineers at VMTL can provide you with comprehensive and top-quality CAD/CAM solutions. We provide CAD and 3D modeling services using all the leading software in the industry. In addition, we also provide product implementation training and guidance to clients and help them establish a robust design and development framework.</p>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="sheet-service-card fade-in">
+            <h4>Design Technical Support</h4>
+            <p>We have a dedicated team which will provide you with the required technical support regarding your metal sheet design needs. Our resources are also capable of providing you with project re-engineering and value engineering support. We can also help you with all the 2D and 3D file import, upload, and download of the engineering drawings on to the FTP server.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-choose-section" style="background-color: #f9f9f9;">
+    <div class="container">
+      <div class="section-head">
+        <h2 style="color: #3b9cfa;">Our Systematic Approach for Sheet Metal Design</h2>
+        <p>We believe in providing our clients with the best and top-quality services within a quick turnaround time. Doing so, we help our clients to save a considerable amount of time and money which would have been invested in hiring an in-house team of engineers and designers. We follow a systematic and streamlined process while providing sheet metal product design services to our clients, which include the following steps -</p>
+      </div>
+
+      <div class="row g-3 justify-content-center">
+        <div class="col-md-6 col-lg-4">
+          <div class="process-step-card fade-in">
+            <div class="step-number">1</div>
+            <div class="step-content">Identify design parameters and specifications</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="process-step-card fade-in">
+            <div class="step-number">2</div>
+            <div class="step-content">Develop different design solutions</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="process-step-card fade-in">
+            <div class="step-number">3</div>
+            <div class="step-content">Evaluate the developed design solutions</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="process-step-card fade-in">
+            <div class="step-number">4</div>
+            <div class="step-content">Design for manufacturability (DFM)</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="process-step-card fade-in">
+            <div class="step-number">5</div>
+            <div class="step-content">Optimize the product design and manufacturing processes</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="process-step-card fade-in">
+            <div class="step-number">6</div>
+            <div class="step-content">Prepare cost estimates based on material, number of operations, etc.</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="process-step-card fade-in">
+            <div class="step-number">7</div>
+            <div class="step-content">Calculate the adequate size of corner reliefs, bend angles, and radii</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="process-step-card fade-in">
+            <div class="step-number">8</div>
+            <div class="step-content">Create 3D sheet metal model and complete 2D flat drawings</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-intro-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mb-4">
+          <p class="lead">We have the required infrastructure and resources to provide services to a wide range of industry sectors. Some of the other key sheet metal design services we offer include -</p>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+          <div class="checklist-item fade-in">
+            <i class="far fa-check-circle"></i> Architectural Metal Product Design
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="checklist-item fade-in">
+            <i class="far fa-check-circle"></i> Fire Protection Equipment Design
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="checklist-item fade-in">
+            <i class="far fa-check-circle"></i> Structural Metal Product Design
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="checklist-item fade-in">
+            <i class="far fa-check-circle"></i> Fabricated Metal & Alloy Product Design
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="checklist-item fade-in">
+            <i class="far fa-check-circle"></i> Metal Furniture Products Design
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="other-services-section" style="background: #fdfdfd; border-top: 1px solid #eee;">
+    <div class="container">
+      <div class="section-head">
+        <h2>Other Services You Can Benefit From</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="other-service-item fade-in">
+            <h5>Tower Design Services</h5>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="other-service-item fade-in">
+            <h5>2D Drafting Services</h5>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="other-service-item fade-in">
+            <h5>CAD Conversion & Migration</h5>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="other-service-item fade-in">
+            <h5>Town Planning Services</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="contact-expert-section">
+    <div class="container">
+      <div class="section-head">
+        <h5>Contact Us</h5>
+        <h2>Excited about the project? Please get in touch.</h2>
+      </div>
+
+      <div class="contact-wrapper">
+
+        <div class="contact-info">
+          <img src="https://themexriver.com/wp/indsro/wp-content/uploads/2024/09/contact-us.webp" alt="Contact Support Team" onerror="this.src='https://via.placeholder.com/600x400?text=Contact+Us'">
+
+          <div class="contact-item">
+            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+            <div>
+              <h6>Address:</h6>
+              <span>2715 Ash Dr. San Jose, South Dakota 83475</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="icon"><i class="fas fa-phone"></i></span>
+            <div>
+              <h6>Phone Number:</h6>
+              <span>(704) 555-0127, (239) 555-0108</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="icon"><i class="fas fa-envelope"></i></span>
+            <div>
+              <h6>Email:</h6>
+              <span>themexriver@support.com</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h2>Contact Me</h2>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">First Name *</label>
+              <input type="text" id="name" name="name" placeholder="Your first name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="Your email address" required>
+            </div>
+            <div class="form-group">
+              <label for="service">Select Service Type *</label>
+              <select id="service" name="service" required>
+                <option value="Sheet Metal" selected>Sheet Metal Design</option>
+                <option value="Machine Design">Machine Design & Development</option>
+                <option value="CFD">Computational Fluid Dynamics</option>
+                <option value="Development">Development</option>
+                <option value="Industry">Industry</option>
+                <option value="Mechanical">Mechanical</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" placeholder="Type your message" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              <span>Send Message</span> <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <footer class="custom-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">VMTL<span class="dot">.</span></div>
+          <p class="footer-description">
+            Our long history of family ownership has financial reassurance, business continuity and
+            stability. It has also created firm foundations from which we continue to grow.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Product</h3>
+          <ul class="footer-links">
+            <li><a href="#">How It Works?</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Terms Of Services</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="reverse-engineering.html">Reverse Engineering</a></li>
+            <li><a href="manufacturing.html">Manufacturing</a></li>
+            <li><a href="cad-services.html">CAD Services</a></li>
+            <li><a href="mechanical-engineering.html">Mechanical Engineering</a></li>
+            <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+            <li><a href="sheet-metal-design.html">Sheet Metal Design</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Our Link</h3>
+          <ul class="footer-links">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="clients.html">Clients</a></li>
+            <li><a href="contact.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="contact-section-footer">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-info">
+            <h4>Call Us</h4>
+            <p>+91 97890 99151</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div class="contact-info">
+            <h4>Email Us:</h4>
+            <p>contact@virmodello.com</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-info">
+            <h4>Opening Hours:</h4>
+            <p>Mon-Fri: 8am - 7pm</p>
+          </div>
+        </div>
+
+        <button class="schedule-btn">Schedule An Appointment</button>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">© Copyright 2025 All rights reserved. Design by Neoera Infotech</p>
+      </div>
+    </div>
+  </footer>
+  <div class="scroll-top" onclick="scrollToTop()">
+    ↑
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./ASSETS/JS/lenis.min.js"></script>
+  <script src="./ASSETS/JS/scroll.js"></script>
+  <script>
+    // Global Scroll To Top Function
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+      const closeBtn = document.querySelector('.mobile-close-btn');
+      const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+      const contactForm = document.getElementById('contactForm');
+      const scrollTopBtn = document.querySelector('.scroll-top');
+
+      // --- Mobile Menu Functions ---
+      function openMenu() {
+        mobileNavOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        mobileNavOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+
+        // Reset dropdowns when menu closes
+        document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+          menu.classList.remove('active');
+        });
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+          toggle.classList.remove('active');
+          const icon = toggle.querySelector('i');
+          if (icon) icon.className = 'fas fa-chevron-down';
+        });
+      }
+
+      if (menuToggle) menuToggle.addEventListener('click', openMenu);
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+      // Close on overlay click
+      if (mobileNavOverlay) {
+        mobileNavOverlay.addEventListener('click', function(e) {
+          if (e.target === mobileNavOverlay) closeMenu();
+        });
+      }
+
+      // Mobile Dropdown Accordion
+      mobileDropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          const submenu = this.nextElementSibling;
+          const icon = this.querySelector('i');
+
+          this.classList.toggle('active');
+          submenu.classList.toggle('active');
+
+          // Icon Rotation
+          if (submenu.classList.contains('active')) {
+            icon.className = 'fas fa-chevron-up';
+          } else {
+            icon.className = 'fas fa-chevron-down';
+          }
+        });
+      });
+
+      // Desktop Dropdown Logic (Hover/Click Handling for touch screens)
+      const desktopDropdowns = document.querySelectorAll('.main-navigation .dropdown');
+      desktopDropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+        toggle.addEventListener('click', function(e) {
+          if (window.innerWidth > 992) {
+            e.preventDefault();
+          }
+        });
+      });
+
+      // --- Contact Form Handling ---
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const btn = this.querySelector('.btn-submit');
+          const originalText = btn.innerHTML;
+
+          btn.innerHTML = 'Sending...';
+          btn.disabled = true;
+
+          setTimeout(() => {
+            alert('Thank you! Your message has been sent successfully.');
+            this.reset();
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+          }, 1500);
+        });
+      }
+
+      // --- Scroll Effects (Header & Back to Top) ---
+      const header = document.querySelector('.fti-header-2-wrap');
+      
+      window.addEventListener('scroll', function() {
+        // Header Effect
+        if (window.scrollY > 50) {
+          header.style.background = 'rgba(31, 31, 31, 0.98)';
+          header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.2)';
+        } else {
+          header.style.background = 'rgba(31, 31, 31, 0.9)'; // Slightly transparent default
+          if(window.innerWidth > 992) {
+              header.style.background = 'var(--dark-bg, #1f1f1f)'; // Fallback color
+          }
+          header.style.boxShadow = 'none';
+        }
+
+        // Back To Top Visibility
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+      });
+
+      // --- Intersection Observer for Fade-in Animation ---
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target); // Animate once
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-in').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
