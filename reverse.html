@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reverse Engineering Services - VMTL</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Reuse existing CSS structure -->
+  <link rel="stylesheet" href="./ASSETS/CSS/cfd_service.css">
+  <link rel="stylesheet" href="./ASSETS/CSS/scroll.css">
+
+  <!-- Custom CSS for Reverse Engineering Page -->
+  <style>
+    /* --- Solution Cards (Red Icon Style) --- */
+    .re-card {
+        background: #fff;
+        padding: 30px;
+        height: 100%;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 3px solid transparent;
+    }
+
+    .re-card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        border-bottom: 3px solid #3b9cfa;
+    }
+
+    .re-icon-box {
+        width: 60px;
+        height: 60px;
+        background-color: #3b9cfa; /* Dark Red from images */
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        color: #fff;
+        font-size: 24px;
+        box-shadow: 0 4px 10px rgba(179, 0, 0, 0.3);
+    }
+
+    .re-card h4 {
+        font-size: 19px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #222;
+        line-height: 1.4;
+    }
+
+    .re-card p {
+        color: #555;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    /* --- Techniques Section (Dark Blue Background) --- */
+    .techniques-section {
+        background: linear-gradient(135deg, #0d2c5e 0%, #1a3c6e 100%); /* Deep Blue */
+        padding: 80px 0;
+        color: #fff;
+    }
+
+    .tech-intro {
+        max-width: 800px;
+        margin-bottom: 50px;
+    }
+
+    .tech-card {
+        background: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        height: 100%;
+        color: #333;
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .tech-check-icon {
+        min-width: 24px;
+        height: 24px;
+        background-color: #fff;
+        border: 2px solid #3b9cfa;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #3b9cfa;
+        font-size: 12px;
+        margin-top: 3px;
+    }
+
+    .tech-content h5 {
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #0d2c5e;
+    }
+
+    .tech-content p {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* --- Lean Process Section (Red Numbered Steps) --- */
+    .process-timeline-row {
+        position: relative;
+        padding: 40px 0;
+    }
+
+    /* Dashed line connecting steps (desktop only) */
+    @media (min-width: 992px) {
+        .process-timeline-row::before {
+            content: '';
+            position: absolute;
+            top: 55px; /* Adjust to align with circle center */
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            border-top: 2px dashed #3b9cfa;
+            z-index: 0;
+        }
+    }
+
+    .process-step-item {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 0 15px;
+    }
+
+    .step-circle {
+        width: 50px;
+        height: 50px;
+        background-color: #3b9cfa;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 20px;
+        margin: 0 auto 20px;
+        border: 4px solid #fff; /* White border to break the dashed line */
+        box-shadow: 0 0 0 2px #3b9cfa; /* Outer red ring */
+    }
+
+    .process-step-item h5 {
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .process-step-item p {
+        font-size: 13px;
+        color: #666;
+        line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="fti-header-2-area">
+        <div class="fti-header-2-wrap">
+            <div class="fti-header-2-row">
+                <!-- Logo -->
+                <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
+                    <img src="./ASSETS/IMAGES/logo.png" alt="VMTL - Virmodello Technologies" />
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
+                    </svg>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
+                    <ul>
+                        <li><a href="./index.html">HOME</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-divider"></div>
+                                <a href="./achievements.html" class="dropdown-item">Achievements</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./associations.html" class="dropdown-item">Associations</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="./reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./manufacturing.html" class="dropdown-item">Manufacturing</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./cad-services.html" class="dropdown-item">CAD Services</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./mechi-engineering-services.html" class="dropdown-item">Mechanical Engineering</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="./projects.html" class="dropdown-item">Projects</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./video-gallery.html" class="dropdown-item">Video Gallery</a>
+                            </div>
+                        </li>
+                        <li><a href="./blog.html" target="_blank">BLOG</a></li>
+                        <li><a href="./contact.html">CONTACT</a></li>
+                    </ul>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="btn-wrap">
+                    <a class="fti-header-2-btn" href="./contact.html" aria-label="Get in touch">
+                        <span class="btn-text">Get in touch</span>
+                        <span class="btn-icon">↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <div class="mobile-nav-content">
+            <ul class="mobile-nav-menu">
+                <li><a href="./index.html">HOME</a></li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./achievements.html">Achievements</a>
+                        <a href="./associations.html">Associations</a>
+                        <a href="./testimonial.html">Testimonial</a>
+                    </div>
+                </li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./reverse-engineering.html">Reverse Engineering</a>
+                        <a href="./manufacturing.html">Manufacturing</a>
+                        <a href="./cad-services.html">CAD Services</a>
+                        <a href="./mechi-engineering-services.html">Mechanical Engineering</a>
+                        <a href="./electrical-engineering.html">Electrical Engineering</a>
+                    </div>
+                </li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./projects.html">Projects</a>
+                        <a href="./video-gallery.html">Video Gallery</a>
+                    </div>
+                </li>
+                <li><a href="./blog.html" target="_blank">BLOG</a></li>
+                <li><a href="./contact.html">CONTACT</a></li>
+            </ul>
+            <div class="mobile-cta">
+                <a class="fti-header-2-btn" href="./contact.html">
+                    <span class="btn-text">Get in touch</span>
+                    <span class="btn-icon">↗</span>
+                </a>
+            </div>
+        </div>
+    </div> 
+    <!-- ==================== END HEADER ==================== -->
+
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="header-section">
+    <div class="hero-img-container">
+      <img src="https://i.pinimg.com/736x/d7/b0/63/d7b0636be659417905da5bcf99398d5e.jpg" alt="Reverse Engineering Services">
+    </div>
+
+    <div class="header-content">
+      <h1 class="header-title">Reverse Engineering Services</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="arrow">&#x2192;</span>
+        <a href="#">Services</a>
+        <span class="arrow">&#x2192;</span>
+        <span>Reverse Engineering</span>
+      </div>
+    </div>
+  </section>
+  <!-- ==================== END HERO SECTION ==================== -->
+
+
+  <!-- ==================== MAIN SOLUTIONS SECTION ==================== -->
+  <section class="services-intro-section">
+    <div class="container">
+      <div class="section-head">
+        <h2 style="color: #3b9cfa;">Reverse Engineering Solutions We Offer</h2>
+        <p>Our reverse engineering services address a wide range of engineering needs—from competitive benchmarking and design optimization to compliance validation and DFMA-based cost reduction—helping you turn physical parts into intelligent digital assets.</p>
+      </div>
+
+      <!-- Grid Row 1 -->
+      <div class="row g-4 mb-4">
+        <!-- 3D Scanning -->
+        <div class="col-md-6 col-lg-3">
+          <div class="re-card fade-in">
+            <div class="re-icon-box"><i class="fas fa-cube"></i></div>
+            <h4>3D Scanning Services</h4>
+            <p>We use portable CMMs, 3D laser scanners, and CT systems to capture high-accuracy internal and external geometries of legacy, worn, or complex parts. This data forms the basis for CAD reconstruction, validation, or digital twin generation.</p>
+          </div>
+        </div>
+
+        <!-- CAD Modeling -->
+        <div class="col-md-6 col-lg-3">
+          <div class="re-card fade-in">
+            <div class="re-icon-box"><i class="fas fa-desktop"></i></div>
+            <h4>CAD Modeling Services</h4>
+            <p>Validated scan data is converted into intelligent 2D and 3D CAD models using parametric or hybrid techniques based on project needs. We deliver models in IGES, STEP, SolidWorks, or native formats for easy downstream use.</p>
+          </div>
+        </div>
+
+        <!-- Dimensional Analysis -->
+        <div class="col-md-6 col-lg-3">
+          <div class="re-card fade-in">
+            <div class="re-icon-box"><i class="fas fa-arrows-alt"></i></div>
+            <h4>Dimensional Analysis Services</h4>
+            <p>We apply GD&T-based analysis to detect geometric deviations, validate tolerances, and confirm part accuracy against design requirements. This ensures each reverse-engineered model meets form, fit, and functional benchmarks.</p>
+          </div>
+        </div>
+
+        <!-- CAI & CAV -->
+        <div class="col-md-6 col-lg-3">
+          <div class="re-card fade-in">
+            <div class="re-icon-box"><i class="fas fa-search-plus"></i></div>
+            <h4>Computer-Aided Inspection (CAI & CAV)</h4>
+            <p>3D scan outputs are compared to nominal CAD using deviation mapping, overlays, and cross-sections to ensure dimensional fidelity. Critical elements like threads and interfaces are validated for material compatibility.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Row 2 -->
+      <div class="row g-4 mb-4">
+        <!-- Software RE -->
+        <div class="col-md-6 col-lg-3">
+          <div class="re-card fade-in">
+            <div class="re-icon-box"><i class="fas fa-code"></i></div>
+            <h4>Software Reverse Engineering</h4>
+            <p>Decompile firmware or dissect system protocols, networks, and control logic. Ideal for legacy aerospace or defense systems where source code or documentation is unavailable.</p>
+          </div>
+        </div>
+
+        <!-- Drone/UAV -->
+        <div class="col-md-6 col-lg-3">
+          <div class="re-card fade-in">
+            <div class="re-icon-box"><i class="fas fa-plane"></i></div>
+            <h4>Drone Component & UAV Reverse Engineering</h4>
+            <p>Recreate 3D models and subsystems of drone airframes, motors, or sensors for proprietary UAV platforms. Accelerates OEM refurbishment, compliance validation, and performance improvements.</p>
+          </div>
+        </div>
+
+        <!-- Geometric Analysis -->
+        <div class="col-md-6 col-lg-3">
+          <div class="re-card fade-in">
+            <div class="re-icon-box"><i class="fas fa-globe"></i></div>
+            <h4>Detailed Dimensional & Geometric Analysis</h4>
+            <p>High-precision dimensional data and GD&T insights for critical components. This service supports tolerance validation, deformation detection, and fit verification—vital for aerospace and automotive.</p>
+          </div>
+        </div>
+
+        <!-- Material Analysis -->
+        <div class="col-md-6 col-lg-3">
+          <div class="re-card fade-in">
+            <div class="re-icon-box"><i class="fas fa-layer-group"></i></div>
+            <h4>Material and Surface Analysis</h4>
+            <p>Examine surface properties like material, coatings, and finishes through destructive and non-destructive methods. Helps with replicating a part that operates under any performance requirement or compliance constraint.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Row 3 -->
+      <div class="row g-4">
+        <!-- DFMA -->
+        <div class="col-md-6 col-lg-3">
+          <div class="re-card fade-in">
+            <div class="re-icon-box"><i class="fas fa-cogs"></i></div>
+            <h4>Design & Manufacturing Optimization (DFMA)</h4>
+            <p>Combines part geometry and tolerance checks with Design for Manufacturing & Assembly (DFMA) analysis to enhance producibility across CNC, molding, or additive methods.</p>
+          </div>
+        </div>
+
+        <!-- Prototyping -->
+        <div class="col-md-6 col-lg-3">
+          <div class="re-card fade-in">
+            <div class="re-icon-box"><i class="fas fa-drafting-compass"></i></div>
+            <h4>Prototyping</h4>
+            <p>Conversion of verified CAD models into functional physical prototypes using 3D printing, machining, or hybrid processes. We help engineers bridge the gap between digital design and production validation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ADDITIONAL OFFERINGS ==================== -->
+  <section class="services-intro-section" style="background-color: #f9f9f9;">
+    <div class="container">
+      <div class="section-head text-start">
+        <h3 style="color: #3b9cfa; font-weight: 700;">In addition to standard reverse engineering solutions, we also offer:</h3>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="re-card fade-in">
+            <div class="re-icon-box"><i class="fas fa-sync"></i></div>
+            <h4>Legacy Digitization & Digital Twin</h4>
+            <p>Transforms legacy aerospace, defense, and heavy equipment components into high-fidelity digital twins for simulation, predictive maintenance, and lifecycle extension.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="re-card fade-in">
+            <div class="re-icon-box"><i class="fas fa-clipboard-check"></i></div>
+            <h4>Failure & Lifecycle Analysis</h4>
+            <p>Identifies failure modes and estimates component lifespan to support proactive redesign and root cause analysis in critical systems like automotive and aerospace.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="re-card fade-in">
+            <div class="re-icon-box"><i class="fas fa-microchip"></i></div>
+            <h4>Electronics / PCB Reverse Engineering</h4>
+            <p>Extracts board layouts, circuit logic, and embedded design features from existing PCBs, meeting demands in electronics, medtech, and semiconductor applications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TECHNIQUES SECTION (DARK BLUE) ==================== -->
+  <section class="techniques-section">
+    <div class="container">
+      <div class="tech-intro fade-in">
+        <h2>Our 3D Reverse Engineering Services Techniques</h2>
+        <p>Our advanced scanning and mechanical reverse engineering services are designed to meet the precision, speed, and compliance needs of modern engineering and manufacturing. Here are our key techniques to deliver exceptional accuracy and efficiency:</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Tech Card 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="tech-card fade-in">
+            <div class="tech-check-icon"><i class="fas fa-check"></i></div>
+            <div class="tech-content">
+              <h5>3D Laser Scanning</h5>
+              <p>Capture complex geometries and free-form surfaces with high-resolution datasets. For non-contact digitization of intricate parts or fragile surfaces.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Card 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="tech-card fade-in">
+            <div class="tech-check-icon"><i class="fas fa-check"></i></div>
+            <div class="tech-content">
+              <h5>CMM Scanning</h5>
+              <p>Get ultra-precise dimensional data using programmable probes. Especially ideal for high-precision driven applications in aerospace/automotive.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Card 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="tech-card fade-in">
+            <div class="tech-check-icon"><i class="fas fa-check"></i></div>
+            <div class="tech-content">
+              <h5>Portable CMM Scanning</h5>
+              <p>Perform measurement and inspection on-site for objects that are difficult to move. Ideal for plant-level assessments and rapid turnaround projects.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Card 4 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="tech-card fade-in">
+            <div class="tech-check-icon"><i class="fas fa-check"></i></div>
+            <div class="tech-content">
+              <h5>Full Contact CMM Scanning</h5>
+              <p>Provides tactile measurements of great repeatability for prismatic pieces or rigid parts where surface precision is key to check machined features.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Card 5 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="tech-card fade-in">
+            <div class="tech-check-icon"><i class="fas fa-check"></i></div>
+            <div class="tech-content">
+              <h5>Non-Contact Inspection</h5>
+              <p>Fast and non-invasive scanning to protect delicate and soft-surface parts. We ensure quality control in inspection without posing risk of damage.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Card 6 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="tech-card fade-in">
+            <div class="tech-check-icon"><i class="fas fa-check"></i></div>
+            <div class="tech-content">
+              <h5>Electronic & Electrical Analysis</h5>
+              <p>Investigation of circuits, identification of components, and schematic reconstruction. Restore legacy PCBs with missing documentation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROCESS SECTION (TIMELINE) ==================== -->
+  <section class="why-choose-section">
+    <div class="container">
+      <div class="section-head">
+        <h2 style="color: #3b9cfa;">Our Lean-Based Reverse Engineering Process</h2>
+        <p>We follow a lean-optimized, quality-focused process that eliminates inefficiencies and delivers reliable digital models ready for any application. Here is the 6-step process we follow:</p>
+      </div>
+
+      <div class="row process-timeline-row">
+        <!-- Step 1 -->
+        <div class="col-md-6 col-lg-2 process-step-item fade-in">
+          <div class="step-circle">1</div>
+          <h5>Receive Parts</h5>
+          <p>We log components and review them for criticality and material sensitivity, ensuring a clear technical context.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="col-md-6 col-lg-2 process-step-item fade-in">
+          <div class="step-circle">2</div>
+          <h5>Scanning</h5>
+          <p>Using high-precision 3D laser scanners or CMMs, we extract and document accurate dimensional data.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="col-md-6 col-lg-2 process-step-item fade-in">
+          <div class="step-circle">3</div>
+          <h5>Data Validation</h5>
+          <p>Raw scan data is filtered and aligned to purge noise, setting a clean foundation for modeling.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="col-md-6 col-lg-2 process-step-item fade-in">
+          <div class="step-circle">4</div>
+          <h5>Modeling & Analysis</h5>
+          <p>We create parametric 2D/3D models from validated data for tests, inspection, or reproduction.</p>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="col-md-6 col-lg-2 process-step-item fade-in">
+          <div class="step-circle">5</div>
+          <h5>Quality Verification</h5>
+          <p>Generated models are compared against scan data via CAI to validate material fit and conformance.</p>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="col-md-6 col-lg-2 process-step-item fade-in">
+          <div class="step-circle">6</div>
+          <h5>Delivery</h5>
+          <p>Final CAD files (IGES, STEP, etc.) and reports are shared, ensuring seamless integration with your PLM systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT SECTION ==================== -->
+  <section class="contact-expert-section">
+    <div class="container">
+      <div class="section-head">
+        <h5>Contact Us</h5>
+        <h2>Excited about the project? Please get in touch.</h2>
+      </div>
+
+      <div class="contact-wrapper">
+
+        <div class="contact-info">
+          <img src="https://themexriver.com/wp/indsro/wp-content/uploads/2024/09/contact-us.webp" alt="Contact Support Team" onerror="this.src='https://via.placeholder.com/600x400?text=Contact+Us'">
+
+          <div class="contact-item">
+            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+            <div>
+              <h6>Address:</h6>
+              <span>2715 Ash Dr. San Jose, South Dakota 83475</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="icon"><i class="fas fa-phone"></i></span>
+            <div>
+              <h6>Phone Number:</h6>
+              <span>(704) 555-0127, (239) 555-0108</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="icon"><i class="fas fa-envelope"></i></span>
+            <div>
+              <h6>Email:</h6>
+              <span>themexriver@support.com</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h2>Contact Me</h2>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">First Name *</label>
+              <input type="text" id="name" name="name" placeholder="Your first name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="Your email address" required>
+            </div>
+            <div class="form-group">
+              <label for="service">Select Service Type *</label>
+              <select id="service" name="service" required>
+                <!-- Set Reverse Engineering as default -->
+                <option value="Reverse Engineering" selected>Reverse Engineering</option>
+                <option value="Sheet Metal">Sheet Metal Design</option>
+                <option value="Machine Design">Machine Design & Development</option>
+                <option value="CFD">Computational Fluid Dynamics</option>
+                <option value="Mechanical">Mechanical</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" placeholder="Type your message" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              <span>Send Message</span> <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- ==================== END CONTACT SECTION ==================== -->
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="custom-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">VMTL<span class="dot">.</span></div>
+          <p class="footer-description">
+            Our long history of family ownership has financial reassurance, business continuity and
+            stability. It has also created firm foundations from which we continue to grow.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Product</h3>
+          <ul class="footer-links">
+            <li><a href="#">How It Works?</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Terms Of Services</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="reverse-engineering.html">Reverse Engineering</a></li>
+            <li><a href="manufacturing.html">Manufacturing</a></li>
+            <li><a href="cad-services.html">CAD Services</a></li>
+            <li><a href="mechanical-engineering.html">Mechanical Engineering</a></li>
+            <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+            <li><a href="sheet-metal-design.html">Sheet Metal Design</a></li>
+            <li><a href="machine-design.html">Machine Design & Dev</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Our Link</h3>
+          <ul class="footer-links">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="clients.html">Clients</a></li>
+            <li><a href="contact.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="contact-section-footer">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-info">
+            <h4>Call Us</h4>
+            <p>+91 97890 99151</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div class="contact-info">
+            <h4>Email Us:</h4>
+            <p>contact@virmodello.com</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-info">
+            <h4>Opening Hours:</h4>
+            <p>Mon-Fri: 8am - 7pm</p>
+          </div>
+        </div>
+
+        <button class="schedule-btn">Schedule An Appointment</button>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">© Copyright 2025 All rights reserved. Design by Neoera Infotech</p>
+      </div>
+    </div>
+  </footer>
+  <!-- ==================== END FOOTER ==================== -->
+
+  <!-- Scroll To Top Button -->
+  <div class="scroll-top" onclick="scrollToTop()">
+    ↑
+  </div>
+
+  <!-- JavaScript Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./ASSETS/JS/lenis.min.js"></script>
+  <script src="./ASSETS/JS/scroll.js"></script>
+  <script>
+    // Global Scroll To Top Function
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+      const closeBtn = document.querySelector('.mobile-close-btn');
+      const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+      const contactForm = document.getElementById('contactForm');
+      const scrollTopBtn = document.querySelector('.scroll-top');
+
+      // --- Mobile Menu Functions ---
+      function openMenu() {
+        mobileNavOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        mobileNavOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+
+        // Reset dropdowns when menu closes
+        document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+          menu.classList.remove('active');
+        });
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+          toggle.classList.remove('active');
+          const icon = toggle.querySelector('i');
+          if (icon) icon.className = 'fas fa-chevron-down';
+        });
+      }
+
+      if (menuToggle) menuToggle.addEventListener('click', openMenu);
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+      // Close on overlay click
+      if (mobileNavOverlay) {
+        mobileNavOverlay.addEventListener('click', function(e) {
+          if (e.target === mobileNavOverlay) closeMenu();
+        });
+      }
+
+      // Mobile Dropdown Accordion
+      mobileDropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          const submenu = this.nextElementSibling;
+          const icon = this.querySelector('i');
+
+          this.classList.toggle('active');
+          submenu.classList.toggle('active');
+
+          // Icon Rotation
+          if (submenu.classList.contains('active')) {
+            icon.className = 'fas fa-chevron-up';
+          } else {
+            icon.className = 'fas fa-chevron-down';
+          }
+        });
+      });
+
+      // Desktop Dropdown Logic (Hover/Click Handling for touch screens)
+      const desktopDropdowns = document.querySelectorAll('.main-navigation .dropdown');
+      desktopDropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+        toggle.addEventListener('click', function(e) {
+          if (window.innerWidth > 992) {
+            e.preventDefault();
+          }
+        });
+      });
+
+      // --- Contact Form Handling ---
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const btn = this.querySelector('.btn-submit');
+          const originalText = btn.innerHTML;
+
+          btn.innerHTML = 'Sending...';
+          btn.disabled = true;
+
+          setTimeout(() => {
+            alert('Thank you! Your message has been sent successfully.');
+            this.reset();
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+          }, 1500);
+        });
+      }
+
+      // --- Scroll Effects (Header & Back to Top) ---
+      const header = document.querySelector('.fti-header-2-wrap');
+      
+      window.addEventListener('scroll', function() {
+        // Header Effect
+        if (window.scrollY > 50) {
+          header.style.background = 'rgba(31, 31, 31, 0.98)';
+          header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.2)';
+        } else {
+          header.style.background = 'rgba(31, 31, 31, 0.9)'; // Slightly transparent default
+          if(window.innerWidth > 992) {
+              header.style.background = 'var(--dark-bg, #1f1f1f)'; // Fallback color
+          }
+          header.style.boxShadow = 'none';
+        }
+
+        // Back To Top Visibility
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+      });
+
+      // --- Intersection Observer for Fade-in Animation ---
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target); // Animate once
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-in').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
