@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Associations - VMTL | Virmodello Technologies</title>
-    <meta name="description" content="VMTL Associations: Startup India, MSME, ADCAI, Indian Railways, HAL, and global engineering partners.">
+    <meta name="description"
+        content="VMTL Associations: Startup India, MSME, ADCAI, Indian Railways, HAL, and global engineering partners.">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Teko:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -44,7 +47,7 @@
             letter-spacing: 2px;
             margin-bottom: 20px;
             color: #ffffff;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             opacity: 0;
             animation: fadeUp 0.8s ease forwards;
         }
@@ -72,10 +75,25 @@
             font-weight: 600;
         }
 
-        .breadcrumb-list li a { color: #fff; text-decoration: none; transition: 0.3s; }
-        .breadcrumb-list li a:hover { color: var(--accent-color); }
-        .breadcrumb-list li.active { color: var(--accent-color); }
-        .breadcrumb-list li+li::before { content: "/"; color: rgba(255, 255, 255, 0.5); margin-right: 15px; }
+        .breadcrumb-list li a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .breadcrumb-list li a:hover {
+            color: var(--accent-color);
+        }
+
+        .breadcrumb-list li.active {
+            color: var(--accent-color);
+        }
+
+        .breadcrumb-list li+li::before {
+            content: "/";
+            color: rgba(255, 255, 255, 0.5);
+            margin-right: 15px;
+        }
 
         /* Content Section */
         .associations-wrap {
@@ -83,9 +101,26 @@
             padding: 100px 0;
         }
 
-        .section-title-wrap { text-align: center; margin-bottom: 60px; }
-        .section-subtitle { color: var(--primary-color); font-weight: 700; letter-spacing: 2px; font-size: 14px; display: block; margin-bottom: 10px; }
-        .section-title { font-family: 'Teko', sans-serif; font-size: 3.5rem; color: #0d0d0d; text-transform: uppercase; }
+        .section-title-wrap {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 3.5rem;
+            color: #0d0d0d;
+            text-transform: uppercase;
+        }
 
         /* Partner Card Style */
         .partner-card {
@@ -116,14 +151,17 @@
 
         .partner-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             border-color: #444;
         }
 
-        .partner-card:hover::before { transform: scaleX(1); }
+        .partner-card:hover::before {
+            transform: scaleX(1);
+        }
 
         .logo-container {
-            background: #fff; /* White background is essential for logos */
+            background: #fff;
+            /* White background is essential for logos */
             height: 200px;
             display: flex;
             align-items: center;
@@ -138,7 +176,8 @@
             max-height: 100%;
             object-fit: contain;
             transition: transform 0.5s ease;
-            filter: grayscale(0); /* Keep logos colored */
+            filter: grayscale(0);
+            /* Keep logos colored */
         }
 
         .partner-card:hover .logo-container img {
@@ -181,12 +220,21 @@
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @media (max-width: 768px) {
-            .banner-title { font-size: 3.5rem; }
+            .banner-title {
+                font-size: 3.5rem;
+            }
         }
     </style>
 </head>
@@ -242,7 +290,8 @@
                                 <a href="video-gallery.html" class="dropdown-item">Video Gallery</a>
                             </div>
                         </li>
-                        <li><a href="https://virmodello.blogspot.com/" target="_blank" rel="noopener noreferrer">BLOG</a></li>
+                        <li><a href="https://virmodello.blogspot.com/" target="_blank"
+                                rel="noopener noreferrer">BLOG</a></li>
                         <li><a href="contact.html">CONTACT</a></li>
                     </ul>
                 </nav>
@@ -324,11 +373,12 @@
                 </div>
 
                 <div class="row g-4">
-                    
+
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="partner-card">
                             <div class="logo-container">
-                                <img src="./ASSETS/IMAGES/dipp.jpg" alt="Startup India Recognition" onerror="this.src='https://placehold.co/600x300?text=Startup+India'">
+                                <img src="./ASSETS/IMAGES/dipp.jpg" alt="Startup India Recognition"
+                                    onerror="this.src='https://placehold.co/600x300?text=Startup+India'">
                             </div>
                             <div class="partner-info">
                                 <h3 class="partner-name">Startup India</h3>
@@ -340,7 +390,8 @@
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="partner-card">
                             <div class="logo-container">
-                                <img src="./ASSETS/IMAGES/msme.jpg" alt="MSME India" onerror="this.src='https://placehold.co/600x300?text=MSME'">
+                                <img src="./ASSETS/IMAGES/msme.jpg" alt="MSME India"
+                                    onerror="this.src='https://placehold.co/600x300?text=MSME'">
                             </div>
                             <div class="partner-info">
                                 <h3 class="partner-name">MSME</h3>
@@ -351,9 +402,11 @@
 
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="partner-card">
-                            <a href="https://cdiic.in/" target="_blank" rel="noopener noreferrer" class="card-link-overlay"></a>
+                            <a href="https://cdiic.in/" target="_blank" rel="noopener noreferrer"
+                                class="card-link-overlay"></a>
                             <div class="logo-container">
-                                <img src="./ASSETS/IMAGES/cdiic.png" alt="CDIIC Coimbatore" onerror="this.src='https://placehold.co/600x300?text=CDIIC'">
+                                <img src="./ASSETS/IMAGES/cdiic.png" alt="CDIIC Coimbatore"
+                                    onerror="this.src='https://placehold.co/600x300?text=CDIIC'">
                             </div>
                             <div class="partner-info">
                                 <h3 class="partner-name">CDIIC Coimbatore</h3>
@@ -364,9 +417,11 @@
 
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="partner-card">
-                            <a href="http://www.adcai.in/" target="_blank" rel="noopener noreferrer" class="card-link-overlay"></a>
+                            <a href="http://www.adcai.in/" target="_blank" rel="noopener noreferrer"
+                                class="card-link-overlay"></a>
                             <div class="logo-container">
-                                <img src="./ASSETS/IMAGES/adcai.jpg" alt="ADCAI" onerror="this.src='https://placehold.co/600x300?text=ADCAI'">
+                                <img src="./ASSETS/IMAGES/adcai.jpg" alt="ADCAI"
+                                    onerror="this.src='https://placehold.co/600x300?text=ADCAI'">
                             </div>
                             <div class="partner-info">
                                 <h3 class="partner-name">ADCAI</h3>
@@ -377,9 +432,11 @@
 
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="partner-card">
-                            <a href="https://in.linkedin.com/company/design-galaxy-engineering-services-and-training" target="_blank" rel="noopener noreferrer" class="card-link-overlay"></a>
+                            <a href="https://in.linkedin.com/company/design-galaxy-engineering-services-and-training"
+                                target="_blank" rel="noopener noreferrer" class="card-link-overlay"></a>
                             <div class="logo-container">
-                                <img src="./ASSETS/IMAGES/dg.jpg" alt="Design Galaxy" onerror="this.src='https://placehold.co/600x300?text=Design+Galaxy'">
+                                <img src="./ASSETS/IMAGES/dg.jpg" alt="Design Galaxy"
+                                    onerror="this.src='https://placehold.co/600x300?text=Design+Galaxy'">
                             </div>
                             <div class="partner-info">
                                 <h3 class="partner-name">Design Galaxy</h3>
@@ -390,9 +447,11 @@
 
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="partner-card">
-                            <a href="https://broadtechengineering.com" target="_blank" rel="noopener noreferrer" class="card-link-overlay"></a>
+                            <a href="https://broadtechengineering.com" target="_blank" rel="noopener noreferrer"
+                                class="card-link-overlay"></a>
                             <div class="logo-container">
-                                <img src="./ASSETS/IMAGES/clinets7.png" alt="Broadtech Engineering" onerror="this.src='https://placehold.co/600x300?text=Broadtech'">
+                                <img src="./ASSETS/IMAGES/clinets7.png" alt="Broadtech Engineering"
+                                    onerror="this.src='https://placehold.co/600x300?text=Broadtech'">
                             </div>
                             <div class="partner-info">
                                 <h3 class="partner-name">Broadtech Engineering</h3>
@@ -404,7 +463,8 @@
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="partner-card">
                             <div class="logo-container">
-                                <img src="./ASSETS/IMAGES/indian_railways.png" alt="Indian Railways" onerror="this.src='https://placehold.co/600x300?text=Indian+Railways'">
+                                <img src="./ASSETS/IMAGES/indian_railways.png" alt="Indian Railways"
+                                    onerror="this.src='https://placehold.co/600x300?text=Indian+Railways'">
                             </div>
                             <div class="partner-info">
                                 <h3 class="partner-name">Indian Railways</h3>
@@ -416,7 +476,8 @@
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="partner-card">
                             <div class="logo-container">
-                                <img src="./ASSETS/IMAGES/hal.jpg" alt="HAL" onerror="this.src='https://placehold.co/600x300?text=HAL'">
+                                <img src="./ASSETS/IMAGES/hal.jpg" alt="HAL"
+                                    onerror="this.src='https://placehold.co/600x300?text=HAL'">
                             </div>
                             <div class="partner-info">
                                 <h3 class="partner-name">Hindustan Aeronautics Ltd</h3>
@@ -428,7 +489,8 @@
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="partner-card">
                             <div class="logo-container">
-                                <img src="./ASSETS/IMAGES/sadisstia.jpg" alt="SADISSTIA" onerror="this.src='https://placehold.co/600x300?text=SADISSTIA'">
+                                <img src="./ASSETS/IMAGES/sadisstia.jpg" alt="SADISSTIA"
+                                    onerror="this.src='https://placehold.co/600x300?text=SADISSTIA'">
                             </div>
                             <div class="partner-info">
                                 <h3 class="partner-name">SADISSTIA</h3>
@@ -526,11 +588,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="./ASSETS/js/script.js"></script>
+<<<<<<< HEAD
+
+=======
     <script src="./ASSETS/JS/scroll.js"></script>
     <script src="./ASSETS/JS/lenis.min.js"></script>
     
+>>>>>>> 5178f84ec1dcfef13277d42773449da9d12ed9e9
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'

@@ -5,25 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mechanical Engineering Services - VMTL</title>
-    <meta name="description" content="VMTL Engineering Services: Mechanical, CFD, FEA, Prototyping, and Design solutions.">
+    <meta name="description"
+        content="VMTL Engineering Services: Mechanical, CFD, FEA, Prototyping, and Design solutions.">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Teko:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./ASSETS/CSS/base.css">
 
     <style>
         /* --- Lenis Smooth Scroll CSS --- */
-        html.lenis, html.lenis body { height: auto; }
-        .lenis.lenis-smooth { scroll-behavior: auto !important; }
-        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-        .lenis.lenis-stopped { overflow: hidden; }
-        .lenis.lenis-scrolling iframe { pointer-events: none; }
+        html.lenis,
+        html.lenis body {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
+        }
 
         /* --- Internal Page Styles --- */
         :root {
             --primary-color: #2E86AB;
-            --accent-color:#001c83;
+            --accent-color: #001c83;
             --dark-bg: #1F1F1F;
             --card-dark: #262626;
             --white: #ffffff;
@@ -48,7 +66,7 @@
             letter-spacing: 2px;
             margin-bottom: 20px;
             color: #ffffff;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             opacity: 0;
             animation: fadeUp 0.8s ease forwards;
         }
@@ -75,10 +93,25 @@
             font-weight: 600;
         }
 
-        .breadcrumb-list li a { color: #fff; text-decoration: none; transition: 0.3s; }
-        .breadcrumb-list li a:hover { color: var(--accent-color); }
-        .breadcrumb-list li.active { color: var(--accent-color); }
-        .breadcrumb-list li+li::before { content: "/"; color: rgba(255, 255, 255, 0.5); margin-right: 15px; }
+        .breadcrumb-list li a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .breadcrumb-list li a:hover {
+            color: var(--accent-color);
+        }
+
+        .breadcrumb-list li.active {
+            color: var(--accent-color);
+        }
+
+        .breadcrumb-list li+li::before {
+            content: "/";
+            color: rgba(255, 255, 255, 0.5);
+            margin-right: 15px;
+        }
 
         /* Content Section */
         .associations-wrap {
@@ -86,9 +119,26 @@
             padding: 100px 0;
         }
 
-        .section-title-wrap { text-align: center; margin-bottom: 60px; }
-        .section-subtitle { color: var(--primary-color); font-weight: 700; letter-spacing: 2px; font-size: 14px; display: block; margin-bottom: 10px; }
-        .section-title { font-family: 'Teko', sans-serif; font-size: 3.5rem; color: #0d0d0d; text-transform: uppercase; }
+        .section-title-wrap {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 3.5rem;
+            color: #0d0d0d;
+            text-transform: uppercase;
+        }
 
         /* --- Partner/Service Card Style --- */
         .partner-card {
@@ -120,15 +170,19 @@
 
         .partner-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             border-color: #444;
         }
-        .partner-card:hover::before { transform: scaleX(1); }
+
+        .partner-card:hover::before {
+            transform: scaleX(1);
+        }
 
         /* --- Icon Animations --- */
         .logo-container {
             background: #fff;
-            height: 180px; /* Reduced slightly for 4 column fit */
+            height: 180px;
+            /* Reduced slightly for 4 column fit */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -144,16 +198,68 @@
         }
 
         /* Keyframes for specific animations */
-        @keyframes spinSlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        @keyframes pulseScale { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
-        @keyframes wrenchTurn { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-20deg); } }
+        @keyframes spinSlow {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes floatY {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulseScale {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes wrenchTurn {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(-20deg);
+            }
+        }
 
         /* Classes to apply animations */
-        .anim-spin { animation: spinSlow 8s linear infinite; }
-        .anim-float { animation: floatY 3s ease-in-out infinite; }
-        .anim-pulse { animation: pulseScale 2s ease-in-out infinite; }
-        .anim-wrench { animation: wrenchTurn 2.5s ease-in-out infinite; }
+        .anim-spin {
+            animation: spinSlow 8s linear infinite;
+        }
+
+        .anim-float {
+            animation: floatY 3s ease-in-out infinite;
+        }
+
+        .anim-pulse {
+            animation: pulseScale 2s ease-in-out infinite;
+        }
+
+        .anim-wrench {
+            animation: wrenchTurn 2.5s ease-in-out infinite;
+        }
 
         .partner-card:hover .logo-container i {
             color: var(--accent-color);
@@ -166,7 +272,8 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Pushes button to bottom */
+            justify-content: space-between;
+            /* Pushes button to bottom */
             text-align: center;
             align-items: center;
         }
@@ -193,7 +300,8 @@
             text-decoration: none;
             border-radius: 50px;
             transition: all 0.3s ease;
-            margin-top: auto; /* Pushes to bottom of flex container */
+            margin-top: auto;
+            /* Pushes to bottom of flex container */
         }
 
         .visit-btn:hover {
@@ -207,26 +315,42 @@
         /* Ensure overlay link works if present, otherwise button handles click */
         .card-link-overlay {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 5;
         }
+
         /* Make button sit above the overlay link so it's clickable individually if needed */
-        .visit-btn { z-index: 6; position: relative; }
+        .visit-btn {
+            z-index: 6;
+            position: relative;
+        }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @media (max-width: 991px) {
-            .partner-card { margin-bottom: 20px; }
+            .partner-card {
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-   <header class="fti-header-2-area">
+    <header class="fti-header-2-area">
         <div class="fti-header-2-wrap">
             <div class="fti-header-2-row">
                 <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
@@ -275,7 +399,8 @@
                                 <a href="video-gallery.html" class="dropdown-item">Video Gallery</a>
                             </div>
                         </li>
-                        <li><a href="https://virmodello.blogspot.com/" target="_blank" rel="noopener noreferrer">BLOG</a></li>
+                        <li><a href="https://virmodello.blogspot.com/" target="_blank"
+                                rel="noopener noreferrer">BLOG</a></li>
                         <li><a href="contact.html">CONTACT</a></li>
                     </ul>
                 </nav>
@@ -357,7 +482,7 @@
                 </div>
 
                 <div class="row g-4">
-                    
+
                     <div class="col-lg-3 col-md-6 fade-in">
                         <div class="partner-card">
                             <div class="logo-container">
@@ -388,7 +513,7 @@
                                 <i class="fa-solid fa-industry anim-pulse"></i>
                             </div>
                             <div class="partner-info">
-                                <h3 class="partner-name">Machine Design and Development Services</h3>
+                                <h3 class="partner-name">Machine Design</h3>
                                  <a href="mechanical-engineering.html" class="visit-btn">Visit Page</a>
                             </div>
                         </div>
@@ -396,7 +521,7 @@
 
                     <div class="col-lg-3 col-md-6 fade-in">
                         <div class="partner-card">
-                           
+
                             <div class="logo-container">
                                 <i class="fa-solid fa-layer-group anim-float"></i>
                             </div>
@@ -409,12 +534,12 @@
 
                     <div class="col-lg-3 col-md-6 fade-in">
                         <div class="partner-card">
-                           
+
                             <div class="logo-container">
                                 <i class="fa-solid fa-screwdriver-wrench anim-wrench"></i>
                             </div>
                             <div class="partner-info">
-                                <h3 class="partner-name">Reverse Engineering </h3>
+                                <h3 class="partner-name">Reverse Engineering</h3>
                                  <a href="mechanical-engineering.html" class="visit-btn">Visit Page</a>
                             </div>
                         </div>
@@ -422,13 +547,13 @@
 
                     <div class="col-lg-3 col-md-6 fade-in">
                         <div class="partner-card">
-                           
+
                             <div class="logo-container">
                                 <i class="fa-solid fa-network-wired anim-pulse"></i>
                             </div>
                             <div class="partner-info">
                                 <h3 class="partner-name">FEA Services</h3>
-                                 <a href="mechanical-engineering.html" class="visit-btn">Visit Page</a>
+                                <a href="mechanical-engineering.html" class="visit-btn">Visit Page</a>
                             </div>
                         </div>
                     </div>
@@ -463,31 +588,31 @@
                                 <i class="fa-solid fa-fire-burner anim-pulse"></i>
                             </div>
                             <div class="partner-info">
-                                <h3 class="partner-name">Casting Design and Manufacturing Services</h3>
+                                <h3 class="partner-name">Casting Design</h3>
                                  <a href="mechanical-engineering.html" class="visit-btn">Visit Page</a>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-3 col-md-6 fade-in">
                         <div class="partner-card">
                             <div class="logo-container">
                                 <i class="fa-solid fa-diagram-project anim-float"></i>
                             </div>
                             <div class="partner-info">
-                                <h3 class="partner-name">Piping Design and Drafting Services</h3>
+                                <h3 class="partner-name">Piping Design</h3>
                                  <a href="mechanical-engineering.html" class="visit-btn">Visit Page</a>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-3 col-md-6 fade-in">
                         <div class="partner-card">
                             <div class="logo-container">
                                 <i class="fa-regular fa-lightbulb anim-pulse"></i>
                             </div>
                             <div class="partner-info">
-                                <h3 class="partner-name">Mechanical Concept Design Services</h3>
+                                <h3 class="partner-name">Concept Design</h3>
                                  <a href="mechanical-engineering.html" class="visit-btn">Visit Page</a>
                             </div>
                         </div>
@@ -505,7 +630,7 @@
                         </div>
                     </div>
 
-                     <div class="col-lg-3 col-md-6 fade-in">
+                    <div class="col-lg-3 col-md-6 fade-in">
                         <div class="partner-card">
                             <div class="logo-container">
                                 <i class="fa-solid fa-temperature-high anim-pulse"></i>
@@ -516,8 +641,8 @@
                             </div>
                         </div>
                     </div>
-                    
-                     <div class="col-lg-3 col-md-6 fade-in">
+
+                    <div class="col-lg-3 col-md-6 fade-in">
                         <div class="partner-card">
                             <div class="logo-container">
                                 <i class="fa-solid fa-ruler-combined anim-wrench"></i>
@@ -528,8 +653,8 @@
                             </div>
                         </div>
                     </div>
-                    
-                     <div class="col-lg-3 col-md-6 fade-in">
+
+                    <div class="col-lg-3 col-md-6 fade-in">
                         <div class="partner-card">
                             <div class="logo-container">
                                 <i class="fa-solid fa-vr-cardboard anim-float"></i>
@@ -540,30 +665,30 @@
                             </div>
                         </div>
                     </div>
-                    
-                     <div class="col-lg-3 col-md-6 fade-in">
+
+                    <div class="col-lg-3 col-md-6 fade-in">
                         <div class="partner-card">
                             <div class="logo-container">
                                 <i class="fa-solid fa-laptop-code anim-pulse"></i>
                             </div>
                             <div class="partner-info">
-                                <h3 class="partner-name">Simulation Engineering Services</h3>
+                                <h3 class="partner-name">Simulation Services</h3>
                                  <a href="mechanical-engineering.html" class="visit-btn">Visit Page</a>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-3 col-md-6 fade-in">
                         <div class="partner-card">
                             <div class="logo-container">
                                 <i class="fa-solid fa-chair anim-float"></i>
                             </div>
                             <div class="partner-info">
-                                <h3 class="partner-name">Office Furniture Design Services</h3>
+                                <h3 class="partner-name">Office Furniture</h3>
                                  <a href="mechanical-engineering.html" class="visit-btn">Visit Page</a>
                             </div>
                         </div>
-                    </div> 
+                    </div>
 
                     <div class="col-lg-3 col-md-6 fade-in">
                         <div class="partner-card">
@@ -571,11 +696,11 @@
                                 <i class="fa-solid fa-sink anim-pulse"></i>
                             </div>
                             <div class="partner-info">
-                                <h3 class="partner-name">Kitchen Cabinet Design Services</h3>
+                                <h3 class="partner-name">Kitchen Cabinet</h3>
                                  <a href="mechanical-engineering.html" class="visit-btn">Visit Page</a>
                             </div>
                         </div>
-                    </div> 
+                    </div>
 
                     <div class="col-lg-3 col-md-6 fade-in">
                         <div class="partner-card">
@@ -587,7 +712,7 @@
                                 <a href="mechanical-engineering.html" class="visit-btn">Visit Page</a>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </section>
@@ -674,10 +799,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./ASSETS/js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script> 
-    
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Lenis Scroll
             const lenis = new Lenis({
                 duration: 1.2,
@@ -715,4 +840,5 @@
         }
     </script>
 </body>
+
 </html>
