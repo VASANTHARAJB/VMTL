@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piping Design & Drafting - VMTL | Virmodello Technologies</title>
-    <meta name="description" content="Professional Piping Design and Drafting Services. 3D Modeling, Stress Analysis, and Detailed Engineering for Oil & Gas, Power, and Process Industries.">
+    <title>Mechanical Concept Design Services - VMTL | Virmodello Technologies</title>
+    <meta name="description" content="Outsource Mechanical Concept Design Services. From industrial design and thermal analysis to plastic product design and prototyping.">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -26,7 +26,7 @@
 
         /* Hero Section */
         .page-banner {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('./ASSETS/IMAGES/outsource-piping-design-and-drafting-services.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -75,7 +75,7 @@
         .breadcrumb-list li.active { color: var(--accent-color); }
         .breadcrumb-list li+li::before { content: "/"; color: rgba(255, 255, 255, 0.5); margin-right: 15px; }
 
-        /* Common Section Styles */
+        /* Content Styles */
         .content-section { padding: 80px 0; }
         .bg-light { background-color: #f9f9f9; }
         .bg-dark-sec { background-color: #1a1a1a; color: #fff; }
@@ -85,60 +85,56 @@
         .section-title { font-family: 'Teko', sans-serif; font-size: 3.5rem; text-transform: uppercase; line-height: 1; }
         
         /* Service Cards */
-        .tech-card {
+        .concept-card {
             background: #fff;
             border-radius: 12px;
-            overflow: hidden;
+            padding: 40px 30px;
             height: 100%;
             transition: all 0.3s ease;
             border: 1px solid #eee;
             position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
         }
 
-        .tech-card:hover {
+        .concept-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(46, 134, 171, 0.15);
+            border-bottom: 4px solid var(--accent-color);
         }
 
-        .card-img-top {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .card-body {
-            padding: 30px;
-            flex-grow: 1;
-        }
-
-        .card-title { font-family: 'Teko', sans-serif; font-size: 1.8rem; margin-bottom: 15px; color: #1F1F1F; }
+        .card-icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px; transition: 0.3s; }
+        .concept-card:hover .card-icon { color: var(--accent-color); transform: scale(1.1); }
+        
+        .card-title { font-family: 'Teko', sans-serif; font-size: 1.6rem; margin-bottom: 15px; color: #1F1F1F; }
         .card-desc { color: #666; font-size: 0.95rem; line-height: 1.7; }
 
-        /* List Cards (Process Engineering) */
-        .process-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .process-item {
+        /* Process Steps */
+        .process-step {
+            position: relative;
+            padding: 30px 30px 30px 90px;
             background: rgba(255,255,255,0.05);
-            padding: 20px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
             border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
             transition: 0.3s;
         }
+        .process-step:hover { background: rgba(255,255,255,0.1); border-color: var(--accent-color); }
+        .step-number {
+            font-family: 'Teko';
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            position: absolute;
+            left: 25px;
+            top: 15px;
+            line-height: 1;
+            font-weight: 700;
+        }
+        .step-title { font-size: 1.4rem; color: #fff; margin-bottom: 5px; font-weight: 600; }
+        .step-desc { color: #aaa; font-size: 0.95rem; margin: 0; }
 
-        .process-item:hover { background: rgba(255,255,255,0.1); border-color: var(--accent-color); }
-        .process-icon { color: var(--accent-color); font-size: 1.2rem; }
-        .process-text { color: #ddd; font-weight: 500; font-size: 1rem; margin: 0; }
-
-        /* Why Choose Us */
+        /* Why Choose Us Grid */
         .benefit-card {
             background: #fff;
             padding: 30px;
@@ -152,23 +148,6 @@
         .benefit-num { font-family: 'Teko', sans-serif; font-size: 2.5rem; color: #ddd; line-height: 1; margin-bottom: 15px; }
         .benefit-text { font-size: 0.95rem; color: #555; line-height: 1.6; }
 
-        /* Software Logos */
-        .software-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
-            align-items: center;
-            justify-items: center;
-        }
-        .software-item img {
-            max-width: 100%;
-            height: auto;
-            filter: grayscale(100%);
-            opacity: 0.7;
-            transition: 0.3s;
-        }
-        .software-item:hover img { filter: grayscale(0); opacity: 1; transform: scale(1.1); }
-
         /* Contact Box */
         .contact-box-area {
             background: var(--dark-bg);
@@ -178,6 +157,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            border: 1px solid #333;
         }
         .contact-box-area::before {
             content: '';
@@ -185,8 +165,6 @@
             top: 0; left: 0; width: 100%; height: 5px;
             background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
         }
-        .contact-details p { font-size: 1.1rem; margin-bottom: 10px; color: #ccc; }
-        .contact-details strong { color: #fff; }
 
         @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 768px) { .banner-title { font-size: 3.5rem; } }
@@ -304,12 +282,12 @@
     <main>
         <section class="page-banner">
             <div class="container">
-                <h1 class="banner-title">Piping Design & Drafting</h1>
+                <h1 class="banner-title">Concept Design</h1>
                 <div class="breadcrumb-nav">
                     <ul class="breadcrumb-list">
                         <li><a href="index.html">Home</a></li>
                         <li>Services</li>
-                        <li class="active">Piping Design</li>
+                        <li class="active">Mechanical Concept Design</li>
                     </ul>
                 </div>
             </div>
@@ -317,16 +295,16 @@
 
         <section class="content-section">
             <div class="container text-center">
-                <div class="section-title-wrap">
-                    <span class="section-subtitle">Engineering Solutions</span>
-                    <h2 class="section-title" style="color: #1F1F1F;">Optimize Space & Safety</h2>
+                <div class="section-title-wrap fade-in">
+                    <span class="section-subtitle">Innovation & Ideation</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Transforming Ideas into Reality</h2>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-center fade-in">
                     <div class="col-lg-9">
                         <p style="font-size: 1.1rem; color: #555; line-height: 1.8;">
-                            Is your team of mechanical engineers unable to optimize the use of space, improve accessibility, or provide easier maintenance? 
-                            CAD systems and software have revolutionized piping system design. At VMTL, we leverage advanced tools to create robust piping layouts, 
-                            simulating stress tests for pressure, temperature, vibrations, and seismic conditions to ensure reliability.
+                            Concept design is the crucial initial phase of product development where ideas take shape. 
+                            At VMTL, we specialize in transforming abstract concepts into tangible, viable product designs. 
+                            Our team combines creativity with engineering precision to deliver innovative solutions that meet market demands and manufacturing feasibility.
                         </p>
                     </div>
                 </div>
@@ -335,118 +313,121 @@
 
         <section class="content-section bg-light">
             <div class="container">
-                <div class="section-title-wrap">
-                    <span class="section-subtitle">Our Expertise</span>
-                    <h2 class="section-title" style="color: #1F1F1F;">Piping Services We Offer</h2>
+                <div class="section-title-wrap fade-in">
+                    <span class="section-subtitle">Our Capabilities</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Services We Offer</h2>
                 </div>
                 <div class="row g-4">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="tech-card">
-                            <img src="./ASSETS/IMAGES/piping_design_services.jpg" alt="Piping Design" class="card-img-top">
-                            <div class="card-body">
-                                <h3 class="card-title">Piping Design Services</h3>
-                                <p class="card-desc">We have the expertise to provide clients with piping design and layout, conceptual routing, and pipe sizing for high-flow systems in marine vessels, municipalities, and biomedical industries.</p>
-                            </div>
+                    
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="concept-card">
+                            <div class="card-icon"><i class="fas fa-gamepad"></i></div>
+                            <h3 class="card-title">Design for Control Panel</h3>
+                            <p class="card-desc">We design human interfaces like touch-screens, keypads, and knob controllers essential for plant machinery as per specifications.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="tech-card">
-                            <img src="./ASSETS/IMAGES/detailed_drawings_for_piping_systems.jpg" alt="Detailed Drawings" class="card-img-top">
-                            <div class="card-body">
-                                <h3 class="card-title">Detailed Drawings</h3>
-                                <p class="card-desc">Our team leverages the latest tools to provide detailed drawings supporting plant layout, machinery design, or HVAC solutions with precise dimensioning and tolerances.</p>
-                            </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="concept-card">
+                            <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+                            <h3 class="card-title">Concept Design</h3>
+                            <p class="card-desc">We prototype abstract ideas using 3D CAD modeling into functional models that allow clients to visualize their idea in action.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="tech-card">
-                            <img src="./ASSETS/IMAGES/3d_modeling_of_piping.jpg" alt="3D Modeling" class="card-img-top">
-                            <div class="card-body">
-                                <h3 class="card-title">3D Piping Modeling</h3>
-                                <p class="card-desc">We help you with 3D modeling of your piping system to visualize the design and ensure seamless interfaces with existing structures, preventing clashes before construction.</p>
-                            </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="concept-card">
+                            <div class="card-icon"><i class="fas fa-history"></i></div>
+                            <h3 class="card-title">Phase Out Management</h3>
+                            <p class="card-desc">We ensure controlled phase-out via engineering change management, legacy drawing conversion, BOM management, and RoHS services.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="tech-card">
-                            <img src="./ASSETS/IMAGES/material_take_off_for_piping.jpg" alt="Material Take Off" class="card-img-top">
-                            <div class="card-body">
-                                <h3 class="card-title">Material Take Off (MTO)</h3>
-                                <p class="card-desc">Once designs are complete, we help with material take-off services to accurately determine the quantity and type of materials needed, optimizing procurement.</p>
-                            </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="concept-card">
+                            <div class="card-icon"><i class="fas fa-cube"></i></div>
+                            <h3 class="card-title">Product Design for Plastic</h3>
+                            <p class="card-desc">Designing plastic assemblies and housing from conceptualization to molding and fabrication with exact specifications.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="tech-card">
-                            <img src="./ASSETS/IMAGES/piping_stress_and_flexibility_analysis.jpg" alt="Stress Analysis" class="card-img-top">
-                            <div class="card-body">
-                                <h3 class="card-title">Stress & Flexibility</h3>
-                                <p class="card-desc">We analyze stresses from pressure, temperature, and vibration to ensure safety. We cover static, dynamic, seismic, thermal, and cross-country pipeline analysis.</p>
-                            </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="card-icon"><i class="fas fa-thermometer-half"></i></div>
+                        <div class="concept-card">
+                            <h3 class="card-title">Thermal & Structural Analysis</h3>
+                            <p class="card-desc">Expert CAE structural analysis to ensure designs comply with environmental regulations and estimate product life cycle.</p>
                         </div>
                     </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="concept-card">
+                            <div class="card-icon"><i class="fas fa-industry"></i></div>
+                            <h3 class="card-title">Industrial Design Solution</h3>
+                            <p class="card-desc">Leveraging expertise for mass production designs that improve reliability while minimizing operational and production costs.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="concept-card">
+                            <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+                            <h3 class="card-title">Sheet Metal Housing</h3>
+                            <p class="card-desc">Cost-friendly assembly designs for electronic components, making enclosures lightweight and safe for sensitive circuits.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="concept-card">
+                            <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                            <h3 class="card-title">Evaluation of Reliability</h3>
+                            <p class="card-desc">DFMEA and FMEA tests to understand tolerances, improve device longevity, and troubleshoot hidden design flaws.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="concept-card">
+                            <div class="card-icon"><i class="fas fa-car-side"></i></div>
+                            <h3 class="card-title">Concept Design for Chassis</h3>
+                            <p class="card-desc">Designing chassis and frames of exact weight and strength to lower the cost of fabrication and mass production.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
         <section class="content-section bg-dark-sec">
             <div class="container">
-                <div class="section-title-wrap">
-                    <span class="section-subtitle">Engineering Support</span>
-                    <h2 class="section-title" style="color: #fff;">Process Engineering Services</h2>
-                    <p style="color: #aaa; margin-top: 10px;">Additional technical services we provide alongside piping design.</p>
+                <div class="section-title-wrap fade-in">
+                    <span class="section-subtitle">Workflow</span>
+                    <h2 class="section-title" style="color: #fff;">Process We Follow</h2>
                 </div>
-                <div class="process-list">
-                    <div class="process-item"><i class="fas fa-calculator process-icon"></i> <p class="process-text">Pipe Sizing Calculations</p></div>
-                    <div class="process-item"><i class="fas fa-project-diagram process-icon"></i> <p class="process-text">Flow Diagram Preparation</p></div>
-                    <div class="process-item"><i class="fas fa-list-ol process-icon"></i> <p class="process-text">Line List Preparation</p></div>
-                    <div class="process-item"><i class="fas fa-tachometer-alt process-icon"></i> <p class="process-text">Pressure Drop Calculations</p></div>
-                    <div class="process-item"><i class="fas fa-network-wired process-icon"></i> <p class="process-text">Network Analysis (PIPENET)</p></div>
-                    <div class="process-item"><i class="fas fa-file-alt process-icon"></i> <p class="process-text">Process Data Sheets</p></div>
-                    <div class="process-item"><i class="fas fa-thermometer-half process-icon"></i> <p class="process-text">Heat & Mass Transfer</p></div>
-                    <div class="process-item"><i class="fas fa-drafting-compass process-icon"></i> <p class="process-text">As-Built Documentation</p></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section">
-            <div class="container">
-                <div class="section-title-wrap">
-                    <span class="section-subtitle">Related Capabilities</span>
-                    <h2 class="section-title" style="color: #1F1F1F;">Other Services You Can Benefit From</h2>
-                </div>
-                <div class="row g-4">
-                    <div class="col-md-3">
-                        <a href="#" class="tech-card text-center text-decoration-none">
-                            <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                                <i class="fas fa-industry" style="font-size: 2.5rem; color: #2E86AB; margin-bottom: 15px;"></i>
-                                <h4 style="color: #333;">Plant Design Management</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="#" class="tech-card text-center text-decoration-none">
-                            <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                                <i class="fas fa-tools" style="font-size: 2.5rem; color: #2E86AB; margin-bottom: 15px;"></i>
-                                <h4 style="color: #333;">Tooling & Fixture Design</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="#" class="tech-card text-center text-decoration-none">
-                            <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                                <i class="fas fa-cube" style="font-size: 2.5rem; color: #2E86AB; margin-bottom: 15px;"></i>
-                                <h4 style="color: #333;">3D Part Modeling</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="#" class="tech-card text-center text-decoration-none">
-                            <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                                <i class="fas fa-chart-line" style="font-size: 2.5rem; color: #2E86AB; margin-bottom: 15px;"></i>
-                                <h4 style="color: #333;">Value Engineering</h4>
-                            </div>
-                        </a>
+                <div class="row">
+                    <div class="col-lg-12 fade-in">
+                        <div class="process-step">
+                            <div class="step-number">01</div>
+                            <h4 class="step-title">Requirement Gathering</h4>
+                            <p class="step-desc">Collaborating with the client to collect project specifications and expectations.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">02</div>
+                            <h4 class="step-title">Drafting</h4>
+                            <p class="step-desc">Proposing a design strategy based on preliminary analysis of the client's needs.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">03</div>
+                            <h4 class="step-title">Mechanical Concept Design</h4>
+                            <p class="step-desc">Creating mechanical concepts as per specification by our team of engineers.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">04</div>
+                            <h4 class="step-title">QC Testing</h4>
+                            <p class="step-desc">Evaluation by the QA team to ensure the model complies with requirements.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">05</div>
+                            <h4 class="step-title">Reporting</h4>
+                            <p class="step-desc">Preparing comprehensive reports to help clients track the process from start to finish.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -454,83 +435,88 @@
 
         <section class="content-section bg-light">
             <div class="container">
-                <div class="section-title-wrap">
-                    <h2 class="section-title" style="color: #1F1F1F;">Software We Leverage</h2>
-                    <p class="mt-2">We provide the best quality services using the latest piping design and analysis software.</p>
+                <div class="section-title-wrap fade-in">
+                    <span class="section-subtitle">The VMTL Advantage</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Why Outsource to Us?</h2>
                 </div>
-                <div class="software-grid">
-                    <div class="software-item"><img src="./ASSETS/IMAGES/autocad.jpg" alt="AutoCAD"></div>
-                    <div class="software-item"><img src="./ASSETS/IMAGES/caepipe.jpg" alt="CAEPIPE"></div>
-                    <div class="software-item"><img src="./ASSETS/IMAGES/caesarII.jpg" alt="CAESAR II"></div>
-                    <div class="software-item"><img src="./ASSETS/IMAGES/aftimpulse.jpg" alt="AFT Impulse"></div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-num">01</div>
+                            <p class="benefit-text"><strong>Data Security:</strong> 100% Compliance with ISO/IEC 27001:2022 guidelines.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-num">02</div>
+                            <p class="benefit-text"><strong>Quality Control:</strong> Dedicated QA team providing instructions to ensure compliance.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-num">03</div>
+                            <p class="benefit-text"><strong>Rapid Prototyping:</strong> Using high-end 3D CAD software and best infrastructure.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-num">04</div>
+                            <p class="benefit-text"><strong>Affordable Pricing:</strong> Customized service packages to keep costs low.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-num">05</div>
+                            <p class="benefit-text"><strong>ISO Certified:</strong> ISO 9001:2015 certified with 22 years of experience.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-num">06</div>
+                            <p class="benefit-text"><strong>Scalable:</strong> Bandwidth to support several projects without affecting others.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-num">07</div>
+                            <p class="benefit-text"><strong>Rapid TAT:</strong> Delivering services within stipulated timeframes.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-num">08</div>
+                            <p class="benefit-text"><strong>Proficient Team:</strong> Highly competent professionals leveraging sophisticated tools.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-num">09</div>
+                            <p class="benefit-text"><strong>All-round Support:</strong> 24/7 contact centers operating from various time zones.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="content-section">
             <div class="container">
-                <div class="section-title-wrap">
-                    <span class="section-subtitle">Our Advantage</span>
-                    <h2 class="section-title" style="color: #1F1F1F;">Why Choose VMTL?</h2>
+                <div class="section-title-wrap text-center fade-in">
+                    <h2 class="section-title" style="color: #1F1F1F;">Other Services</h2>
                 </div>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="benefit-card">
-                            <div class="benefit-num">01</div>
-                            <p class="benefit-text"><strong>Cost-Effective:</strong> Flexible pricing options to suit your budget requirements.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="benefit-card">
-                            <div class="benefit-num">02</div>
-                            <p class="benefit-text"><strong>Data Security:</strong> We follow strict protocols to ensure your data is safe and secure.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="benefit-card">
-                            <div class="benefit-num">03</div>
-                            <p class="benefit-text"><strong>Custom Standards:</strong> We customize our services to match your existing standards and practices.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="benefit-card">
-                            <div class="benefit-num">04</div>
-                            <p class="benefit-text"><strong>Global Standards:</strong> Experience with ASME, ASTM, ISO, SAE, ANSI, BS, DIN, and MIL.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="benefit-card">
-                            <div class="benefit-num">05</div>
-                            <p class="benefit-text"><strong>Quality Process:</strong> Rigorous quality checklists to ensure zero-error deliverables.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="benefit-card">
-                            <div class="benefit-num">06</div>
-                            <p class="benefit-text"><strong>QC Levels:</strong> Multiple levels of Quality Control before final delivery.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="benefit-card">
-                            <div class="benefit-num">07</div>
-                            <p class="benefit-text"><strong>Dedicated PM:</strong> A dedicated project manager serves as your Single Point of Contact (SPOC).</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="benefit-card">
-                            <div class="benefit-num">08</div>
-                            <p class="benefit-text"><strong>Scalable:</strong> Easily ramp up resources based on your project needs.</p>
-                        </div>
-                    </div>
+                <div class="row g-4 text-center">
+                    <div class="col-md-3"><a href="#" class="btn btn-outline-dark w-100 py-3">Tower Design Services</a></div>
+                    <div class="col-md-3"><a href="#" class="btn btn-outline-dark w-100 py-3">3D Modeling & Drafting</a></div>
+                    <div class="col-md-3"><a href="#" class="btn btn-outline-dark w-100 py-3">CAD Conversion</a></div>
+                    <div class="col-md-3"><a href="#" class="btn btn-outline-dark w-100 py-3">Reverse Engineering</a></div>
                 </div>
             </div>
         </section>
 
         <section class="content-section bg-dark-sec">
             <div class="container">
-                <div class="contact-box-area">
+                <div class="contact-box-area fade-in">
                     <h2 style="font-family: 'Teko', sans-serif; font-size: 3.5rem; margin-bottom: 30px;">Talk to Our Experts</h2>
-                    <p style="margin-bottom: 40px; color: #ccc;">Send your enquiry to us for professional engineering solutions.</p>
+                    <p style="margin-bottom: 40px; color: #ccc;">Send your enquiry to us for professional concept design solutions.</p>
                     
                     <div class="contact-details">
                         <h3 style="color: var(--primary-color); font-family: 'Teko'; font-size: 2.5rem; margin-bottom: 15px;">VIRMODELLO TECHNOLOGIES</h3>
@@ -613,7 +599,7 @@
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.tech-card, .benefit-card, .process-item').forEach(el => {
+            document.querySelectorAll('.fade-in').forEach(el => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(20px)';
                 el.style.transition = 'all 0.6s ease';
