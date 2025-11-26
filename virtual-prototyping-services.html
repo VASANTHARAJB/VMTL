@@ -194,53 +194,66 @@
 
 <body>
 
-    <header class="fti-header-2-area">
+     <header class="fti-header-2-area">
         <div class="fti-header-2-wrap">
             <div class="fti-header-2-row">
+                <!-- Logo -->
                 <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
                     <img src="./ASSETS/IMAGES/logo.png" alt="VMTL - Virmodello Technologies" />
                 </a>
+
+                <!-- Mobile Menu Button -->
                 <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
                     </svg>
                 </button>
+
+                <!-- Desktop Navigation -->
                 <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
                     <ul>
-                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="./index.html">HOME</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
                             <div class="dropdown-menu">
-                                <a href="achievements.html" class="dropdown-item">Achievements</a>
-                                <a href="associations.html" class="dropdown-item">Associations</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./achievements.html" class="dropdown-item">Achievements</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./associations.html" class="dropdown-item">Associations</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./testimonial.html" class="dropdown-item">Testimonial</a>
                             </div>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
                             <div class="dropdown-menu">
-                                <a href="reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
-                                <a href="manufacturing.html" class="dropdown-item">Manufacturing</a>
-                                <a href="cad-services.html" class="dropdown-item">CAD Services</a>
-                                <a href="mechanical-engineering.html" class="dropdown-item">Mechanical Engineering</a>
-                                <a href="electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
-                                <a href="engineering-simulation.html" class="dropdown-item">Engineering Simulation</a>
-                                <a href="virtual-prototyping.html" class="dropdown-item active">Virtual Prototyping</a>
+                                <a href="./reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./manufacturing.html" class="dropdown-item">Manufacturing</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./cad-services.html" class="dropdown-item">CAD Services</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./mechi-engineering-services.html" class="dropdown-item">Mechanical Engineering</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
                             </div>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
                             <div class="dropdown-menu">
-                                <a href="projects.html" class="dropdown-item">Projects</a>
-                                <a href="video-gallery.html" class="dropdown-item">Video Gallery</a>
+                                <a href="./projects.html" class="dropdown-item">Projects</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./video-gallery.html" class="dropdown-item">Video Gallery</a>
                             </div>
                         </li>
-                        <li><a href="https://virmodello.blogspot.com/" target="_blank">BLOG</a></li>
-                        <li><a href="contact.html">CONTACT</a></li>
+                        <li><a href="./blog.html" target="_blank">BLOG</a></li>
+                        <li><a href="./contact.html">CONTACT</a></li>
                     </ul>
                 </nav>
+
+                <!-- CTA Button -->
                 <div class="btn-wrap">
-                    <a class="fti-header-2-btn" href="contact.html" aria-label="Get in touch">
+                    <a class="fti-header-2-btn" href="./contact.html" aria-label="Get in touch">
                         <span class="btn-text">Get in touch</span>
                         <span class="btn-icon">↗</span>
                     </a>
@@ -249,7 +262,47 @@
         </div>
     </header>
 
-    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <div class="mobile-nav-content">
+            <ul class="mobile-nav-menu">
+                <li><a href="./index.html">HOME</a></li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./achievements.html">Achievements</a>
+                        <a href="./associations.html">Associations</a>
+                        <a href="./testimonial.html">Testimonial</a>
+                    </div>
+                </li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./reverse-engineering.html">Reverse Engineering</a>
+                        <a href="./manufacturing.html">Manufacturing</a>
+                        <a href="./cad-services.html">CAD Services</a>
+                        <a href="./mechi-engineering-services.html">Mechanical Engineering</a>
+                        <a href="./electrical-engineering.html">Electrical Engineering</a>
+                    </div>
+                </li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./projects.html">Projects</a>
+                        <a href="./video-gallery.html">Video Gallery</a>
+                    </div>
+                </li>
+                <li><a href="./blog.html" target="_blank">BLOG</a></li>
+                <li><a href="./contact.html">CONTACT</a></li>
+            </ul>
+            <div class="mobile-cta">
+                <a class="fti-header-2-btn" href="./contact.html">
+                    <span class="btn-text">Get in touch</span>
+                    <span class="btn-icon">↗</span>
+                </a>
+            </div>
+        </div>
+    </div>te
 
     <main>
         <section class="page-banner">
