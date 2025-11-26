@@ -6,10 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mechanical Engineering Services</title>
 
-  <link rel="stylesheet" href="ASSETS/CSS/mechanical-engineering.css">
-  <link rel="stylesheet" href="ASSETS/CSS/herobanner.css">
-  <link rel="stylesheet" href="ASSETS/CSS/header-footer.css">
-  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -24,53 +20,60 @@
       --text-white: #fff;
       --text-dark: #333;
       --border-color: #2E86AB;
-      --gradient-primary: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
-      --shadow: 0 10px 30px rgba(46, 134, 171, 0.1);
-      --fti-pr-2: #2E86AB;
-      --teko: 'Teko', sans-serif;
-      --cube-1: cubic-bezier(0.175, 0.885, 0.32, 1.275);
       --primary-blue: #3b9cfa;
       --hover-blue: #1a8bfc;
       --deep-navy: #0a192f;
-      --text-dark: #212529;
       --text-light: #6c757d;
       --bg-offwhite: #f8f9fa;
-      --border-color: #e9ecef;
       --royal-gradient: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
       --dark-bg-section: #111111;
-      --gold-accent: #d4af37;
     }
 
     body {
       font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
+      margin: 0;
+      padding: 0;
     }
 
-    /* --- Navigation Styles (FIXED) --- */
+    /* =========================================
+           HEADER & NAVIGATION
+           ========================================= */
     .fti-header-2-area {
-        background-color: transparent;
-        position: absolute; /* Changed from fixed to absolute */
-        top: 0;
-        left: 0;
-        z-index: 1000;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 90px;
-        transition: all 0.3s ease;
+      background-color: transparent;
+      position: fixed;
+      /* Changed to fixed for sticky behavior */
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 90px;
+      transition: all 0.3s ease;
+      
+    }
+
+    .fti-header-2-area.scrolled {
+      background-color: rgba(31, 31, 31, 0.98);
+      backdrop-filter: blur(10px);
+
     }
 
     .fti-header-2-wrap {
-        background: rgba(31, 31, 31, 0.9); /* Slight opacity for readability */
-        padding: 0 30px 0 35px;
-        position: relative;
-        width: 100%;
-        max-width: 1400px;
-        backdrop-filter: blur(5px);
+      background: var(--dark-bg);
+      padding: 0 30px 0 35px;
+      position: relative;
+      width: 100%;
+      max-width: 1400px;
+      height: 100%;
+      /* Ensure full height */
     }
 
-    .fti-header-2-wrap::before {
+    /* Header Decorative Borders - Hidden on small mobile to prevent overflow */
+    @media (min-width: 768px) {
+      .fti-header-2-wrap::before {
         content: "";
         position: absolute;
         right: 0;
@@ -82,357 +85,412 @@
         border-right: 1px solid var(--border-color);
         border-radius: 0 0 30px 30px;
         z-index: 1;
-        pointer-events: none;
-    }
+      }
 
-    /* Decorative corner shape */
-    .fti-header-2-wrap::after {
+      .fti-header-2-wrap::after {
         content: "";
         position: absolute;
         left: 0;
         bottom: 0;
         height: 90px;
         width: 260px;
-        background-color: rgba(255, 255, 255, 0.05); /* Made transparent for better blending */
+        background-color: var(--text-white);
         clip-path: polygon(0 1%, 100% 0%, 80% 100%, 0% 100%);
-        border-radius: 0 0 0 30px;
-        z-index: 0;
+        border-radius: 0 0 30px 30px;
+        pointer-events: none;
+      }
     }
 
     .fti-header-2-row {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 90px;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
     }
 
     .fti-header-2-logo {
-        flex-shrink: 0;
-        margin-right: 40px;
+      flex-shrink: 0;
+      margin-right: 40px;
+      z-index: 5;
     }
 
     .fti-header-2-logo img {
-        max-height: 50px;
-        position: relative;
-        z-index: 2;
+      max-height: 50px;
+      position: relative;
+      z-index: 2;
     }
 
+    /* Desktop Menu */
     .main-navigation {
-        display: flex;
-        flex: 1;
-        justify-content: center;
+      display: flex;
+      flex: 1;
+      justify-content: center;
     }
 
     .main-navigation ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: flex;
-        gap: 35px;
-        align-items: center;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      gap: 35px;
+      align-items: center;
     }
 
     .main-navigation li {
-        position: relative;
+      position: relative;
     }
 
     .main-navigation li a {
-        color: var(--text-white);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 10px 0;
-        white-space: nowrap;
+      color: var(--text-white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 0;
+      white-space: nowrap;
     }
 
     .main-navigation li a:hover {
-        color: var(--primary-color);
+      color: var(--primary-color);
     }
 
-    /* Desktop Dropdown Styles */
-    .main-navigation .dropdown {
-        position: relative;
-    }
-
+    /* Dropdown Styles */
     .main-navigation .dropdown-menu {
-        position: absolute;
-        top: calc(100% + 15px);
-        left: 0;
-        background: var(--dark-bg);
-        border: 1px solid var(--primary-color);
-        border-radius: 10px;
-        min-width: 300px;
-        padding: 15px 0;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(10px);
-        transition: all 0.3s ease;
-        z-index: 1001;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        display: block !important;
+      position: absolute;
+      top: calc(100% + 15px);
+      left: 0;
+      background: var(--dark-bg);
+      border: 1px solid var(--primary-color);
+      border-radius: 10px;
+      min-width: 280px;
+      padding: 15px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1001;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      display: block !important;
     }
 
     .main-navigation .dropdown:hover .dropdown-menu {
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: translateY(0) !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
     }
 
     .main-navigation .dropdown-item {
-        color: var(--text-white) !important;
-        padding: 12px 25px;
-        text-decoration: none;
-        display: block;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        border: none;
-        background: none;
+      color: var(--text-white) !important;
+      padding: 10px 25px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: none;
+      background: none;
     }
 
     .main-navigation .dropdown-item:hover {
-        background: var(--primary-color) !important;
-        color: white !important;
+      background: var(--primary-color) !important;
+      color: white !important;
     }
 
     .main-navigation .dropdown-divider {
-        height: 1px;
-        background: rgba(46, 134, 171, 0.3);
-        margin: 8px 0;
-        border: none;
+      height: 1px;
+      background: rgba(46, 134, 171, 0.3);
+      margin: 5px 0;
     }
 
     .main-navigation .dropdown-toggle i {
-        font-size: 0.7rem;
-        transition: transform 0.3s ease;
-        margin-left: 6px;
-        color: var(--text-white);
+      font-size: 0.7rem;
+      transition: transform 0.3s ease;
+      margin-left: 6px;
     }
 
     .main-navigation .dropdown:hover .dropdown-toggle i {
-        transform: rotate(180deg);
-        color: var(--primary-color);
+      transform: rotate(180deg);
+      color: var(--primary-color);
     }
 
-    .fti-menu-btn-2 {
-        background-color: transparent;
-        width: 40px;
-        border: none;
-        cursor: pointer;
-        display: none; /* Hidden on desktop */
-        flex-shrink: 0;
-    }
-
-    .fti-menu-btn-2 svg {
-        width: 100%;
-        height: 24px;
-    }
-
-    .fti-menu-btn-2 .svg-path {
-        fill: none;
-        stroke: var(--primary-color);
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-    }
-
+    /* Header Buttons */
     .btn-wrap {
-        flex-shrink: 0;
-        margin-left: 30px;
+      flex-shrink: 0;
+      margin-left: 30px;
     }
 
     .fti-header-2-btn {
-        background-color: transparent;
-        border: 1.5px solid var(--primary-color);
-        color: var(--primary-color);
-        padding: 8px 20px;
-        font-weight: 700;
-        font-size: 0.875rem;
-        border-radius: 30px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        text-decoration: none;
-        white-space: nowrap;
+      background-color: transparent;
+      border: 1.5px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 8px 20px;
+      font-weight: 700;
+      font-size: 0.875rem;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
     }
 
     .fti-header-2-btn:hover {
-        background-color: var(--primary-color);
-        color: #fff;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(46, 134, 171, 0.3);
+      background-color: var(--primary-color);
+      color: #fff;
+      transform: translateY(-2px);
     }
 
-    .btn-icon {
-        transition: transform 0.3s ease;
+    /* Mobile Menu Toggle */
+    .fti-menu-btn-2 {
+      background-color: transparent;
+      width: 40px;
+      border: none;
+      cursor: pointer;
+      display: none;
+      /* Hidden on Desktop */
+      flex-shrink: 0;
+      padding: 0;
     }
 
-    .fti-header-2-btn:hover .btn-icon {
-        transform: translate(2px, -2px);
+    .fti-menu-btn-2 svg {
+      width: 100%;
+      height: 30px;
     }
 
-    /* Mobile Menu Overlay Styles */
+    .fti-menu-btn-2 .svg-path {
+      fill: none;
+      stroke: var(--primary-color);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* =========================================
+           MOBILE OVERLAY MENU
+           ========================================= */
     .mobile-nav-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: rgba(10, 25, 47, 0.98);
-        z-index: 2000;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding-top: 80px;
-        align-items: center;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.4s ease;
-        overflow-y: auto;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(31, 31, 31, 0.98);
+      backdrop-filter: blur(15px);
+      z-index: 2000;
+      /* Higher than header */
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      padding-top: 60px;
+      overflow-y: auto;
     }
 
     .mobile-nav-overlay.active {
-        opacity: 1;
-        visibility: visible;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-content {
+      text-align: center;
+      transform: translateY(30px);
+      transition: transform 0.3s ease;
+      width: 90%;
+      max-width: 400px;
+      padding-bottom: 50px;
+    }
+
+    .mobile-nav-overlay.active .mobile-nav-content {
+      transform: translateY(0);
     }
 
     .mobile-close-btn {
-        position: absolute;
-        top: 30px;
-        right: 30px;
-        color: #fff;
-        font-size: 2rem;
-        background: none;
-        border: none;
-        cursor: pointer;
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: color 0.3s;
     }
 
-    .mobile-nav-list {
-        list-style: none;
-        padding: 0;
-        text-align: center;
-        width: 100%;
+    .mobile-close-btn:hover {
+      color: var(--primary-color);
     }
 
-    .mobile-nav-list li {
-        margin: 15px 0;
-        position: relative;
+    .mobile-nav-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 30px 0;
     }
 
-    .mobile-nav-list a {
-        color: #fff;
-        font-size: 1.3rem;
-        text-decoration: none;
-        font-weight: 600;
-        display: block;
-        padding: 10px;
+    .mobile-nav-menu li {
+      margin: 15px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 15px;
     }
 
+    .mobile-nav-menu li>a {
+      color: var(--text-white);
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .mobile-nav-menu li>a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Mobile Dropdown */
     .mobile-dropdown-menu {
-        display: none;
-        background: rgba(255, 255, 255, 0.05);
-        margin-top: 10px;
+      background: rgba(46, 134, 171, 0.1);
+      margin-top: 15px;
+      padding: 0;
+      border-radius: 10px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+      /* Smooth slide */
     }
 
     .mobile-dropdown-menu.active {
-        display: block;
+      max-height: 500px;
+      /* Arbitrary large height */
     }
 
     .mobile-dropdown-menu a {
-        font-size: 1rem;
-        font-weight: 400;
-        color: #ccc;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+      padding: 10px 0;
+      display: block;
+      text-decoration: none;
     }
 
-    /* Responsive Header Styles */
-    @media (max-width: 992px) {
-        .main-navigation, .btn-wrap {
-            display: none;
-        }
-        .fti-menu-btn-2 {
-            display: block;
-        }
-        .fti-header-2-wrap::after {
-            display: none;
-        }
-        .fti-header-2-wrap {
-            border-radius: 0 0 20px 20px;
-        }
+    .mobile-cta {
+      display: flex;
+      justify-content: center;
     }
 
-
-    /* --- Hero Section --- */
+    /* =========================================
+           HERO SECTION (IMAGE INSTEAD OF VIDEO)
+           ========================================= */
     .header-section {
       position: relative;
-      height: 450px;
+      min-height: 550px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       overflow: hidden;
-      margin-top: 0; /* Ensures content starts at top */
-    }
-    
-    .hero-video-container {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -1;
-    }
-    
-    .hero-video-container video, .hero-video-container img {
-      width: 100%; height: 100%; object-fit: cover;
-      filter: brightness(0.4);
+      background-position: center;
+      background-attachment: fixed;
+      margin-top: 0;
+      padding: 120px 20px 60px;
+      /* Replaced video with background image */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1500&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      /* Parallax effect */
     }
 
     .header-content {
       text-align: center;
       z-index: 5;
+      max-width: 900px;
     }
 
     .header-title {
-      font-size: 3.5rem;
+      font-size: clamp(2rem, 5vw, 3.8rem);
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       text-transform: uppercase;
       letter-spacing: 2px;
+      line-height: 1.2;
     }
 
-    .breadcrumb a { color: #fff; text-decoration: none; font-weight: 500; }
-    .breadcrumb span { margin: 0 10px; color: var(--primary-blue); }
+    .breadcrumb {
+      justify-content: center;
+      background: transparent;
+      padding: 0;
+      margin-bottom: 0;
+    }
 
-    /* --- Top Services Grid --- */
-    .services-intro-section { padding: 80px 0; background-color: #fff; }
-    
-    .section-head { text-align: center; margin-bottom: 60px; }
-    .section-head h2 { 
-      color: #3b9cfa; 
-      font-weight: 700; 
-      text-transform: uppercase; 
+    .breadcrumb a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--primary-color);
+    }
+
+    .breadcrumb span.arrow {
+      margin: 0 10px;
+      color: var(--primary-color);
+    }
+
+    .breadcrumb span.current {
+      color: #fff;
+      font-weight: 600;
+    }
+
+
+    /* =========================================
+           SERVICES GRID
+           ========================================= */
+    .services-intro-section {
+      padding: 80px 0;
+      background-color: #fff;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-head h2 {
+      color: var(--primary-blue);
+      font-weight: 700;
+      text-transform: uppercase;
       margin-bottom: 20px;
-      display: inline-block;
-      position: relative;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
     }
-    .section-head p { color: var(--text-light); max-width: 860px; margin: 0 auto; font-size: 1.1rem; }
+
+    .section-head p {
+      color: var(--text-light);
+      max-width: 860px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
 
     .feature-card {
       background: #fff;
       padding: 35px 25px;
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       height: 100%;
       transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-      border: 1px solid var(--border-color);
+      border: 1px solid #e9ecef;
       position: relative;
       overflow: hidden;
     }
@@ -440,621 +498,860 @@
     .feature-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; width: 4px; height: 0;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
       background: var(--primary-blue);
       transition: height 0.3s ease;
     }
 
-    .feature-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
-    .feature-card:hover::before { height: 100%; }
-
-    .f-icon {
-      width: 70px; height: 70px;
-      background: var(--primary-blue);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 28px; color: white;
-      margin-bottom: 25px;
-      box-shadow: 0 5px 15px rgba(59, 156, 250, 0.3);
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
     }
 
-    .feature-card h4 { font-weight: 700; margin-bottom: 15px; font-size: 1.25rem; }
-    .feature-card p { font-size: 0.95rem; line-height: 1.6; color: var(--text-light); margin-bottom: 0; }
+    .feature-card:hover::before {
+      height: 100%;
+    }
 
-    /* --- PREMIUM LIST LAYOUT --- */
+    .f-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--primary-blue);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: white;
+      margin-bottom: 25px;
+    }
+
+    /* =========================================
+           PREMIUM LIST
+           ========================================= */
     .premium-list-wrapper {
       background-color: var(--bg-offwhite);
       padding: 80px 0;
-      padding-bottom: 20px;
     }
 
     .main-list-title {
       text-align: center;
       color: var(--primary-blue);
       font-weight: 700;
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
       margin-bottom: 60px;
-      position: relative;
-      padding-bottom: 15px;
-    }
-    .main-list-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 50%; transform: translateX(-50%);
-      width: 80px; height: 3px; background: var(--primary-blue);
     }
 
     .service-category-block {
       background: white;
-      padding: 40px;
+      padding: 30px;
       border-radius: 15px;
       margin-bottom: 40px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
       border: 1px solid #eee;
     }
 
-    .cat-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 30px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #eee;
-    }
-
     .cat-header h3 {
-      font-size: 1.75rem;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
       color: var(--text-dark);
       font-weight: 600;
-      margin: 0;
-      position: relative;
       padding-left: 15px;
       border-left: 5px solid var(--primary-blue);
+      margin-bottom: 20px;
     }
 
     .services-grid-list {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 15px;
     }
 
     .premium-item {
       display: flex;
       align-items: flex-start;
-      padding: 12px 15px;
-      border-radius: 8px;
+      padding: 10px;
       transition: all 0.3s ease;
-      background: transparent;
     }
 
     .premium-item:hover {
-      background: rgba(59, 156, 250, 0.05);
       transform: translateX(5px);
+      background: rgba(59, 156, 250, 0.05);
+      border-radius: 5px;
     }
 
     .premium-item i {
       color: var(--primary-blue);
-      font-size: 1.1rem;
-      margin-top: 3px;
-      margin-right: 12px;
-      flex-shrink: 0;
+      margin-right: 10px;
+      margin-top: 4px;
     }
 
     .premium-item span {
-      font-size: 0.95rem;
       color: #444;
       font-weight: 500;
-      line-height: 1.5;
+      font-size: 0.95rem;
+      line-height: 1.4;
     }
 
-    /* --- PROCESS SECTION --- */
+    /* =========================================
+           PROCESS SECTION
+           ========================================= */
     .process-section {
-        padding: 100px 0;
-        background: var(--royal-gradient);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .process-desc-text {
-        text-align: center;
-        max-width: 900px;
-        margin: 0 auto 60px auto;
-        color: #555;
-        font-size: 16px;
-        line-height: 1.8;
+      padding: 80px 0;
+      background: var(--royal-gradient);
+      overflow: hidden;
     }
 
     .process-grid {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 40px;
-        position: relative;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+      position: relative;
     }
 
     .process-step-item {
-        position: relative;
-        text-align: center;
-        padding: 20px 10px;
-        transition: transform 0.4s ease;
-        z-index: 2;
-    }
-
-    .process-step-item:hover {
-        transform: translateY(-15px);
+      text-align: center;
+      position: relative;
+      z-index: 2;
     }
 
     .step-circle-box {
-        width: 100px; height: 100px;
-        margin: 0 auto 25px auto;
-        position: relative;
-        display: flex; align-items: center; justify-content: center;
-        border-radius: 50%;
-        background: #fff;
-        box-shadow: 0 10px 25px rgba(59, 156, 250, 0.2);
-        border: 2px solid transparent;
-        background-clip: padding-box;
-        transition: all 0.4s ease;
-    }
-
-    .step-circle-box::before {
-        content: '';
-        position: absolute;
-        top: 0; right: 0; bottom: 0; left: 0;
-        z-index: -1; margin: -4px;
-        border-radius: inherit;
-        background: linear-gradient(to right, var(--primary-blue), #8dc6ff);
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px auto;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 10px 25px rgba(59, 156, 250, 0.2);
+      transition: all 0.4s ease;
     }
 
     .step-num {
-        font-size: 28px; font-weight: 700; color: var(--primary-blue);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary-blue);
     }
 
     .process-step-item:not(:last-child) .step-circle-box::after {
-        content: '\f178';
-        font-family: "Font Awesome 6 Free"; font-weight: 900;
-        position: absolute; right: -30px; top: 50%; transform: translateY(-50%);
-        color: #ccc; font-size: 14px; z-index: -1;
-    }
-
-    .step-title {
-        color: var(--primary-blue);
-        font-size: 1.1rem; font-weight: 600;
-        margin-bottom: 15px; height: 50px;
-        display: flex; align-items: center; justify-content: center;
-    }
-    
-    .step-desc {
-        font-size: 13px; color: #666; line-height: 1.6; text-align: start;
+      content: '\f178';
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: -25px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ccc;
+      z-index: -1;
     }
 
     .process-step-item:hover .step-circle-box {
-        background: var(--primary-blue);
-        box-shadow: 0 15px 30px rgba(59, 156, 250, 0.4);
+      background: var(--primary-blue);
     }
-    .process-step-item:hover .step-num { color: #fff; }
 
-    /* --- INDUSTRIES SECTION (Dark Premium) --- */
+    .process-step-item:hover .step-num {
+      color: #fff;
+    }
+
+    .step-title {
+      font-size: 1rem;
+      color: var(--primary-blue);
+      font-weight: 600;
+      margin-bottom: 10px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* =========================================
+           INDUSTRIES SECTION
+           ========================================= */
     .industries-section {
-        padding: 100px 0;
-        background-color: var(--dark-bg-section);
-        color: #fff;
-        position: relative;
-    }
-
-    .industries-head h2 {
-        color: #fff;
-        text-align: center;
-        font-weight: 700;
-        text-transform: uppercase;
-        margin-bottom: 60px;
-        font-size: 2.5rem;
+      padding: 80px 0;
+      background-color: var(--dark-bg-section);
+      color: #fff;
     }
 
     .industries-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr); 
-        gap: 40px 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
     }
 
     .industry-item {
-        display: flex;
-        align-items: center;
-        padding-bottom: 20px;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.15);
-        transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.3s ease;
     }
 
     .industry-item:hover {
-        border-bottom-color: var(--primary-blue);
-        transform: translateX(10px);
+      border-bottom-color: var(--primary-blue);
+      transform: translateX(10px);
     }
 
     .industry-icon-glow {
-        width: 40px; height: 40px;
-        background: #fff;
-        border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        margin-right: 20px;
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); 
-        color: var(--dark-bg);
-        font-size: 16px;
-        flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: var(--dark-bg);
+      flex-shrink: 0;
     }
 
-    .industry-name {
-        font-size: 1.1rem; font-weight: 500; color: #fff; letter-spacing: 0.5px;
-    }
-
-    /* --- CONTACT EXPERTS SECTION (Royal Premium) --- */
+    /* =========================================
+           CONTACT SECTION
+           ========================================= */
     .contact-expert-section {
-      padding: 100px 0;
+      padding: 80px 0;
       background: #f8faff;
-      position: relative;
     }
 
     .contact-wrapper {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
+      gap: 40px;
+      align-items: flex-start;
     }
 
-    /* Left Side Info */
-    .contact-info-col {
-      padding-right: 40px;
+    .contact-info {
+      flex: 1;
     }
 
-    .contact-main-phone {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--primary-blue);
-      margin-bottom: 15px;
-      display: flex; align-items: center;
-    }
-    .contact-main-phone i { margin-right: 15px; }
-
-    .contact-action-link {
-      font-size: 1.2rem;
-      color: #444;
-      display: flex; align-items: center;
-      margin-bottom: 15px;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .contact-action-link:hover { color: var(--primary-blue); }
-    .contact-action-link i { color: var(--primary-blue); margin-right: 15px; font-size: 1.3rem; }
-
-    .location-block {
-      margin-top: 40px;
-      border-left: 3px solid var(--primary-blue);
-      padding-left: 20px;
+    .contact-info img {
+      width: 100%;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      display: block;
+      object-fit: cover;
     }
 
-    .location-country {
-      font-size: 1.4rem;
+    .contact-item {
+      display: flex;
+      margin-bottom: 25px;
+      align-items: flex-start;
+    }
+
+    .contact-item .icon {
+      width: 45px;
+      height: 45px;
+      background: var(--primary-blue);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .contact-item h6 {
+      margin: 0 0 5px;
       font-weight: 600;
-      color: var(--deep-navy);
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      display: flex; align-items: center;
+      color: var(--text-dark);
     }
-    .location-country i { margin-right: 10px; color: var(--primary-blue); font-size: 1.2rem; }
 
-    .location-address {
-      font-size: 0.95rem;
+    .contact-item span {
       color: #666;
-      line-height: 1.6;
-      margin-bottom: 5px;
+      font-size: 0.95rem;
     }
 
-    .location-name { font-weight: 600; color: #333; display: block; margin-bottom: 5px; }
-
-    /* Right Side Form */
-    .consultation-form-card {
+    .contact-form {
+      flex: 1;
       background: #fff;
       padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.8);
-    }
-    
-    .consultation-form-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 5px;
-      background: linear-gradient(90deg, var(--primary-blue), #8dc6ff);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
     }
 
-    .form-header h3 {
+    .contact-form h2 {
+      color: var(--text-dark);
+      margin-bottom: 25px;
       font-size: 1.8rem;
-      font-weight: 600;
-      color: var(--deep-navy);
-      text-align: center;
-      margin-bottom: 5px;
     }
 
-    .form-header h4 {
-      font-size: 1.1rem;
-      color: var(--primary-blue); /* Royal accent color */
-      text-align: center;
-      margin-bottom: 30px;
-      font-weight: 400;
+    .form-group {
+      margin-bottom: 20px;
     }
 
-    .custom-form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
 
-    .custom-input {
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
       width: 100%;
       padding: 12px 15px;
-      border: 1px solid #e0e0e0;
+      border: 1px solid #ddd;
       border-radius: 8px;
-      background: #f9f9f9;
-      transition: all 0.3s;
       font-size: 0.95rem;
+      transition: border 0.3s;
+      background-color: #fcfcfc;
     }
 
-    .custom-input:focus {
-      background: #fff;
-      border-color: var(--primary-blue);
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(59, 156, 250, 0.1);
+      border-color: var(--primary-blue);
+      background-color: #fff;
     }
 
-    .submit-btn {
-      width: 100%;
-      padding: 14px;
+    .form-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .btn-submit {
       background: var(--primary-blue);
-      color: #fff;
+      color: white;
       border: none;
+      padding: 14px 30px;
       border-radius: 8px;
-      font-size: 1.1rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s;
-      box-shadow: 0 5px 15px rgba(59, 156, 250, 0.3);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
 
-    .submit-btn:hover {
+    .btn-submit:hover {
       background: var(--hover-blue);
       transform: translateY(-2px);
     }
 
-    .captcha-box {
-      background: #e9ecef;
-      padding: 10px;
+    /* =========================================
+   4. FOOTER STYLES
+   ========================================= */
+    .custom-footer {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #ffffff;
+      padding: 60px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .custom-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .custom-footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-brand .logo {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .footer-brand .logo .dot {
+      color: #1176FF;
+    }
+
+    .footer-description {
+      color: #cccccc;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .footer-column h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #999999;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #1176FF;
+    }
+
+    /* Contact Section in Footer */
+    .contact-section-footer {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 300px;
+      gap: 30px;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: #1176FF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .contact-info h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #ffffff;
+    }
+
+    .contact-info p {
+      color: #cccccc;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .schedule-btn {
+      background: linear-gradient(135deg, #1176FF, #010e20);
+      color: #ffffff;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(82, 27, 232, 0.3);
+    }
+
+    .schedule-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(82, 27, 232, 0.3);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 20px 0;
       text-align: center;
+    }
+
+    .copyright {
+      color: #999999;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* Scroll To Top */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: #1176FF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(82, 27, 232, 0.3);
+      color: white;
       font-weight: bold;
-      letter-spacing: 5px;
-      color: #555;
-      border-radius: 6px;
-      margin-left: 10px;
-      user-select: none;
+      font-size: 18px;
+      z-index: 1000;
     }
 
-    .privacy-text {
-      text-align: center;
-      margin-top: 15px;
-      font-size: 0.85rem;
-      color: #888;
+    .scroll-top:hover {
+      transform: translateY(-3px);
     }
-    .privacy-text a { color: var(--text-dark); text-decoration: underline; }
 
-
-    /* --- Responsive Adjustments --- */
+    /* =========================================
+           RESPONSIVE MEDIA QUERIES
+           ========================================= */
     @media (max-width: 1200px) {
-        .process-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; }
-        .process-step-item:not(:last-child) .step-circle-box::after { display: none; }
-        .industries-grid { grid-template-columns: repeat(3, 1fr); }
+      .main-navigation ul {
+        gap: 25px;
+      }
+
+      .fti-header-2-wrap {
+        max-width: 100%;
+        padding: 0 25px 0 35px;
+      }
+
+      /* Process Grid Adjustment */
+      .process-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        row-gap: 50px;
+      }
+
+      .process-step-item:not(:nth-child(3n)) .step-circle-box::after {
+        content: '\f178';
+      }
+
+      .process-step-item:nth-child(3n) .step-circle-box::after {
+        display: none;
+      }
     }
 
-    @media (max-width: 992px) {
-        .services-grid-list { grid-template-columns: repeat(2, 1fr); }
-        .industries-grid { grid-template-columns: repeat(2, 1fr); }
-        .contact-info-col { margin-bottom: 50px; padding-right: 0; }
+    @media (max-width: 991px) {
+
+      /* Header Elements */
+      .fti-menu-btn-2 {
+        display: block;
+      }
+
+      .main-navigation,
+      .btn-wrap {
+        display: none;
+      }
+
+      /* Header Sizing */
+      .fti-header-2-area {
+        height: 70px;
+      }
+
+      .fti-header-2-row {
+        height: 100%;
+      }
+
+      .fti-header-2-wrap {
+        padding: 0 20px;
+      }
+
+      /* Contact Section */
+      .contact-wrapper {
+        flex-direction: column;
+      }
+
+      .contact-info,
+      .contact-form {
+        width: 100%;
+      }
     }
-    
+
     @media (max-width: 768px) {
-        .services-grid-list { grid-template-columns: 1fr; }
-        .header-title { font-size: 2.5rem; }
-        .service-category-block { padding: 25px; }
 
-        .process-grid { grid-template-columns: 1fr; }
-        .step-circle-box { width: 80px; height: 80px; }
-        .step-num { font-size: 24px; }
-        .step-title { height: auto; margin-bottom: 10px; }
+      /* Process Grid Mobile */
+      .process-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
 
-        .industries-grid { grid-template-columns: 1fr; gap: 20px; }
-        .industries-head h2 { font-size: 2rem; }
-        
-        .contact-main-phone { font-size: 1.8rem; }
+      .process-step-item .step-circle-box::after {
+        display: none !important;
+      }
+
+      .step-title {
+        min-height: auto;
+      }
+
+      /* Adjust Footer Layout */
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .contact-section-footer {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .contact-item {
+        justify-content: center;
+      }
+    }
+
+
+    @media (max-width: 576px) {
+      .fti-header-2-wrap {
+        padding: 0 15px;
+      }
+
+      .fti-header-2-logo img {
+        max-height: 35px;
+      }
+
+      .header-title {
+        font-size: 2.2rem;
+      }
+
+      /* Hide fancy clip path on very small screens to avoid overflow */
+      .fti-header-2-wrap::after {
+        display: none;
+      }
+    }
+
+    /* Fade In Animation Class */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 
 <body>
-    
-    <div id="mobileNavOverlay" class="mobile-nav-overlay">
-        <button class="mobile-close-btn" onclick="closeMobileMenu()">&times;</button>
-        <ul class="mobile-nav-list">
+
+  <header class="fti-header-2-area">
+    <div class="fti-header-2-wrap">
+      <div class="fti-header-2-row">
+        <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
+          <img src="./ASSETS/IMAGES/logo.png" alt="VMTL"
+            onerror="this.src='https://via.placeholder.com/150x50?text=VMTL'" />
+        </a>
+
+        <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
+          </svg>
+        </button>
+
+        <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
+          <ul>
             <li><a href="index.html">HOME</a></li>
-            <li>
-                <a href="#" class="mobile-dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
-                <div class="mobile-dropdown-menu">
-                    <a href="achievements.html">Achievements</a>
-                    <a href="associations.html">Associations</a>
-                    <a href="testimonial.html">Testimonial</a>
-                </div>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+              <div class="dropdown-menu">
+                <a href="achievements.html" class="dropdown-item">Achievements</a>
+                <div class="dropdown-divider"></div>
+                <a href="associations.html" class="dropdown-item">Associations</a>
+                <div class="dropdown-divider"></div>
+                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+              </div>
             </li>
-            <li>
-                <a href="#" class="mobile-dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
-                <div class="mobile-dropdown-menu">
-                    <a href="reverse-engineering.html">Reverse Engineering</a>
-                    <a href="manufacturing.html">Manufacturing</a>
-                    <a href="cad-services.html">CAD Services</a>
-                    <a href="mechanical-engineering.html">Mechanical Engineering</a>
-                    <a href="electrical-engineering.html">Electrical Engineering</a>
-                    <a href="engineering-simulation.html">Engineering Simulation</a>
-                </div>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+              <div class="dropdown-menu">
+                <a href="reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
+                <div class="dropdown-divider"></div>
+                <a href="manufacturing.html" class="dropdown-item">Manufacturing</a>
+                <div class="dropdown-divider"></div>
+                <a href="cad-services.html" class="dropdown-item">CAD Services</a>
+                <div class="dropdown-divider"></div>
+                <a href="mechanical-engineering.html" class="dropdown-item">Mechanical Engineering</a>
+                <div class="dropdown-divider"></div>
+                <a href="electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
+                <div class="dropdown-divider"></div>
+                <a href="engineering-simulation.html" class="dropdown-item">Engineering Simulation</a>
+              </div>
             </li>
-            <li>
-                <a href="#" class="mobile-dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
-                <div class="mobile-dropdown-menu">
-                    <a href="projects.html">Projects</a>
-                    <a href="video-gallery.html">Video Gallery</a>
-                </div>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+              <div class="dropdown-menu">
+                <a href="projects.html" class="dropdown-item">Projects</a>
+                <div class="dropdown-divider"></div>
+                <a href="video-gallery.html" class="dropdown-item">Video Gallery</a>
+              </div>
             </li>
             <li><a href="https://virmodello.blogspot.com/" target="_blank">BLOG</a></li>
             <li><a href="contact.html">CONTACT</a></li>
-        </ul>
-    </div>
+          </ul>
+        </nav>
 
-    <header class="fti-header-2-area">
-        <div class="fti-header-2-wrap">
-            <div class="fti-header-2-row">
-                <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
-                    <img src="./ASSETS/IMAGES/logo.png" alt="VMTL" />
-                </a>
-
-                <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
-                    </svg>
-                </button>
-
-                <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
-                    <ul>
-                        <li><a href="index.html">HOME</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
-                            <div class="dropdown-menu">
-                                <a href="achievements.html" class="dropdown-item">Achievements</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="associations.html" class="dropdown-item">Associations</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
-                            <div class="dropdown-menu">
-                                <a href="reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="manufacturing.html" class="dropdown-item">Manufacturing</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="cad-services.html" class="dropdown-item">CAD Services</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="mechanical-engineering.html" class="dropdown-item">Mechanical Engineering</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="engineering-simulation.html" class="dropdown-item">Engineering Simulation</a>
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
-                            <div class="dropdown-menu">
-                                <a href="projects.html" class="dropdown-item">Projects</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="video-gallery.html" class="dropdown-item">Video Gallery</a>
-                            </div>
-                        </li>
-                        <li><a href="https://virmodello.blogspot.com/" target="_blank">BLOG</a></li>
-                        <li><a href="contact.html">CONTACT</a></li>
-                    </ul>
-                </nav>
-
-                <div class="btn-wrap">
-                    <a class="fti-header-2-btn" href="contact.html" aria-label="Get in touch">
-                        <span class="btn-text">Get in touch</span>
-                        <span class="btn-icon">↗</span>
-                    </a>
-                </div>
-            </div>
+        <div class="btn-wrap">
+          <a class="fti-header-2-btn" href="contact.html" aria-label="Get in touch">
+            <span class="btn-text">Get in touch</span>
+            <span class="btn-icon">↗</span>
+          </a>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <button class="mobile-close-btn" aria-label="Close menu">&times;</button>
+    <div class="mobile-nav-content">
+      <ul class="mobile-nav-menu">
+        <li><a href="index.html">HOME</a></li>
+        <li class="mobile-dropdown">
+          <a href="#" class="mobile-dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+          <div class="mobile-dropdown-menu">
+            <a href="about-us.html">Our Team</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="associations.html">Associations</a>
+            <a href="testimonial.html">Testimonial</a>
+          </div>
+        </li>
+        <li class="mobile-dropdown">
+          <a href="#" class="mobile-dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+          <div class="mobile-dropdown-menu">
+            <a href="reverse-engineering.html">Reverse Engineering</a>
+            <a href="manufacturing.html">Manufacturing</a>
+            <a href="cad-services.html">CAD Services</a>
+            <a href="mechanical-engineering.html">Mechanical Engineering</a>
+            <a href="electrical-engineering.html">Electrical Engineering</a>
+          </div>
+        </li>
+        <li><a href="clients.html">OUR CLIENTS</a></li>
+        <li class="mobile-dropdown">
+          <a href="#" class="mobile-dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+          <div class="mobile-dropdown-menu">
+            <a href="projects.html">Projects</a>
+            <a href="video-gallery.html">Video Gallery</a>
+          </div>
+        </li>
+        <li><a href="https://virmodello.blogspot.com/" target="_blank">BLOG</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+      <div class="mobile-cta">
+        <a class="fti-header-2-btn" href="contact.html" style="color:white; border-color:white;">
+          <span class="btn-text">Get in touch</span>
+          <span class="btn-icon">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <section class="header-section">
-    <div class="hero-video-container">
-      <video id="hero-bg-video" autoplay muted loop playsinline preload="auto">
-        <source src="./ASSETS/IMAGES/88149165cf1be6f79712cd6f2f29cc5f.mp4" type="video/mp4">
-        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1500&q=80" alt="Mechanical Engineering">
-      </video>
-    </div>
-
-    <div class="header-content">
+    <div class="header-content fade-in">
       <h1 class="header-title">Mechanical Engineering Services</h1>
       <div class="breadcrumb">
         <a href="index.html">Home</a>
         <span class="arrow">&#x2192;</span>
         <a href="#">Services</a>
         <span class="arrow">&#x2192;</span>
-        <span>Mechanical Engineering</span>
+        <span class="current">Mechanical Engineering</span>
       </div>
     </div>
   </section>
 
   <section class="services-intro-section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head fade-in">
         <h2>Our Comprehensive Mechanical Engineering Design Services</h2>
-        <p>Flatworld Solutions has been one of the leading computational fluid dynamics service providers to clients around the globe for over 20 years. We understand each client's unique requirements and provide them with services that will suit their business requirements. Some of the key computational fluid dynamics solutions we offer include -</p>
+        <p>VMTL has been one of the leading computational fluid dynamics service providers to clients around the globe
+          for over 20 years. We understand each client's unique requirements and provide them with services that will
+          suit their business requirements.</p>
       </div>
 
       <div class="row g-4">
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-3 fade-in">
           <div class="feature-card">
             <div class="f-icon"><i class="fa-solid fa-file-pdf"></i></div>
             <h4>CAD Conversion Services</h4>
-            <p>Reduce overhead and accelerate design cycles by converting paper-based or legacy formats into precise CAD files. Minimal error and maximum efficiency.</p>
+            <p>Reduce overhead and accelerate design cycles by converting paper-based or legacy formats into precise CAD
+              files.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-3 fade-in">
           <div class="feature-card">
             <div class="f-icon"><i class="fa-solid fa-compass-drafting"></i></div>
             <h4>2D Drafting Services</h4>
-            <p>Highly detailed technical drawings including architectural and preliminary plans. Flexible for design iterations and compliance documentation.</p>
+            <p>Highly detailed technical drawings including architectural and preliminary plans. Flexible for design
+              iterations.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-3 fade-in">
           <div class="feature-card">
             <div class="f-icon"><i class="fa-brands fa-codepen"></i></div>
             <h4>3D CAD Modeling</h4>
-            <p>Detailed 3D representations to visualize parts, test tolerances, check interference, and improve cross-department communication.</p>
+            <p>Detailed 3D representations to visualize parts, test tolerances, check interference, and improve
+              communication.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-3 fade-in">
           <div class="feature-card">
             <div class="f-icon"><i class="fa-solid fa-desktop"></i></div>
             <h4>3D Rendering</h4>
-            <p>Photorealistic visuals to help architects, builders, and marketers enable faster designs and stakeholder approvals.</p>
+            <p>Photorealistic visuals to help architects, builders, and marketers enable faster designs and stakeholder
+              approvals.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-3 fade-in">
           <div class="feature-card">
             <div class="f-icon"><i class="fa-solid fa-layer-group"></i></div>
             <h4>CAD Design Services</h4>
-            <p>End-to-end CAD design services such as CAE integration, concept generation, fixture and mold design, and prototyping.</p>
+            <p>End-to-end CAD design services such as CAE integration, concept generation, fixture and mold design.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-3 fade-in">
           <div class="feature-card">
             <div class="f-icon"><i class="fa-solid fa-rotate"></i></div>
             <h4>Reverse Engineering</h4>
-            <p>Precise reconstruction of digital models from physical components using 3D scanning, benchmarking, and parametric modeling.</p>
+            <p>Precise reconstruction of digital models from physical components using 3D scanning and parametric
+              modeling.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-3 fade-in">
           <div class="feature-card">
             <div class="f-icon"><i class="fa-solid fa-industry"></i></div>
             <h4>Design for Manufacturing</h4>
-            <p>Refined designs for manufacturability with part standardization and material optimization to ensure efficient production.</p>
+            <p>Refined designs for manufacturability with part standardization and material optimization to ensure
+              efficient production.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-3 fade-in">
           <div class="feature-card">
             <div class="f-icon"><i class="fa-solid fa-stopwatch"></i></div>
             <h4>Rapid Prototyping</h4>
-            <p>Accelerate product validation with quick-turn prototypes and simulation-based testing to verify performance before scaling.</p>
+            <p>Accelerate product validation with quick-turn prototypes and simulation-based testing to verify
+              performance.</p>
           </div>
         </div>
       </div>
@@ -1063,122 +1360,171 @@
 
   <section class="premium-list-wrapper">
     <div class="container">
-      <h2 class="main-list-title">More Mechanical Engineering Services We Offer</h2>
+      <h2 class="main-list-title fade-in">More Mechanical Engineering Services We Offer</h2>
 
-      <div class="service-category-block">
+      <div class="service-category-block fade-in">
         <div class="cat-header">
           <h3>Core Mechanical Design & Development</h3>
         </div>
         <div class="services-grid-list">
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Mechanical Design & Analysis Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Mechanical Concept Design Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>CAD Design and Development Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Machine Design & Development</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Sheet Metal Design Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>SolidWorks Design Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Autodesk Inventor Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Mechanical Design & Analysis
+              Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Mechanical Concept Design
+              Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>CAD Design and Development
+              Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Machine Design & Development</span>
+          </div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Sheet Metal Design Services</span>
+          </div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>SolidWorks Design Services</span>
+          </div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Autodesk Inventor Services</span>
+          </div>
           <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>CATIA Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Assembly Modeling Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Parametric 3D Modeling Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Tool, Fixture Design, and Drafting</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Jigs and Fixture Design Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Legacy Conversion Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Assembly Modeling Services</span>
+          </div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Parametric 3D Modeling Services</span>
+          </div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Tool, Fixture Design, and
+              Drafting</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Jigs and Fixture Design
+              Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Legacy Conversion Services</span>
+          </div>
           <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Product Lifecycle Support</span></div>
           <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Weldment and Frame Design</span></div>
         </div>
       </div>
 
-      <div class="service-category-block">
+      <div class="service-category-block fade-in">
         <div class="cat-header">
           <h3>Simulation, Analysis & Virtual Testing</h3>
         </div>
         <div class="services-grid-list">
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Finite Element Analysis (FEA)</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Finite Element Analysis (FEA)</span>
+          </div>
           <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Fatigue Analysis Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Crash and Impact Analysis Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>CAE Modal Analysis Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Structural and Stress Analysis</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Computational Fluid Dynamics Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Crash and Impact Analysis
+              Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>CAE Modal Analysis Services</span>
+          </div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Structural and Stress Analysis</span>
+          </div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Computational Fluid Dynamics
+              Services</span></div>
           <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Thermal Modeling Services</span></div>
           <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Failure Analysis Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Tolerance Analysis Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Simulation Engineering Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Virtual Prototyping Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Tolerance Analysis Services</span>
+          </div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Simulation Engineering Services</span>
+          </div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Virtual Prototyping Services</span>
+          </div>
           <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Vibration Analysis</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Structural and Load Testing Simulations</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Structural and Load Testing
+              Simulations</span></div>
         </div>
       </div>
 
-      <div class="service-category-block">
+      <div class="service-category-block fade-in">
         <div class="cat-header">
           <h3>Industrial Design & Engineering Automation</h3>
         </div>
         <div class="services-grid-list">
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Casting Design and Manufacturing</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Casting Design and
+              Manufacturing</span></div>
           <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Vacuum Casting Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Process Planning & Automation</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Manufacturing Support & Process Planning</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Engineering Fabrication Cost Estimation</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Process Planning & Automation</span>
+          </div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Manufacturing Support & Process
+              Planning</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Engineering Fabrication Cost
+              Estimation</span></div>
           <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>CNC Programming Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Industrial Automation Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Proposal Review and Bid Management</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Engineering Change Order Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Project Management Tools & Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Tolerance Analysis for Machining</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Assembly Line Optimization</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Industrial Automation Services</span>
+          </div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Proposal Review and Bid
+              Management</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Engineering Change Order
+              Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Project Management Tools &
+              Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Tolerance Analysis for
+              Machining</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Assembly Line Optimization</span>
+          </div>
           <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Tooling & Die Design</span></div>
         </div>
       </div>
 
-      <div class="service-category-block">
+      <div class="service-category-block fade-in">
         <div class="cat-header">
           <h3>Plant, Piping & HVAC Design</h3>
         </div>
         <div class="services-grid-list">
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Plant Design Engineering Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Plant Design Management System (PDMS)</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Modular Plant Design Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Piping Design and Drafting Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>HVAC Ducting Design & Drafting</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Plant Design Engineering
+              Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Plant Design Management System
+              (PDMS)</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Modular Plant Design Services</span>
+          </div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Piping Design and Drafting
+              Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>HVAC Ducting Design & Drafting</span>
+          </div>
           <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Plumbing and Firefighting</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Fire Protection Engineering Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Fire Protection Engineering
+              Services</span></div>
         </div>
       </div>
 
-      <div class="service-category-block">
+      <div class="service-category-block fade-in">
         <div class="cat-header">
           <h3>Specialized Sector Design Services</h3>
         </div>
         <div class="services-grid-list">
           <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Tower Design</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Ship Deck Design and Drafting Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Consumer Electronics & Product Design</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Ship Deck Design and Drafting
+              Services</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Consumer Electronics & Product
+              Design</span></div>
         </div>
       </div>
 
-      <div class="service-category-block">
+      <div class="service-category-block fade-in">
         <div class="cat-header">
           <h3>Product Lifecycle & Documentation</h3>
         </div>
         <div class="services-grid-list">
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>PLM Implementation & Customization</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Technical Publication Services</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Installation & Maintenance Manuals</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Engineering Change Documentation</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>CE/UL Certification Support Docs</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Material Compliance Reports</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>PLM Implementation &
+              Customization</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Technical Publication Services</span>
+          </div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Installation & Maintenance
+              Manuals</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Engineering Change
+              Documentation</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>CE/UL Certification Support
+              Docs</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Material Compliance Reports</span>
+          </div>
         </div>
       </div>
 
-      <div class="service-category-block">
+      <div class="service-category-block fade-in">
         <div class="cat-header">
           <h3>Value Engineering & Sustainability</h3>
         </div>
         <div class="services-grid-list">
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Design Optimization for Cost Reduction</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Lightweighting & Material Substitution</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Energy Efficiency Optimization</span></div>
-          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Compliance with Environmental Standards</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Design Optimization for Cost
+              Reduction</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Lightweighting & Material
+              Substitution</span></div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Energy Efficiency Optimization</span>
+          </div>
+          <div class="premium-item"><i class="fa-solid fa-circle-check"></i><span>Compliance with Environmental
+              Standards (RoHS, REACH)</span></div>
         </div>
       </div>
     </div>
@@ -1186,204 +1532,172 @@
 
   <section class="process-section">
     <div class="container">
-        <div class="section-head">
-            <h2>The Process We Follow to Deliver Mechanical Engineering Services</h2>
-        </div>
-        <p class="process-desc-text">
-            At Flatworld, we follow a standardized workflow proven for streamlining operations and cutting costs while delivering high-quality mechanical engineering services. Here is our process flow that ensures our support is aligned with your project goals, technical requirements, and compliance standards:
-        </p>
+      <div class="section-head fade-in">
+        <h2>The Process We Follow</h2>
+      </div>
+      <p class="fade-in" style="text-align: center; max-width: 900px; margin: 0 auto 60px; color: #555;">
+        At Flatworld, we follow a standardized workflow proven for streamlining operations and cutting costs while
+        delivering high-quality mechanical engineering services.
+      </p>
 
-        <div class="process-grid">
-            <div class="process-step-item">
-                <div class="step-circle-box">
-                    <span class="step-num">01</span>
-                </div>
-                <h5 class="step-title">Requirement Analysis</h5>
-                <p class="step-desc">
-                    We start with understanding and outlining your business objectives, technical specifications, and project constraints. This helps us customize our mechanical engineering services based on your compliance needs, potential engineering challenges, and long-term performance goals.
-                </p>
-            </div>
-            <div class="process-step-item">
-                <div class="step-circle-box">
-                    <span class="step-num">02</span>
-                </div>
-                <h5 class="step-title">Strategic Planning</h5>
-                <p class="step-desc">
-                    Our engineers and project leads prepare a road map to structure our execution, choosing the right tools, experts, and delivery models. This helps us optimize our mechanical engineering services for speed, accuracy, and resource efficiency.
-                </p>
-            </div>
-            <div class="process-step-item">
-                <div class="step-circle-box">
-                    <span class="step-num">03</span>
-                </div>
-                <h5 class="step-title">Design & Development</h5>
-                <p class="step-desc">
-                    Strategic plans are translated into action using CAD modeling, simulation, and virtual prototyping. We engineer every component of design and development for performance and scalability.
-                </p>
-            </div>
-            <div class="process-step-item">
-                <div class="step-circle-box">
-                    <span class="step-num">04</span>
-                </div>
-                <h5 class="step-title">Implementation</h5>
-                <p class="step-desc">
-                    After defining the clear SLAs, our engineers execute detailed tasks across modeling, drafting, analysis, and documentation. We ensure transparency and alignment with your goals at every phase of the execution process for your stakeholders.
-                </p>
-            </div>
-            <div class="process-step-item">
-                <div class="step-circle-box">
-                    <span class="step-num">05</span>
-                </div>
-                <h5 class="step-title">Quality Assurance</h5>
-                <p class="step-desc">
-                    Being an ISO-certified company, every deliverable is rigorously tested and reviewed using automated and manual checks by experts. This helps us check and verify design accuracy, simulation results, and GD&T standards.
-                </p>
-            </div>
-            <div class="process-step-item">
-                <div class="step-circle-box">
-                    <span class="step-num">06</span>
-                </div>
-                <h5 class="step-title">Delivery & Support</h5>
-                <p class="step-desc">
-                    Final outputs are delivered in the preferred format securely through encrypted cloud or FTP channels. Post delivery, we also provide support such as updates, format changes, or documentation requests.
-                </p>
-            </div>
+      <div class="process-grid">
+        <div class="process-step-item fade-in">
+          <div class="step-circle-box"><span class="step-num">01</span></div>
+          <h5 class="step-title">Requirement Analysis</h5>
+          <p class="step-desc">We start with understanding your business objectives, technical specifications, and
+            project constraints.</p>
         </div>
+        <div class="process-step-item fade-in">
+          <div class="step-circle-box"><span class="step-num">02</span></div>
+          <h5 class="step-title">Strategic Planning</h5>
+          <p class="step-desc">Our engineers prepare a roadmap to structure execution, choosing the right tools and
+            delivery models.</p>
+        </div>
+        <div class="process-step-item fade-in">
+          <div class="step-circle-box"><span class="step-num">03</span></div>
+          <h5 class="step-title">Design & Development</h5>
+          <p class="step-desc">Strategic plans are translated into action using CAD modeling, simulation, and virtual
+            prototyping.</p>
+        </div>
+        <div class="process-step-item fade-in">
+          <div class="step-circle-box"><span class="step-num">04</span></div>
+          <h5 class="step-title">Implementation</h5>
+          <p class="step-desc">Execution of detailed tasks across modeling, drafting, analysis, and documentation.</p>
+        </div>
+        <div class="process-step-item fade-in">
+          <div class="step-circle-box"><span class="step-num">05</span></div>
+          <h5 class="step-title">Quality Assurance</h5>
+          <p class="step-desc">Rigorously tested and reviewed using automated and manual checks by experts.</p>
+        </div>
+        <div class="process-step-item fade-in">
+          <div class="step-circle-box"><span class="step-num">06</span></div>
+          <h5 class="step-title">Delivery & Support</h5>
+          <p class="step-desc">Final outputs delivered securely, followed by post-delivery support and updates.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="industries-section">
     <div class="container">
-        <div class="industries-head">
-            <h2>Industries We Serve with Engineered Mechanical Services</h2>
-        </div>
+      <div class="section-head fade-in">
+        <h2 style="color: #fff;">Industries We Serve</h2>
+      </div>
 
-        <div class="industries-grid">
-            <div class="industry-item">
-                <div class="industry-icon-glow"><i class="fa-solid fa-car-side"></i></div>
-                <span class="industry-name">Automotive</span>
-            </div>
-            <div class="industry-item">
-                <div class="industry-icon-glow"><i class="fa-solid fa-plane-departure"></i></div>
-                <span class="industry-name">Aviation & Aerospace</span>
-            </div>
-            <div class="industry-item">
-                <div class="industry-icon-glow"><i class="fa-solid fa-oil-well"></i></div>
-                <span class="industry-name">Oil & Gas</span>
-            </div>
-            <div class="industry-item">
-                <div class="industry-icon-glow"><i class="fa-solid fa-bolt"></i></div>
-                <span class="industry-name">Energy & Utilities</span>
-            </div>
-            <div class="industry-item">
-                <div class="industry-icon-glow"><i class="fa-solid fa-anchor"></i></div>
-                <span class="industry-name">Marine Engineering</span>
-            </div>
-            <div class="industry-item">
-                <div class="industry-icon-glow"><i class="fa-solid fa-industry"></i></div>
-                <span class="industry-name">Manufacturing and Industrial Equipment</span>
-            </div>
-            <div class="industry-item">
-                <div class="industry-icon-glow"><i class="fa-solid fa-building-shield"></i></div>
-                <span class="industry-name">Plant Engineering & Design</span>
-            </div>
-            <div class="industry-item">
-                <div class="industry-icon-glow"><i class="fa-solid fa-microchip"></i></div>
-                <span class="industry-name">Consumer Electronics</span>
-            </div>
-            <div class="industry-item">
-                <div class="industry-icon-glow"><i class="fa-solid fa-satellite-dish"></i></div>
-                <span class="industry-name">Telecommunication</span>
-            </div>
-            <div class="industry-item">
-                <div class="industry-icon-glow"><i class="fa-solid fa-fan"></i></div>
-                <span class="industry-name">HVAC & Building Systems</span>
-            </div>
+      <div class="industries-grid">
+        <div class="industry-item fade-in">
+          <div class="industry-icon-glow"><i class="fa-solid fa-car-side"></i></div>
+          <span class="industry-name">Automotive</span>
         </div>
+        <div class="industry-item fade-in">
+          <div class="industry-icon-glow"><i class="fa-solid fa-plane-departure"></i></div>
+          <span class="industry-name">Aviation & Aerospace</span>
+        </div>
+        <div class="industry-item fade-in">
+          <div class="industry-icon-glow"><i class="fa-solid fa-oil-well"></i></div>
+          <span class="industry-name">Oil & Gas</span>
+        </div>
+        <div class="industry-item fade-in">
+          <div class="industry-icon-glow"><i class="fa-solid fa-bolt"></i></div>
+          <span class="industry-name">Energy & Utilities</span>
+        </div>
+        <div class="industry-item fade-in">
+          <div class="industry-icon-glow"><i class="fa-solid fa-anchor"></i></div>
+          <span class="industry-name">Marine Engineering</span>
+        </div>
+        <div class="industry-item fade-in">
+          <div class="industry-icon-glow"><i class="fa-solid fa-industry"></i></div>
+          <span class="industry-name">Industrial Equipment</span>
+        </div>
+        <div class="industry-item fade-in">
+          <div class="industry-icon-glow"><i class="fa-solid fa-building-shield"></i></div>
+          <span class="industry-name">Plant Engineering</span>
+        </div>
+        <div class="industry-item fade-in">
+          <div class="industry-icon-glow"><i class="fa-solid fa-microchip"></i></div>
+          <span class="industry-name">Consumer Electronics</span>
+        </div>
+        <div class="industry-item fade-in">
+          <div class="industry-icon-glow"><i class="fa-solid fa-satellite-dish"></i></div>
+          <span class="industry-name">Telecommunication</span>
+        </div>
+        <div class="industry-item fade-in">
+          <div class="industry-icon-glow"><i class="fa-solid fa-fan"></i></div>
+          <span class="industry-name">HVAC & Building Systems</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="contact-expert-section">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-5 contact-info-col">
-          <div class="contact-main-phone">
-            <i class="fa-solid fa-phone-volume"></i> 800-514-7456
-          </div>
-          <a href="#" class="contact-action-link">
-            <i class="fa-regular fa-comments"></i> Live chat with us
-          </a>
-          <a href="mailto:info@flatworldsolutions.com" class="contact-action-link">
-            <i class="fa-regular fa-envelope"></i> info@flatworldsolutions.com
-          </a>
+      <div class="section-head fade-in">
+        <h5>Contact Us</h5>
+        <h2>Excited about the project? Please get in touch.</h2>
+      </div>
 
-          <div class="location-block">
-            <div class="location-country">
-              <i class="fa-solid fa-location-dot"></i> USA
+      <div class="contact-wrapper">
+        <div class="contact-info fade-in">
+          <img src="https://themexriver.com/wp/indsro/wp-content/uploads/2024/09/contact-us.webp" alt="Contact Us Image"
+            onerror="this.src='https://via.placeholder.com/600x400?text=Contact+Us'">
+
+          <div class="contact-item">
+            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+            <div>
+              <h6>Address:</h6>
+              <span>2715 Ash Dr. San Jose, South Dakota 83475</span>
             </div>
-            <span class="location-name">Flatworld Solutions</span>
-            <p class="location-address">116 Village Blvd, Suite 200, Princeton, NJ 08540</p>
           </div>
 
-          <div class="location-block">
-            <div class="location-country">
-              <i class="fa-solid fa-location-dot"></i> PHILIPPINES
+          <div class="contact-item">
+            <span class="icon"><i class="fas fa-phone"></i></span>
+            <div>
+              <h6>Phone Number:</h6>
+              <span>(704) 555-0127, (239) 555-0108</span>
             </div>
-            <p class="location-address">Aeon Towers, J.P. Laurel Avenue, Bajada, Davao 8000</p>
-            <p class="location-address">KSS Building, Buhangin Road Cor Olive Street, Davao City 8000</p>
           </div>
 
-          <div class="location-block">
-            <div class="location-country">
-              <i class="fa-solid fa-location-dot"></i> INDIA
+          <div class="contact-item">
+            <span class="icon"><i class="fas fa-envelope"></i></span>
+            <div>
+              <h6>Email:</h6>
+              <span>themexriver@support.com</span>
             </div>
-            <p class="location-address">Survey No.11, 3rd Floor, Indraprastha, Gubbi Cross, 81</p>
-            <p class="location-address">Hennur Bagalur Main Rd, Kuvempu Layout, Kothanur, Bengaluru, Karnataka 560077</p>
           </div>
         </div>
 
-        <div class="col-lg-7">
-          <div class="consultation-form-card">
-            <div class="form-header">
-              <h3>Talk to Our Experts</h3>
-              <h4>Schedule Your Free Consultation</h4>
+        <div class="contact-form fade-in">
+          <h2>Contact Me</h2>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">First Name *</label>
+              <input type="text" id="name" name="name" placeholder="Your first name" required>
             </div>
-            
-            <form>
-              <div class="row">
-                <div class="col-md-6 custom-form-group">
-                  <input type="text" class="custom-input" placeholder="Name*" required>
-                </div>
-                <div class="col-md-6 custom-form-group">
-                  <input type="email" class="custom-input" placeholder="Email*" required>
-                </div>
-              </div>
-              
-              <div class="row">
-                <div class="col-md-6 custom-form-group">
-                  <input type="text" class="custom-input" placeholder="Phone*" required>
-                </div>
-                <div class="col-md-6 custom-form-group">
-                  <input type="text" class="custom-input" placeholder="Company">
-                </div>
-              </div>
-
-              <div class="custom-form-group">
-                <textarea class="custom-input" rows="4" placeholder="Enter your requirements*" required></textarea>
-              </div>
-
-              <div class="custom-form-group d-flex align-items-center">
-                 <input type="text" class="custom-input" placeholder="Enter Captcha" style="max-width: 150px;">
-                 <div class="captcha-box">RTZR <i class="fa-solid fa-arrows-rotate" style="font-size: 0.8rem; cursor: pointer;"></i></div>
-              </div>
-
-              <button type="submit" class="submit-btn">Submit Details</button>
-              
-              <p class="privacy-text">
-                <i class="fa-solid fa-circle-exclamation text-warning"></i> Read our <a href="#">Privacy Policy</a>
-              </p>
-            </form>
-          </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="Your email address" required>
+            </div>
+            <div class="form-group">
+              <label for="service">Select Service Type *</label>
+              <select id="service" name="service" required>
+                <option value="">Select a service</option>
+                <option value="Development">Development</option>
+                <option value="Industry">Industry</option>
+                <option value="Mechanical">Mechanical</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" placeholder="Type your message" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              <span>Send Message</span> <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -1392,7 +1706,7 @@
   <footer class="custom-footer">
     <div class="container">
       <div class="footer-content">
-        <div class="footer-brand">
+        <div class="footer-column footer-brand">
           <div class="logo">VMTL<span class="dot">.</span></div>
           <p class="footer-description">
             Our long history of family ownership has financial reassurance, business continuity and
@@ -1467,153 +1781,127 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
-    const header = document.querySelector('.fti-header-2-area');
-    
-    // Desktop dropdown functionality
-    const dropdownToggles = document.querySelectorAll('.main-navigation .dropdown-toggle');
-    
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            const dropdown = this.closest('.dropdown');
-            const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-            
-            // Toggle visibility
-            const isVisible = dropdownMenu.style.opacity === '1';
-            
-            // Close all dropdowns first
-            document.querySelectorAll('.main-navigation .dropdown-menu').forEach(menu => {
-                menu.style.opacity = '0';
-                menu.style.visibility = 'hidden';
-                menu.style.transform = 'translateY(10px)';
-            });
-            
-            // Open this dropdown if it wasn't visible
-            if (!isVisible) {
-                dropdownMenu.style.opacity = '1';
-                dropdownMenu.style.visibility = 'visible';
-                dropdownMenu.style.transform = 'translateY(0)';
-            }
-        });
-    });
-    
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.dropdown')) {
-            document.querySelectorAll('.main-navigation .dropdown-menu').forEach(menu => {
-                menu.style.opacity = '0';
-                menu.style.visibility = 'hidden';
-                menu.style.transform = 'translateY(10px)';
-            });
-        }
-    });
-    
-    // Mobile menu toggle
-    if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-            toggleMobileMenu();
-        });
-    }
-    
-    // Close mobile menu function
-    window.closeMobileMenu = function() {
-        mobileNavOverlay.classList.remove('active');
-        menuToggle.classList.remove('active');
-        document.body.style.overflow = '';
-        
-        // Close all mobile dropdowns
-        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
-        mobileDropdownToggles.forEach(toggle => {
-            toggle.classList.remove('active');
-            if (toggle.nextElementSibling) {
-                toggle.nextElementSibling.classList.remove('active');
-            }
-        });
-    }
 
-    // Close mobile menu when clicking on overlay background
-    if (mobileNavOverlay) {
-        mobileNavOverlay.addEventListener('click', function(e) {
-            if (e.target === mobileNavOverlay) {
-                closeMobileMenu();
-            }
-        });
-    }
-    
-    // Close mobile menu when clicking on a link (except dropdowns)
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-overlay a:not(.mobile-dropdown-toggle)');
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            closeMobileMenu();
-        });
-    });
-    
-    // Mobile dropdown toggles
-    const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
-    mobileDropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            const dropdownMenu = this.nextElementSibling;
-            const isActive = this.classList.contains('active');
-            
-            // Close all other dropdowns
-            mobileDropdownToggles.forEach(otherToggle => {
-                if (otherToggle !== this) {
-                    otherToggle.classList.remove('active');
-                    if (otherToggle.nextElementSibling) {
-                        otherToggle.nextElementSibling.classList.remove('active');
-                    }
-                }
-            });
-            
-            // Toggle current dropdown
-            if (isActive) {
-                this.classList.remove('active');
-                if (dropdownMenu) {
-                    dropdownMenu.classList.remove('active');
-                }
-            } else {
-                this.classList.add('active');
-                if (dropdownMenu) {
-                    dropdownMenu.classList.add('active');
-                }
-            }
-        });
-    });
-    
-    // Handle escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeMobileMenu();
-            // Also close desktop dropdowns
-            document.querySelectorAll('.main-navigation .dropdown-menu').forEach(menu => {
-                menu.style.opacity = '0';
-                menu.style.visibility = 'hidden';
-                menu.style.transform = 'translateY(10px)';
-            });
-        }
-    });
-    
-    function toggleMobileMenu() {
-        const isActive = mobileNavOverlay.classList.contains('active');
-        
-        if (isActive) {
-            closeMobileMenu();
-        } else {
-            openMobileMenu();
-        }
-    }
-    
-    function openMobileMenu() {
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Elements
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+      const closeBtn = document.querySelector('.mobile-close-btn');
+      const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+      const contactForm = document.getElementById('contactForm');
+      const header = document.querySelector('.fti-header-2-area');
+
+      // --- Mobile Menu Functions ---
+
+      function openMenu() {
         mobileNavOverlay.classList.add('active');
-        menuToggle.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-});
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      }
+
+      function closeMenu() {
+        mobileNavOverlay.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+
+        // Reset dropdowns inside menu when closing
+        document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+          menu.classList.remove('active');
+        });
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+          toggle.classList.remove('active');
+          const icon = toggle.querySelector('i');
+          if (icon) icon.className = 'fas fa-chevron-down';
+        });
+      }
+
+      // Event Listeners for Menu
+      if (menuToggle) {
+        menuToggle.addEventListener('click', openMenu);
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeMenu);
+      }
+
+      // Close menu if clicking on the overlay background (not the list)
+      if (mobileNavOverlay) {
+        mobileNavOverlay.addEventListener('click', function (e) {
+          if (e.target === mobileNavOverlay) {
+            closeMenu();
+          }
+        });
+      }
+
+      // Mobile Dropdown Accordion Logic
+      mobileDropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          const submenu = this.nextElementSibling;
+          const icon = this.querySelector('i');
+
+          // Toggle current
+          this.classList.toggle('active');
+          submenu.classList.toggle('active');
+
+          // Icon Rotation logic
+          if (submenu.classList.contains('active')) {
+            icon.className = 'fas fa-chevron-up';
+          } else {
+            icon.className = 'fas fa-chevron-down';
+          }
+        });
+      });
+
+      // --- Contact Form Handling ---
+      if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          // Simulate form submission
+          const btn = this.querySelector('.btn-submit');
+          const originalText = btn.innerHTML;
+
+          btn.innerHTML = 'Sending...';
+          btn.disabled = true;
+
+          setTimeout(() => {
+            alert('Thank you! Your message has been sent successfully.');
+            this.reset();
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+          }, 1500);
+        });
+      }
+
+      // Desktop Navbar Transparency on Scroll
+      if (header) {
+        window.addEventListener('scroll', function () {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        });
+      }
+
+      // --- Intersection Observer for Fade-in Animations ---
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+      });
+    });
   </script>
 </body>
 

@@ -23,7 +23,8 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     overflow-x: hidden;
-    padding-top: 90px; /* Space for fixed header */
+    padding-top: 90px;
+    /* Space for fixed header */
 }
 
 /* =========================================
@@ -235,7 +236,8 @@ body {
     width: 40px;
     border: none;
     cursor: pointer;
-    display: none; /* Hidden on Desktop */
+    display: none;
+    /* Hidden on Desktop */
     flex-shrink: 0;
 }
 
@@ -301,7 +303,7 @@ body {
     margin: 20px 0;
 }
 
-.mobile-nav-menu li > a {
+.mobile-nav-menu li>a {
     color: var(--text-white);
     text-decoration: none;
     font-size: 1.3rem;
@@ -313,7 +315,7 @@ body {
     gap: 10px;
 }
 
-.mobile-nav-menu li > a:hover {
+.mobile-nav-menu li>a:hover {
     color: var(--primary-color);
 }
 
@@ -531,6 +533,7 @@ body {
     .main-navigation ul {
         gap: 25px;
     }
+
     .fti-header-2-wrap {
         max-width: 100%;
         padding: 0 25px 0 35px;
@@ -538,24 +541,63 @@ body {
 }
 
 @media (max-width: 991px) {
+
     /* Toggle Mobile Elements */
-    .fti-menu-btn-2 { display: block; }
-    .main-navigation, .btn-wrap { display: none; }
+    .fti-menu-btn-2 {
+        display: block;
+    }
+
+    .main-navigation,
+    .btn-wrap {
+        display: none;
+    }
 
     /* Adjust Header Sizing */
-    body { padding-top: 70px; }
-    .fti-header-2-area, .fti-header-2-row { height: 70px; }
-    .fti-header-2-wrap { padding: 15px 20px 15px 25px; }
-    .fti-header-2-wrap::after { width: 170px; height: 70px; }
-    .fti-header-2-logo img { max-height: 40px; }
+    body {
+        padding-top: 70px;
+    }
+
+    .fti-header-2-area,
+    .fti-header-2-row {
+        height: 70px;
+    }
+
+    .fti-header-2-wrap {
+        padding: 15px 20px 15px 25px;
+    }
+
+    .fti-header-2-wrap::after {
+        width: 170px;
+        height: 70px;
+    }
+
+    .fti-header-2-logo img {
+        max-height: 40px;
+    }
 
     /* Adjust Footer Layout */
-    .footer-content { grid-template-columns: 1fr; gap: 30px; }
-    .contact-section-footer { grid-template-columns: 1fr; gap: 20px; text-align: center; }
-    .contact-item { justify-content: center; }
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .contact-section-footer {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .contact-item {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 576px) {
-    .fti-header-2-wrap { padding: 10px 15px 10px 20px; }
-    .fti-header-2-logo img { max-height: 35px; }
+    .fti-header-2-wrap {
+        padding: 10px 15px 10px 20px;
+    }
+
+    .fti-header-2-logo img {
+        max-height: 35px;
+    }
 }
