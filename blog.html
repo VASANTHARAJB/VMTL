@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Insights - VMTL | Virmodello Technologies</title>
+    <meta name="description" content="Latest updates, engineering insights, and technology trends from Virmodello Technologies.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="./ASSETS/CSS/style.css">
+
+    <style>
+        /* Hero Section Override for Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 180px 0 100px;
+            text-align: center;
+            color: #fff;
+            margin-top: -90px;
+        }
+
+        .page-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 4rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .breadcrumb-custom {
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .breadcrumb-custom a { color: #fff; text-decoration: none; }
+        .breadcrumb-custom .active { color: #F18F01; }
+
+        /* Blog Grid Styles */
+        .blog-section { padding: 80px 0; background-color: #f9f9f9; }
+        
+        .blog-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .blog-thumb {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .blog-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .blog-card:hover .blog-thumb img { transform: scale(1.1); }
+
+        .blog-date {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #2E86AB;
+            color: #fff;
+            padding: 5px 15px;
+            font-family: 'Teko', sans-serif;
+            font-size: 1.1rem;
+            border-radius: 4px;
+        }
+
+        .blog-content { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+
+        .blog-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .blog-meta i { color: #F18F01; margin-right: 5px; }
+
+        .blog-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.6rem;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .blog-title a { color: #19191A; text-decoration: none; transition: 0.3s; }
+        .blog-title a:hover { color: #2E86AB; }
+
+        .blog-desc {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .read-more-btn {
+            color: #19191A;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .read-more-btn:hover { color: #F18F01; gap: 12px; }
+
+        /* Pagination */
+        .pagination-wrap { margin-top: 50px; display: flex; justify-content: center; gap: 10px; }
+        .page-num {
+            width: 45px; height: 45px;
+            display: flex; align-items: center; justify-content: center;
+            background: #fff; border: 1px solid #ddd;
+            color: #333; font-weight: 700;
+            text-decoration: none; transition: 0.3s;
+            border-radius: 50%;
+        }
+        .page-num:hover, .page-num.active {
+            background: #2E86AB; color: #fff; border-color: #2E86AB;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="fti-header-2-area">
+        <div class="fti-header-2-wrap">
+            <div class="fti-header-2-row">
+                <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
+                    <img src="./ASSETS/IMAGES/logo.png" alt="VMTL - Virmodello Technologies" />
+                </a>
+                <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
+                    </svg>
+                </button>
+                <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
+                    <ul>
+                        <li><a href="./index.html">HOME</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-divider"></div>
+                                <a href="./achievements.html" class="dropdown-item">Achievements</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./associations.html" class="dropdown-item">Associations</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="./reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./manufacturing.html" class="dropdown-item">Manufacturing</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./cad-services.html" class="dropdown-item">CAD Services</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./mechi-engineering-services.html" class="dropdown-item">Mechanical Engineering</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="./projects.html" class="dropdown-item">Projects</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./video-gallery.html" class="dropdown-item">Video Gallery</a>
+                            </div>
+                        </li>
+                        <li><a href="./blog.html" class="active" target="_blank">BLOG</a></li>
+                        <li><a href="./contact.html">CONTACT</a></li>
+                    </ul>
+                </nav>
+                <div class="btn-wrap">
+                    <a class="fti-header-2-btn" href="./contact.html" aria-label="Get in touch">
+                        <span class="btn-text">Get in touch</span>
+                        <span class="btn-icon">↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <div class="mobile-nav-content">
+            <ul class="mobile-nav-menu">
+                <li><a href="./index.html">HOME</a></li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./achievements.html">Achievements</a>
+                        <a href="./associations.html">Associations</a>
+                        <a href="./testimonial.html">Testimonial</a>
+                    </div>
+                </li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./reverse-engineering.html">Reverse Engineering</a>
+                        <a href="./manufacturing.html">Manufacturing</a>
+                        <a href="./cad-services.html">CAD Services</a>
+                        <a href="./mechi-engineering-services.html">Mechanical Engineering</a>
+                        <a href="./electrical-engineering.html">Electrical Engineering</a>
+                    </div>
+                </li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./projects.html">Projects</a>
+                        <a href="./video-gallery.html">Video Gallery</a>
+                    </div>
+                </li>
+                <li><a href="./blog.html" target="_blank">BLOG</a></li>
+                <li><a href="./contact.html">CONTACT</a></li>
+            </ul>
+            <div class="mobile-cta">
+                <a class="fti-header-2-btn" href="./contact.html">
+                    <span class="btn-text">Get in touch</span>
+                    <span class="btn-icon">↗</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">Latest News & Insights</h1>
+                <div class="breadcrumb-custom d-flex justify-content-center gap-2">
+                    <a href="./index.html">Home</a>
+                    <span>/</span>
+                    <span class="active">Blog</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-section">
+            <div class="container">
+                <div class="row g-4">
+                    
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="blog-card">
+                            <div class="blog-thumb">
+                                <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80" alt="Reverse Engineering">
+                                <span class="blog-date">May 27, 2021</span>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-tag"></i> Engineering</span>
+                                    <span><i class="fas fa-user"></i> Admin</span>
+                                </div>
+                                <h3 class="blog-title"><a href="https://virmodello.blogspot.com/2021/05/reverse-engineering-services.html" target="_blank">Reverse Engineering Services</a></h3>
+                                <p class="blog-desc">
+                                    Reverse engineering involves deconstructing products to reveal their designs, architecture, and code. We provide accurate 3D CAD models for existing parts.
+                                </p>
+                                <a href="https://virmodello.blogspot.com/2021/05/reverse-engineering-services.html" target="_blank" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="blog-card">
+                            <div class="blog-thumb">
+                                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="Quality Inspection">
+                                <span class="blog-date">May 27, 2021</span>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-tag"></i> Quality</span>
+                                    <span><i class="fas fa-user"></i> Admin</span>
+                                </div>
+                                <h3 class="blog-title"><a href="https://virmodello.blogspot.com/2021/05/quality-inspection.html" target="_blank">Quality Inspection Services</a></h3>
+                                <p class="blog-desc">
+                                    We ensure product quality through precise inspection and measurement services, adhering to global standards to minimize defects and ensure reliability.
+                                </p>
+                                <a href="https://virmodello.blogspot.com/2021/05/quality-inspection.html" target="_blank" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="blog-card">
+                            <div class="blog-thumb">
+                                <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&w=600&q=80" alt="3D Scanning">
+                                <span class="blog-date">May 27, 2021</span>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-tag"></i> Technology</span>
+                                    <span><i class="fas fa-user"></i> Admin</span>
+                                </div>
+                                <h3 class="blog-title"><a href="https://virmodello.blogspot.com/2021/05/3d-scanning-services.html" target="_blank">3D Scanning Services</a></h3>
+                                <p class="blog-desc">
+                                    Our advanced 3D scanning services capture physical objects in high detail, converting them into digital formats for analysis, archiving, and modification.
+                                </p>
+                                <a href="https://virmodello.blogspot.com/2021/05/3d-scanning-services.html" target="_blank" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="blog-card">
+                            <div class="blog-thumb">
+                                <img src="https://images.unsplash.com/photo-1555532538-dcdbd01d373d?auto=format&fit=crop&w=600&q=80" alt="New Product Development">
+                                <span class="blog-date">May 27, 2021</span>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-tag"></i> Innovation</span>
+                                    <span><i class="fas fa-user"></i> Admin</span>
+                                </div>
+                                <h3 class="blog-title"><a href="https://virmodello.blogspot.com/2021/05/new-product-development.html" target="_blank">New Product Development</a></h3>
+                                <p class="blog-desc">
+                                    From ideation to commercialization, we assist in developing new products that meet market demands, focusing on functionality, design, and manufacturability.
+                                </p>
+                                <a href="https://virmodello.blogspot.com/2021/05/new-product-development.html" target="_blank" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="blog-card">
+                            <div class="blog-thumb">
+                                <img src="https://images.unsplash.com/photo-1631541909061-71e349d1f203?auto=format&fit=crop&w=600&q=80" alt="3D Printing">
+                                <span class="blog-date">May 27, 2021</span>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-tag"></i> Manufacturing</span>
+                                    <span><i class="fas fa-user"></i> Admin</span>
+                                </div>
+                                <h3 class="blog-title"><a href="https://virmodello.blogspot.com/2021/05/3d-printing-services.html" target="_blank">3D Printing Services</a></h3>
+                                <p class="blog-desc">
+                                    We provide state-of-the-art 3D printing services for rapid prototyping and low-volume manufacturing, turning digital models into physical reality.
+                                </p>
+                                <a href="https://virmodello.blogspot.com/2021/05/3d-printing-services.html" target="_blank" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="blog-card">
+                            <div class="blog-thumb">
+                                <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=600&q=80" alt="CAD Modeling">
+                                <span class="blog-date">May 27, 2021</span>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-tag"></i> Design</span>
+                                    <span><i class="fas fa-user"></i> Admin</span>
+                                </div>
+                                <h3 class="blog-title"><a href="https://virmodello.blogspot.com/2021/05/cad-modeling-services.html" target="_blank">CAD Modeling Services</a></h3>
+                                <p class="blog-desc">
+                                    Our expert CAD modeling services help you visualize concepts, create detailed drafts, and prepare accurate models for engineering analysis and production.
+                                </p>
+                                <a href="https://virmodello.blogspot.com/2021/05/cad-modeling-services.html" target="_blank" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="blog-card">
+                            <div class="blog-thumb">
+                                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Finite Element Analysis">
+                                <span class="blog-date">May 27, 2021</span>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-tag"></i> Simulation</span>
+                                    <span><i class="fas fa-user"></i> Admin</span>
+                                </div>
+                                <h3 class="blog-title"><a href="https://virmodello.blogspot.com/2021/05/finite-element-analysis.html" target="_blank">Finite Element Analysis</a></h3>
+                                <p class="blog-desc">
+                                    We use advanced Finite Element Analysis (FEA) to simulate physical phenomena and optimize product designs for durability, strength, and performance.
+                                </p>
+                                <a href="https://virmodello.blogspot.com/2021/05/finite-element-analysis.html" target="_blank" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="pagination-wrap fade-in">
+                    <a href="#" class="page-num active">1</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">VMTL<span class="dot">.</span></div>
+                    <p class="footer-description">
+                        Our long history of family ownership has financial reassurance, business continuity and
+                        stability. It has also created firm foundations from which we continue to grow.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">How It Works?</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Terms Of Services</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="reverse-engineering.html">Reverse Engineering</a></li>
+                        <li><a href="manufacturing.html">Manufacturing</a></li>
+                        <li><a href="cad-services.html">CAD Services</a></li>
+                        <li><a href="mechanical-engineering.html">Mechanical Engineering</a></li>
+                        <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Our Link</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="clients.html">Clients</a></li>
+                        <li><a href="contact.html">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contact-section-footer">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-info">
+                        <h4>Call Us</h4>
+                        <p>+91 97890 99151</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">✉</div>
+                    <div class="contact-info">
+                        <h4>Email Us:</h4>
+                        <p>contact@virmodello.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <div class="contact-info">
+                        <h4>Opening Hours:</h4>
+                        <p>Mon-Fri: 8am - 7pm</p>
+                    </div>
+                </div>
+
+                <button class="schedule-btn">Schedule An Appointment</button>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© Copyright 2025 All rights reserved. Design by Neoera Infotech</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-top" onclick="scrollToTop()">
+        ↑
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="./ASSETS/js/script.js"></script>
+    
+    <script>
+        // Animation Script
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>
