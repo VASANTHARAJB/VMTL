@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Engineering Design Services - VMTL | Virmodello Technologies</title>
+    <meta name="description" content="We undertake detailed engineering design solutions that include thermal analysis, pressure drop calculations, and component ruggedness at cost-effective prices.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./ASSETS/CSS/base.css">
+
+    <style>
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+        .lenis.lenis-scrolling iframe { pointer-events: none; }
+    </style>
+
+    <style>
+        /* --- Page Specific Styles (VMTL Theme) --- */
+        :root {
+            --primary-color: #2E86AB; /* VMTL Blue */
+            --accent-color: #F18F01;  /* VMTL Orange */
+            --dark-bg: #1F1F1F;
+        }
+
+        /* Hero Section */
+        .page-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 220px 0 120px 0;
+            text-align: center;
+            color: #fff;
+            margin-top: -90px;
+        }
+
+        .banner-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .breadcrumb-nav {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 10px 30px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeUp 0.8s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .breadcrumb-list {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .breadcrumb-list li a { color: #fff; text-decoration: none; transition: 0.3s; }
+        .breadcrumb-list li a:hover { color: var(--accent-color); }
+        .breadcrumb-list li.active { color: var(--accent-color); }
+        .breadcrumb-list li+li::before { content: "/"; color: rgba(255, 255, 255, 0.5); margin-right: 15px; }
+
+        /* Content Sections */
+        .content-section { padding: 80px 0; }
+        .bg-light { background-color: #f9f9f9; }
+        .bg-dark-sec { background-color: #1a1a1a; color: #fff; }
+
+        .section-title-wrap { text-align: center; margin-bottom: 60px; }
+        .section-subtitle { color: var(--primary-color); font-weight: 700; letter-spacing: 2px; font-size: 14px; display: block; margin-bottom: 10px; text-transform: uppercase; }
+        .section-title { font-family: 'Teko', sans-serif; font-size: 3.5rem; text-transform: uppercase; line-height: 1; color: #1F1F1F; }
+        
+        /* Service Cards (Detailed Engineering Specific) */
+        .service-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--primary-color);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(46, 134, 171, 0.15);
+            border-top-color: var(--accent-color);
+        }
+        .service-img-box {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .service-img-box img { max-height: 100%; width: auto; }
+        
+        .card-title { font-family: 'Teko', sans-serif; font-size: 1.6rem; margin-bottom: 15px; color: #1F1F1F; }
+        .card-text { color: #666; font-size: 0.95rem; line-height: 1.6; }
+
+        /* Why Choose Us Grid */
+        .benefit-item {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+            border-left: 4px solid var(--primary-color);
+            transition: 0.3s;
+        }
+        .benefit-item:hover { transform: translateY(-5px); border-left-color: var(--accent-color); }
+        .benefit-num { font-family: 'Teko', sans-serif; font-size: 2.5rem; color: #ddd; line-height: 1; margin-bottom: 15px; }
+        .benefit-text { font-size: 0.95rem; color: #555; line-height: 1.6; }
+
+        /* Process Flow */
+        .process-arrow-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-top: 40px; }
+        .process-item { text-align: center; width: 160px; position: relative; }
+        .process-icon-box { 
+            width: 80px; height: 80px; background: #fff; border: 2px solid var(--primary-color); border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.5rem; color: var(--primary-color);
+            transition: 0.3s;
+        }
+        .process-item:hover .process-icon-box { background: var(--primary-color); color: #fff; }
+        .process-title { font-weight: 700; font-size: 1rem; color: #333; }
+
+        /* Client Marquee */
+        .marquee-wrapper { overflow: hidden; position: relative; padding: 20px 0; background: #fff; white-space: nowrap; }
+        .logo-wrap { display: inline-flex; align-items: center; gap: 80px; animation: marquee 25s linear infinite; }
+        .logo-wrap .logo img { height: 60px; width: auto; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: 0.3s; }
+        .logo-wrap .logo img:hover { filter: grayscale(0%); opacity: 1; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+        /* Case Studies (Bottom Cards) */
+        .case-study-card {
+            border: 1px solid #eee;
+            border-top: 4px solid var(--primary-color);
+            background: #fff;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .case-study-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-top-color: var(--accent-color); }
+        .case-study-title { font-family: 'Teko', sans-serif; font-size: 1.3rem; color: #333; line-height: 1.3; margin-bottom: 15px; }
+        .read-more-btn { margin-top: auto; color: var(--primary-color); font-weight: 700; font-size: 0.9rem; text-decoration: none; }
+        .read-more-btn:hover { color: var(--accent-color); }
+
+        /* Contact Box */
+        .contact-box-area {
+            background: var(--dark-bg);
+            color: white;
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+        .contact-box-area::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        /* Utils */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .scroll-top { position: fixed; bottom: 30px; right: 30px; background: var(--primary-color); color: #fff; width: 40px; height: 40px; border-radius: 5px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; z-index: 99; }
+        @media (max-width: 768px) { .banner-title { font-size: 3.5rem; } }
+    </style>
+</head>
+
+<body>
+
+    <header class="fti-header-2-area">
+        <div class="fti-header-2-wrap">
+            <div class="fti-header-2-row">
+                <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
+                    <img src="./ASSETS/IMAGES/logo.png" alt="VMTL - Virmodello Technologies" />
+                </a>
+                <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
+                    </svg>
+                </button>
+                <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="achievements.html" class="dropdown-item">Achievements</a>
+                                <a href="associations.html" class="dropdown-item">Associations</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
+                                <a href="manufacturing.html" class="dropdown-item">Manufacturing</a>
+                                <a href="cad-services.html" class="dropdown-item">CAD Services</a>
+                                <a href="mechanical-engineering.html" class="dropdown-item">Mechanical Engineering</a>
+                                <a href="electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
+                                <a href="engineering-simulation.html" class="dropdown-item">Engineering Simulation</a>
+                                <a href="detailed-engineering.html" class="dropdown-item active">Detailed Engineering</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="projects.html" class="dropdown-item">Projects</a>
+                                <a href="video-gallery.html" class="dropdown-item">Video Gallery</a>
+                            </div>
+                        </li>
+                        <li><a href="https://virmodello.blogspot.com/" target="_blank">BLOG</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
+                    </ul>
+                </nav>
+                <div class="btn-wrap">
+                    <a class="fti-header-2-btn" href="contact.html" aria-label="Get in touch">
+                        <span class="btn-text">Get in touch</span>
+                        <span class="btn-icon">↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <main>
+        <section class="page-banner">
+            <div class="container">
+                <h1 class="banner-title">Detailed Engineering Design</h1>
+                <p class="lead" style="max-width: 800px; margin: 0 auto 30px; opacity: 0.9;">We undertake detailed engineering design solutions that include thermal analysis, pressure drop calculations, and component ruggedness at cost-effective prices.</p>
+                <div class="breadcrumb-nav">
+                    <ul class="breadcrumb-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li>Services</li>
+                        <li class="active">Detailed Engineering</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container text-center">
+                <div class="section-title-wrap fade-in">
+                    <span class="section-subtitle">Comprehensive Solutions</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Detailed Engineering Design</h2>
+                </div>
+                <div class="row justify-content-center fade-in">
+                    <div class="col-lg-10">
+                        <p style="font-size: 1.1rem; color: #555; line-height: 1.8;">
+                            VMTL is a top detailed engineering design service providing company having rich experience in designing rotary equipment such as vacuum systems, centrifuges, scrubbers, ANF, compressors, pumps, and more. 
+                            We provide detailed engineering design services as per the client's specification and budget.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section bg-light">
+            <div class="container">
+                <div class="section-title-wrap fade-in">
+                    <span class="section-subtitle">What We Offer</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Detailed Engineering Services</h2>
+                </div>
+                <div class="row g-4">
+                    
+                    <div class="col-lg-3 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-thermometer-three-quarters fa-3x text-primary"></i></div>
+                            <h3 class="card-title">Thermal Analysis</h3>
+                            <p class="card-text">We carry out thermal analysis to measure the temperature dependency of mechanical components ensuring conformity to specifications.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-file-alt fa-3x text-primary"></i></div>
+                            <h3 class="card-title">Mechanical Datasheets</h3>
+                            <p class="card-text">We provide excellent support in the creation of mechanical datasheets that includes information on equipment purchasing and fabrication.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-drafting-compass fa-3x text-primary"></i></div>
+                            <h3 class="card-title">Equipment Layout Drawings</h3>
+                            <p class="card-text">We use the best approach to prepare detailed equipment layout drawings that enhance equipment life and serviceability.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-project-diagram fa-3x text-primary"></i></div>
+                            <h3 class="card-title">HVAC & Piping Design</h3>
+                            <p class="card-text">We help in enhancing the HVAC performance by providing piping designs to deliver maximum efficiency free from design niggles.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-tachometer-alt fa-3x text-primary"></i></div>
+                            <h3 class="card-title">Pipe Sizing & Pressure Drop</h3>
+                            <p class="card-text">We calculate the drop in pressure to determine if it is within acceptable norms as gas or fluid passes through integrated instruments.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-industry fa-3x text-primary"></i></div>
+                            <h3 class="card-title">Manufacturing Drawings</h3>
+                            <p class="card-text">We provide industrial-grade drawing sets compliant with dimensioning requirements, illustrating manufacturing and assembly details.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-fire fa-3x text-primary"></i></div>
+                            <h3 class="card-title">Heat Load Calculations</h3>
+                            <p class="card-text">We perform calculations showing the rate of BTU needed by a space to ensure it is sufficiently cooled or heated.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-clipboard-list fa-3x text-primary"></i></div>
+                            <h3 class="card-title">Material Take-Off List</h3>
+                            <p class="card-text">We help in creation of MTO lists including steel grades and quantities required to complete the engineering design.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+             <div class="container">
+                <div class="section-title-wrap text-center fade-in">
+                    <span class="section-subtitle">Methodology</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Detailed Engineering Process</h2>
+                </div>
+                <div class="process-arrow-container fade-in">
+                    <div class="process-item">
+                        <div class="process-icon-box"><i class="fas fa-comments"></i></div>
+                        <div class="process-title">Requirement Gathering</div>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-icon-box"><i class="fas fa-pencil-ruler"></i></div>
+                        <div class="process-title">Drafting</div>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-icon-box"><i class="fas fa-cogs"></i></div>
+                        <div class="process-title">Detailed Design</div>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-icon-box"><i class="fas fa-check-double"></i></div>
+                        <div class="process-title">QC Check</div>
+                    </div>
+                     <div class="process-item">
+                        <div class="process-icon-box"><i class="fas fa-truck-loading"></i></div>
+                        <div class="process-title">Delivery</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section bg-light">
+            <div class="container">
+                <div class="section-title-wrap fade-in">
+                    <span class="section-subtitle">The VMTL Advantage</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Why Outsource to VMTL?</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">01</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">High-quality Services</h4>
+                            <p class="benefit-text">We are an ISO 9001:2015-certified detailed engineering firm and are committed to always delivering the highest quality services.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">02</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Cost-Effective Pricing</h4>
+                            <p class="benefit-text">We provide our detailed engineering services at highly affordable rates, helping you obtain the best solutions at competitive prices.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">03</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Tools and Technologies</h4>
+                            <p class="benefit-text">All our specialists are highly proficient in using the latest 2D and 3D modeling tools to provide services that stick to specifications.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">04</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">World-class Infrastructure</h4>
+                            <p class="benefit-text">We make use of world-class infrastructure facilities to provide premier detailed engineering design services.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">05</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Data Security</h4>
+                            <p class="benefit-text">We are ISO/IEC 27001:2022-certified and take all steps to ensure the safety and security of your data.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">06</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Quick Turnaround Time</h4>
+                            <p class="benefit-text">You will always receive our services on time, every time, as we are a highly responsible and focused firm.</p>
+                        </div>
+                    </div>
+                     <div class="col-md-6 col-lg-4 mx-auto fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">07</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Expert Team</h4>
+                            <p class="benefit-text">Our team is comprised of highly experienced engineers with first-hand knowledge of how to perform the most complex detailed engineering tasks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="section-title-wrap text-center fade-in">
+                    <h2 class="section-title" style="color: #1F1F1F;">Our Customers</h2>
+                </div>
+                <div class="marquee-wrapper fade-in">
+                    <div class="logo-wrap marquee-content">
+                        <div class="logo"><img src="./ASSETS/IMAGES/Client/C1.png" alt="Client 1"></div>
+                        <div class="logo"><img src="./ASSETS/IMAGES/Client/C2.png" alt="Client 2"></div>
+                        <div class="logo"><img src="./ASSETS/IMAGES/Client/c3.jpg" alt="Client 3"></div>
+                        <div class="logo"><img src="./ASSETS/IMAGES/Client/C4.png" alt="Client 4"></div>
+                        <div class="logo"><img src="./ASSETS/IMAGES/Client/c5.jpg" alt="Client 5"></div>
+                        <div class="logo"><img src="./ASSETS/IMAGES/Client/C6.png" alt="Client 6"></div>
+                        <div class="logo"><img src="./ASSETS/IMAGES/Client/c7.jpg" alt="Client 7"></div>
+                        <div class="logo"><img src="./ASSETS/IMAGES/Client/C1.png" alt="Client 1"></div>
+                        <div class="logo"><img src="./ASSETS/IMAGES/Client/C2.png" alt="Client 2"></div>
+                        <div class="logo"><img src="./ASSETS/IMAGES/Client/c3.jpg" alt="Client 3"></div>
+                        <div class="logo"><img src="./ASSETS/IMAGES/Client/C4.png" alt="Client 4"></div>
+                        <div class="logo"><img src="./ASSETS/IMAGES/Client/c5.jpg" alt="Client 5"></div>
+                        <div class="logo"><img src="./ASSETS/IMAGES/Client/C6.png" alt="Client 6"></div>
+                        <div class="logo"><img src="./ASSETS/IMAGES/Client/c7.jpg" alt="Client 7"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section bg-light">
+            <div class="container">
+                <div class="section-title-wrap text-center fade-in">
+                    <span class="section-subtitle">Recent Projects</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Case Studies</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3 fade-in">
+                        <div class="case-study-card">
+                            <h4 class="case-study-title">Customized CNC Programming using MasterCAM</h4>
+                            <p class="small text-muted">Provided to a Swiss-based Client</p>
+                            <a href="#" class="read-more-btn">Read More</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 fade-in">
+                        <div class="case-study-card">
+                            <h4 class="case-study-title">CFD Simulation for HVAC Products Manufacturer</h4>
+                            <p class="small text-muted">Leading HVAC Manufacturer</p>
+                            <a href="#" class="read-more-btn">Read More</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 fade-in">
+                        <div class="case-study-card">
+                            <h4 class="case-study-title">Mechanical Instrument Drafting and Detailing</h4>
+                            <p class="small text-muted">For Engineering Consultant</p>
+                            <a href="#" class="read-more-btn">Read More</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 fade-in">
+                        <div class="case-study-card">
+                            <h4 class="case-study-title">2D to 3D Mechanical Legacy Drawing Conversion</h4>
+                            <p class="small text-muted">Offered to a US Client</p>
+                            <a href="#" class="read-more-btn">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section bg-dark-sec">
+            <div class="container">
+                <div class="contact-box-area fade-in">
+                    <h2 style="font-family: 'Teko', sans-serif; font-size: 3.5rem; margin-bottom: 30px;">Talk to Our Experts</h2>
+                    <p style="margin-bottom: 40px; color: #ccc;">Send your enquiry to us for professional detailed engineering solutions.</p>
+                    <div class="contact-details">
+                        <h3 style="color: var(--primary-color); font-family: 'Teko'; font-size: 2.5rem; margin-bottom: 15px;">VIRMODELLO TECHNOLOGIES</h3>
+                        <p>413, KTVR Green Field, Thavasi Nagar, Velandipalayam PO, Coimbatore - 641025.</p>
+                        <br>
+                        <p><strong>INDIA:</strong> +91 97890 99151</p>
+                        <p><strong>Email:</strong> <a href="mailto:contact@virmodello.com" style="color: var(--accent-color); text-decoration: none;">contact@virmodello.com</a></p>
+                    </div>
+                    <div class="mt-5">
+                        <a href="contact.html" class="fti-header-2-btn" style="display: inline-block;">
+                            <span class="btn-text">Contact Form</span>
+                            <span class="btn-icon">↗</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">VMTL<span class="dot">.</span></div>
+                    <p class="footer-description">Our long history of family ownership has financial reassurance, business continuity and stability.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="reverse-engineering.html">Reverse Engineering</a></li>
+                        <li><a href="manufacturing.html">Manufacturing</a></li>
+                        <li><a href="cad-services.html">CAD Services</a></li>
+                        <li><a href="mechanical-engineering.html">Mechanical Engineering</a></li>
+                        <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="https://virmodello.blogspot.com/">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contact-section-footer">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-info"><h4>Call Us</h4><p>+91 97890 99151</p></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉</div>
+                    <div class="contact-info"><h4>Email Us</h4><p>contact@virmodello.com</p></div>
+                </div>
+                <button class="schedule-btn">Get Quote</button>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 VMTL. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./ASSETS/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <script>
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        function scrollToTop() {
+            lenis.scrollTo(0);
+        }
+    </script>
+</body>
+</html>
