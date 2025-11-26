@@ -4,15 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Office Furniture Design Services - VMTL | Virmodello Technologies</title>
-    <meta name="description" content="Outsource Office Furniture Design Services. We provide comprehensive design solutions including reception desks, workstations, and break room furniture.">
+    <title>Customized Engineering Services for Construction Companies - VMTL</title>
+    <meta name="description" content="Outsource Customized Engineering Services for Construction Companies. We provide comprehensive solutions including structural analysis, facade engineering, and HVAC design.">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="./ASSETS/CSS/base.css">
 
     <style>
@@ -33,7 +30,7 @@
 
         /* Hero Section */
         .page-banner {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -45,13 +42,14 @@
 
         .banner-title {
             font-family: 'Teko', sans-serif;
-            font-size: 5rem;
+            font-size: 4.5rem; /* Adjusted for longer title */
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             margin-bottom: 20px;
             color: #ffffff;
             text-shadow: 0 4px 15px rgba(0,0,0,0.5);
             animation: fadeUp 0.8s ease forwards;
+            line-height: 1.1;
         }
 
         .breadcrumb-nav {
@@ -118,40 +116,45 @@
         .card-title { font-family: 'Teko', sans-serif; font-size: 1.6rem; margin-bottom: 15px; color: #1F1F1F; }
         .card-text { color: #666; font-size: 0.95rem; line-height: 1.6; }
         
-        /* Furniture List Style */
-        .furniture-list { list-style: none; padding: 0; margin: 0; }
-        .furniture-list li { margin-bottom: 8px; padding-left: 25px; position: relative; color: #555; font-size: 0.95rem; }
-        .furniture-list li::before { 
-            content: "\f00c"; /* FontAwesome Check */
-            font-family: "Font Awesome 5 Free"; 
-            font-weight: 900;
-            color: var(--primary-color); 
-            position: absolute; 
-            left: 0; 
-            top: 2px;
-            font-size: 0.8rem;
+        /* List of Engineering Services */
+        .eng-service-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+        .eng-service-item { 
+            background: #fff; border: 1px solid #eee; padding: 15px 25px; border-radius: 50px; 
+            font-size: 1rem; font-weight: 600; color: #555; display: flex; align-items: center; gap: 10px;
+            transition: 0.3s; box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
+        .eng-service-item:hover { background: var(--primary-color); color: #fff; transform: translateY(-3px); }
+        .eng-service-item i { color: var(--accent-color); }
+        .eng-service-item:hover i { color: #fff; }
 
-        /* "Other Services" List */
-        .other-service-link {
-            display: block;
-            padding: 15px 20px;
+        /* Industries Section */
+        .industry-box {
             background: #fff;
-            border: 1px solid #eee;
+            padding: 20px;
+            text-align: center;
             border-radius: 8px;
-            color: #333;
-            font-weight: 600;
-            text-decoration: none;
+            border: 1px solid #eee;
             transition: 0.3s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            height: 100%;
         }
-        .other-service-link:hover {
-            background: var(--primary-color);
-            color: #fff;
-            transform: translateX(10px);
+        .industry-box:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: var(--primary-color); }
+        .industry-icon { color: var(--accent-color); margin-bottom: 15px; }
+        .industry-title { font-weight: 700; color: #333; margin: 0; }
+
+        /* Process Flow */
+        .process-step-box {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            transition: 0.3s;
+            height: 100%;
         }
+        .process-step-box:hover { transform: translateX(10px); border-left-color: var(--accent-color); }
+        .step-num { font-family: 'Teko'; font-size: 2.5rem; color: #e0e0e0; position: absolute; right: 20px; top: 10px; font-weight: bold; }
+        .step-title { font-weight: 700; font-size: 1.2rem; margin-bottom: 10px; color: #333; padding-right: 40px; }
 
         /* Why Choose Us Grid */
         .benefit-item {
@@ -167,16 +170,12 @@
         .benefit-num { font-family: 'Teko', sans-serif; font-size: 2.5rem; color: #ddd; line-height: 1; margin-bottom: 15px; }
         .benefit-text { font-size: 0.95rem; color: #555; line-height: 1.6; }
 
-        /* Process Flow */
-        .process-arrow-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-top: 40px; }
-        .process-item { text-align: center; width: 160px; position: relative; }
-        .process-icon-box { 
-            width: 80px; height: 80px; background: #fff; border: 2px solid var(--primary-color); border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.5rem; color: var(--primary-color);
-            transition: 0.3s;
-        }
-        .process-item:hover .process-icon-box { background: var(--primary-color); color: #fff; }
-        .process-title { font-weight: 700; font-size: 1rem; color: #333; }
+        /* Resources/Articles Section */
+        .resource-card { background: #fff; border: 1px solid #eee; padding: 25px; border-radius: 8px; height: 100%; transition: 0.3s; display: flex; flex-direction: column; }
+        .resource-card:hover { border-color: var(--primary-color); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .resource-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 15px; color: #333; line-height: 1.4; }
+        .resource-link { color: var(--primary-color); font-size: 0.9rem; text-decoration: none; font-weight: 600; margin-top: auto; }
+        .resource-link:hover { color: var(--accent-color); }
 
         /* Client Marquee */
         .marquee-wrapper { overflow: hidden; position: relative; padding: 20px 0; background: #fff; white-space: nowrap; }
@@ -184,23 +183,6 @@
         .logo-wrap .logo img { height: 60px; width: auto; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: 0.3s; }
         .logo-wrap .logo img:hover { filter: grayscale(0%); opacity: 1; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-
-        /* Case Studies (Bottom Cards) */
-        .case-study-card {
-            border: 1px solid #eee;
-            border-top: 4px solid var(--primary-color);
-            background: #fff;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            height: 100%;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-        .case-study-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-top-color: var(--accent-color); }
-        .case-study-title { font-family: 'Teko', sans-serif; font-size: 1.3rem; color: #333; line-height: 1.3; margin-bottom: 15px; }
-        .read-more-btn { margin-top: auto; color: var(--primary-color); font-weight: 700; font-size: 0.9rem; text-decoration: none; }
-        .read-more-btn:hover { color: var(--accent-color); }
 
         /* Contact Box */
         .contact-box-area {
@@ -223,13 +205,13 @@
         /* Utils */
         @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .scroll-top { position: fixed; bottom: 30px; right: 30px; background: var(--primary-color); color: #fff; width: 40px; height: 40px; border-radius: 5px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; z-index: 99; }
-        @media (max-width: 768px) { .banner-title { font-size: 3.5rem; } }
+        @media (max-width: 768px) { .banner-title { font-size: 3rem; } }
     </style>
 </head>
 
 <body>
 
-   <header class="fti-header-2-area">
+  <header class="fti-header-2-area">
         <div class="fti-header-2-wrap">
             <div class="fti-header-2-row">
                 <!-- Logo -->
@@ -342,13 +324,13 @@
     <main>
         <section class="page-banner">
             <div class="container">
-                <h1 class="banner-title">Office Furniture Design</h1>
-                <p class="lead" style="max-width: 800px; margin: 0 auto 30px; opacity: 0.9;">Are you looking for office furniture design drawings that meet the dynamic market needs? Outsource your requirement to VMTL.</p>
+                <h1 class="banner-title">Customized Engineering Services for Construction Companies</h1>
+                <p class="lead" style="max-width: 800px; margin: 0 auto 30px; opacity: 0.9;">We provide comprehensive solutions including structural analysis, facade engineering, and HVAC design to building companies.</p>
                 <div class="breadcrumb-nav">
                     <ul class="breadcrumb-list">
                         <li><a href="index.html">Home</a></li>
                         <li>Services</li>
-                        <li class="active">Office Furniture Design</li>
+                        <li class="active">Construction Engineering</li>
                     </ul>
                 </div>
             </div>
@@ -357,14 +339,13 @@
         <section class="content-section">
             <div class="container text-center">
                 <div class="section-title-wrap fade-in">
-                    <span class="section-subtitle">Creative Solutions</span>
-                    <h2 class="section-title" style="color: #1F1F1F;">Custom Furniture Design</h2>
+                    <span class="section-subtitle">Building The Future</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Exceptional Engineering Services for Large-Scale Projects</h2>
                 </div>
                 <div class="row justify-content-center fade-in">
                     <div class="col-lg-10">
                         <p style="font-size: 1.1rem; color: #555; line-height: 1.8;">
-                            When designing furniture for office spaces, numerous factors need to be taken into consideration to produce impressive outcomes. 
-                            VMTL is a leading office furniture design service providing company with years of experience in the industry. We work with various clients and understand their unique requirements when creating 3D CAD designs that capture their vision in the best possible ways.
+                           Our experience guarantees smooth project management from the initial design to the completion. We address the wide range of demands of the construction industry by using advanced technology and industry insights.
                         </p>
                     </div>
                 </div>
@@ -374,89 +355,92 @@
         <section class="content-section bg-light">
             <div class="container">
                 <div class="section-title-wrap fade-in">
-                    <span class="section-subtitle">Our Capabilities</span>
-                    <h2 class="section-title" style="color: #1F1F1F;">Services We Offer</h2>
+                    <span class="section-subtitle">Core Capabilities</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Key Services</h2>
                 </div>
                 <div class="row g-4">
                     
-                    <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="col-lg-6 fade-in">
                         <div class="service-card">
-                            <div class="service-img-box"><i class="fas fa-concierge-bell fa-3x"></i></div>
-                            <h3 class="card-title">Desks & Counters</h3>
-                            <ul class="furniture-list">
-                                <li>Office area counters</li>
-                                <li>Reception desks</li>
-                                <li>Desk partitions</li>
-                                <li>Executive tables</li>
-                            </ul>
+                            <div class="service-img-box"><i class="fas fa-plug fa-3x"></i></div>
+                            <h3 class="card-title">MEP Design and Drafting</h3>
+                            <p class="card-text">The complex integration of plumbing, electrical, and mechanical systems is our team's area of expertise. We design solutions that maximize energy efficiency and improve system performance using the latest computational tools.</p>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="col-lg-6 fade-in">
                         <div class="service-card">
-                            <div class="service-img-box"><i class="fas fa-archive fa-3x"></i></div>
-                            <h3 class="card-title">Storage Solutions</h3>
-                            <ul class="furniture-list">
-                                <li>File cabinets</li>
-                                <li>Wall units</li>
-                                <li>Elevation cases</li>
-                                <li>Shelving units</li>
-                            </ul>
+                            <div class="service-img-box"><i class="fas fa-cube fa-3x"></i></div>
+                            <h3 class="card-title">3DS Max Architectural Visualization and Design</h3>
+                            <p class="card-text">Our services are focused on providing excellent 2D and 3D blueprints, with an emphasis on precision and detail. We use advanced computer-aided design (CAD) platforms to create layouts that streamline spatial arrangements, reduce errors, and accelerate the construction process.</p>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="col-lg-6 fade-in">
                         <div class="service-card">
-                            <div class="service-img-box"><i class="fas fa-chair fa-3x"></i></div>
-                            <h3 class="card-title">Meeting & Seating</h3>
-                            <ul class="furniture-list">
-                                <li>Conference room tables</li>
-                                <li>Conference chairs</li>
-                                <li>Lounge seating</li>
-                                <li>Break room furniture</li>
-                            </ul>
+                            <div class="service-img-box"><i class="fas fa-project-diagram fa-3x"></i></div>
+                            <h3 class="card-title">BIM Modeling</h3>
+                            <p class="card-text">Our method of using Building Information Modeling ensures thorough project collaboration. Our dynamic 3D environments allow for smooth coordination across disciplines, which makes project management and lifecycle tracking feasible.</p>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="col-lg-6 fade-in">
                         <div class="service-card">
-                            <div class="service-img-box"><i class="fas fa-layer-group fa-3x"></i></div>
-                            <h3 class="card-title">Architectural Elements</h3>
-                            <ul class="furniture-list">
-                                <li>Grills and louvers</li>
-                                <li>Desk partitions</li>
-                                <li>Elevation cases</li>
-                                <li>Decorative panels</li>
-                            </ul>
+                            <div class="service-img-box"><i class="fas fa-file-signature fa-3x"></i></div>
+                            <h3 class="card-title">Construction Documentation / Management</h3>
+                            <p class="card-text">Our extensive documentation packages serve as a roadmap for each stage of the building process. Due to our management skills, projects are delivered on time and within budget by ensuring resource optimization, strategic scheduling, and adherence to quality standards.</p>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="col-lg-6 fade-in">
                         <div class="service-card">
-                            <div class="service-img-box"><i class="fas fa-coffee fa-3x"></i></div>
-                            <h3 class="card-title">Pantry & Kitchen</h3>
-                            <ul class="furniture-list">
-                                <li>Kitchen furniture</li>
-                                <li>Pantry counters</li>
-                                <li>Cafeteria tables</li>
-                                <li>Break room layouts</li>
-                            </ul>
+                            <div class="service-img-box"><i class="fas fa-vr-cardboard fa-3x"></i></div>
+                            <h3 class="card-title">3D Modeling / Rendering</h3>
+                            <p class="card-text">We use visual reality to transform design concepts into tangible experiences. We guarantee alignment with client goals by offering lifelike representations through our 3D modeling and rendering services, which support design validation and stakeholder interaction.</p>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="col-lg-6 fade-in">
                         <div class="service-card">
-                            <div class="service-img-box"><i class="fas fa-pencil-ruler fa-3x"></i></div>
-                            <h3 class="card-title">Design Styles</h3>
-                            <ul class="furniture-list">
-                                <li>Modern designs</li>
-                                <li>Traditional designs</li>
-                                <li>Custom furniture drafting</li>
-                                <li>Ergonomic designs</li>
-                            </ul>
+                            <div class="service-img-box"><i class="fas fa-ruler-combined fa-3x"></i></div>
+                            <h3 class="card-title">As-Built Drawing Services</h3>
+                            <p class="card-text">Accuracy is essential in documenting the final dimensions and conditions of constructed environments. We employ cutting-edge technologies to ensure that our as-built services accurately retain all the details needed for future maintenance and compliance.</p>
                         </div>
                     </div>
 
+                    <div class="col-lg-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-drafting-compass fa-3x"></i></div>
+                            <h3 class="card-title">Technical / Construction Drawing</h3>
+                            <p class="card-text">Our technical drawings are the building industry's blueprint for success. To make sure that the highest levels of accuracy and compliance are met, we provide detailed, standardized documentation that facilitates clear communication and execution.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-building fa-3x"></i></div>
+                            <h3 class="card-title">Facade Engineering</h3>
+                            <p class="card-text">We specialize in creating building envelopes that combine aesthetics with functionality. Our facade solutions raise the bar for modern buildings by incorporating advanced materials and techniques to improve energy efficiency, structural integrity, and visual appeal.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row mt-5 justify-content-center fade-in">
+                    <div class="col-lg-12">
+                        <h4 style="font-family:'Teko'; font-size:2rem; text-align:center; margin-bottom:30px;">Our Broad Range of Engineering Services</h4>
+                        <ul class="eng-service-list">
+                            <li class="eng-service-item"><i class="fas fa-check-circle"></i> Millwork Drafting</li>
+                            <li class="eng-service-item"><i class="fas fa-check-circle"></i> Thermal / Energy Modeling</li>
+                            <li class="eng-service-item"><i class="fas fa-check-circle"></i> HVAC Design</li>
+                            <li class="eng-service-item"><i class="fas fa-check-circle"></i> Structural Design & Drafting</li>
+                            <li class="eng-service-item"><i class="fas fa-check-circle"></i> Home Plan and Design</li>
+                            <li class="eng-service-item"><i class="fas fa-check-circle"></i> Architectural Drafting</li>
+                            <li class="eng-service-item"><i class="fas fa-check-circle"></i> Floor Plans and Exterior Design</li>
+                            <li class="eng-service-item"><i class="fas fa-check-circle"></i> Bill of Materials</li>
+                            <li class="eng-service-item"><i class="fas fa-check-circle"></i> Project Management</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -464,21 +448,33 @@
         <section class="content-section">
             <div class="container">
                 <div class="section-title-wrap text-center fade-in">
-                    <span class="section-subtitle">Related Solutions</span>
-                    <h2 class="section-title" style="color: #1F1F1F;">Other Services You Can Benefit From</h2>
+                    <span class="section-subtitle">Our Expertise</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Industries We Cater To</h2>
                 </div>
-                <div class="row g-4 justify-content-center">
-                    <div class="col-md-6 col-lg-3 fade-in">
-                        <a href="#" class="other-service-link">Retail Visual Merchandising <i class="fas fa-arrow-right"></i></a>
+                <div class="row g-4 justify-content-center fade-in">
+                    <div class="col-6 col-md-3">
+                        <div class="industry-box">
+                            <i class="fas fa-home fa-3x industry-icon"></i>
+                            <p class="industry-title">Residential</p>
+                        </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 fade-in">
-                        <a href="#" class="other-service-link">3D Furniture Modeling <i class="fas fa-arrow-right"></i></a>
+                    <div class="col-6 col-md-3">
+                        <div class="industry-box">
+                            <i class="fas fa-city fa-3x industry-icon"></i>
+                            <p class="industry-title">Commercial</p>
+                        </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 fade-in">
-                        <a href="#" class="other-service-link">Millwork Drafting Services <i class="fas fa-arrow-right"></i></a>
+                    <div class="col-6 col-md-3">
+                        <div class="industry-box">
+                            <i class="fas fa-industry fa-3x industry-icon"></i>
+                            <p class="industry-title">Industrial</p>
+                        </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 fade-in">
-                        <a href="#" class="other-service-link">Point Cloud to CAD <i class="fas fa-arrow-right"></i></a>
+                    <div class="col-6 col-md-3">
+                        <div class="industry-box">
+                            <i class="fas fa-hospital fa-3x industry-icon"></i>
+                            <p class="industry-title">Institutional</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -487,29 +483,51 @@
         <section class="content-section bg-light">
              <div class="container">
                 <div class="section-title-wrap text-center fade-in">
-                    <span class="section-subtitle">How We Work</span>
-                    <h2 class="section-title" style="color: #1F1F1F;">Our Design Process</h2>
+                    <span class="section-subtitle">Methodology</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Our Simplified Process Flow</h2>
                 </div>
-                <div class="process-arrow-container fade-in">
-                    <div class="process-item">
-                        <div class="process-icon-box"><i class="fas fa-comments"></i></div>
-                        <div class="process-title">Requirement Gathering</div>
+                <div class="row justify-content-center g-4 fade-in">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="process-step-box">
+                            <span class="step-num">01</span>
+                            <h4 class="step-title">Preliminary Project Assessment</h4>
+                            <p class="small text-muted mb-0">Initial evaluation and scope definition.</p>
+                        </div>
                     </div>
-                    <div class="process-item">
-                        <div class="process-icon-box"><i class="fas fa-pencil-ruler"></i></div>
-                        <div class="process-title">Drafting & Design</div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="process-step-box">
+                            <span class="step-num">02</span>
+                            <h4 class="step-title">Innovative Concept Development</h4>
+                            <p class="small text-muted mb-0">Creation of cutting-edge design concepts.</p>
+                        </div>
                     </div>
-                    <div class="process-item">
-                        <div class="process-icon-box"><i class="fas fa-cubes"></i></div>
-                        <div class="process-title">3D Modeling</div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="process-step-box">
+                            <span class="step-num">03</span>
+                            <h4 class="step-title">Comprehensive Planning & Coordination</h4>
+                            <p class="small text-muted mb-0">Detailed planning with all stakeholders.</p>
+                        </div>
                     </div>
-                    <div class="process-item">
-                        <div class="process-icon-box"><i class="fas fa-check-double"></i></div>
-                        <div class="process-title">QC & Review</div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="process-step-box">
+                            <span class="step-num">04</span>
+                            <h4 class="step-title">Engineering Design Execution</h4>
+                            <p class="small text-muted mb-0">Technical execution of the engineering design.</p>
+                        </div>
                     </div>
-                     <div class="process-item">
-                        <div class="process-icon-box"><i class="fas fa-paper-plane"></i></div>
-                        <div class="process-title">Final Delivery</div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="process-step-box">
+                            <span class="step-num">05</span>
+                            <h4 class="step-title">Compliance and Safety Assurance</h4>
+                            <p class="small text-muted mb-0">Ensuring all regulatory standards are met.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="process-step-box">
+                            <span class="step-num">06</span>
+                            <h4 class="step-title">Construction Oversight & Finalization</h4>
+                            <p class="small text-muted mb-0">Managing the build through to completion.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -519,49 +537,49 @@
             <div class="container">
                 <div class="section-title-wrap fade-in">
                     <span class="section-subtitle">The VMTL Advantage</span>
-                    <h2 class="section-title" style="color: #1F1F1F;">Why Outsource to VMTL?</h2>
+                    <h2 class="section-title" style="color: #1F1F1F;">Benefits of Choosing Our Volume-Based Home Builders Engineering Services</h2>
                 </div>
                 <div class="row g-4">
                     <div class="col-md-6 col-lg-4 fade-in">
                         <div class="benefit-item">
                             <div class="benefit-num">01</div>
-                            <h4 style="font-weight:700; margin-bottom:10px;">Cost-competitive Services</h4>
-                            <p class="benefit-text">Our services are an ideal solution for manufacturers with a fixed budget, offering high quality at affordable rates.</p>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Comprehensive Structural Analysis</h4>
+                            <p class="benefit-text">Our team performs thorough evaluations to confirm the integrity and safety of your construction projects, helping identify potential weaknesses early.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 fade-in">
                         <div class="benefit-item">
                             <div class="benefit-num">02</div>
-                            <h4 style="font-weight:700; margin-bottom:10px;">Advanced Infrastructure</h4>
-                            <p class="benefit-text">We use advanced infrastructure and the latest tools and technology to meet your office furniture designing requirements.</p>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Optimized Resource Management</h4>
+                            <p class="benefit-text">Our services emphasize effective resource allocation. By maximizing productivity and reducing waste, we help ensure significant cost savings.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 fade-in">
                         <div class="benefit-item">
                             <div class="benefit-num">03</div>
-                            <h4 style="font-weight:700; margin-bottom:10px;">Quality Services</h4>
-                            <p class="benefit-text">Being an ISO-certified company, we meet international standards of quality in our services, following best practices.</p>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Enhanced Safety Protocols</h4>
+                            <p class="benefit-text">We incorporate predictive analytics and real-time monitoring systems to anticipate and reduce risks, ensuring the safety of employees and structures.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 fade-in">
                         <div class="benefit-item">
                             <div class="benefit-num">04</div>
-                            <h4 style="font-weight:700; margin-bottom:10px;">Scalable Services</h4>
-                            <p class="benefit-text">Our services are highly scalable, and we have the resources and the workforce to upscale whenever the need arises.</p>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Dynamic Problem-Solving</h4>
+                            <p class="benefit-text">Our engineers can quickly and accurately handle problems that arise on the job site, providing creative, timely solutions to keep projects moving.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 fade-in">
                         <div class="benefit-item">
                             <div class="benefit-num">05</div>
-                            <h4 style="font-weight:700; margin-bottom:10px;">Dedicated Point of Contact</h4>
-                            <p class="benefit-text">We appoint a dedicated project manager for all your queries, reporting, and task tracking.</p>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Integrated Design-Build Approach</h4>
+                            <p class="benefit-text">We improve stakeholder collaboration and streamline processes. This reduces miscommunication and produces a well-coordinated project delivery.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 fade-in">
                         <div class="benefit-item">
                             <div class="benefit-num">06</div>
-                            <h4 style="font-weight:700; margin-bottom:10px;">24/7 Availability</h4>
-                            <p class="benefit-text">Our customer support executives are always available to address your queries. You can reach out to us at any time.</p>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Future-Ready Engineering Solutions</h4>
+                            <p class="benefit-text">We make sure your projects stay current and compliant over time by ensuring our solutions are flexible enough to adjust to future advancements.</p>
                         </div>
                     </div>
                 </div>
@@ -570,31 +588,34 @@
 
         <section class="content-section bg-light">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 fade-in">
-                        <div class="section-title-wrap text-start mb-4">
-                            <span class="section-subtitle">Real Results</span>
-                            <h2 class="section-title" style="color: #1F1F1F;">Client Success Stories</h2>
+                <div class="section-title-wrap text-center fade-in">
+                    <span class="section-subtitle">Knowledge Hub</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Related Resources</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3 fade-in">
+                        <div class="resource-card">
+                            <h5 class="resource-title">Understanding the Core Concepts of Technical and Construction Documentation</h5>
+                            <a href="#" class="resource-link">Read Article &rarr;</a>
                         </div>
-                        
-                        <div class="mb-4">
-                            <h5 style="color:var(--primary-color); font-family:'Teko'; font-size:1.4rem;">SolidWorks Detailing for Marketing Agency</h5>
-                            <p style="color:#666; font-size:0.95rem;">We used SolidWorks for converting 2D files of a certain specification for a marketing firm. The results were 100% well-executed with major cost-savings passed on to the client.</p>
-                        </div>
-
-                        <div class="mb-4">
-                            <h5 style="color:var(--primary-color); font-family:'Teko'; font-size:1.4rem;">Detailing Services for Hydraulic Fixtures</h5>
-                            <p style="color:#666; font-size:0.95rem;">We designed a complex 3D model of hydraulic fixtures by relying on modeling skills. The project was handed over within a week to clients based in Canada.</p>
-                        </div>
-
-                        <a href="#" class="fti-header-2-btn mt-2">Read More Stories <span class="btn-icon">↗</span></a>
                     </div>
-                    <div class="col-lg-6 fade-in text-center">
-                         
-
-[Image of modern office furniture design rendering]
-
-                         <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80" alt="Furniture Design Success" class="img-fluid rounded shadow" style="max-height:400px;">
+                    <div class="col-md-6 col-lg-3 fade-in">
+                        <div class="resource-card">
+                            <h5 class="resource-title">How to Hire an Architectural Engineering Firm That's Right for You</h5>
+                            <a href="#" class="resource-link">Read Article &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 fade-in">
+                        <div class="resource-card">
+                            <h5 class="resource-title">How does Autodesk Determine the Future of 3D Modeling Software?</h5>
+                            <a href="#" class="resource-link">Read Article &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 fade-in">
+                        <div class="resource-card">
+                            <h5 class="resource-title">How Can You Convert Your Physical Factory into a Digital Model Using Point Cloud Data?</h5>
+                            <a href="#" class="resource-link">Read Article &rarr;</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -626,50 +647,11 @@
             </div>
         </section>
 
-        <section class="content-section bg-light">
-            <div class="container">
-                <div class="section-title-wrap text-center fade-in">
-                    <span class="section-subtitle">Recent Projects</span>
-                    <h2 class="section-title" style="color: #1F1F1F;">Case Studies</h2>
-                </div>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-3 fade-in">
-                        <div class="case-study-card">
-                            <h4 class="case-study-title">Customized CNC Programming using MasterCAM</h4>
-                            <p class="small text-muted">Provided to a Swiss-based Client</p>
-                            <a href="#" class="read-more-btn">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 fade-in">
-                        <div class="case-study-card">
-                            <h4 class="case-study-title">CFD Simulation for HVAC Products Manufacturer</h4>
-                            <p class="small text-muted">Leading HVAC Manufacturer</p>
-                            <a href="#" class="read-more-btn">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 fade-in">
-                        <div class="case-study-card">
-                            <h4 class="case-study-title">Mechanical Instrument Drafting and Detailing</h4>
-                            <p class="small text-muted">For Engineering Consultant</p>
-                            <a href="#" class="read-more-btn">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 fade-in">
-                        <div class="case-study-card">
-                            <h4 class="case-study-title">2D to 3D Mechanical Legacy Drawing Conversion</h4>
-                            <p class="small text-muted">Offered to a US Client</p>
-                            <a href="#" class="read-more-btn">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section class="content-section bg-dark-sec">
             <div class="container">
                 <div class="contact-box-area fade-in">
                     <h2 style="font-family: 'Teko', sans-serif; font-size: 3.5rem; margin-bottom: 30px;">Talk to Our Experts</h2>
-                    <p style="margin-bottom: 40px; color: #ccc;">Send your enquiry to us for professional office furniture design solutions.</p>
+                    <p style="margin-bottom: 40px; color: #ccc;">Send your enquiry to us for professional customized engineering solutions.</p>
                     <div class="contact-details">
                         <h3 style="color: var(--primary-color); font-family: 'Teko'; font-size: 2.5rem; margin-bottom: 15px;">VIRMODELLO TECHNOLOGIES</h3>
                         <p>413, KTVR Green Field, Thavasi Nagar, Velandipalayam PO, Coimbatore - 641025.</p>
