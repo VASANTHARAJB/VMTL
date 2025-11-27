@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAD Conversion & Migration Services - VMTL | Virmodello Technologies</title>
+    <meta name="description" content="Professional CAD Conversion & Migration Services. We convert PDF, Paper, and Legacy files into precise, editable 2D & 3D CAD formats using state-of-the-art tools.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./ASSETS/CSS/base.css">
+
+    <style>
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+        .lenis.lenis-scrolling iframe { pointer-events: none; }
+    </style>
+
+    <style>
+        /* --- Page Specific Styles (VMTL Theme) --- */
+        :root {
+            --primary-color: #2E86AB; /* VMTL Blue */
+            --accent-color: #F18F01;  /* VMTL Orange */
+            --dark-bg: #1F1F1F;
+        }
+
+        /* Hero Section */
+        .page-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 220px 0 120px 0;
+            text-align: center;
+            color: #fff;
+            margin-top: -90px;
+        }
+
+        .banner-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .breadcrumb-nav {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 10px 30px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeUp 0.8s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .breadcrumb-list {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .breadcrumb-list li a { color: #fff; text-decoration: none; transition: 0.3s; }
+        .breadcrumb-list li a:hover { color: var(--accent-color); }
+        .breadcrumb-list li.active { color: var(--accent-color); }
+        .breadcrumb-list li+li::before { content: "/"; color: rgba(255, 255, 255, 0.5); margin-right: 15px; }
+
+        /* Content Sections */
+        .content-section { padding: 80px 0; }
+        .bg-light { background-color: #f9f9f9; }
+        .bg-dark-sec { background-color: #1a1a1a; color: #fff; }
+
+        .section-title-wrap { text-align: center; margin-bottom: 60px; }
+        .section-subtitle { color: var(--primary-color); font-weight: 700; letter-spacing: 2px; font-size: 14px; display: block; margin-bottom: 10px; text-transform: uppercase; }
+        .section-title { font-family: 'Teko', sans-serif; font-size: 3.5rem; text-transform: uppercase; line-height: 1; color: #1F1F1F; }
+        
+        /* Service Cards */
+        .service-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--primary-color);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(46, 134, 171, 0.15);
+            border-top-color: var(--accent-color);
+        }
+        .service-img-box {
+            height: 60px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .card-title { font-family: 'Teko', sans-serif; font-size: 1.6rem; margin-bottom: 15px; color: #1F1F1F; }
+        .card-text { color: #666; font-size: 0.95rem; line-height: 1.6; }
+
+        /* Process Flow */
+        .process-arrow-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-top: 40px; }
+        .process-item { text-align: center; width: 180px; position: relative; margin-bottom: 30px; }
+        .process-icon-box { 
+            width: 80px; height: 80px; background: #fff; border: 2px solid var(--primary-color); border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.5rem; color: var(--primary-color);
+            transition: 0.3s;
+        }
+        .process-item:hover .process-icon-box { background: var(--primary-color); color: #fff; }
+        .process-title { font-weight: 700; font-size: 1.1rem; color: #333; margin-bottom: 10px; }
+        .process-desc { font-size: 0.85rem; color: #666; line-height: 1.4; }
+
+        /* Industry List */
+        .industry-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .industry-item {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 15px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            width: calc(25% - 15px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        .industry-item:hover { background: var(--primary-color); color: #fff; transform: translateY(-3px); }
+        .industry-item i { color: var(--accent-color); }
+        .industry-item:hover i { color: #fff; }
+
+        /* Why Choose Us Grid */
+        .benefit-item {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+            border-left: 4px solid var(--primary-color);
+            transition: 0.3s;
+        }
+        .benefit-item:hover { transform: translateY(-5px); border-left-color: var(--accent-color); }
+        .benefit-num { font-family: 'Teko', sans-serif; font-size: 2.5rem; color: #ddd; line-height: 1; margin-bottom: 15px; }
+        .benefit-text { font-size: 0.95rem; color: #555; line-height: 1.6; }
+
+        /* Client Marquee */
+        .marquee-wrapper { overflow: hidden; position: relative; padding: 20px 0; background: #fff; white-space: nowrap; }
+        .logo-wrap { display: inline-flex; align-items: center; gap: 80px; animation: marquee 25s linear infinite; }
+        .logo-wrap .logo img { height: 60px; width: auto; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: 0.3s; }
+        .logo-wrap .logo img:hover { filter: grayscale(0%); opacity: 1; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+        /* Contact Box */
+        .contact-box-area {
+            background: var(--dark-bg);
+            color: white;
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+        .contact-box-area::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        /* Utils */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .scroll-top { position: fixed; bottom: 30px; right: 30px; background: var(--primary-color); color: #fff; width: 40px; height: 40px; border-radius: 5px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; z-index: 99; }
+        @media (max-width: 768px) { .banner-title { font-size: 3.5rem; } .industry-item { width: calc(50% - 15px); } }
+        @media (max-width: 576px) { .industry-item { width: 100%; } }
+    </style>
+</head>
+
+<body>
+
+    <header class="fti-header-2-area">
+        <div class="fti-header-2-wrap">
+            <div class="fti-header-2-row">
+                <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
+                    <img src="./ASSETS/IMAGES/logo.png" alt="VMTL - Virmodello Technologies" />
+                </a>
+                <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
+                    </svg>
+                </button>
+                <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="achievements.html" class="dropdown-item">Achievements</a>
+                                <a href="associations.html" class="dropdown-item">Associations</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
+                                <a href="manufacturing.html" class="dropdown-item">Manufacturing</a>
+                                <a href="cad-services.html" class="dropdown-item">CAD Services</a>
+                                <a href="mechanical-engineering.html" class="dropdown-item">Mechanical Engineering</a>
+                                <a href="electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
+                                <a href="engineering-simulation.html" class="dropdown-item">Engineering Simulation</a>
+                                <a href="cad-conversion-migration.html" class="dropdown-item active">CAD Conversion & Migration</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="projects.html" class="dropdown-item">Projects</a>
+                                <a href="video-gallery.html" class="dropdown-item">Video Gallery</a>
+                            </div>
+                        </li>
+                        <li><a href="https://virmodello.blogspot.com/" target="_blank">BLOG</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
+                    </ul>
+                </nav>
+                <div class="btn-wrap">
+                    <a class="fti-header-2-btn" href="contact.html" aria-label="Get in touch">
+                        <span class="btn-text">Get in touch</span>
+                        <span class="btn-icon">↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <main>
+        <section class="page-banner">
+            <div class="container">
+                <h1 class="banner-title">CAD Conversion & Migration Services</h1>
+                <p class="lead" style="max-width: 800px; margin: 0 auto 30px; opacity: 0.9;">Efficiently convert legacy documents, PDFs, and paper drawings into precise, editable 2D and 3D CAD formats using advanced technology.</p>
+                <div class="breadcrumb-nav">
+                    <ul class="breadcrumb-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li>Services</li>
+                        <li class="active">CAD Conversion</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container text-center">
+                <div class="section-title-wrap fade-in">
+                    <span class="section-subtitle">Modernize Your Data</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Seamless Conversion Solutions</h2>
+                </div>
+                <div class="row justify-content-center fade-in">
+                    <div class="col-lg-10">
+                        <p style="font-size: 1.1rem; color: #555; line-height: 1.8;">
+                            The task of transitioning files to CAD can be intricate and time-intensive. By choosing to collaborate with VMTL, you gain access to a pool of proficient professionals who ensure flawless compatibility and uphold data integrity throughout the conversion process.
+                            We provide bespoke AutoCAD to CAD conversion services that address a wide array of needs, from modernizing intellectual properties to making them conveniently accessible.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section bg-light">
+            <div class="container">
+                <div class="section-title-wrap fade-in">
+                    <span class="section-subtitle">Our Capabilities</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Services We Offer</h2>
+                </div>
+                <div class="row g-4">
+                    
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-file-pdf fa-3x"></i></div>
+                            <h3 class="card-title">PDF to CAD Conversion</h3>
+                            <p class="card-text">We seamlessly convert your PDF files into editable CAD formats, ensuring precision in design modifications and optimizing your design workflow.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-cube fa-3x"></i></div>
+                            <h3 class="card-title">3D CAD Conversion</h3>
+                            <p class="card-text">Effortlessly translate existing 3D models into different CAD formats to enhance collaboration and interoperability across platforms.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-scanner fa-3x"></i></div>
+                            <h3 class="card-title">Scan to CAD Conversion</h3>
+                            <p class="card-text">Accurately capture detailed design information from scanned images and convert them into high-quality, editable CAD files.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-image fa-3x"></i></div>
+                            <h3 class="card-title">Image to CAD Conversion</h3>
+                            <p class="card-text">Converting images to CAD can be complex. We transform your sketches, photographs, or scanned images into precise CAD drawings for better clarity, modification, and storage.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-cloud-upload-alt fa-3x"></i></div>
+                            <h3 class="card-title">Point Cloud to CAD</h3>
+                            <p class="card-text">Our point cloud to CAD conversion services utilize high-tech software to transform your point cloud data into detailed CAD models. Essential for realizing the potential of your laser scanning projects.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-layer-group fa-3x"></i></div>
+                            <h3 class="card-title">2D to 3D CAD Conversion</h3>
+                            <p class="card-text">Leverage our 2D to 3D conversion to facilitate complex engineering analyses and enable easier integration of your designs with modern manufacturing processes.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-vector-square fa-3x"></i></div>
+                            <h3 class="card-title">CAD Vectorization</h3>
+                            <p class="card-text">Transform raster images into scalable, high-quality vector formats, ensuring the output retains intricate details, colors, and textures.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-digital-tachograph fa-3x"></i></div>
+                            <h3 class="card-title">CAD Digitization</h3>
+                            <p class="card-text">Convert physical drawings into digital format to preserve accuracy and detail, allowing for seamless collaboration and integration.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-exchange-alt fa-3x"></i></div>
+                            <h3 class="card-title">CAD Migration Services</h3>
+                            <p class="card-text">Maintain the integrity and precision of your design data during the migration process, eliminating manual errors and enhancing usability.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+             <div class="container">
+                <div class="section-title-wrap text-center fade-in">
+                    <span class="section-subtitle">Methodology</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Process We Follow</h2>
+                </div>
+                <div class="process-arrow-container fade-in">
+                    <div class="process-item">
+                        <div class="process-icon-box"><i class="fas fa-comments"></i></div>
+                        <div class="process-title">1. Requirement Gathering</div>
+                        <p class="process-desc">Understanding your specific needs and project scope for CAD conversion.</p>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-icon-box"><i class="fas fa-database"></i></div>
+                        <div class="process-title">2. Data Collection</div>
+                        <p class="process-desc">Collecting all necessary hardcopy or digital files for conversion.</p>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-icon-box"><i class="fas fa-exchange-alt"></i></div>
+                        <div class="process-title">3. CAD Conversion</div>
+                        <p class="process-desc">Skilled professionals use advanced tools to accurately convert files adhering to standards.</p>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-icon-box"><i class="fas fa-check-double"></i></div>
+                        <div class="process-title">4. Quality Assurance</div>
+                        <p class="process-desc">Multiple layers of quality checks to ensure error-free output.</p>
+                    </div>
+                     <div class="process-item">
+                        <div class="process-icon-box"><i class="fas fa-paper-plane"></i></div>
+                        <div class="process-title">5. Delivery</div>
+                        <p class="process-desc">Final delivery within agreed timeframe with ongoing support.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section bg-light">
+            <div class="container">
+                <div class="section-title-wrap text-center fade-in">
+                    <h2 class="section-title" style="color: #1F1F1F;">Industries We Serve</h2>
+                </div>
+                <ul class="industry-list fade-in">
+                    <li class="industry-item"><i class="fas fa-plane"></i> Aerospace</li>
+                    <li class="industry-item"><i class="fas fa-car"></i> Automotive</li>
+                    <li class="industry-item"><i class="fas fa-solar-panel"></i> Energy & Plant</li>
+                    <li class="industry-item"><i class="fas fa-industry"></i> Manufacturing</li>
+                    <li class="industry-item"><i class="fas fa-wine-glass"></i> Glass</li>
+                    <li class="industry-item"><i class="fas fa-bolt"></i> Electrical</li>
+                    <li class="industry-item"><i class="fas fa-tree"></i> Millwork</li>
+                    <li class="industry-item"><i class="fas fa-hospital"></i> Hospitals</li>
+                    <li class="industry-item"><i class="fas fa-building"></i> Commercial</li>
+                    <li class="industry-item"><i class="fas fa-store"></i> Retail</li>
+                    <li class="industry-item"><i class="fas fa-cogs"></i> Industrial</li>
+                    <li class="industry-item"><i class="fas fa-home"></i> Residential</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="section-title-wrap text-center fade-in">
+                    <h2 class="section-title" style="color: #1F1F1F;">Catering to Your Needs</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4 fade-in">
+                        <div class="service-card">
+                            <h4 class="card-title">Architects</h4>
+                            <p class="card-text">Improve blueprint accuracy and detail, enhancing your design process.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-in">
+                        <div class="service-card">
+                            <h4 class="card-title">Engineers</h4>
+                            <p class="card-text">Streamline analytical and structural assessments with precise CAD conversions.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-in">
+                        <div class="service-card">
+                            <h4 class="card-title">Manufacturers</h4>
+                            <p class="card-text">Optimize product development ensuring precise specifications and quality assurance.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-in">
+                        <div class="service-card">
+                            <h4 class="card-title">Contractors</h4>
+                            <p class="card-text">Simplify project planning and execution, enhancing site efficiency and reducing errors.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-in">
+                        <div class="service-card">
+                            <h4 class="card-title">Construction Companies</h4>
+                            <p class="card-text">Advance construction planning with accurate estimations and timeline predictions.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-in">
+                        <div class="service-card">
+                            <h4 class="card-title">Designers</h4>
+                            <p class="card-text">Enhance design visualization, promoting creativity and precision in projects.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section bg-light">
+            <div class="container">
+                <div class="section-title-wrap fade-in">
+                    <span class="section-subtitle">The VMTL Advantage</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Why Are We Preferred?</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">01</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Cutting-edge Tools</h4>
+                            <p class="benefit-text">We employ sophisticated CAD conversion tools and adhere to international standards like ASME, ASTM, ISO, etc.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">02</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Worldwide Service Centers</h4>
+                            <p class="benefit-text">Strategically positioned service centers ensure prompt and timely delivery of our CAD file conversion services.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">03</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Quality Assurance</h4>
+                            <p class="benefit-text">Multi-level quality control measures guarantee error-free conversion services. We follow a systematic process.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">04</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Data Protection</h4>
+                            <p class="benefit-text">As an ISO/IEC 27001:2022 ISMS-certified organization, we ensure your files are protected and never shared.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">05</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Quick Service Delivery</h4>
+                            <p class="benefit-text">Our professional team utilizes advanced tools and methodologies swiftly to deliver accurate results.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">06</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Personalized Support</h4>
+                            <p class="benefit-text">You'll be assigned a dedicated project manager as your single point of contact for progress updates.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">07</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Flexible Scalability</h4>
+                            <p class="benefit-text">We can easily scale up resources to match your requirements when needed.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">08</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Superior Infrastructure</h4>
+                            <p class="benefit-text">Access to world-class workspaces, uninterrupted networks, and the latest tools and technologies.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="benefit-item">
+                            <div class="benefit-num">09</div>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Affordable Pricing</h4>
+                            <p class="benefit-text">We offer competent resources at competitive rates, whether for hourly needs or long-term support.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="section-title-wrap text-center fade-in">
+                    <h2 class="section-title" style="color: #1F1F1F;">Additional Services We Offer</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3 fade-in">
+                        <div class="service-card" style="border-top: 4px solid #F18F01;">
+                            <h4 class="card-title" style="font-size: 1.4rem;">CAD Modeling Services</h4>
+                            <p class="card-text">Accurate, high-quality 3D models. Save time and reduce costs while maintaining precision and detail.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 fade-in">
+                        <div class="service-card" style="border-top: 4px solid #F18F01;">
+                            <h4 class="card-title" style="font-size: 1.4rem;">CAD Drafting Services</h4>
+                            <p class="card-text">Ensure flawless, detailed drafts. Enjoy faster turnaround times and improved accuracy.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 fade-in">
+                        <div class="service-card" style="border-top: 4px solid #F18F01;">
+                            <h4 class="card-title" style="font-size: 1.4rem;">CAD Services</h4>
+                            <p class="card-text">Comprehensive AutoCAD conversion services tailored to your needs. Access skilled professionals and advanced technology.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 fade-in">
+                        <div class="service-card" style="border-top: 4px solid #F18F01;">
+                            <h4 class="card-title" style="font-size: 1.4rem;">CAD Design Services</h4>
+                            <p class="card-text">Innovative, functional designs. Get the advantage of experienced designers and state-of-the-art technology.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section bg-dark-sec">
+            <div class="container">
+                <div class="contact-box-area fade-in">
+                    <h2 style="font-family: 'Teko', sans-serif; font-size: 3.5rem; margin-bottom: 30px;">Talk to Our Experts</h2>
+                    <p style="margin-bottom: 40px; color: #ccc;">Send your enquiry to us for professional AutoCAD to CAD conversion solutions.</p>
+                    <div class="contact-details">
+                        <h3 style="color: var(--primary-color); font-family: 'Teko'; font-size: 2.5rem; margin-bottom: 15px;">VIRMODELLO TECHNOLOGIES</h3>
+                        <p>413, KTVR Green Field, Thavasi Nagar, Velandipalayam PO, Coimbatore - 641025.</p>
+                        <br>
+                        <p><strong>INDIA:</strong> +91 97890 99151</p>
+                        <p><strong>Email:</strong> <a href="mailto:contact@virmodello.com" style="color: var(--accent-color); text-decoration: none;">contact@virmodello.com</a></p>
+                    </div>
+                    <div class="mt-5">
+                        <a href="contact.html" class="fti-header-2-btn" style="display: inline-block;">
+                            <span class="btn-text">Contact Form</span>
+                            <span class="btn-icon">↗</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">VMTL<span class="dot">.</span></div>
+                    <p class="footer-description">Our long history of family ownership has financial reassurance, business continuity and stability.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="reverse-engineering.html">Reverse Engineering</a></li>
+                        <li><a href="manufacturing.html">Manufacturing</a></li>
+                        <li><a href="cad-services.html">CAD Services</a></li>
+                        <li><a href="mechanical-engineering.html">Mechanical Engineering</a></li>
+                        <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="https://virmodello.blogspot.com/">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contact-section-footer">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-info"><h4>Call Us</h4><p>+91 97890 99151</p></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉</div>
+                    <div class="contact-info"><h4>Email Us</h4><p>contact@virmodello.com</p></div>
+                </div>
+                <button class="schedule-btn">Get Quote</button>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 VMTL. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./ASSETS/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <script>
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        function scrollToTop() {
+            lenis.scrollTo(0);
+        }
+    </script>
+</body>
+</html>
