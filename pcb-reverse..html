@@ -4,119 +4,195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Machine Design and Development Services - VMTL</title>
+  <title>PCB Reverse Engineering Services - VMTL</title>
 
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
+  <!-- Reuse existing CSS structure -->
   <link rel="stylesheet" href="./ASSETS/CSS/cfd_service.css">
   <link rel="stylesheet" href="./ASSETS/CSS/scroll.css">
 
+  <!-- Custom CSS for PCB Reverse Engineering Page -->
   <style>
-    /* Styles for the new image-based service cards */
-    .service-card-row {
+    /* --- Hero Section Specifics --- */
+    .header-section {
+        background: linear-gradient(rgba(0,0,0,-1.6), rgba(0,0,0,-1.6));
+        /* We will let the image tag in HTML handle the background image via inline style or img tag, 
+           but ensuring text is readable */
+    }
+
+    /* --- Service Cards with Horizontal Layout & Hover Reveal --- */
+    .pcb-service-card {
         background: #fff;
-        border-radius: 10px;
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        transition: all 0.4s ease;
         height: 100%;
         display: flex;
         flex-direction: column;
+        border: 1px solid #f0f0f0;
     }
 
-    .service-card-row:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    .pcb-service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        border-color: #3b9cfa;
     }
 
-    .service-card-img {
-        width: 100%;
-        height: 200px; /* Fixed height for consistency */
+    .pcb-img-thumb {
+        height: 200px;
         overflow: hidden;
+        position: relative;
     }
 
-    .service-card-img img {
+    .pcb-img-thumb img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.5s ease;
     }
 
-    .service-card-row:hover .service-card-img img {
-        transform: scale(1.05);
+    .pcb-service-card:hover .pcb-img-thumb img {
+        transform: scale(1.1);
     }
 
-    .service-card-body {
+    .pcb-content {
         padding: 25px;
         flex-grow: 1;
         display: flex;
         flex-direction: column;
     }
 
-    .service-card-body h4 {
-        font-size: 20px;
+    .pcb-content h4 {
+        font-size: 1.25rem;
         font-weight: 700;
         margin-bottom: 15px;
         color: #333;
+        position: relative;
+        padding-bottom: 15px;
     }
 
-    .service-card-body p {
-        font-size: 15px;
-        line-height: 1.7;
+    .pcb-content h4::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: #3b9cfa;
+        transition: width 0.3s ease;
+    }
+
+    .pcb-service-card:hover .pcb-content h4::after {
+        width: 100px;
+    }
+
+    .pcb-content p {
         color: #666;
+        font-size: 0.95rem;
+        line-height: 1.6;
         margin-bottom: 0;
     }
 
-    /* Responsive adjustment for larger screens to make them side-by-side like the image */
-    @media (min-width: 992px) {
-        .service-card-row {
-            flex-direction: row;
-            align-items: stretch;
-        }
-        .service-card-img {
-            width: 40%;
-            height: auto; /* Let height fill the container */
-            min-height: 250px;
-        }
-        .service-card-body {
-            width: 60%;
-            padding: 30px;
-        }
+    /* --- "Why Outsource" Section (Circular Steps) --- */
+    .outsource-section {
+        background-color: #f8f9fa;
+        padding: 80px 0;
     }
 
-    /* Styles for the styled "Other Services" links */
-    .other-service-link-styled {
-        display: block;
-        padding: 20px 25px;
+    .reason-card {
         background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        border-left: 5px solid #ff5722; /* Orange accent color */
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        height: 100%;
         transition: all 0.3s ease;
-        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .reason-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: #3b9cfa;
+        transition: height 0.4s ease;
+        z-index: -1;
+    }
+
+    .reason-card:hover {
+        color: #fff;
+        transform: translateY(-5px);
+    }
+
+    .reason-card:hover::before {
         height: 100%;
     }
 
-    .other-service-link-styled:hover {
-        background: #fff;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        transform: translateX(5px);
+    .reason-num-circle {
+        width: 70px;
+        height: 70px;
+        border: 2px solid #333;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 300;
+        margin: 0 auto 25px;
+        color: #333;
+        transition: all 0.4s ease;
+        font-family: 'Poppins', sans-serif;
+        font-style: italic;
     }
 
-    .other-service-link-styled h5 {
-        margin: 0;
-        font-size: 18px;
-        font-weight: 600;
-        color: #333;
+    .reason-card:hover .reason-num-circle {
+        border-color: #fff;
+        color: #fff;
+        transform: rotate(360deg);
+        background: rgba(255,255,255,0.2);
+    }
+
+    .reason-card h5 {
+        font-weight: 700;
+        margin-bottom: 15px;
+        font-size: 1.15rem;
+    }
+
+    .reason-card p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+    
+    .reason-card:hover p, .reason-card:hover h5 {
+        color: #fff;
+    }
+
+    /* --- Responsive Tweaks --- */
+    @media (max-width: 768px) {
+        .pcb-img-thumb {
+            height: 180px;
+        }
     }
   </style>
 </head>
 
 <body>
 
-  <header class="fti-header-2-area">
+  <!-- ==================== HEADER ==================== -->
+    <!-- Navigation -->
+    <header class="fti-header-2-area">
         <div class="fti-header-2-wrap">
             <div class="fti-header-2-row">
                 <!-- Logo -->
@@ -225,123 +301,117 @@
             </div>
         </div>
     </div>
+  <!-- ==================== END HEADER ==================== -->
+
+
+
+  <!-- ==================== HERO SECTION ==================== -->
   <section class="header-section">
     <div class="hero-img-container">
-      <img src="https://i.pinimg.com/736x/07/d8/51/07d851109fc781cab076d7bc2beb0519.jpg" alt="Machine Design and Development Services">
+      <!-- You can update this image with a specific PCB related banner if available -->
+      <img src="https://i.pinimg.com/736x/c2/94/68/c29468c51b4bac762741202c46bc88ae.jpg" alt="PCB Reverse Engineering Services">
     </div>
 
     <div class="header-content">
-      <h1 class="header-title">Machine Design and Development Services</h1>
+      <h1 class="header-title">PCB Reverse Engineering Services</h1>
       <div class="breadcrumb">
         <a href="index.html">Home</a>
         <span class="arrow">&#x2192;</span>
         <a href="#">Services</a>
         <span class="arrow">&#x2192;</span>
-        <span>Machine Design & Dev</span>
+        <a href="electrical-engineering.html">Electrical Engineering</a>
+        <span class="arrow">&#x2192;</span>
+        <span>PCB Reverse Engineering</span>
       </div>
     </div>
   </section>
+  <!-- ==================== END HERO SECTION ==================== -->
+
+
+  <!-- ==================== SERVICES WE OFFER SECTION ==================== -->
   <section class="services-intro-section">
     <div class="container">
       <div class="section-head">
-        <h2>Machine Design and Development Services We Offer</h2>
-        <p>Our engineering teams have more than a decade of experience in machine design and development services and are capable of analyzing prototyping needs to create a sound design. Our machine design and development accelerates the development of problem-free systems at affordable rates. Our machine design and development services include:</p>
+        <h2 style="color: #3b9cfa;">PCB Reverse Engineering Services We Offer</h2>
+        <p>VMTL is a global leader for multi-purpose PCB cloning, inspection, and measurement systems. Outsource your requirement to us. Our services include:</p>
       </div>
 
       <div class="row g-4">
         
-        <div class="col-lg-6">
-          <div class="service-card-row fade-in">
-            <div class="service-card-img">
-              <img src="https://i.pinimg.com/736x/15/72/43/1572439a1279bbf3326fafb5816feac2.jpg" alt="Digital Prototyping">
+        <!-- Service 1: Disassembling Components -->
+        <div class="col-md-6">
+          <div class="pcb-service-card fade-in">
+            <div class="pcb-img-thumb">
+               <img src="https://i.pinimg.com/736x/70/5a/98/705a9866b25d66c331ec90e0a3a5d38d.jpg" alt="Disassembling Components">
             </div>
-            <div class="service-card-body">
-              <h4>Digital Prototyping</h4>
-              <p>Where design for manufacturing and assembly involves complex, high-speed, and multiple CAM-driven mechanisms, it is near impossible and expensive to make physical models and test them each time. We integrate virtual 3D prototyping into our design methodology which enables the creation, animation, and testing of digital prototypes on screen. Digital prototypes result in sophisticated visualization modules, save time and material costs.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="service-card-row fade-in">
-            <div class="service-card-img">
-              <img src="https://i.pinimg.com/736x/95/fe/7a/95fe7a6efd8ed2054a5552dda2d78731.jpg" alt="Custom Machine Design Services">
-            </div>
-            <div class="service-card-body">
-              <h4>Custom Machine Design Services</h4>
-              <p>A one-size-fits-all machine cannot exist when applications across verticals are many. Suppose your production line needs packaging automated for specific standards and materials; we can provide custom designs to meet your need.</p>
+            <div class="pcb-content">
+              <h4>Disassembling Components</h4>
+              <p>Our experts make a detailed record of components - their location number, package, temperature, and value. They scan and save a backup of the existing PCB, after which they start disassembling the components.</p>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-6">
-          <div class="service-card-row fade-in">
-            <div class="service-card-img">
-              <img src="https://i.pinimg.com/736x/06/30/e2/0630e2e7b7bed5e968040476897d80e1.jpg" alt="Machine Design for Mills">
+        <!-- Service 2: Preparing BOM -->
+        <div class="col-md-6">
+          <div class="pcb-service-card fade-in">
+            <div class="pcb-img-thumb">
+              <img src="https://i.pinimg.com/736x/c9/8f/d7/c98fd754b643148cdd249734fce4f0dd.jpg" alt="Preparing BOM">
             </div>
-            <div class="service-card-body">
-              <h4>Machine Design for Mills</h4>
-              <p>Milling is crucial for machining high-end products and you may need machine design and development services to make a critical piece of equipment. So if you lack expertise in building a perfect milling solution, we have you covered.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="service-card-row fade-in">
-            <div class="service-card-img">
-              <img src="https://i.pinimg.com/1200x/0e/94/0f/0e940f6b4aeea77500ba02de55c6a2d3.jpg" alt="Machine Design for Lathes">
-            </div>
-            <div class="service-card-body">
-              <h4>Machine Design for Lathes</h4>
-              <p>We have specific skills in machine design and development of custom lathes. Whether you want the design focused on specific or multiple functions, we have the expertise you'll need for perfecting the design output. We also create miniature lathes if you don't prefer oversized ones.</p>
+            <div class="pcb-content">
+              <h4>Preparing BOM</h4>
+              <p>The next step in the reverse engineering mechanism is to prepare a BOM. Our experts take your sample PCB and reverse engineer it down to the last component. Then, we assemble a bill of materials for the project that includes the measured values for resistors and capacitors.</p>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-6">
-          <div class="service-card-row fade-in">
-            <div class="service-card-img">
-              <img src="https://i.pinimg.com/1200x/36/bd/c9/36bdc959896766bd460b15a9597edcfa.jpg" alt="Machine Design for Electric Discharge Machining">
+        <!-- Service 3: Shade Analysis -->
+        <div class="col-md-6">
+          <div class="pcb-service-card fade-in">
+            <div class="pcb-img-thumb">
+              <img src="https://i.pinimg.com/736x/81/7d/cc/817dcc9b0a99a9299e8fabc2651a8fbc.jpg" alt="Shade Analysis">
             </div>
-            <div class="service-card-body">
-              <h4>Machine Design for Electric Discharge Machining (EDM)</h4>
-              <p>Be it Sinker Discharge Machines (EDM) or Wire cut machines, we help you provide precision tooling at an affordable cost with our high-precision design that is suitable for applications such as mold parts and complex die where tolerances are tight.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="service-card-row fade-in">
-            <div class="service-card-img">
-              <img src="https://i.pinimg.com/1200x/8f/d6/82/8fd6823797c5d07c1c4e6103739dde8c.jpg" alt="Machine Design for Plasma cutters">
-            </div>
-            <div class="service-card-body">
-              <h4>Machine Design for Plasma cutters</h4>
-              <p>If you want plasma cutting machine design solutions that are ideal for cutting through a wide range of materials, whether handheld or in mechanized form, we provide superb plasma solutions.</p>
+            <div class="pcb-content">
+              <h4>Shade Analysis</h4>
+              <p>Take the assistance of our experts to design an optimized solar panel layout that minimizes shading issues, maximizes energy production, and ensures the overall effectiveness of your system.</p>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-6">
-          <div class="service-card-row fade-in">
-            <div class="service-card-img">
-              <img src="https://i.pinimg.com/736x/56/c8/39/56c839db889f21a4806adce05b2a222d.jpg" alt="Machine Design for Jet Cutters">
+        <!-- Service 4: Physical PCB Duplication -->
+        <div class="col-md-6">
+          <div class="pcb-service-card fade-in">
+            <div class="pcb-img-thumb">
+              <img src="https://i.pinimg.com/736x/31/09/3f/31093fb909dbc4c726487c1cd23e8822.jpg" alt="Physical Circuit Board Duplication">
             </div>
-            <div class="service-card-body">
-              <h4>Machine Design for Jet Cutters</h4>
-              <p>We have expertise in designing precision water jets that have a wide range of applications in the marine and commercial business. Being at a pole position for machine design and development services, we accept your specifications and design water jets the way you need for specific applications.</p>
+            <div class="pcb-content">
+              <h4>Physical Circuit Board (PCB) Duplication</h4>
+              <p>Not just the BOM, our experts reversely analyze the circuit boards and look into other engineering and production documents like the original PCB file, schematic file, PCB Gerber, and PCB silkscreen.</p>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-6">
-          <div class="service-card-row fade-in">
-            <div class="service-card-img">
-              <img src="https://i.pinimg.com/736x/6f/6e/18/6f6e18c04dac2a991538823a45287c85.jpg" alt="Other CNC Machine Design">
+        <!-- Service 5: Using RE Software -->
+        <div class="col-md-6">
+          <div class="pcb-service-card fade-in">
+            <div class="pcb-img-thumb">
+              <img src="https://i.pinimg.com/736x/26/99/79/26997984e76c16d4cbecb81836e10d01.jpg" alt="Using Reverse Engineering Software">
             </div>
-            <div class="service-card-body">
-              <h4>Other CNC Machine Design</h4>
-              <p>There is no bar on how you can use CNC machine designs. We offer machine design and development services to fulfill your unique needs no matter where you intend to use them. We offer design solutions for canner cycle, sheet metal works, and plasma cutters, 3D printing, glass cutting, oxy-fuel, and so on.</p>
+            <div class="pcb-content">
+              <h4>Using A Reverse Engineering Software</h4>
+              <p>Further, we prep and scan the surface of the PCB board and put the images through copying software. We adopt the perfect inspection method to produce high-quality PCB drawings. We leverage PCB drawing software, image processing software, and the physical connection of the circuit to make an accurate judgment.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 6: PCB Testing Services -->
+        <div class="col-md-6">
+          <div class="pcb-service-card fade-in">
+            <div class="pcb-img-thumb">
+              <img src="https://i.pinimg.com/1200x/03/82/e1/0382e11ae5373c80417b33336d82fcee.jpg" alt="PCB Testing Services">
+            </div>
+            <div class="pcb-content">
+              <h4>PCB Testing Services</h4>
+              <p>We test the PCB and scrutinize the dielectric of the substrate constant to ensure that the newly engineered PCB indicators are consistent with the original board.</p>
             </div>
           </div>
         </div>
@@ -349,35 +419,80 @@
       </div>
     </div>
   </section>
-  <section class="other-services-section">
+  <!-- ==================== END SERVICES WE OFFER SECTION ==================== -->
+
+
+  <!-- ==================== WHY OUTSOURCE SECTION ==================== -->
+  <section class="outsource-section">
     <div class="container">
       <div class="section-head">
-        <h2 style="color: #d75a63;">Other Services You Can Benefit From</h2>
+        <h2 style="color: #3b9cfa;">Why Outsource PCB Reverse Engineering Solutions to VMTL?</h2>
+        <p>VMTL is a premier PCB reverse engineering service providing company. Here are a few great reasons to partner with us:</p>
       </div>
+
       <div class="row g-4">
-        <div class="col-md-6">
-          <a href="tower-design.html" class="other-service-link-styled fade-in">
-            <h5>Tower Design Services</h5>
-          </a>
+        
+        <!-- Reason 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card fade-in">
+            <div class="reason-num-circle">1</div>
+            <h5>Quality Management</h5>
+            <p>We are a reliable, ISO/IEC 27001:2022-certified organization with an impeccable reputation in the industry. We are obsessed with quality, and we run multi-level checks to deliver error-free assignments.</p>
+          </div>
         </div>
-        <div class="col-md-6">
-          <a href="3d-modeling.html" class="other-service-link-styled fade-in">
-            <h5>3D Modeling & Drafting</h5>
-          </a>
+
+        <!-- Reason 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card fade-in">
+            <div class="reason-num-circle">2</div>
+            <h5>Top-notch Resources & Technologies</h5>
+            <p>We leverage the best and the latest PCB software to cater to the varying needs of our global clientele. Our engineers comply with international engineering standards.</p>
+          </div>
         </div>
-        <div class="col-md-6">
-          <a href="cad-conversion.html" class="other-service-link-styled fade-in">
-            <h5>CAD Conversion & Migration</h5>
-          </a>
+
+        <!-- Reason 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card fade-in">
+            <div class="reason-num-circle">3</div>
+            <h5>High-quality Services</h5>
+            <p>We guarantee that you will always receive the most cutting-edge and relevant services when you outsource to us.</p>
+          </div>
         </div>
-        <div class="col-md-6">
-          <a href="reverse-engineering.html" class="other-service-link-styled fade-in">
-            <h5>Reverse Engineering Services</h5>
-          </a>
+
+        <!-- Reason 4 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card fade-in">
+            <div class="reason-num-circle">4</div>
+            <h5>Privacy & Data Security</h5>
+            <p>You take your data privacy seriously. We sign off on Non-Disclosure Agreements and leverage carefully monitored storage systems to prevent data breaches and unauthorized access.</p>
+          </div>
         </div>
+
+        <!-- Reason 5 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card fade-in">
+            <div class="reason-num-circle">5</div>
+            <h5>Quick Turnaround Time</h5>
+            <p>We work around the clock to ensure the fastest TATs. We assign you dedicated project managers who are available 24/7. They keep you updated about your project status with real-time reports.</p>
+          </div>
+        </div>
+        
+         <!-- Reason 6 (Placeholder if needed to balance grid, or leave empty if exactly 5 items) -->
+        <!-- <div class="col-md-6 col-lg-4">
+          <div class="reason-card fade-in">
+            <div class="reason-num-circle">6</div>
+            <h5>Cost Effective</h5>
+            <p>Our solutions are designed to be budget-friendly without compromising on the quality or precision of the final output.</p>
+          </div>
+        </div> -->
+
       </div>
     </div>
   </section>
+  <!-- ==================== END WHY OUTSOURCE SECTION ==================== -->
+
+
+  <!-- ==================== CONTACT SECTION ==================== -->
   <section class="contact-expert-section">
     <div class="container">
       <div class="section-head">
@@ -433,10 +548,14 @@
             <div class="form-group">
               <label for="service">Select Service Type *</label>
               <select id="service" name="service" required>
-                <option value="Machine Design" selected>Machine Design & Development</option>
+                <!-- Set Electrical as default due to relation -->
+                <option value="Electrical" selected>Electrical Engineering</option>
+                <option value="PCB-RE">PCB Reverse Engineering</option>
+                <option value="FEA">Finite Element Analysis</option>
+                <option value="Reverse Engineering">Reverse Engineering</option>
+                <option value="Sheet Metal">Sheet Metal Design</option>
+                <option value="Machine Design">Machine Design & Development</option>
                 <option value="CFD">Computational Fluid Dynamics</option>
-                <option value="Development">Development</option>
-                <option value="Industry">Industry</option>
                 <option value="Mechanical">Mechanical</option>
               </select>
             </div>
@@ -453,86 +572,95 @@
       </div>
     </div>
   </section>
+  <!-- ==================== END CONTACT SECTION ==================== -->
+
+
+  <!-- ==================== FOOTER ==================== -->
   <footer class="custom-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">VMTL<span class="dot">.</span></div>
-                    <p class="footer-description">
-                        Our long history of family ownership has financial reassurance, business continuity and
-                        stability. It has also created firm foundations from which we continue to grow.
-                    </p>
-                </div>
-
-                <div class="footer-column">
-                    <h3>Product</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">How It Works?</a></li>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Terms Of Services</a></li>
-                        <li><a href="#">Pricing</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="reverse-engineering.html">Reverse Engineering</a></li>
-                        <li><a href="manufacturing.html">Manufacturing</a></li>
-                        <li><a href="cad-services.html">CAD Services</a></li>
-                        <li><a href="mechanical-engineering.html">Mechanical Engineering</a></li>
-                        <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h3>Our Link</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="clients.html">Clients</a></li>
-                        <li><a href="contact.html">Contacts</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="contact-section-footer">
-                <div class="contact-item">
-                    <div class="contact-icon">📞</div>
-                    <div class="contact-info">
-                        <h4>Call Us</h4>
-                        <p>+91 97890 99151</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">✉</div>
-                    <div class="contact-info">
-                        <h4>Email Us:</h4>
-                        <p>contact@virmodello.com</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">🕐</div>
-                    <div class="contact-info">
-                        <h4>Opening Hours:</h4>
-                        <p>Mon-Fri: 8am - 7pm</p>
-                    </div>
-                </div>
-
-                <button class="schedule-btn">Schedule An Appointment</button>
-            </div>
-
-            <div class="footer-bottom">
-                <p class="copyright">© Copyright 2025 All rights reserved. Design by Neoera Infotech</p>
-            </div>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">VMTL<span class="dot">.</span></div>
+          <p class="footer-description">
+            Our long history of family ownership has financial reassurance, business continuity and
+            stability. It has also created firm foundations from which we continue to grow.
+          </p>
         </div>
-    </footer>
+
+        <div class="footer-column">
+          <h3>Product</h3>
+          <ul class="footer-links">
+            <li><a href="#">How It Works?</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Terms Of Services</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="reverse-engineering.html">Reverse Engineering</a></li>
+            <li><a href="manufacturing.html">Manufacturing</a></li>
+            <li><a href="cad-services.html">CAD Services</a></li>
+            <li><a href="mechanical-engineering.html">Mechanical Engineering</a></li>
+            <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+            <li><a href="fea-services.html">Finite Element Analysis</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Our Link</h3>
+          <ul class="footer-links">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="clients.html">Clients</a></li>
+            <li><a href="contact.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="contact-section-footer">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-info">
+            <h4>Call Us</h4>
+            <p>+91 97890 99151</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div class="contact-info">
+            <h4>Email Us:</h4>
+            <p>contact@virmodello.com</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-info">
+            <h4>Opening Hours:</h4>
+            <p>Mon-Fri: 8am - 7pm</p>
+          </div>
+        </div>
+
+        <button class="schedule-btn">Schedule An Appointment</button>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">© Copyright 2025 All rights reserved. Design by Neoera Infotech</p>
+      </div>
+    </div>
+  </footer>
+  <!-- ==================== END FOOTER ==================== -->
+
+  <!-- Scroll To Top Button -->
   <div class="scroll-top" onclick="scrollToTop()">
     ↑
   </div>
 
+  <!-- JavaScript Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./ASSETS/JS/lenis.min.js"></script>
   <script src="./ASSETS/JS/scroll.js"></script>
@@ -644,7 +772,7 @@
         } else {
           header.style.background = 'rgba(31, 31, 31, 0.9)'; // Slightly transparent default
           if(window.innerWidth > 992) {
-              header.style.background = 'var(--dark-bg, #1f1f1f)'; // Fallback color if var not found
+              header.style.background = 'var(--dark-bg, #1f1f1f)'; // Fallback color
           }
           header.style.boxShadow = 'none';
         }

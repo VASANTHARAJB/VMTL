@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Projects - VMTL | Virmodello Technologies</title>
+    <meta name="description" content="Explore VMTL's engineering track record: From Blower Plant Vibration Analysis to Aerospace Reverse Engineering and Product Design.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./ASSETS/CSS/base.css">
+
+    <style>
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+        .lenis.lenis-scrolling iframe { pointer-events: none; }
+    </style>
+
+    <style>
+        /* --- Innovative Project Styles --- */
+        :root {
+            --primary-color: #2E86AB;
+            --accent-color: #F18F01;
+            --dark-bg: #111;
+            --glass-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        body { background-color: #f4f4f4; overflow-x: hidden; }
+
+        /* Minimal Hero */
+        .project-hero {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #1a1a1a;
+            color: #fff;
+            position: relative;
+            margin-top: -90px;
+            overflow: hidden;
+        }
+
+        .project-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 150px;
+            background: linear-gradient(to top, #f4f4f4, transparent);
+        }
+
+        .hero-text-box {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeUp 1s ease;
+        }
+
+        .hero-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 7vw;
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Project Stream Layout */
+        .project-stream {
+            padding: 50px 0 100px;
+        }
+
+        .project-row {
+            display: flex;
+            align-items: center;
+            min-height: 80vh;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .project-image-wrap {
+            flex: 1;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .project-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+        }
+
+        .project-row:hover .project-image-wrap img {
+            transform: scale(1.05);
+        }
+
+        /* Floating Content Card */
+        .project-content {
+            width: 500px;
+            background: var(--glass-bg);
+            padding: 60px;
+            position: absolute;
+            z-index: 10;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--primary-color);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        /* Layout Variations */
+        .project-row.right-layout { justify-content: flex-end; }
+        .project-row.right-layout .project-content { left: 10%; }
+        
+        .project-row.left-layout { justify-content: flex-start; }
+        .project-row.left-layout .project-content { right: 10%; border-left: none; border-right: 5px solid var(--accent-color); }
+
+        /* Active State (Scroll Reveal) */
+        .project-row.active .project-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .proj-cat {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .proj-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 3.2rem;
+            line-height: 1;
+            color: #111;
+            margin-bottom: 20px;
+        }
+
+        .proj-desc {
+            font-size: 1.05rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        /* Training Stats Section */
+        .training-section {
+            background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1920&q=80') fixed no-repeat center;
+            background-size: cover;
+            padding: 150px 0;
+            position: relative;
+            color: #fff;
+            text-align: center;
+        }
+        .training-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(46, 134, 171, 0.9);
+        }
+        .training-container { position: relative; z-index: 2; }
+        
+        .big-stat {
+            font-family: 'Teko';
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+        .stat-label { font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 991px) {
+            .project-row { flex-direction: column; height: auto; min-height: auto; margin-bottom: 80px; }
+            .project-image-wrap { width: 100%; height: 400px; }
+            .project-content { position: relative; width: 90%; margin: -50px auto 0; left: auto !important; right: auto !important; bottom: auto; }
+            .hero-title { font-size: 15vw; }
+        }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+
+<body>
+
+    <header class="fti-header-2-area">
+        <div class="fti-header-2-wrap">
+            <div class="fti-header-2-row">
+                <!-- Logo -->
+                <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
+                    <img src="./ASSETS/IMAGES/logo.png" alt="VMTL - Virmodello Technologies" />
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
+                    </svg>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
+                    <ul>
+                        <li><a href="./index.html">HOME</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-divider"></div>
+                                <a href="./achievements.html" class="dropdown-item">Achievements</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./associations.html" class="dropdown-item">Associations</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="./reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./manufacturing.html" class="dropdown-item">Manufacturing</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./cad-services.html" class="dropdown-item">CAD Services</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./mechi-engineering-services.html" class="dropdown-item">Mechanical Engineering</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="./projects.html" class="dropdown-item">Projects</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./video-gallery.html" class="dropdown-item">Video Gallery</a>
+                            </div>
+                        </li>
+                        <li><a href="./blog.html" target="_blank">BLOG</a></li>
+                        <li><a href="./contact.html">CONTACT</a></li>
+                    </ul>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="btn-wrap">
+                    <a class="fti-header-2-btn" href="./contact.html" aria-label="Get in touch">
+                        <span class="btn-text">Get in touch</span>
+                        <span class="btn-icon">↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <main>
+        <section class="project-hero">
+            <div class="hero-text-box">
+                <h1 class="hero-title">Innovative<br>Solutions</h1>
+                <p style="font-size: 1.2rem; color: #ccc; letter-spacing: 1px;">A TRACK RECORD OF DELIVERING RELIABLE ENGINEERING</p>
+            </div>
+        </section>
+
+        <div class="project-stream">
+            <div class="container">
+
+                <div class="project-row right-layout reveal-on-scroll">
+                    <div class="project-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&w=1200&q=80" alt="Blower Plant Vibration Analysis">
+                    </div>
+                    <div class="project-content">
+                        <span class="proj-cat" style="color: var(--primary-color);">ISO Vibration Analysis</span>
+                        <h2 class="proj-title">Blower Plant Vibration</h2>
+                        <p class="proj-desc">
+                            Study of external and internal vibrations for a plant with multiple blowers. We performed Natural frequency analysis (Modal) and Dynamic response analysis (Harmonic) using ANSYS to identify critical locations and suggest ISO-standard corrections.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="project-row left-layout reveal-on-scroll">
+                    <div class="project-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&q=80" alt="Aerospace Part Scanning">
+                    </div>
+                    <div class="project-content">
+                        <span class="proj-cat" style="color: var(--accent-color);">Reverse Engineering</span>
+                        <h2 class="proj-title">Aerospace Components</h2>
+                        <p class="proj-desc">
+                            Recreating obsolete aircraft spare parts. Using physical scanning, we converted 2D data to high-precision 3D CAD models, enabling the manufacturing of improved spare parts with a reduced lead time of one month.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="project-row right-layout reveal-on-scroll">
+                    <div class="project-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=80" alt="Tactical Backpack Design">
+                    </div>
+                    <div class="project-content">
+                        <span class="proj-cat" style="color: var(--primary-color);">Product Design</span>
+                        <h2 class="proj-title">High-Altitude Backpack</h2>
+                        <p class="proj-desc">
+                            Designed a customized heat-resistant backpack for high-altitude use within a rapid 2-week lead time using SolidWorks. The design met all requirements and secured the client's contract for production.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="project-row left-layout reveal-on-scroll">
+                    <div class="project-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=1200&q=80" alt="Centrifugal Pump CFD Simulation" class="portfolio-img">
+                    </div>
+                    <div class="project-content">
+                        <span class="proj-cat" style="color: var(--accent-color);">Design Optimization</span>
+                        <h2 class="proj-title">Centrifugal Pump Design</h2>
+                        <p class="proj-desc">
+                            Redesigned an Indian Railways pump for higher efficiency. Through 15 CFD simulation iterations on impeller vanes and housing, we achieved 125% output without changing motor power consumption.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="project-row right-layout reveal-on-scroll">
+                    <div class="project-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=80" alt="3D Plant Layout" class="portfolio-img">
+                    </div>
+                    <div class="project-content">
+                        <span class="proj-cat" style="color: var(--primary-color);">Digital Factory</span>
+                        <h2 class="proj-title">Plant Level CAD Design</h2>
+                        <p class="proj-desc">
+                            Converted an existing large manufacturing plant into a 3D model and digital asset. This 3D visualization helped the client improve plant processes, creating significant cost savings and enabling 3D animation.
+                        </p>
+                    </div>
+                </div>
+
+                 <div class="project-row left-layout reveal-on-scroll">
+                    <div class="project-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1629904869392-ae2a682d4d01?auto=format&fit=crop&w=1200&q=80" alt="Thermoforming Simulation">
+                    </div>
+                    <div class="project-content">
+                        <span class="proj-cat" style="color: var(--accent-color);">FEA & CFD Analysis</span>
+                        <h2 class="proj-title">Thermoforming Simulation</h2>
+                        <p class="proj-desc">
+                            Performed advanced PolyFlow analysis using ANSYS to improve plastic sheet thickness in thermoforming. This helped the manufacturer get the design right the first time, leading to repeat business.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <section class="training-section">
+            <div class="training-overlay"></div>
+            <div class="container training-container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 mb-5 fade-in">
+                        <span class="d-block text-warning fw-bold mb-2">EDUCATIONAL EXCELLENCE</span>
+                        <h2 style="font-family: 'Teko'; font-size: 4rem; text-transform: uppercase;">Training & Placement</h2>
+                        <p class="lead" style="opacity:0.9">
+                            We offer comprehensive engineering training including CAD, FEA, CFD, and Product Design at our partner office in Coimbatore. Our placement program has received accolades.
+                        </p>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-4 fade-in" style="transition-delay: 0.1s;">
+                        <div class="big-stat">250+</div>
+                        <div class="stat-label">Engineers Trained</div>
+                    </div>
+                    <div class="col-md-4 fade-in" style="transition-delay: 0.2s;">
+                        <div class="big-stat">500+</div>
+                        <div class="stat-label">Students Mentored</div>
+                    </div>
+                    <div class="col-md-4 fade-in" style="transition-delay: 0.3s;">
+                        <div class="big-stat">10+</div>
+                        <div class="stat-label">Corporate Trainings</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 bg-white text-center">
+            <div class="container">
+                <h2 style="font-family: 'Teko'; font-size: 3.5rem; color: #1F1F1F;">Have a similar requirement?</h2>
+                <p class="mb-4 text-muted">Contact us now to discuss your engineering challenges.</p>
+                <a href="contact.html" class="fti-header-2-btn" style="padding: 15px 40px;">Start a Project</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">VMTL<span class="dot">.</span></div>
+                    <p class="footer-description">
+                        Our long history of family ownership has financial reassurance, business continuity and
+                        stability. It has also created firm foundations from which we continue to grow.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">How It Works?</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Terms Of Services</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="reverse-engineering.html">Reverse Engineering</a></li>
+                        <li><a href="manufacturing.html">Manufacturing</a></li>
+                        <li><a href="cad-services.html">CAD Services</a></li>
+                        <li><a href="mechanical-engineering.html">Mechanical Engineering</a></li>
+                        <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Our Link</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="clients.html">Clients</a></li>
+                        <li><a href="contact.html">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contact-section-footer">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-info">
+                        <h4>Call Us</h4>
+                        <p>+91 97890 99151</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">✉</div>
+                    <div class="contact-info">
+                        <h4>Email Us:</h4>
+                        <p>contact@virmodello.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <div class="contact-info">
+                        <h4>Opening Hours:</h4>
+                        <p>Mon-Fri: 8am - 7pm</p>
+                    </div>
+                </div>
+
+                <button class="schedule-btn">Schedule An Appointment</button>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© Copyright 2025 All rights reserved. Design by Neoera Infotech</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./ASSETS/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <script>
+        const lenis = new Lenis({ duration: 1.2, smooth: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        // Scroll Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.reveal-on-scroll, .fade-in').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
