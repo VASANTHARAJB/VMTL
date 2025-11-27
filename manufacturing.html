@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturing Services - VMTL | Virmodello Technologies</title>
+    <meta name="description" content="VMTL Manufacturing Services: Fabrication, Machining, Assembly, Jigs, Fixtures, and Tool & Die capabilities.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="./ASSETS/css/base.css">
+    <link rel="stylesheet" href="./ASSETS/CSS/scroll.css">
+
+    <style>
+        /* --- Internal Page Styles --- */
+        :root {
+            --primary-cyan: #00C9C9; /* Cyan color from your screenshots */
+            --text-dark: #333;
+            --text-grey: #555;
+            --bg-light: #f9f9f9;
+        }
+
+        /* Banner */
+        .page-banner {
+            /* Industrial Dark Background */
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 200px 0 100px 0;
+            text-align: center;
+            color: #fff;
+            margin-top: -90px;
+        }
+
+        .banner-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin-bottom: 10px;
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .breadcrumb-custom {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .breadcrumb-custom span {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* --- Content Sections --- */
+        .manufacturing-section {
+            padding: 80px 0;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        /* Custom Square Bullet List */
+        .list-square-cyan {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .list-square-cyan li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: var(--text-grey);
+            line-height: 1.6;
+        }
+        .list-square-cyan li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px; /* Align with text */
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary-cyan);
+            border-radius: 1px;
+        }
+
+        /* Image Styles */
+        .manu-img-box {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .manu-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .manu-img-box:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+   
+  <header class="fti-header-2-area">
+        <div class="fti-header-2-wrap">
+            <div class="fti-header-2-row">
+                <!-- Logo -->
+                <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
+                    <img src="./ASSETS/IMAGES/logo.png" alt="VMTL - Virmodello Technologies" />
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
+                    </svg>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
+                    <ul>
+                        <li><a href="./index.html">HOME</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-divider"></div>
+                                <a href="./achievements.html" class="dropdown-item">Achievements</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./associations.html" class="dropdown-item">Associations</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="./reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./manufacturing.html" class="dropdown-item">Manufacturing</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./cad-services.html" class="dropdown-item">CAD Services</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./mechi-engineering-services.html" class="dropdown-item">Mechanical Engineering</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="./projects.html" class="dropdown-item">Projects</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./video-gallery.html" class="dropdown-item">Video Gallery</a>
+                            </div>
+                        </li>
+                        <li><a href="./blog.html" target="_blank">BLOG</a></li>
+                        <li><a href="./contact.html">CONTACT</a></li>
+                    </ul>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="btn-wrap">
+                    <a class="fti-header-2-btn" href="./contact.html" aria-label="Get in touch">
+                        <span class="btn-text">Get in touch</span>
+                        <span class="btn-icon">↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <div class="mobile-nav-content">
+            <ul class="mobile-nav-menu">
+                <li><a href="./index.html">HOME</a></li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./achievements.html">Achievements</a>
+                        <a href="./associations.html">Associations</a>
+                        <a href="./testimonial.html">Testimonial</a>
+                    </div>
+                </li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./reverse-engineering.html">Reverse Engineering</a>
+                        <a href="./manufacturing.html">Manufacturing</a>
+                        <a href="./cad-services.html">CAD Services</a>
+                        <a href="./mechi-engineering-services.html">Mechanical Engineering</a>
+                        <a href="./electrical-engineering.html">Electrical Engineering</a>
+                    </div>
+                </li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./projects.html">Projects</a>
+                        <a href="./video-gallery.html">Video Gallery</a>
+                    </div>
+                </li>
+                <li><a href="./blog.html" target="_blank">BLOG</a></li>
+                <li><a href="./contact.html">CONTACT</a></li>
+            </ul>
+            <div class="mobile-cta">
+                <a class="fti-header-2-btn" href="./contact.html">
+                    <span class="btn-text">Get in touch</span>
+                    <span class="btn-icon">↗</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="page-banner">
+            <div class="container">
+                <h1 class="banner-title">Manufacturing</h1>
+                <div class="breadcrumb-custom">
+                    HOME >> <span>Fabrication, Machining and Assembly</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="manufacturing-section">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 fade-in">
+                        <h2 class="section-title">Fabrication</h2>
+                        <ul class="list-square-cyan">
+                            <li>Our fabrication works are completed on-time with highest quality.</li>
+                            <li>Fabrication services are Laser cutting, Turret punching, Bending, Surface treatment, Arc welding, Tig welding, Mig welding, spot welding, Revit joining</li>
+                            <li>We have more than 1000 parts manufactured using our fabrication works.</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 fade-in">
+                        <div class="manu-img-box">
+                                                        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=800&q=80" alt="Fabrication Welding">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="manufacturing-section bg-light">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 order-lg-2 fade-in">
+                        <div class="manu-img-box">
+                                                        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" alt="Jigs and Fixtures Tooling">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1 fade-in">
+                        <h2 class="section-title">Jigs, Fixtures, Tool & Die</h2>
+                        <ul class="list-square-cyan">
+                            <li>VMTL has the capabilities to design and manufacture Jigs, Fixtures, Tools and Die for your manufacturing work.</li>
+                            <li>Our capabilities on the manufacturing types are Machining Fixture, VMC, Turning, HMC, CMM inspection fixtures, Heavy bearing removal tools Assembly fixture, Welding fixtures, Drilling jigs, Lifting fixture, Pneumatic Hydraulic and Mechanical Clamping Equipment’s, Wood Pattern, Injection Die Mould, Aluminium Pattern Mould and Die, Thermocol Pattern, Vacuum Forming Mould, Deep drawn & Forming Tools, Punches Straight, Full Round, Half Round and other Customised Punches.</li>
+                            <li>Our experience in the field of Jigs, Fixture, Tool and Die has helped our clients to complete their manufacturing work on time.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="manufacturing-section">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 fade-in">
+                        <h2 class="section-title">Machining</h2>
+                        <ul class="list-square-cyan">
+                            <li>We have a large range of machining capabilities which are of high quality finishing and on time delivery.</li>
+                            <li>Our Machining capabilities are Milling, Slotting, Internal milling, Turning, Boring, Surface polishing, VMC machining, HMC machining, CNC Turning.</li>
+                            <li>Our team of experienced manufacturing consultants can provide a strong consulting on manufacturing optimization.</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 fade-in">
+                        <div class="manu-img-box">
+                                                        <img src="https://images.unsplash.com/photo-1565439344506-4a0a378cc961?auto=format&fit=crop&w=800&q=80" alt="CNC Machining">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+     <footer class="custom-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">VMTL<span class="dot">.</span></div>
+          <p class="footer-description">
+            Our long history of family ownership has financial reassurance, business continuity and
+            stability. It has also created firm foundations from which we continue to grow.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Product</h3>
+          <ul class="footer-links">
+            <li><a href="#">How It Works?</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Terms Of Services</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="reverse-engineering.html">Reverse Engineering</a></li>
+            <li><a href="manufacturing.html">Manufacturing</a></li>
+            <li><a href="cad-services.html">CAD Services</a></li>
+            <li><a href="mechanical-engineering.html">Mechanical Engineering</a></li>
+            <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+            <li><a href="machine-design.html">Machine Design & Dev</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Our Link</h3>
+          <ul class="footer-links">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="clients.html">Clients</a></li>
+            <li><a href="contact.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="contact-section-footer">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-info">
+            <h4>Call Us</h4>
+            <p>+91 97890 99151</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div class="contact-info">
+            <h4>Email Us:</h4>
+            <p>contact@virmodello.com</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-info">
+            <h4>Opening Hours:</h4>
+            <p>Mon-Fri: 8am - 7pm</p>
+          </div>
+        </div>
+
+        <button class="schedule-btn">Schedule An Appointment</button>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">© Copyright 2025 All rights reserved. Design by Neoera Infotech</p>
+      </div>
+    </div>
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./ASSETS/js/script.js"></script>
+    <script src="./ASSETS/JS/lenis.min.js"></script>
+    <script src="./ASSETS/JS/scroll.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
