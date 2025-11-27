@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Office Furniture Design Services - VMTL | Virmodello Technologies</title>
-    <meta name="description" content="Outsource Office Furniture Design Services. We provide comprehensive design solutions including reception desks, workstations, and break room furniture.">
+    <title>Mechanical CAD Drafting Services - VMTL | Virmodello Technologies</title>
+    <meta name="description" content="Top-quality Mechanical CAD Drafting Services. We offer 2D drafting, fabrication drawings, GD&T, and assembly drawings with accuracy and precision.">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -33,7 +33,7 @@
 
         /* Hero Section */
         .page-banner {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -110,48 +110,13 @@
             border-top-color: var(--accent-color);
         }
         .service-img-box {
-            height: 50px;
+            height: 60px;
             margin-bottom: 20px;
             color: var(--primary-color);
         }
         
         .card-title { font-family: 'Teko', sans-serif; font-size: 1.6rem; margin-bottom: 15px; color: #1F1F1F; }
         .card-text { color: #666; font-size: 0.95rem; line-height: 1.6; }
-        
-        /* Furniture List Style */
-        .furniture-list { list-style: none; padding: 0; margin: 0; }
-        .furniture-list li { margin-bottom: 8px; padding-left: 25px; position: relative; color: #555; font-size: 0.95rem; }
-        .furniture-list li::before { 
-            content: "\f00c"; /* FontAwesome Check */
-            font-family: "Font Awesome 5 Free"; 
-            font-weight: 900;
-            color: var(--primary-color); 
-            position: absolute; 
-            left: 0; 
-            top: 2px;
-            font-size: 0.8rem;
-        }
-
-        /* "Other Services" List */
-        .other-service-link {
-            display: block;
-            padding: 15px 20px;
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            color: #333;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.3s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .other-service-link:hover {
-            background: var(--primary-color);
-            color: #fff;
-            transform: translateX(10px);
-        }
 
         /* Why Choose Us Grid */
         .benefit-item {
@@ -167,16 +132,30 @@
         .benefit-num { font-family: 'Teko', sans-serif; font-size: 2.5rem; color: #ddd; line-height: 1; margin-bottom: 15px; }
         .benefit-text { font-size: 0.95rem; color: #555; line-height: 1.6; }
 
-        /* Process Flow */
-        .process-arrow-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-top: 40px; }
-        .process-item { text-align: center; width: 160px; position: relative; }
-        .process-icon-box { 
-            width: 80px; height: 80px; background: #fff; border: 2px solid var(--primary-color); border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.5rem; color: var(--primary-color);
-            transition: 0.3s;
+        /* Other Services Bar */
+        .other-services-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
         }
-        .process-item:hover .process-icon-box { background: var(--primary-color); color: #fff; }
-        .process-title { font-weight: 700; font-size: 1rem; color: #333; }
+        .other-service-link {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #555;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        .other-service-link:hover {
+            background: var(--primary-color);
+            color: #fff;
+            transform: translateY(-3px);
+        }
 
         /* Client Marquee */
         .marquee-wrapper { overflow: hidden; position: relative; padding: 20px 0; background: #fff; white-space: nowrap; }
@@ -229,66 +208,53 @@
 
 <body>
 
-   <header class="fti-header-2-area">
+    <header class="fti-header-2-area">
         <div class="fti-header-2-wrap">
             <div class="fti-header-2-row">
-                <!-- Logo -->
                 <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
                     <img src="./ASSETS/IMAGES/logo.png" alt="VMTL - Virmodello Technologies" />
                 </a>
-
-                <!-- Mobile Menu Button -->
                 <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
                     </svg>
                 </button>
-
-                <!-- Desktop Navigation -->
                 <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
                     <ul>
-                        <li><a href="./index.html">HOME</a></li>
+                        <li><a href="index.html">HOME</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
                             <div class="dropdown-menu">
-                                <div class="dropdown-divider"></div>
-                                <a href="./achievements.html" class="dropdown-item">Achievements</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="./associations.html" class="dropdown-item">Associations</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="./testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="achievements.html" class="dropdown-item">Achievements</a>
+                                <a href="associations.html" class="dropdown-item">Associations</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             </div>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
                             <div class="dropdown-menu">
-                                <a href="./reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="./manufacturing.html" class="dropdown-item">Manufacturing</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="./cad-services.html" class="dropdown-item">CAD Services</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="./mechi-engineering-services.html" class="dropdown-item">Mechanical Engineering</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="./electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
+                                <a href="reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
+                                <a href="manufacturing.html" class="dropdown-item">Manufacturing</a>
+                                <a href="cad-services.html" class="dropdown-item">CAD Services</a>
+                                <a href="mechanical-engineering.html" class="dropdown-item">Mechanical Engineering</a>
+                                <a href="electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
+                                <a href="engineering-simulation.html" class="dropdown-item">Engineering Simulation</a>
+                                <a href="mechanical-cad-drafting.html" class="dropdown-item active">Mechanical CAD Drafting</a>
                             </div>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
                             <div class="dropdown-menu">
-                                <a href="./projects.html" class="dropdown-item">Projects</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="./video-gallery.html" class="dropdown-item">Video Gallery</a>
+                                <a href="projects.html" class="dropdown-item">Projects</a>
+                                <a href="video-gallery.html" class="dropdown-item">Video Gallery</a>
                             </div>
                         </li>
-                        <li><a href="./blog.html" target="_blank">BLOG</a></li>
-                        <li><a href="./contact.html">CONTACT</a></li>
+                        <li><a href="https://virmodello.blogspot.com/" target="_blank">BLOG</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
                     </ul>
                 </nav>
-
-                <!-- CTA Button -->
                 <div class="btn-wrap">
-                    <a class="fti-header-2-btn" href="./contact.html" aria-label="Get in touch">
+                    <a class="fti-header-2-btn" href="contact.html" aria-label="Get in touch">
                         <span class="btn-text">Get in touch</span>
                         <span class="btn-icon">↗</span>
                     </a>
@@ -297,58 +263,18 @@
         </div>
     </header>
 
-    <!-- Mobile Navigation Overlay -->
-    <div class="mobile-nav-overlay" id="mobileNavOverlay">
-        <div class="mobile-nav-content">
-            <ul class="mobile-nav-menu">
-                <li><a href="./index.html">HOME</a></li>
-                <li class="mobile-dropdown">
-                    <a href="#" class="mobile-dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
-                    <div class="mobile-dropdown-menu">
-                        <a href="./achievements.html">Achievements</a>
-                        <a href="./associations.html">Associations</a>
-                        <a href="./testimonial.html">Testimonial</a>
-                    </div>
-                </li>
-                <li class="mobile-dropdown">
-                    <a href="#" class="mobile-dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
-                    <div class="mobile-dropdown-menu">
-                        <a href="./reverse-engineering.html">Reverse Engineering</a>
-                        <a href="./manufacturing.html">Manufacturing</a>
-                        <a href="./cad-services.html">CAD Services</a>
-                        <a href="./mechi-engineering-services.html">Mechanical Engineering</a>
-                        <a href="./electrical-engineering.html">Electrical Engineering</a>
-                    </div>
-                </li>
-                <li class="mobile-dropdown">
-                    <a href="#" class="mobile-dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
-                    <div class="mobile-dropdown-menu">
-                        <a href="./projects.html">Projects</a>
-                        <a href="./video-gallery.html">Video Gallery</a>
-                    </div>
-                </li>
-                <li><a href="./blog.html" target="_blank">BLOG</a></li>
-                <li><a href="./contact.html">CONTACT</a></li>
-            </ul>
-            <div class="mobile-cta">
-                <a class="fti-header-2-btn" href="./contact.html">
-                    <span class="btn-text">Get in touch</span>
-                    <span class="btn-icon">↗</span>
-                </a>
-            </div>
-        </div>
-    </div>
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 
     <main>
         <section class="page-banner">
             <div class="container">
-                <h1 class="banner-title">Office Furniture Design</h1>
-                <p class="lead" style="max-width: 800px; margin: 0 auto 30px; opacity: 0.9;">Are you looking for office furniture design drawings that meet the dynamic market needs? Outsource your requirement to VMTL.</p>
+                <h1 class="banner-title">Mechanical CAD Drafting Services</h1>
+                <p class="lead" style="max-width: 800px; margin: 0 auto 30px; opacity: 0.9;">Access top-quality drafting solutions with accuracy and precision for improved product lifecycle management.</p>
                 <div class="breadcrumb-nav">
                     <ul class="breadcrumb-list">
                         <li><a href="index.html">Home</a></li>
                         <li>Services</li>
-                        <li class="active">Office Furniture Design</li>
+                        <li class="active">Mechanical CAD Drafting</li>
                     </ul>
                 </div>
             </div>
@@ -357,14 +283,14 @@
         <section class="content-section">
             <div class="container text-center">
                 <div class="section-title-wrap fade-in">
-                    <span class="section-subtitle">Creative Solutions</span>
-                    <h2 class="section-title" style="color: #1F1F1F;">Custom Furniture Design</h2>
+                    <span class="section-subtitle">Precision Drafting</span>
+                    <h2 class="section-title" style="color: #1F1F1F;">Turn Ideas into Prototypes</h2>
                 </div>
                 <div class="row justify-content-center fade-in">
                     <div class="col-lg-10">
                         <p style="font-size: 1.1rem; color: #555; line-height: 1.8;">
-                            When designing furniture for office spaces, numerous factors need to be taken into consideration to produce impressive outcomes. 
-                            VMTL is a leading office furniture design service providing company with years of experience in the industry. We work with various clients and understand their unique requirements when creating 3D CAD designs that capture their vision in the best possible ways.
+                            We offer CAD design and drafting services to turn your product ideas into working prototypes using cutting-edge technology at cost-effective prices. 
+                            VMTL helps in shrinking the overhead, the project tenure, and boosts productivity through precision CAD design and drafting.
                         </p>
                     </div>
                 </div>
@@ -381,135 +307,81 @@
                     
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="service-card">
-                            <div class="service-img-box"><i class="fas fa-concierge-bell fa-3x"></i></div>
-                            <h3 class="card-title">Desks & Counters</h3>
-                            <ul class="furniture-list">
-                                <li>Office area counters</li>
-                                <li>Reception desks</li>
-                                <li>Desk partitions</li>
-                                <li>Executive tables</li>
-                            </ul>
+                            <div class="service-img-box"><i class="fas fa-drafting-compass fa-3x"></i></div>
+                            <h3 class="card-title">Mechanical 2D Drafting Detailing</h3>
+                            <p class="card-text">We provide 2D drafting to add in-depth detail to proposed hand-drawn representations. Using proprietary tools, we provide precision drawings easy to convert into 2D models.</p>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="service-card">
-                            <div class="service-img-box"><i class="fas fa-archive fa-3x"></i></div>
-                            <h3 class="card-title">Storage Solutions</h3>
-                            <ul class="furniture-list">
-                                <li>File cabinets</li>
-                                <li>Wall units</li>
-                                <li>Elevation cases</li>
-                                <li>Shelving units</li>
-                            </ul>
+                            <div class="service-img-box"><i class="fas fa-industry fa-3x"></i></div>
+                            <h3 class="card-title">CAD Drawing for Fabrication</h3>
+                            <p class="card-text">If you want individual parts designed in 2D or 3D, we can create the part as per the dimensions specified in the engineering blueprint to ensure it works as planned.</p>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="service-card">
-                            <div class="service-img-box"><i class="fas fa-chair fa-3x"></i></div>
-                            <h3 class="card-title">Meeting & Seating</h3>
-                            <ul class="furniture-list">
-                                <li>Conference room tables</li>
-                                <li>Conference chairs</li>
-                                <li>Lounge seating</li>
-                                <li>Break room furniture</li>
-                            </ul>
+                            <div class="service-img-box"><i class="fas fa-ruler-combined fa-3x"></i></div>
+                            <h3 class="card-title">GD & T Drawings</h3>
+                            <p class="card-text">Being a top mechanical CAD drafting services providing company, we have experts in geometrical dimensioning and tolerancing (GD & T).</p>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="service-card">
-                            <div class="service-img-box"><i class="fas fa-layer-group fa-3x"></i></div>
-                            <h3 class="card-title">Architectural Elements</h3>
-                            <ul class="furniture-list">
-                                <li>Grills and louvers</li>
-                                <li>Desk partitions</li>
-                                <li>Elevation cases</li>
-                                <li>Decorative panels</li>
-                            </ul>
+                            <div class="service-img-box"><i class="fas fa-cogs fa-3x"></i></div>
+                            <h3 class="card-title">Assembly CAD Drawings</h3>
+                            <p class="card-text">We create detailed assembly drawings that indicate where each component is and how the system is mated. The model explicitly shows how the system operates as a unit.</p>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="service-card">
-                            <div class="service-img-box"><i class="fas fa-coffee fa-3x"></i></div>
-                            <h3 class="card-title">Pantry & Kitchen</h3>
-                            <ul class="furniture-list">
-                                <li>Kitchen furniture</li>
-                                <li>Pantry counters</li>
-                                <li>Cafeteria tables</li>
-                                <li>Break room layouts</li>
-                            </ul>
+                            <div class="service-img-box"><i class="fas fa-exchange-alt fa-3x"></i></div>
+                            <h3 class="card-title">CAD Conversion Services</h3>
+                            <p class="card-text">We turn hand-drawn sketches and engineering blueprints into professional CAD drawings that are precise and useful for component optimization.</p>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 fade-in">
                         <div class="service-card">
-                            <div class="service-img-box"><i class="fas fa-pencil-ruler fa-3x"></i></div>
-                            <h3 class="card-title">Design Styles</h3>
-                            <ul class="furniture-list">
-                                <li>Modern designs</li>
-                                <li>Traditional designs</li>
-                                <li>Custom furniture drafting</li>
-                                <li>Ergonomic designs</li>
-                            </ul>
+                            <div class="service-img-box"><i class="fas fa-file-signature fa-3x"></i></div>
+                            <h3 class="card-title">CAD Drawing for Patenting</h3>
+                            <p class="card-text">If you want a key component patented, you can count on us to develop CAD drafts of the prototype to demonstrate its physical dimensions, tolerances, and operating principle.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-car fa-3x"></i></div>
+                            <h3 class="card-title">AutoCAD Mechanical Drawing for Auto Parts</h3>
+                            <p class="card-text">We create CAD drafts of auto parts and represent them in the integrated environment. We also showcase part composition and its specification to avoid ambiguity.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="service-card">
+                            <div class="service-img-box"><i class="fas fa-cubes fa-3x"></i></div>
+                            <h3 class="card-title">CAD Drawing for Castings</h3>
+                            <p class="card-text">If your prototype is a casting, we offer CAD drafting to draw a casting model. It helps you demonstrate key attributes and develop a product casting without error.</p>
                         </div>
                     </div>
 
                 </div>
-            </div>
-        </section>
 
-        <section class="content-section">
-            <div class="container">
-                <div class="section-title-wrap text-center fade-in">
-                    <span class="section-subtitle">Related Solutions</span>
-                    <h2 class="section-title" style="color: #1F1F1F;">Other Services You Can Benefit From</h2>
-                </div>
-                <div class="row g-4 justify-content-center">
-                    <div class="col-md-6 col-lg-3 fade-in">
-                        <a href="#" class="other-service-link">Retail Visual Merchandising <i class="fas fa-arrow-right"></i></a>
+                <div class="row mt-5 justify-content-center fade-in">
+                    <div class="col-lg-12 text-center mb-3">
+                        <h4 style="font-family:'Teko'; font-size:1.8rem;">Other Services You Can Benefit From</h4>
                     </div>
-                    <div class="col-md-6 col-lg-3 fade-in">
-                        <a href="#" class="other-service-link">3D Furniture Modeling <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="col-md-6 col-lg-3 fade-in">
-                        <a href="#" class="other-service-link">Millwork Drafting Services <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="col-md-6 col-lg-3 fade-in">
-                        <a href="#" class="other-service-link">Point Cloud to CAD <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section bg-light">
-             <div class="container">
-                <div class="section-title-wrap text-center fade-in">
-                    <span class="section-subtitle">How We Work</span>
-                    <h2 class="section-title" style="color: #1F1F1F;">Our Design Process</h2>
-                </div>
-                <div class="process-arrow-container fade-in">
-                    <div class="process-item">
-                        <div class="process-icon-box"><i class="fas fa-comments"></i></div>
-                        <div class="process-title">Requirement Gathering</div>
-                    </div>
-                    <div class="process-item">
-                        <div class="process-icon-box"><i class="fas fa-pencil-ruler"></i></div>
-                        <div class="process-title">Drafting & Design</div>
-                    </div>
-                    <div class="process-item">
-                        <div class="process-icon-box"><i class="fas fa-cubes"></i></div>
-                        <div class="process-title">3D Modeling</div>
-                    </div>
-                    <div class="process-item">
-                        <div class="process-icon-box"><i class="fas fa-check-double"></i></div>
-                        <div class="process-title">QC & Review</div>
-                    </div>
-                     <div class="process-item">
-                        <div class="process-icon-box"><i class="fas fa-paper-plane"></i></div>
-                        <div class="process-title">Final Delivery</div>
+                    <div class="col-lg-10">
+                        <div class="other-services-bar">
+                            <a href="#" class="other-service-link">Tower Design Services</a>
+                            <a href="#" class="other-service-link">3D Modeling & Drafting</a>
+                            <a href="#" class="other-service-link">CAD Conversion & Migration</a>
+                            <a href="#" class="other-service-link">Reverse Engineering Services</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -519,49 +391,35 @@
             <div class="container">
                 <div class="section-title-wrap fade-in">
                     <span class="section-subtitle">The VMTL Advantage</span>
-                    <h2 class="section-title" style="color: #1F1F1F;">Why Outsource to VMTL?</h2>
+                    <h2 class="section-title" style="color: #1F1F1F;">Why Choose VMTL?</h2>
                 </div>
                 <div class="row g-4">
-                    <div class="col-md-6 col-lg-4 fade-in">
+                    <div class="col-md-6 col-lg-3 fade-in">
                         <div class="benefit-item">
                             <div class="benefit-num">01</div>
-                            <h4 style="font-weight:700; margin-bottom:10px;">Cost-competitive Services</h4>
-                            <p class="benefit-text">Our services are an ideal solution for manufacturers with a fixed budget, offering high quality at affordable rates.</p>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Data Security</h4>
+                            <p class="benefit-text">100% Compliance with Data Security. We comply with ISO/IEC 27001:2022 guidelines so your data is always safe in our possession.</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 fade-in">
+                    <div class="col-md-6 col-lg-3 fade-in">
                         <div class="benefit-item">
                             <div class="benefit-num">02</div>
-                            <h4 style="font-weight:700; margin-bottom:10px;">Advanced Infrastructure</h4>
-                            <p class="benefit-text">We use advanced infrastructure and the latest tools and technology to meet your office furniture designing requirements.</p>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Quality Control</h4>
+                            <p class="benefit-text">Best-in-class Quality Control. Our high-quality workflow ensures a smooth CAD Drafting process as we follow the best quality protocols.</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 fade-in">
+                    <div class="col-md-6 col-lg-3 fade-in">
                         <div class="benefit-item">
                             <div class="benefit-num">03</div>
-                            <h4 style="font-weight:700; margin-bottom:10px;">Quality Services</h4>
-                            <p class="benefit-text">Being an ISO-certified company, we meet international standards of quality in our services, following best practices.</p>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Rapid Prototyping</h4>
+                            <p class="benefit-text">Rapid Prototyping using Best Tools and Infrastructure. We constantly innovate to use the latest technology for rapidly developing drafts.</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 fade-in">
+                    <div class="col-md-6 col-lg-3 fade-in">
                         <div class="benefit-item">
                             <div class="benefit-num">04</div>
-                            <h4 style="font-weight:700; margin-bottom:10px;">Scalable Services</h4>
-                            <p class="benefit-text">Our services are highly scalable, and we have the resources and the workforce to upscale whenever the need arises.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 fade-in">
-                        <div class="benefit-item">
-                            <div class="benefit-num">05</div>
-                            <h4 style="font-weight:700; margin-bottom:10px;">Dedicated Point of Contact</h4>
-                            <p class="benefit-text">We appoint a dedicated project manager for all your queries, reporting, and task tracking.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 fade-in">
-                        <div class="benefit-item">
-                            <div class="benefit-num">06</div>
-                            <h4 style="font-weight:700; margin-bottom:10px;">24/7 Availability</h4>
-                            <p class="benefit-text">Our customer support executives are always available to address your queries. You can reach out to us at any time.</p>
+                            <h4 style="font-weight:700; margin-bottom:10px;">Affordable Pricing</h4>
+                            <p class="benefit-text">Affordable Pricing. Our rates are easy on your wallet and you will never again have to part ways with all of your budget.</p>
                         </div>
                     </div>
                 </div>
@@ -578,13 +436,13 @@
                         </div>
                         
                         <div class="mb-4">
-                            <h5 style="color:var(--primary-color); font-family:'Teko'; font-size:1.4rem;">SolidWorks Detailing for Marketing Agency</h5>
-                            <p style="color:#666; font-size:0.95rem;">We used SolidWorks for converting 2D files of a certain specification for a marketing firm. The results were 100% well-executed with major cost-savings passed on to the client.</p>
+                            <h5 style="color:var(--primary-color); font-family:'Teko'; font-size:1.4rem;">Mechanical Instrument Drafting for Consultant</h5>
+                            <p style="color:#666; font-size:0.95rem;">VMTL Offered Mechanical Instrument Drafting and Detailing Services to an Engineering Consultant. We delivered precise drafts meeting industry standards.</p>
                         </div>
 
                         <div class="mb-4">
-                            <h5 style="color:var(--primary-color); font-family:'Teko'; font-size:1.4rem;">Detailing Services for Hydraulic Fixtures</h5>
-                            <p style="color:#666; font-size:0.95rem;">We designed a complex 3D model of hydraulic fixtures by relying on modeling skills. The project was handed over within a week to clients based in Canada.</p>
+                            <h5 style="color:var(--primary-color); font-family:'Teko'; font-size:1.4rem;">2D to 3D Mechanical Legacy Drawing Conversion</h5>
+                            <p style="color:#666; font-size:0.95rem;">Offered US Client with 2D to 3D Mechanical Legacy Drawing Conversion. We successfully converted legacy data into modern 3D models for better usability.</p>
                         </div>
 
                         <a href="#" class="fti-header-2-btn mt-2">Read More Stories <span class="btn-icon">↗</span></a>
@@ -592,9 +450,9 @@
                     <div class="col-lg-6 fade-in text-center">
                          
 
-[Image of modern office furniture design rendering]
+[Image of Aircraft Part 3D Model]
 
-                         <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80" alt="Furniture Design Success" class="img-fluid rounded shadow" style="max-height:400px;">
+                         <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=800&q=80" alt="Drafting Success" class="img-fluid rounded shadow" style="max-height:400px;">
                     </div>
                 </div>
             </div>
@@ -649,15 +507,15 @@
                     </div>
                     <div class="col-md-6 col-lg-3 fade-in">
                         <div class="case-study-card">
-                            <h4 class="case-study-title">Mechanical Instrument Drafting and Detailing</h4>
-                            <p class="small text-muted">For Engineering Consultant</p>
+                            <h4 class="case-study-title">Reverse Engineering of Machine Parts</h4>
+                            <p class="small text-muted">Provided to a Client</p>
                             <a href="#" class="read-more-btn">Read More</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 fade-in">
                         <div class="case-study-card">
-                            <h4 class="case-study-title">2D to 3D Mechanical Legacy Drawing Conversion</h4>
-                            <p class="small text-muted">Offered to a US Client</p>
+                            <h4 class="case-study-title">Piping and Instrumentation Drawings</h4>
+                            <p class="small text-muted">For Industrial Client</p>
                             <a href="#" class="read-more-btn">Read More</a>
                         </div>
                     </div>
@@ -669,7 +527,7 @@
             <div class="container">
                 <div class="contact-box-area fade-in">
                     <h2 style="font-family: 'Teko', sans-serif; font-size: 3.5rem; margin-bottom: 30px;">Talk to Our Experts</h2>
-                    <p style="margin-bottom: 40px; color: #ccc;">Send your enquiry to us for professional office furniture design solutions.</p>
+                    <p style="margin-bottom: 40px; color: #ccc;">Send your enquiry to us for professional mechanical CAD drafting solutions.</p>
                     <div class="contact-details">
                         <h3 style="color: var(--primary-color); font-family: 'Teko'; font-size: 2.5rem; margin-bottom: 15px;">VIRMODELLO TECHNOLOGIES</h3>
                         <p>413, KTVR Green Field, Thavasi Nagar, Velandipalayam PO, Coimbatore - 641025.</p>

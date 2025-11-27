@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - VMTL | Virmodello Technologies</title>
+    <meta name="description" content="Get in touch with VMTL for expert engineering solutions. Contact our offices in India and New Zealand for inquiries.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./ASSETS/CSS/base.css">
+
+    <style>
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+        .lenis.lenis-scrolling iframe { pointer-events: none; }
+    </style>
+
+    <style>
+        /* --- Page Specific Styles --- */
+        :root {
+            --primary-color: #2E86AB; /* VMTL Blue */
+            --accent-color: #F18F01;  /* VMTL Orange */
+            --dark-bg: #1F1F1F;
+            --light-bg: #F9F9F9;
+        }
+
+        /* Hero Section */
+        .page-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 200px 0 100px 0;
+            text-align: center;
+            color: #fff;
+            margin-top: -90px;
+        }
+
+        .banner-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .breadcrumb-nav {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 10px 30px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeUp 0.8s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .breadcrumb-list {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .breadcrumb-list li a { color: #fff; text-decoration: none; transition: 0.3s; }
+        .breadcrumb-list li a:hover { color: var(--accent-color); }
+        .breadcrumb-list li.active { color: var(--accent-color); }
+        .breadcrumb-list li+li::before { content: "/"; color: rgba(255, 255, 255, 0.5); margin-right: 15px; }
+
+        /* Contact Info Cards */
+        .contact-cards-section {
+            padding: 80px 0;
+            background: #fff;
+            margin-top: -50px; /* Overlap Hero */
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.4s ease;
+            height: 100%;
+            border-bottom: 4px solid transparent;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: rgba(46, 134, 171, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 25px;
+            transition: 0.3s;
+        }
+
+        .contact-card:hover .icon-box {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .card-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .card-text {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        
+        .card-text a { color: #666; text-decoration: none; transition: 0.3s; }
+        .card-text a:hover { color: var(--accent-color); }
+
+        /* Split Layout (Form & Map) */
+        .contact-split-section {
+            padding: 0 0 80px 0;
+            overflow: hidden;
+        }
+
+        .form-wrapper {
+            padding: 60px;
+            background: #f8f9fa;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .section-subtitle {
+            color: var(--accent-color);
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .form-floating > .form-control:focus, 
+        .form-floating > .form-control:not(:placeholder-shown) {
+            padding-top: 1.625rem;
+            padding-bottom: .625rem;
+        }
+        
+        .form-control {
+            border: none;
+            border-bottom: 2px solid #ddd;
+            border-radius: 0;
+            background: transparent;
+            padding-left: 0;
+            box-shadow: none !important;
+        }
+
+        .form-control:focus {
+            border-bottom-color: var(--primary-color);
+            background: transparent;
+        }
+
+        .form-floating label { padding-left: 0; color: #999; }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(241, 143, 1, 0.3);
+        }
+
+        .map-container {
+            height: 100%;
+            min-height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Global Locations */
+        .locations-section { padding: 80px 0; background: var(--dark-bg); color: #fff; }
+        .location-item { margin-bottom: 30px; }
+        .loc-country { font-family: 'Teko'; font-size: 2rem; color: var(--accent-color); margin-bottom: 15px; }
+        .loc-address { opacity: 0.8; line-height: 1.8; font-size: 1rem; }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 991px) {
+            .contact-cards-section { margin-top: 0; padding-top: 50px; }
+            .form-wrapper { padding: 30px; margin-bottom: 40px; }
+            .map-container { min-height: 400px; }
+            .banner-title { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="fti-header-2-area">
+        <div class="fti-header-2-wrap">
+            <div class="fti-header-2-row">
+                <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
+                    <img src="./ASSETS/IMAGES/logo.png" alt="VMTL - Virmodello Technologies" />
+                </a>
+                <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
+                    </svg>
+                </button>
+                <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="achievements.html" class="dropdown-item">Achievements</a>
+                                <a href="associations.html" class="dropdown-item">Associations</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
+                                <a href="manufacturing.html" class="dropdown-item">Manufacturing</a>
+                                <a href="cad-services.html" class="dropdown-item">CAD Services</a>
+                                <a href="mechanical-engineering.html" class="dropdown-item">Mechanical Engineering</a>
+                                <a href="electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="projects.html" class="dropdown-item">Projects</a>
+                                <a href="video-gallery.html" class="dropdown-item">Video Gallery</a>
+                            </div>
+                        </li>
+                        <li><a href="https://virmodello.blogspot.com/" target="_blank">BLOG</a></li>
+                        <li><a href="contact.html" class="active">CONTACT</a></li>
+                    </ul>
+                </nav>
+                <div class="btn-wrap">
+                    <a class="fti-header-2-btn" href="contact.html" aria-label="Get in touch">
+                        <span class="btn-text">Get in touch</span>
+                        <span class="btn-icon">↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <main>
+        <section class="page-banner">
+            <div class="container">
+                <h1 class="banner-title">Contact Us</h1>
+                <p class="lead" style="max-width: 800px; margin: 0 auto 30px; opacity: 0.9;">We are here to help. Reach out to us for any inquiries regarding our engineering services.</p>
+                <div class="breadcrumb-nav">
+                    <ul class="breadcrumb-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">Contact</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-cards-section">
+            <div class="container">
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="contact-card">
+                            <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                            <h3 class="card-title">Head Office</h3>
+                            <p class="card-text">
+                                413, KTVR Green Field, Thavasi Nagar,<br>
+                                Velandipalayam PO, Coimbatore<br>
+                                Tamil Nadu - 641025, India.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="contact-card">
+                            <div class="icon-box"><i class="fas fa-phone-volume"></i></div>
+                            <h3 class="card-title">Call Us</h3>
+                            <p class="card-text">
+                                <a href="tel:+919789099151"><strong>India:</strong> +91 97890 99151</a><br>
+                                <a href="tel:+642902080826"><strong>New Zealand:</strong> +64 290 208 0826</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="contact-card">
+                            <div class="icon-box"><i class="fas fa-envelope-open"></i></div>
+                            <h3 class="card-title">Email Us</h3>
+                            <p class="card-text">
+                                <a href="mailto:contact@virmodello.com">contact@virmodello.com</a><br>
+                                <span class="small text-muted">We reply within 24 hours</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-split-section">
+            <div class="container">
+                <div class="row g-0">
+                    <div class="col-lg-6 fade-in">
+                        <div class="form-wrapper">
+                            <span class="section-subtitle">Get A Quote</span>
+                            <h2 class="section-title">Send Us A Message</h2>
+                            <form action="#">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="name" placeholder="Name" required>
+                                            <label for="name">Your Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" id="email" placeholder="Email" required>
+                                            <label for="email">Your Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="phone" placeholder="Phone">
+                                            <label for="phone">Phone Number</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                            <label for="subject">Subject</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Message" id="message" style="height: 150px" required></textarea>
+                                            <label for="message">Tell us about your project</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 fade-in ps-lg-5">
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.159282345678!2d76.944331!3d11.026684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDAxJzM2LjEiTiA3NsKwNTYnMzkuNiJF!5e0!3m2!1sen!2sin!4v1625647891234!5m2!1sen!2sin" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="locations-section">
+            <div class="container">
+                <div class="section-title-wrap text-center mb-5 fade-in">
+                    <span class="section-subtitle" style="color: #F18F01;">Global Reach</span>
+                    <h2 class="section-title" style="color: #fff;">Our Global Presence</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-5 text-center fade-in">
+                        <div class="location-item">
+                            <h3 class="loc-country"><img src="https://flagcdn.com/w40/in.png" alt="India" style="vertical-align: middle; margin-right: 10px;"> INDIA</h3>
+                            <p class="loc-address">
+                                413, KTVR Green Field, Thavasi Nagar,<br>
+                                Velandipalayam PO, Coimbatore - 641025.<br>
+                                <strong>Phone:</strong> +91 97890 99151
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-1 d-none d-md-block border-end border-secondary"></div>
+                    <div class="col-md-5 text-center fade-in">
+                        <div class="location-item">
+                            <h3 class="loc-country"><img src="https://flagcdn.com/w40/nz.png" alt="New Zealand" style="vertical-align: middle; margin-right: 10px;"> NEW ZEALAND</h3>
+                            <p class="loc-address">
+                                <strong>Phone:</strong> +64 290 208 0826<br>
+                                <strong>Email:</strong> contact@virmodello.com<br>
+                                <span class="text-muted small">Serving clients across the region</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">VMTL<span class="dot">.</span></div>
+                    <p class="footer-description">
+                        Our long history of family ownership has financial reassurance, business continuity and
+                        stability. It has also created firm foundations from which we continue to grow.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">How It Works?</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Terms Of Services</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="reverse-engineering.html">Reverse Engineering</a></li>
+                        <li><a href="manufacturing.html">Manufacturing</a></li>
+                        <li><a href="cad-services.html">CAD Services</a></li>
+                        <li><a href="mechanical-engineering.html">Mechanical Engineering</a></li>
+                        <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Our Link</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="clients.html">Clients</a></li>
+                        <li><a href="contact.html">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contact-section-footer">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-info">
+                        <h4>Call Us</h4>
+                        <p>+91 97890 99151</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">✉</div>
+                    <div class="contact-info">
+                        <h4>Email Us:</h4>
+                        <p>contact@virmodello.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <div class="contact-info">
+                        <h4>Opening Hours:</h4>
+                        <p>Mon-Fri: 8am - 7pm</p>
+                    </div>
+                </div>
+
+                <button class="schedule-btn">Schedule An Appointment</button>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© Copyright 2025 All rights reserved. Design by Neoera Infotech</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./ASSETS/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <script>
+        // Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+        // Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        function scrollToTop() {
+            lenis.scrollTo(0);
+        }
+    </script>
+</body>
+
+</html>

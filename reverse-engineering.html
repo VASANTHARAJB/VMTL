@@ -4,34 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electrical Engineering Services - VMTL | Virmodello Technologies</title>
-    <meta name="description" content="VMTL Electrical Services: PCB Reverse Engineering, Solar Panel Design, Schematics, and Electrical Drafting.">
+    <title>Reverse Engineering Services - VMTL | Virmodello Technologies</title>
+    <meta name="description" content="VMTL Reverse Engineering Services: 3D Scanning, CAD Modeling, and Prototyping for legacy parts and product improvement.">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <link rel="stylesheet" href="./ASSETS/css/base.css">
-    
     <link rel="stylesheet" href="./ASSETS/CSS/scroll.css">
 
     <style>
         /* --- Internal Page Styles --- */
         :root {
-            --primary-color: #2E86AB;
-            --accent-color: #F18F01;
-            --dark-bg: #1F1F1F;
-            --card-dark: #262626;
+            --primary-cyan: #00C9C9; /* Cyan accent color */
+            --text-dark: #333;
+            --text-grey: #555;
+            --bg-light: #f9f9f9;
         }
 
         /* Banner */
         .page-banner {
-            /* Updated Banner Image for Electrical theme */
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?auto=format&fit=crop&w=1920&q=80');
+            /* Technical/Scanning Background */
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            padding: 220px 0 120px 0;
+            padding: 200px 0 100px 0;
             text-align: center;
             color: #fff;
             margin-top: -90px;
@@ -42,181 +41,113 @@
             font-size: 5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 20px;
             color: #ffffff;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            opacity: 0;
+            margin-bottom: 10px;
             animation: fadeUp 0.8s ease forwards;
         }
 
-        .breadcrumb-nav {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            padding: 10px 30px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.3s forwards;
-        }
-
-        .breadcrumb-list {
-            list-style: none;
-            display: flex;
-            gap: 15px;
-            margin: 0;
-            padding: 0;
+        .breadcrumb-custom {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .breadcrumb-custom span {
+            color: #fff;
             font-weight: 600;
         }
 
-        .breadcrumb-list li a { color: #fff; text-decoration: none; transition: 0.3s; }
-        .breadcrumb-list li a:hover { color: var(--accent-color); }
-        .breadcrumb-list li.active { color: var(--accent-color); }
-        .breadcrumb-list li+li::before { content: "/"; color: rgba(255, 255, 255, 0.5); margin-right: 15px; }
-
-        /* Content Section */
-        .associations-wrap {
-            background-color: #fcfcfc;
-            padding: 100px 0;
+        /* --- Content Sections --- */
+        .content-section {
+            padding: 80px 0;
+            background: #fff;
+            border-bottom: 1px solid #eee;
         }
 
-        .section-title-wrap { text-align: center; margin-bottom: 60px; }
-        .section-subtitle { color: var(--primary-color); font-weight: 700; letter-spacing: 2px; font-size: 14px; display: block; margin-bottom: 10px; }
-        .section-title { font-family: 'Teko', sans-serif; font-size: 3.5rem; color: #0d0d0d; text-transform: uppercase; }
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: #444;
+            margin-bottom: 30px;
+        }
 
-        /* Partner Card Style */
-        .partner-card {
-            background: var(--card-dark);
-            border: 1px solid #333;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            height: 100%;
+        /* Paragraph Text */
+        .text-content p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: var(--text-grey);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        /* Custom Square Bullet List */
+        .list-square-cyan {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .list-square-cyan li {
             position: relative;
-            display: flex;
-            flex-direction: column;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: var(--text-grey);
+            line-height: 1.6;
         }
-
-        .partner-card::before {
+        .list-square-cyan li::before {
             content: '';
             position: absolute;
-            top: 0;
             left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-            z-index: 2;
+            top: 8px; 
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary-cyan);
+            border-radius: 1px;
         }
-
-        .partner-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            border-color: #444;
-        }
-
-        .partner-card:hover::before { transform: scaleX(1); }
-
-        .logo-container {
-            background: #fff;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            border-bottom: 1px solid #333;
-            overflow: hidden;
-        }
-
-        .logo-container i {
-            font-size: 4rem;
-            color: var(--primary-color);
-            transition: color 0.3s ease;
-        }
-
-        .partner-card:hover .logo-container i {
-            color: var(--accent-color);
-        }
-
-        /* --- Icon Animations --- */
-        @keyframes spinSlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        @keyframes pulseScale { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
-        @keyframes wrenchTurn { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-20deg); } }
-
-        .anim-spin { animation: spinSlow 8s linear infinite; }
-        .anim-float { animation: floatY 3s ease-in-out infinite; }
-        .anim-pulse { animation: pulseScale 2s ease-in-out infinite; }
-        .anim-wrench { animation: wrenchTurn 2.5s ease-in-out infinite; }
-
-
-        .partner-info {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-align: center;
-            align-items: center;
-        }
-
-        .partner-name {
-            font-family: 'Teko', sans-serif;
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-
-        /* --- Visit Button Style --- */
-        .visit-btn {
-            display: inline-block;
-            padding: 8px 25px;
-            background: transparent;
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
+        
+        /* Bold specific terms in list items */
+        .list-square-cyan strong {
+            color: #333;
             font-weight: 600;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            margin-top: auto;
-            position: relative;
-            z-index: 10; /* Above overlay */
         }
 
-        .visit-btn:hover {
-            background: var(--accent-color);
-            border-color: var(--accent-color);
-            color: #fff;
+        /* Image Styles */
+        .img-box {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .img-box:hover img {
+            transform: scale(1.05);
         }
 
-        .card-link-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 5;
-        }
-
+        /* --- Animations --- */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        @media (max-width: 768px) {
-            .banner-title { font-size: 3.5rem; }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
     </style>
 </head>
 
 <body>
 
-     <header class="fti-header-2-area">
+    <header class="fti-header-2-area">
         <div class="fti-header-2-wrap">
             <div class="fti-header-2-row">
                 <!-- Logo -->
@@ -329,95 +260,68 @@
     <main>
         <section class="page-banner">
             <div class="container">
-                <h1 class="banner-title">Electrical Engineering Services</h1>
-                <div class="breadcrumb-nav">
-                    <ul class="breadcrumb-list">
-                        <li><a href="index.html">Home</a></li>
-                        <li>Services</li>
-                        <li class="active">Electrical</li>
-                    </ul>
+                <h1 class="banner-title">Reverse Engineering</h1>
+                <div class="breadcrumb-custom">
+                    HOME >> <span>Reverse Engineering</span>
                 </div>
             </div>
         </section>
 
-        <section class="associations-wrap">
+        <section class="content-section">
             <div class="container">
-                <div class="section-title-wrap fade-in">
-                    <div class="section-subtitle">What We Do</div>
-                    <h2 class="section-title">Electrical Services</h2>
-                    <p class="mt-3" style="max-width: 700px; margin: 0 auto; color: #888;">
-                        Advanced solutions for PCB reverse engineering, solar design, and electrical drafting.
-                    </p>
-                </div>
-
-                <div class="row g-4">
-                    
-                    <div class="col-lg-3 col-md-6 fade-in">
-                        <div class="partner-card">
-                            <div class="logo-container">
-                                <i class="fa-solid fa-bolt anim-pulse"></i>
-                            </div>
-                            <div class="partner-info">
-                                <h3 class="partner-name">Electrical Engineering Services</h3>
-                                <a href="contact.html" class="visit-btn">Visit Page</a>
-                            </div>
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 fade-in text-content">
+                        <h2 class="section-title">VMTL Reverse Engineering</h2>
+                        <p>At VMTL, we offer comprehensive reverse engineering services to help you recreate, analyze, and improve existing parts and components. Our team of skilled engineers uses advanced technologies and software to accurately capture the geometry and features of your physical part and create a precise 3D model.</p>
+                    </div>
+                    <div class="col-lg-6 fade-in">
+                        <div class="img-box">
+                                                        <img src="https://images.unsplash.com/photo-1635070625568-6471d5368869?auto=format&fit=crop&w=800&q=80" alt="3D Model Wireframe">
                         </div>
                     </div>
-
-                    <div class="col-lg-3 col-md-6 fade-in">
-                        <div class="partner-card">
-                            <div class="logo-container">
-                                <i class="fa-solid fa-microchip anim-float"></i>
-                            </div>
-                            <div class="partner-info">
-                                <h3 class="partner-name">PCB Reverse Engineering Services</h3>
-                                <a href="contact.html" class="visit-btn">Visit Page</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 fade-in">
-                        <div class="partner-card">
-                            <div class="logo-container">
-                                <i class="fa-solid fa-file-waveform anim-wrench"></i>
-                            </div>
-                            <div class="partner-info">
-                                <h3 class="partner-name">Electrical Schematic Drawing Services</h3>
-                                <a href="contact.html" class="visit-btn">Visit Page</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 fade-in">
-                        <div class="partner-card">
-                            <div class="logo-container">
-                                <i class="fa-solid fa-solar-panel anim-pulse"></i>
-                            </div>
-                            <div class="partner-info">
-                                <h3 class="partner-name">Solar Panel Design Services</h3>
-                                <a href="contact.html" class="visit-btn">Visit Page</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 fade-in">
-                        <div class="partner-card">
-                            <div class="logo-container">
-                                <i class="fa-solid fa-compass-drafting anim-spin"></i>
-                            </div>
-                            <div class="partner-info">
-                                <h3 class="partner-name">Electrical Drafting Services</h3>
-                                <a href="contact.html" class="visit-btn">Visit Page</a>
-                            </div>
-                        </div>
-                    </div>
-                    
                 </div>
             </div>
         </section>
-    </main>
 
-       <footer class="custom-footer">
+        <section class="content-section bg-light">
+            <div class="container">
+                <div class="fade-in text-content">
+                    <h2 class="section-title">Benefits of Reverse Engineering at VMTL</h2>
+                    <p>Our reverse engineering services are beneficial in many situations, including:</p>
+                    
+                    <ul class="list-square-cyan mt-4">
+                        <li><strong>Replacement Parts</strong> – If you have a broken or worn-out part for which the manufacturer no longer produces, we can reverse engineer it and create a precise replica.</li>
+                        <li><strong>Legacy Parts</strong> – If you have a legacy part for which you don't have the design data, we can reverse engineer it and create a digital model for future reference.</li>
+                        <li><strong>Competitive Analysis</strong> – If you want to analyze a competitor's product, we can reverse engineer it and identify its strengths and weaknesses.</li>
+                    </ul>
+
+                    <p class="mt-4">At VMTL, we pride ourselves on delivering accurate, high-quality reverse engineering solutions that meet your specific needs. Contact us today to learn more about our reverse engineering services and how we can help you achieve your goals.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 fade-in">
+                        <h2 class="section-title">Process of Reverse Engineering</h2>
+                        <ul class="list-square-cyan">
+                            <li><strong>3D Scanning</strong> – We use non-contact 3D scanning technologies such as laser scanning and structured light scanning to capture the geometry of your physical part. This enables us to create a digital model that accurately represents the physical part's shape, size, and features.</li>
+                            <li><strong>CAD Modeling</strong> – Using the 3D scan data, we create a CAD model that represents the part's geometry and features. We use advanced CAD software to ensure that the model is accurate, and all necessary features and tolerances are included.</li>
+                            <li><strong>Prototyping</strong> – Once the CAD model is complete; we can create a physical prototype using various additive manufacturing technologies such as 3D printing or CNC machining. This allows you to verify that the digital model accurately represents the physical part and make any necessary adjustments before proceeding to production.</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 fade-in">
+                        <div class="img-box">
+                                                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="3D Scanning Process">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+     <footer class="custom-footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
@@ -494,24 +398,13 @@
         </div>
     </footer>
 
-    <div class="scroll-top" onclick="scrollToTop()">
-        ↑
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="./ASSETS/js/script.js"></script>
-    
     <script src="./ASSETS/JS/lenis.min.js"></script>
     <script src="./ASSETS/JS/scroll.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -519,25 +412,9 @@
                         entry.target.style.transform = 'translateY(0)';
                     }
                 });
-            }, observerOptions);
-
-            document.querySelectorAll('.fade-in').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                observer.observe(el);
-            });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         });
-
-        // Simple scroll to top connect
-        function scrollToTop() {
-             if (window.lenis) {
-                 window.lenis.scrollTo(0);
-             } else {
-                 window.scrollTo({ top: 0, behavior: 'smooth' });
-             }
-        }
     </script>
 </body>
-
 </html>
