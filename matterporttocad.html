@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matterport to CAD Conversion - VMTL</title>
+    <meta name="description" content="VMTL Matterport to CAD Conversion: Point cloud to 3DS, FBX, Floor Plans, and Interactive 3D Tours.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="./ASSETS/css/base.css">
+    <link rel="stylesheet" href="./ASSETS/CSS/scroll.css">
+
+    <style>
+        /* --- Internal Page Styles --- */
+        :root {
+            --primary-red: #b30000; /* Main Brand Color */
+            --text-dark: #333;
+            --text-grey: #666;
+            --bg-light: #f9f9f9;
+        }
+
+        /* Banner */
+        .page-banner {
+            /* Image: 3D scanning / Point cloud theme */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 200px 0 100px 0;
+            text-align: center;
+            color: #fff;
+            margin-top: -90px;
+        }
+
+        .banner-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        /* --- Typography --- */
+        h2 {
+            font-family: 'Teko', sans-serif;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header p { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-grey);
+            line-height: 1.6;
+        }
+
+        /* --- Section 1: Key Benefits (Numbered Circles) --- */
+        .benefits-section { padding: 80px 0; background: #fff; }
+        
+        .benefit-card {
+            background: var(--bg-light);
+            padding: 30px;
+            height: 100%;
+            position: relative;
+            transition: 0.3s;
+            border: 1px solid #eee;
+        }
+        .benefit-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+        }
+
+        .benefit-number {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Teko', sans-serif; /* Handwriting style number in screenshot replaced with clean font */
+            font-size: 30px;
+            color: #666;
+            margin-bottom: 20px;
+            background: #fff;
+            transition: 0.3s;
+        }
+        .benefit-card:hover .benefit-number {
+            border-color: var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        .benefit-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #222;
+        }
+        .benefit-desc {
+            font-size: 0.9rem;
+            color: var(--text-grey);
+            line-height: 1.6;
+        }
+
+        /* --- Section 2: Our Services (Horizontal Cards) --- */
+        .services-section { padding: 80px 0; background: var(--bg-light); }
+
+        .service-row-card {
+            background: #fff;
+            display: flex;
+            flex-direction: row;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            overflow: hidden;
+            min-height: 220px;
+            transition: 0.3s;
+        }
+        .service-row-card:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+
+        .svc-img-col {
+            width: 35%;
+            position: relative;
+            overflow: hidden;
+        }
+        .svc-img-col img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        .service-row-card:hover .svc-img-col img { transform: scale(1.1); }
+
+        .svc-content-col {
+            width: 65%;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .svc-content-col h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            color: #444;
+            margin-bottom: 10px;
+            font-weight: 300; /* Thin style from screenshot */
+        }
+        .svc-content-col h4 strong { font-weight: 600; } /* Use simple trick if title needs weight */
+        
+        .svc-content-col p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* --- Section 3: Process (Pill Shape with Bubble) --- */
+        .process-section { padding: 80px 0; background: #fff; }
+
+        .process-pill-card {
+            border: 1px solid #ccc;
+            border-radius: 100px; /* Pill shape */
+            padding: 20px 40px 20px 80px; /* Left padding makes room for the bubble */
+            position: relative;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 30px;
+            transition: 0.3s;
+        }
+        
+        .process-bubble {
+            position: absolute;
+            left: -5px; /* Slightly overlapping out */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary-red); /* Maintained Red Theme */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            border: 4px solid #fff; /* White ring effect */
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .process-number-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #333;
+            color: #fff;
+            font-size: 12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .process-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .process-desc {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* --- Section 4: Additional Services --- */
+        .additional-sec { padding: 80px 0; background: #fcfcfc; }
+        
+        .add-svc-box {
+            background: #fff;
+            border: 1px solid #eee;
+            border-left: 4px solid #f18f01; /* Orange accent from screenshot */
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            color: #444;
+            transition: 0.3s;
+        }
+        .add-svc-box:hover {
+            padding-left: 30px;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        @media (max-width: 768px) {
+            .service-row-card { flex-direction: column; }
+            .svc-img-col, .svc-content-col { width: 100%; }
+            .svc-img-col { height: 200px; }
+            .process-pill-card { border-radius: 20px; padding: 60px 20px 20px 20px; text-align: center; }
+            .process-bubble { left: 50%; top: 0; transform: translate(-50%, -50%); }
+        }
+    </style>
+</head>
+
+<body>
+
+     <header class="fti-header-2-area">
+        <div class="fti-header-2-wrap">
+            <div class="fti-header-2-row">
+                <!-- Logo -->
+                <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
+                    <img src="./ASSETS/IMAGES/logo.png" alt="VMTL - Virmodello Technologies" />
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
+                    </svg>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
+                    <ul>
+                        <li><a href="./index.html">HOME</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-divider"></div>
+                                <a href="./achievements.html" class="dropdown-item">Achievements</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./associations.html" class="dropdown-item">Associations</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="./reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./manufacturing.html" class="dropdown-item">Manufacturing</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./cad-services.html" class="dropdown-item">CAD Services</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./mechi-engineering-services.html" class="dropdown-item">Mechanical Engineering</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="./projects.html" class="dropdown-item">Projects</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="./video-gallery.html" class="dropdown-item">Video Gallery</a>
+                            </div>
+                        </li>
+                        <li><a href="./blog.html" target="_blank">BLOG</a></li>
+                        <li><a href="./contact.html">CONTACT</a></li>
+                    </ul>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="btn-wrap">
+                    <a class="fti-header-2-btn" href="./contact.html" aria-label="Get in touch">
+                        <span class="btn-text">Get in touch</span>
+                        <span class="btn-icon">↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <div class="mobile-nav-content">
+            <ul class="mobile-nav-menu">
+                <li><a href="./index.html">HOME</a></li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./achievements.html">Achievements</a>
+                        <a href="./associations.html">Associations</a>
+                        <a href="./testimonial.html">Testimonial</a>
+                    </div>
+                </li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./reverse-engineering.html">Reverse Engineering</a>
+                        <a href="./manufacturing.html">Manufacturing</a>
+                        <a href="./cad-services.html">CAD Services</a>
+                        <a href="./mechi-engineering-services.html">Mechanical Engineering</a>
+                        <a href="./electrical-engineering.html">Electrical Engineering</a>
+                    </div>
+                </li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="./projects.html">Projects</a>
+                        <a href="./video-gallery.html">Video Gallery</a>
+                    </div>
+                </li>
+                <li><a href="./blog.html" target="_blank">BLOG</a></li>
+                <li><a href="./contact.html">CONTACT</a></li>
+            </ul>
+            <div class="mobile-cta">
+                <a class="fti-header-2-btn" href="./contact.html">
+                    <span class="btn-text">Get in touch</span>
+                    <span class="btn-icon">↗</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="page-banner">
+            <div class="container">
+                <h1 class="banner-title">Matterport to CAD</h1>
+            </div>
+        </section>
+
+        <section class="benefits-section">
+            <div class="container pt-5">
+                <div class="section-header fade-in">
+                    <h2>Key Benefits of Outsourcing Matterport to CAD Conversion Services</h2>
+                    <p>Our Matterport to CAD conversion services providing company has created an unshakable reputation for providing the best services to a global clientele. Here are a few reasons why our services can be an important asset to your business.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-number">1</div>
+                            <h4 class="benefit-title">Expertise With All Types of Real Estate Models</h4>
+                            <p class="benefit-desc">Regardless of what kind of property we are dealing with, whether it's a super-mall or a spa resort, our team has extensive proficiency in catering to all kinds of conversions.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-number">2</div>
+                            <h4 class="benefit-title">Economical Pricing Plans</h4>
+                            <p class="benefit-desc">We aim to make Matterport to CAD conversion easy for you. With some of the most economical pricing plans in our segment, you won't have to stray away from your project budget.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-number">3</div>
+                            <h4 class="benefit-title">100% Quality Assurance</h4>
+                            <p class="benefit-desc">With multiple quality checks at each level, you can rest assured that all the conversion work done by us is accurate, reliable, and meets industry standards.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-number">4</div>
+                            <h4 class="benefit-title">Fastest Turnaround Time</h4>
+                            <p class="benefit-desc">With years of experience and a strong team, we can provide the fastest solutions. We also take advantage of our teams spread across the globe to provide 24/7 services.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-number">5</div>
+                            <h4 class="benefit-title">Ancillary Conversion Services</h4>
+                            <p class="benefit-desc">We understand that every business has unique needs. That is why we provide ancillary services like Matterport to Point Cloud conversion, PDF floorplans conversion, and more under one service package.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-number">6</div>
+                            <h4 class="benefit-title">Global Prominence</h4>
+                            <p class="benefit-desc">When you choose us as your service provider, you choose a brand trusted by global industry leaders. Our presence in the international real estate markets proves our competence.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 fade-in">
+                        <div class="benefit-card">
+                            <div class="benefit-number">7</div>
+                            <h4 class="benefit-title">Confidentiality Guarantee</h4>
+                            <p class="benefit-desc">We understand that your maps, plans, drawings, and renderings are confidential. We have advanced security and safety protocols to ensure that they remain safe in our hands.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Our Matterport to CAD Conversion Services</h2>
+                    <p>Matterport to CAD conversion involves the use of different technologies and approaches. We believe that specialized real estate models require specialized approaches.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6 fade-in">
+                        <div class="service-row-card">
+                            <div class="svc-img-col">
+                                                                <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=600&q=80" alt="3DS Conversion">
+                            </div>
+                            <div class="svc-content-col">
+                                <h4>Matterport to <strong>3DS Conversion</strong></h4>
+                                <p>3DS is one of the older CAD formats and still manages to be popularly employed in modern real estate models. We can have your Matterport models exported and converted to 3DS within minutes.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 fade-in">
+                        <div class="service-row-card">
+                            <div class="svc-img-col">
+                                                                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80" alt="FBX Conversion">
+                            </div>
+                            <div class="svc-content-col">
+                                <h4>Matterport to <strong>FBX Conversion</strong></h4>
+                                <p>FBX is an important proprietary format used by Autodesk and accepted by CAD. We take pride in having a track record of numerous successful Matterport to CAD conversions catering to this format.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 fade-in">
+                        <div class="service-row-card">
+                            <div class="svc-img-col">
+                                                                <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b91d?auto=format&fit=crop&w=600&q=80" alt="Floor Plans">
+                            </div>
+                            <div class="svc-content-col">
+                                <h4>Black and White <strong>Floor Plan Preparation</strong></h4>
+                                <p>Floor plans are a crucial component of CAD architectural drawing. Our team specializes in developing professional, precise, and compelling black and white floor plans from any Matterport space.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 fade-in">
+                        <div class="service-row-card">
+                            <div class="svc-img-col">
+                                                                <img src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?auto=format&fit=crop&w=600&q=80" alt="Interactive 3D Tours">
+                            </div>
+                            <div class="svc-content-col">
+                                <h4>Interactive <strong>3D Tours</strong></h4>
+                                <p>Our virtual tour team specializes in developing 3D videos from Matterport models to further enhance the immersive property viewing experience for real estate marketing.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="process-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Our Matterport to CAD Conversion Process</h2>
+                    <p>We offer exclusively designed conversion plans. Our generic framework, however, involves the following steps:</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="process-pill-card">
+                            <div class="process-bubble">
+                                <i class="fa-solid fa-file-lines"></i>
+                                <div class="process-number-badge">1</div>
+                            </div>
+                            <div class="process-title">Requirement Analysis</div>
+                            <p class="process-desc">We conduct a thorough requirement analysis through multiple team discussions and client workshops to establish the foundation.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="process-pill-card">
+                            <div class="process-bubble">
+                                <i class="fa-solid fa-image"></i>
+                                <div class="process-number-badge">2</div>
+                            </div>
+                            <div class="process-title">Design and Format Mapping</div>
+                            <p class="process-desc">According to the findings, we determine the Autodesk file format that's best for your designs and map out the conversion process.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="process-pill-card">
+                            <div class="process-bubble">
+                                <i class="fa-solid fa-layer-group"></i>
+                                <div class="process-number-badge">3</div>
+                            </div>
+                            <div class="process-title">Scans Conversion</div>
+                            <p class="process-desc">Conversion using Autodesk. You simply hand over your Matterport embed URL to us and we take it from there.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 fade-in">
+                        <div class="process-pill-card">
+                            <div class="process-bubble">
+                                <i class="fa-solid fa-square-check"></i>
+                                <div class="process-number-badge">4</div>
+                            </div>
+                            <div class="process-title">Quality Control and Accuracy Checks</div>
+                            <p class="process-desc">We reserve a specialized step for employing CAQC (Computer-Aided Quality Control) checks as the precision of the files is vital.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 fade-in">
+                        <div class="process-pill-card">
+                            <div class="process-bubble">
+                                <i class="fa-solid fa-headset"></i>
+                                <div class="process-number-badge">5</div>
+                            </div>
+                            <div class="process-title">After-Sales Support</div>
+                            <p class="process-desc">Once satisfied with your CAD-compatible formats, we can help you with support services like architecture design drafting and feasibility testing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="additional-sec">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Additional Services You Can Benefit From</h2>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 fade-in">
+                        <div class="add-svc-box">Architectural Rendering Services</div>
+                    </div>
+                    <div class="col-md-6 fade-in">
+                        <div class="add-svc-box">Civil Engineering Services</div>
+                    </div>
+                    <div class="col-md-6 fade-in">
+                        <div class="add-svc-box">Mechanical Engineering Services</div>
+                    </div>
+                    <div class="col-md-6 fade-in">
+                        <div class="add-svc-box">Structural Engineering Services</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+      <footer class="custom-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">VMTL<span class="dot">.</span></div>
+                    <p class="footer-description">
+                        Our long history of family ownership has financial reassurance, business continuity and
+                        stability. It has also created firm foundations from which we continue to grow.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">How It Works?</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Terms Of Services</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="reverse-engineering.html">Reverse Engineering</a></li>
+                        <li><a href="manufacturing.html">Manufacturing</a></li>
+                        <li><a href="cad-services.html">CAD Services</a></li>
+                        <li><a href="mechanical-engineering.html">Mechanical Engineering</a></li>
+                        <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Our Link</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="clients.html">Clients</a></li>
+                        <li><a href="contact.html">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contact-section-footer">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-info">
+                        <h4>Call Us</h4>
+                        <p>+91 97890 99151</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">✉</div>
+                    <div class="contact-info">
+                        <h4>Email Us:</h4>
+                        <p>contact@virmodello.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <div class="contact-info">
+                        <h4>Opening Hours:</h4>
+                        <p>Mon-Fri: 8am - 7pm</p>
+                    </div>
+                </div>
+
+                <button class="schedule-btn">Schedule An Appointment</button>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© Copyright 2025 All rights reserved. Design by Neoera Infotech</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./ASSETS/js/script.js"></script>
+    <script src="./ASSETS/JS/lenis.min.js"></script>
+    <script src="./ASSETS/JS/scroll.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
