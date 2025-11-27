@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Gallery - VMTL | Virmodello Technologies</title>
+    <meta name="description" content="Watch VMTL's engineering expertise in action. Explore our latest project videos and technical demonstrations.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./ASSETS/CSS/base.css">
+
+    <style>
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+        .lenis.lenis-scrolling iframe { pointer-events: none; }
+    </style>
+
+    <style>
+        /* --- Video Gallery Specific Styles --- */
+        :root {
+            --primary-color: #2E86AB;
+            --accent-color: #F18F01;
+            --dark-bg: #0b0b0b;
+            --card-bg: #151515;
+        }
+
+        body { background-color: var(--dark-bg); color: #fff; }
+
+        /* Cinematic Hero */
+        .video-hero {
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--dark-bg)), url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin-top: -90px;
+            position: relative;
+        }
+
+        .hero-content { position: relative; z-index: 2; padding: 0 20px; }
+
+        .hero-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Video Grid Section */
+        .gallery-section { padding: 80px 0; }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid #222;
+            height: 100%;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(46, 134, 171, 0.15);
+        }
+
+        /* Thumbnail Container - Force 16:9 Ratio */
+        .video-thumb-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-thumb-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image covers area without stretching */
+            transition: transform 0.5s ease;
+            opacity: 0.9;
+        }
+
+        .video-card:hover .video-thumb-img {
+            transform: scale(1.05);
+            opacity: 0.7;
+        }
+
+        /* Play Button Overlay */
+        .play-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .play-btn {
+            width: 60px; height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255,255,255,0.8);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            padding-left: 5px; /* Center the triangle visual */
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .video-card:hover .play-btn {
+            transform: scale(1.2);
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 25px rgba(46, 134, 171, 0.6);
+        }
+
+        /* Video Info */
+        .video-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid #222;
+        }
+        
+        .video-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .video-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.8rem;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        .video-card:hover .video-title { color: var(--primary-color); }
+
+        .video-desc {
+            font-size: 0.95rem;
+            color: #999;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .video-modal.show { display: flex; opacity: 1; }
+
+        .video-container-modal {
+            width: 90%;
+            max-width: 1100px;
+            aspect-ratio: 16/9;
+            background: #000;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px; right: 0;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: 0.3s;
+            line-height: 1;
+        }
+        .close-modal:hover { color: var(--accent-color); transform: rotate(90deg); }
+
+        /* Animations */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { opacity: 0; animation: fadeUp 0.8s ease forwards; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3.5rem; }
+            .video-thumb-container { padding-top: 60%; } /* Slightly taller on mobile */
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="fti-header-2-area">
+        <div class="fti-header-2-wrap">
+            <div class="fti-header-2-row">
+                <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
+                    <img src="./ASSETS/IMAGES/logo.png" alt="VMTL - Virmodello Technologies" />
+                </a>
+                <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path></svg>
+                </button>
+                <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="achievements.html" class="dropdown-item">Achievements</a>
+                                <a href="associations.html" class="dropdown-item">Associations</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
+                                <a href="manufacturing.html" class="dropdown-item">Manufacturing</a>
+                                <a href="cad-services.html" class="dropdown-item">CAD Services</a>
+                                <a href="mechanical-engineering.html" class="dropdown-item">Mechanical Engineering</a>
+                                <a href="electrical-engineering.html" class="dropdown-item">Electrical Engineering</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="projects.html" class="dropdown-item">Projects</a>
+                                <a href="video-gallery.html" class="dropdown-item active">Video Gallery</a>
+                            </div>
+                        </li>
+                        <li><a href="blog.html" target="_blank">BLOG</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
+                    </ul>
+                </nav>
+                <div class="btn-wrap">
+                    <a class="fti-header-2-btn" href="contact.html"><span class="btn-text">Get in touch</span><span class="btn-icon">↗</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <main>
+        <section class="video-hero">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">Video Gallery</h1>
+                <p class="hero-subtitle">
+                    Witness engineering excellence in motion. A curated collection of our technical demonstrations, simulations, and corporate insights.
+                </p>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="container">
+                <div class="row g-4">
+
+                    <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.1s;">
+                        <div class="video-card" onclick="openVideo('https://www.youtube.com/embed/CqT6YekP4cA?autoplay=1')">
+                            <div class="video-thumb-container">
+                                <img src="https://img.youtube.com/vi/CqT6YekP4cA/hqdefault.jpg" alt="VMTL Corporate" class="video-thumb-img">
+                                <div class="play-overlay">
+                                    <div class="play-btn"><i class="fas fa-play"></i></div>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-tag">Corporate</span>
+                                <h3 class="video-title">VMTL Corporate Overview</h3>
+                                <p class="video-desc">An in-depth look at Virmodello Technologies, our core engineering services, and our commitment to innovation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.2s;">
+                        <div class="video-card" onclick="openVideo('https://www.youtube.com/embed/9tGh8n123Js?autoplay=1')">
+                            <div class="video-thumb-container">
+                                <img src="https://img.youtube.com/vi/9tGh8n123Js/hqdefault.jpg" alt="Reverse Engineering" class="video-thumb-img">
+                                <div class="play-overlay">
+                                    <div class="play-btn"><i class="fas fa-play"></i></div>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-tag">Reverse Engineering</span>
+                                <h3 class="video-title">Advanced Scanning & Modeling</h3>
+                                <p class="video-desc">Demonstrating our capability in converting physical parts to digital 3D models using state-of-the-art scanning.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.3s;">
+                        <div class="video-card" onclick="openVideo('https://www.youtube.com/embed/Y1_BZEPEsZ4?autoplay=1')">
+                            <div class="video-thumb-container">
+                                <img src="https://img.youtube.com/vi/Y1_BZEPEsZ4/hqdefault.jpg" alt="Engineering Analysis" class="video-thumb-img">
+                                <div class="play-overlay">
+                                    <div class="play-btn"><i class="fas fa-play"></i></div>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-tag">Simulation</span>
+                                <h3 class="video-title">Engineering Analysis</h3>
+                                <p class="video-desc">Expert CFD and FEA simulation projects showcasing our analytical strengths in solving complex flow problems.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="video-modal" id="videoModal">
+        <div class="video-container-modal">
+            <div class="close-modal" onclick="closeVideo()"><i class="fas fa-times"></i></div>
+            <iframe id="videoFrame" width="100%" height="100%" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">VMTL<span class="dot">.</span></div>
+                    <p class="footer-description">
+                        Our long history of family ownership has financial reassurance, business continuity and
+                        stability. It has also created firm foundations from which we continue to grow.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">How It Works?</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Terms Of Services</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="reverse-engineering.html">Reverse Engineering</a></li>
+                        <li><a href="manufacturing.html">Manufacturing</a></li>
+                        <li><a href="cad-services.html">CAD Services</a></li>
+                        <li><a href="mechanical-engineering.html">Mechanical Engineering</a></li>
+                        <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Our Link</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="clients.html">Clients</a></li>
+                        <li><a href="contact.html">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contact-section-footer">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-info">
+                        <h4>Call Us</h4>
+                        <p>+91 97890 99151</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">✉</div>
+                    <div class="contact-info">
+                        <h4>Email Us:</h4>
+                        <p>contact@virmodello.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <div class="contact-info">
+                        <h4>Opening Hours:</h4>
+                        <p>Mon-Fri: 8am - 7pm</p>
+                    </div>
+                </div>
+
+                <button class="schedule-btn">Schedule An Appointment</button>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© Copyright 2025 All rights reserved. Design by Neoera Infotech</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./ASSETS/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <script>
+        // Lenis Smooth Scroll
+        const lenis = new Lenis({ duration: 1.2, smooth: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        function scrollToTop() { lenis.scrollTo(0); }
+
+        // Modal Logic
+        const modal = document.getElementById('videoModal');
+        const frame = document.getElementById('videoFrame');
+
+        function openVideo(url) {
+            frame.src = url;
+            modal.classList.add('show');
+            // Stop background scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideo() {
+            modal.classList.remove('show');
+            setTimeout(() => { frame.src = ''; }, 300); // Clear source after transition
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on outside click
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeVideo();
+            }
+        }
+    </script>
+</body>
+</html>
