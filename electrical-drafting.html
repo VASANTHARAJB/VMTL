@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrical Drafting Services - VMTL</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./ASSETS/CSS/cfd_service.css">
+  <link rel="stylesheet" href="./ASSETS/CSS/scroll.css">
+
+  <style>
+    /* ================= GLOBAL VARIABLES & TYPOGRAPHY ================= */
+    :root {
+      --primary-blue: #3b9cfa;
+      --dark-navy: #001428;
+      --text-dark: #333;
+      --text-light: #666;
+      --bg-light: #f8f9fa;
+      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --card-hover-shadow: 0 20px 40px rgba(59, 156, 250, 0.15);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ================= ANIMATION CLASSES ================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 1s ease;
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 1s ease;
+    }
+
+    .reveal-left.active, .reveal-right.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ================= HEADER & HERO (MAINTAINED) ================= */
+    .header-section {
+      background: linear-gradient(rgba(0, 20, 40, 0.85), rgba(0, 20, 40, 0.85));
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-img-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .hero-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .header-content {
+      z-index: 2;
+    }
+
+    .header-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .breadcrumb {
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .breadcrumb a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--primary-blue);
+    }
+
+    .breadcrumb .arrow {
+      margin: 0 10px;
+      color: var(--primary-blue);
+    }
+
+    /* ================= SERVICES SECTION (ALTERNATING LAYOUT) ================= */
+    .section-head {
+      text-align: center;
+      margin-bottom: 60px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-head h2 {
+      font-weight: 700;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-head h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--primary-blue);
+      margin: 15px auto 0;
+    }
+
+    .service-row-premium {
+      margin-bottom: 80px;
+      align-items: center;
+    }
+
+    .service-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      height: 400px; /* Fixed height for consistency */
+    }
+
+    .service-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .service-img-wrapper:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Premium Overlay on Image Hover */
+    .service-img-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .service-img-wrapper:hover::after {
+      opacity: 1;
+    }
+
+    .service-text-content {
+      padding: 20px;
+    }
+
+    .service-text-content h4 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 20px;
+      position: relative;
+      padding-left: 20px;
+      border-left: 4px solid var(--primary-blue);
+    }
+
+    .service-text-content p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-light);
+    }
+
+    /* ================= GRID CARDS (DRAFTING SPECIFICS) ================= */
+    .grid-bg {
+      background-color: #f4f7fa;
+      padding: 80px 0;
+    }
+
+    .premium-card {
+      background: #fff;
+      border: none;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .premium-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: var(--primary-blue);
+      transition: width 0.4s ease;
+      z-index: 5;
+    }
+
+    .premium-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    .premium-card:hover::before {
+      width: 100%;
+    }
+
+    .card-img-area {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .card-img-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .premium-card:hover .card-img-area img {
+      transform: scale(1.1);
+    }
+
+    .card-body-area {
+      padding: 30px;
+      flex-grow: 1;
+    }
+
+    .card-body-area h4 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    /* ================= VERTICAL PROCESS TIMELINE ================= */
+    .process-section {
+      padding: 80px 0;
+      background: #fff;
+    }
+
+    .timeline-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* The central line */
+    .timeline-container::after {
+      content: '';
+      position: absolute;
+      width: 3px;
+      background-color: #e9ecef;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1.5px;
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+    }
+
+    .timeline-item.left {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-item.right {
+      left: 50%;
+      text-align: left;
+    }
+
+    .timeline-content {
+      padding: 25px;
+      background-color: white;
+      position: relative;
+      border-radius: 8px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-top: 3px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .timeline-item:hover .timeline-content {
+      border-top-color: var(--primary-blue);
+      transform: scale(1.02);
+    }
+
+    /* The circles on the line */
+    .timeline-icon {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      right: -25px;
+      background-color: #fff;
+      border: 3px solid var(--primary-blue);
+      top: 20px;
+      border-radius: 50%;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-blue);
+      font-size: 1.2rem;
+      box-shadow: 0 0 0 5px rgba(255,255,255,0.8);
+    }
+
+    .timeline-item.right .timeline-icon {
+      left: -25px;
+    }
+
+    /* Mobile Timeline Adjustments */
+    @media (max-width: 768px) {
+      .header-title { font-size: 2.2rem; }
+      
+      .timeline-container::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item.left, .timeline-item.right {
+        left: 0;
+        text-align: left;
+      }
+      
+      .timeline-item.left .timeline-icon, 
+      .timeline-item.right .timeline-icon {
+        left: 6px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="fti-header-2-area">
+    <div class="fti-header-2-wrap">
+      <div class="fti-header-2-row">
+        <a href="index.html" aria-label="VMTL Logo" class="fti-header-2-logo">
+          <img src="./ASSETS/IMAGES/logo.png" alt="VMTL - Virmodello Technologies" onerror="this.src='https://via.placeholder.com/150x50?text=VMTL'"/>
+        </a>
+        <button class="fti-menu-btn-2" id="menuToggle" aria-label="Toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path class="svg-path" d="M1,12h22 M1,4.7h22 M8.3,19.3H23"></path>
+          </svg>
+        </button>
+        <nav class="main-navigation" aria-label="Primary navigation" id="mainNav">
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+              <div class="dropdown-menu">
+                <div class="dropdown-divider"></div>
+                <a href="achievements.html" class="dropdown-item">Achievements</a>
+                <div class="dropdown-divider"></div>
+                <a href="associations.html" class="dropdown-item">Associations</a>
+                <div class="dropdown-divider"></div>
+                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+              </div>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle active">SERVICES <i class="fas fa-chevron-down"></i></a>
+              <div class="dropdown-menu">
+                <a href="reverse-engineering.html" class="dropdown-item">Reverse Engineering</a>
+                <div class="dropdown-divider"></div>
+                <a href="manufacturing.html" class="dropdown-item">Manufacturing</a>
+                <div class="dropdown-divider"></div>
+                <a href="cad-services.html" class="dropdown-item">CAD Services</a>
+                <div class="dropdown-divider"></div>
+                <a href="mechanical-engineering.html" class="dropdown-item">Mechanical Engineering</a>
+                <div class="dropdown-divider"></div>
+                <a href="electrical-engineering.html" class="dropdown-item active">Electrical Engineering</a>
+                <a href="pcb-reverse-engineering.html" class="dropdown-item ps-4" style="font-size: 0.9em;">&nbsp;&nbsp;↳ PCB Reverse Engineering</a>
+                <a href="electrical-schematic-drawing.html" class="dropdown-item ps-4" style="font-size: 0.9em;">&nbsp;&nbsp;↳ Electrical Schematic Drawing</a>
+                <a href="electrical-drafting-services.html" class="dropdown-item ps-4 active" style="font-size: 0.9em;">&nbsp;&nbsp;↳ Electrical Drafting Services</a>
+                <div class="dropdown-divider"></div>
+                <a href="engineering-simulation.html" class="dropdown-item">Engineering Simulation</a>
+                <div class="dropdown-divider"></div>
+                <a href="machine-design.html" class="dropdown-item">Machine Design & Dev</a>
+                <div class="dropdown-divider"></div>
+                <a href="sheet-metal-design.html" class="dropdown-item">Sheet Metal Design</a>
+                <div class="dropdown-divider"></div>
+                <a href="fea-services.html" class="dropdown-item">Finite Element Analysis</a>
+              </div>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+              <div class="dropdown-menu">
+                <a href="projects.html" class="dropdown-item">Projects</a>
+                <div class="dropdown-divider"></div>
+                <a href="video-gallery.html" class="dropdown-item">Video Gallery</a>
+              </div>
+            </li>
+            <li><a href="https://virmodello.blogspot.com/" target="_blank" rel="noopener noreferrer">BLOG</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </nav>
+        <div class="btn-wrap">
+          <a class="fti-header-2-btn" href="contact.html" aria-label="Get in touch">
+            <span class="btn-text">Get in touch</span>
+            <span class="btn-icon">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <button class="mobile-close-btn">&times;</button>
+    <div class="mobile-nav-content">
+      <ul class="mobile-nav-menu">
+        <li><a href="index.html">HOME</a></li>
+        <li class="mobile-dropdown">
+          <a href="#" class="mobile-dropdown-toggle">ABOUT US <i class="fas fa-chevron-down"></i></a>
+          <div class="mobile-dropdown-menu">
+            <a href="about-us.html">Our Team</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="associations.html">Associations</a>
+            <a href="testimonial.html">Testimonial</a>
+          </div>
+        </li>
+        <li class="mobile-dropdown">
+          <a href="#" class="mobile-dropdown-toggle">SERVICES <i class="fas fa-chevron-down"></i></a>
+          <div class="mobile-dropdown-menu">
+            <a href="reverse-engineering.html">Reverse Engineering</a>
+            <a href="manufacturing.html">Manufacturing</a>
+            <a href="cad-services.html">CAD Services</a>
+            <a href="mechanical-engineering.html">Mechanical Engineering</a>
+            <a href="electrical-engineering.html">Electrical Engineering</a>
+            <a href="pcb-reverse-engineering.html" style="padding-left: 20px; font-size: 0.9em;">↳ PCB Reverse Engineering</a>
+            <a href="electrical-schematic-drawing.html" style="padding-left: 20px; font-size: 0.9em;">↳ Electrical Schematic Drawing</a>
+            <a href="electrical-drafting-services.html" style="padding-left: 20px; font-size: 0.9em;">↳ Electrical Drafting Services</a>
+            <a href="machine-design.html">Machine Design & Dev</a>
+            <a href="sheet-metal-design.html">Sheet Metal Design</a>
+            <a href="fea-services.html">Finite Element Analysis</a>
+          </div>
+        </li>
+        <li><a href="clients.html">OUR CLIENTS</a></li>
+        <li class="mobile-dropdown">
+          <a href="#" class="mobile-dropdown-toggle">EXPERIENCE <i class="fas fa-chevron-down"></i></a>
+          <div class="mobile-dropdown-menu">
+            <a href="projects.html">Projects</a>
+            <a href="video-gallery.html">Video Gallery</a>
+          </div>
+        </li>
+        <li><a href="https://virmodello.blogspot.com/" target="_blank">BLOG</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+  </div>
+  <section class="header-section">
+    <div class="hero-img-container">
+      <img src="https://i.pinimg.com/736x/bd/8c/3e/bd8c3ec049fbf3ab31d0dd04ec6a7af4.jpg" alt="Electrical Drafting Services">
+    </div>
+    <div class="header-content reveal">
+      <h1 class="header-title">Electrical Drafting Services</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="arrow">&#x2192;</span>
+        <a href="#">Services</a>
+        <span class="arrow">&#x2192;</span>
+        <a href="electrical-engineering.html">Electrical Engineering</a>
+        <span class="arrow">&#x2192;</span>
+        <span>Electrical Drafting</span>
+      </div>
+    </div>
+  </section>
+  <section class="section-padding" style="padding: 100px 0;">
+    <div class="container">
+      
+      <div class="section-head reveal">
+        <h2 style="color: var(--primary-blue);">Our Electrical Drafting Support and Services</h2>
+        <p class="mt-3">For over 20 years, Flatworld Solutions has been acclaimed as the leading electrical drafting service providing company available in India as well as almost all countries worldwide. Mentioned below are some of the support and services that we can be contacted for -</p>
+      </div>
+
+      <div class="row service-row-premium">
+        <div class="col-lg-6 mb-4 mb-lg-0 reveal-left">
+          <div class="service-img-wrapper">
+
+
+            <img src="https://i.pinimg.com/736x/32/a2/47/32a247860931f5223a2c49bf754558a4.jpg" alt="Electrical Schematics">
+          </div>
+        </div>
+        <div class="col-lg-6 reveal-right">
+          <div class="service-text-content">
+            <h4>Electrical Schematics</h4>
+            <p>As per regulations, it is mandatory to divulge all electrical schematics before any installation or wiring work can be proceeded with. We provide a detailed overview of electrical power and lighting plans based on the construction. This will give you the best possible powering/ lighting-up options be it for homes, companies, organizations, or shop displays, etc. We make use of the latest technology to give you schematic representations of electrical equipment in a building covering the displays, floors, elevators, escalators, solar panels, and wall section, as well as the equipment to be attached.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row service-row-premium flex-row-reverse">
+        <div class="col-lg-6 mb-4 mb-lg-0 reveal-right">
+          <div class="service-img-wrapper">
+
+
+            <img src="https://i.pinimg.com/1200x/71/76/43/717643df10addfb8da8f736ff151e2a4.jpg" alt="AutoCAD Electrical Drafting">
+          </div>
+        </div>
+        <div class="col-lg-6 reveal-left">
+          <div class="service-text-content">
+            <h4>AutoCAD Electrical Drafting</h4>
+            <p>Our engineers accurately design schematic diagrams of electrical plans, wirings drawings, and lighting set-up diagrams using the latest CAD software. Employing 3D modeling and animation you can view the structure and its electrical outlets before any installations.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row service-row-premium">
+        <div class="col-lg-6 mb-4 mb-lg-0 reveal-left">
+          <div class="service-img-wrapper">
+            
+
+            <img src="https://i.pinimg.com/736x/00/82/13/0082137914c83d73564f11a2f86da010.jpg" alt="Electronic Prototyping Services">
+          </div>
+        </div>
+        <div class="col-lg-6 reveal-right">
+          <div class="service-text-content">
+            <h4>Electronic Prototyping Services</h4>
+            <p>We create prototypes and use them to test the functionality and operation. This will enable you to understand if the electrical supply is optimum for your equipment and whether all electrical specifications are met as per the set criteria.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row service-row-premium flex-row-reverse">
+        <div class="col-lg-6 mb-4 mb-lg-0 reveal-right">
+          <div class="service-img-wrapper">
+             
+
+ 
+
+            <img src="https://i.pinimg.com/736x/9f/bc/0a/9fbc0adf684b2f234e2dc98e87d6d686.jpg" alt="Control Panel Design">
+          </div>
+        </div>
+        <div class="col-lg-6 reveal-left">
+          <div class="service-text-content">
+            <h4>Control Panel Design</h4>
+            <p>This is important in understanding the distribution of power and energy efficiency. We develop customized designs as per your requirement and/ or the one we consider as the best option. Our engineers are adept at working with different panel types among which are PLC, VFD, distribution board, AC drive, and wiring drawing machine control, etc.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <section class="grid-bg">
+    <div class="container">
+      <div class="row g-4">
+        
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="premium-card">
+            <div class="card-img-area">
+                
+
+ 
+
+              <img src="https://i.pinimg.com/1200x/15/50/e0/1550e00f9f4ff4edf4ec89c2b826abd5.jpg" alt="Electrical Wiring Diagrams">
+            </div>
+            <div class="card-body-area">
+              <h4>Electrical Wiring Diagrams</h4>
+              <p>All electrical drafting designs comply with rules and regulations of the location in which the work is undertaken. We stringently follow engineering/ architectural standards and BOMA/ IFMA standards.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="premium-card">
+            <div class="card-img-area">
+                
+              <img src="https://i.pinimg.com/736x/21/78/da/2178da06ff78dca0090a5fc72d250db5.jpg" alt="Maintenance and Repairs">
+            </div>
+            <div class="card-body-area">
+              <h4>Maintenance and Repairs</h4>
+              <p>We undertake electrical drafts for already existing buildings/ structures that require rewiring and/ or alternate ways of lighting. In case of any additional equipment that needs to be included, we help you take the best alternative.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="premium-card">
+            <div class="card-img-area">
+                 
+              <img src="https://i.pinimg.com/736x/31/e4/01/31e401669c6a7798f96ac357ec79a057.jpg" alt="Earthing and Lighting Protection Systems">
+            </div>
+            <div class="card-body-area">
+              <h4>Earthing & Lighting Protection</h4>
+              <p>All earthing system layouts, pits interconnection drawings, layouts of earthing strips, and lighting protection structural drafts are provided. This ensures the electrical aspects are safe and hazard-free.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="premium-card">
+            <div class="card-img-area">
+                
+              <img src="https://i.pinimg.com/736x/86/04/ff/8604ff2fc2baf6fa24c15caf893a80fa.jpg" alt="Fire Protection System Layout">
+            </div>
+            <div class="card-body-area">
+              <h4>Fire Protection System Layout</h4>
+              <p>We give you detailed schematic representations of where all fire protectors and sprinklers can be installed. Likewise, the best visual representation where the smoke detectors and alarms can be incorporated.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="premium-card">
+            <div class="card-img-area">
+                
+
+              <img src="https://i.pinimg.com/736x/1f/e6/bd/1fe6bdc7b473652f07b94649dd6bf9b1.jpg" alt="Communication Systems Schematics">
+            </div>
+            <div class="card-body-area">
+              <h4>Communication Systems</h4>
+              <p>We provide drafts of all audio and visual system designs for intercom, CCTV, and public connectivity. All representations provided by our team will ensure that there is no damage due to flawless electrical wiring.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="premium-card">
+            <div class="card-img-area">
+
+
+              <img src="https://i.pinimg.com/736x/d5/f0/85/d5f085c3bee60cc2d7ebb589f803fa3b.jpg" alt="Electrical Data Archiving">
+            </div>
+            <div class="card-body-area">
+              <h4>Electrical Data Archiving</h4>
+              <p>Our team is here to help you prioritize all the work, keep track of documentation, and also help store it for future reference.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <section class="process-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 style="color: var(--primary-blue);">Our Electrical Drafting Process</h2>
+        <p>The process followed by us for providing our electrical drafting services is as mentioned below -</p>
+      </div>
+
+      <div class="timeline-container">
+        
+        <div class="timeline-item left reveal-left">
+          <div class="timeline-icon"><i class="fas fa-bullseye"></i></div>
+          <div class="timeline-content">
+            <h5>1. Understanding Client Requirement</h5>
+            <p class="mb-0">We consult with you/ your team and understand the magnitude of the work that needs to be undertaken to draft an electrical plan that is efficient and conserves energy as well.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right reveal-right">
+          <div class="timeline-icon"><i class="fas fa-pencil-ruler"></i></div>
+          <div class="timeline-content">
+            <h5>2. Analysis</h5>
+            <p class="mb-0">We thoroughly study the structure that needs to be powered up to give you the best conservational electrical plan.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item left reveal-left">
+          <div class="timeline-icon"><i class="fas fa-search"></i></div>
+          <div class="timeline-content">
+            <h5>3. Development and Design</h5>
+            <p class="mb-0">We develop the most appropriate electrical drafts. We create drafts as per specifications given by you and provide inputs on improvisation, usage of raw materials, and choice of equipment.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right reveal-right">
+          <div class="timeline-icon"><i class="fas fa-cube"></i></div>
+          <div class="timeline-content">
+            <h5>4. 3D Visuals</h5>
+            <p class="mb-0">Our presentation of the 2D as well as a 3D format of the structure will give you a glimpse into future construction.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item left reveal-left">
+          <div class="timeline-icon"><i class="fas fa-check-double"></i></div>
+          <div class="timeline-content">
+            <h5>5. Quality Checks</h5>
+            <p class="mb-0">Any changes/ revisions are done as desired by the client after drafting a precise layout of all electrical work.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right reveal-right">
+          <div class="timeline-icon"><i class="fas fa-file-export"></i></div>
+          <div class="timeline-content">
+            <h5>6. Final Draft</h5>
+            <p class="mb-0">The final draft is sent across securely to complete the project cycle.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <section class="contact-expert-section">
+    <div class="container">
+      <div class="section-head">
+        <h5>Contact Us</h5>
+        <h2>Excited about the project? Please get in touch.</h2>
+      </div>
+
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <img src="https://themexriver.com/wp/indsro/wp-content/uploads/2024/09/contact-us.webp" alt="Contact Support Team" onerror="this.src='https://via.placeholder.com/600x400?text=Contact+Us'">
+
+          <div class="contact-item">
+            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+            <div>
+              <h6>Address:</h6>
+              <span>2715 Ash Dr. San Jose, South Dakota 83475</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="icon"><i class="fas fa-phone"></i></span>
+            <div>
+              <h6>Phone Number:</h6>
+              <span>(704) 555-0127, (239) 555-0108</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="icon"><i class="fas fa-envelope"></i></span>
+            <div>
+              <h6>Email:</h6>
+              <span>themexriver@support.com</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h2>Contact Me</h2>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">First Name *</label>
+              <input type="text" id="name" name="name" placeholder="Your first name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="Your email address" required>
+            </div>
+            <div class="form-group">
+              <label for="service">Select Service Type *</label>
+              <select id="service" name="service" required>
+                <option value="Drafting" selected>Electrical Drafting Services</option>
+                <option value="Schematic">Electrical Schematic Drawing</option>
+                <option value="Solar">Solar Panel Design</option>
+                <option value="Electrical">Electrical Engineering</option>
+                <option value="PCB-RE">PCB Reverse Engineering</option>
+                <option value="FEA">Finite Element Analysis</option>
+                <option value="Reverse Engineering">Reverse Engineering</option>
+                <option value="Sheet Metal">Sheet Metal Design</option>
+                <option value="Machine Design">Machine Design & Development</option>
+                <option value="CFD">Computational Fluid Dynamics</option>
+                <option value="Mechanical">Mechanical</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" placeholder="Type your message" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              <span>Send Message</span> <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="custom-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">VMTL<span class="dot">.</span></div>
+          <p class="footer-description">
+            Our long history of family ownership has financial reassurance, business continuity and
+            stability. It has also created firm foundations from which we continue to grow.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Product</h3>
+          <ul class="footer-links">
+            <li><a href="#">How It Works?</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Terms Of Services</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="reverse-engineering.html">Reverse Engineering</a></li>
+            <li><a href="manufacturing.html">Manufacturing</a></li>
+            <li><a href="cad-services.html">CAD Services</a></li>
+            <li><a href="mechanical-engineering.html">Mechanical Engineering</a></li>
+            <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+            <li><a href="fea-services.html">Finite Element Analysis</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Our Link</h3>
+          <ul class="footer-links">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="clients.html">Clients</a></li>
+            <li><a href="contact.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="contact-section-footer">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-info">
+            <h4>Call Us</h4>
+            <p>+91 97890 99151</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div class="contact-info">
+            <h4>Email Us:</h4>
+            <p>contact@virmodello.com</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-info">
+            <h4>Opening Hours:</h4>
+            <p>Mon-Fri: 8am - 7pm</p>
+          </div>
+        </div>
+
+        <button class="schedule-btn">Schedule An Appointment</button>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">© Copyright 2025 All rights reserved. Design by Neoera Infotech</p>
+      </div>
+    </div>
+  </footer>
+  <div class="scroll-top" onclick="scrollToTop()">
+    ↑
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./ASSETS/JS/lenis.min.js"></script>
+  <script src="./ASSETS/JS/scroll.js"></script>
+  <script>
+    // Global Scroll To Top Function
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+      const closeBtn = document.querySelector('.mobile-close-btn');
+      const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+      const contactForm = document.getElementById('contactForm');
+      const scrollTopBtn = document.querySelector('.scroll-top');
+
+      // --- Mobile Menu Functions ---
+      function openMenu() {
+        mobileNavOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        mobileNavOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+          menu.classList.remove('active');
+        });
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+          toggle.classList.remove('active');
+          const icon = toggle.querySelector('i');
+          if (icon) icon.className = 'fas fa-chevron-down';
+        });
+      }
+
+      if (menuToggle) menuToggle.addEventListener('click', openMenu);
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+      if (mobileNavOverlay) {
+        mobileNavOverlay.addEventListener('click', function(e) {
+          if (e.target === mobileNavOverlay) closeMenu();
+        });
+      }
+
+      // Mobile Dropdown Accordion
+      mobileDropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          const submenu = this.nextElementSibling;
+          const icon = this.querySelector('i');
+          this.classList.toggle('active');
+          submenu.classList.toggle('active');
+          if (submenu.classList.contains('active')) {
+            icon.className = 'fas fa-chevron-up';
+          } else {
+            icon.className = 'fas fa-chevron-down';
+          }
+        });
+      });
+
+      // --- Contact Form Handling ---
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const btn = this.querySelector('.btn-submit');
+          const originalText = btn.innerHTML;
+          btn.innerHTML = 'Sending...';
+          btn.disabled = true;
+          setTimeout(() => {
+            alert('Thank you! Your message has been sent successfully.');
+            this.reset();
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+          }, 1500);
+        });
+      }
+
+      // --- Scroll Effects ---
+      const header = document.querySelector('.fti-header-2-wrap');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          header.style.background = 'rgba(31, 31, 31, 0.98)';
+          header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.2)';
+        } else {
+          header.style.background = 'rgba(31, 31, 31, 0.9)';
+          if(window.innerWidth > 992) header.style.background = 'transparent';
+          header.style.boxShadow = 'none';
+        }
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+      });
+
+      // --- Premium Reveal Animation Logic ---
+      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+      
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            revealObserver.unobserve(entry.target); // Animate only once
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+    });
+  </script>
+</body>
+</html>

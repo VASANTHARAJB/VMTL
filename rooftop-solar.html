@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electrical Engineering Services - VMTL</title>
+  <title>Solar Panel Layout Design Services - VMTL</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,136 +17,160 @@
   <link rel="stylesheet" href="./ASSETS/CSS/cfd_service.css">
   <link rel="stylesheet" href="./ASSETS/CSS/scroll.css">
 
-  <!-- Custom CSS for Electrical Page -->
+  <!-- Custom CSS for Solar Page -->
   <style>
-    /* --- Premium Service Cards (Floating Icon Style) --- */
-    .elec-card {
+    /* --- Unique Hero Overlay --- */
+    .header-section {
+        background: linear-gradient(rgba(0, 30, 60,-1.7), rgba(0, 30, 60, -1.7)); 
+        /* Darker blue tint for solar panel feel */
+    }
+
+    /* --- Service Cards: Glassmorphism / Tech Style --- */
+    .solar-card {
         background: #fff;
-        padding: 80px 30px 30px;
-        height: 100%;
-        border-radius: 8px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-        margin-top: 30px; /* Space for the floating icon */
-        border-left: 3px solid transparent;
-        overflow: hidden;
-    }
-
-    .elec-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        border-left: 3px solid #3b9cfa; /* Red accent */
-    }
-
-    .elec-icon-box {
-        width: 70px;
-        height: 70px;
-        background: linear-gradient(135deg, #3b9cfa 0%, #046bd2 100%);
-        color: #fff;
         border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 32px;
-        position: absolute;
-        top: 10px;
-        left: 30px;
-        box-shadow: 0 5px 15px rgba(179, 0, 0, 0.3);
-        transition: transform 0.3s ease;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transition: all 0.4s ease;
+        height: 100%;
+        border-top: 4px solid transparent;
+        position: relative;
     }
 
-    .elec-card:hover .elec-icon-box {
-        transform: scale(1.1) rotate(3deg);
+    .solar-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        border-top-color: #3b9cfa; /* Brand Red */
     }
 
-    .elec-card h4 {
-        font-size: 1.25rem;
+    .solar-img-box {
+        height: 180px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .solar-img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .solar-card:hover .solar-img-box img {
+        transform: scale(1.1);
+    }
+
+    .solar-card-body {
+        padding: 25px;
+    }
+
+    .solar-card h4 {
+        font-size: 1.2rem;
         font-weight: 700;
-        margin-top: 25px;
-        margin-bottom: 15px;
-        color: #333;
+        margin-bottom: 12px;
+        color: #2c3e50;
     }
 
-    .elec-card p {
+    .solar-card p {
+        font-size: 0.9rem;
         color: #666;
-        font-size: 0.95rem;
         line-height: 1.6;
         margin-bottom: 0;
     }
 
-    /* --- Process Timeline Section (Horizontal on Desktop) --- */
-    .process-section {
-        background-color: #fafafa;
-        padding: 80px 0;
+    /* --- Process Section: Zig-Zag Timeline --- */
+    .process-container {
         position: relative;
+        padding: 40px 0;
     }
 
-    .process-row {
-        position: relative;
-        margin-top: 50px;
-    }
-
-    /* Dashed Line Connector */
-    .process-row::before {
-        content: '';
+    .process-line-center {
         position: absolute;
-        top: 25px; /* Center of the number circle */
-        left: 5%;
-        width: 90%;
-        height: 2px;
-        border-top: 2px dashed #3b9cfa;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: #e9ecef;
+        transform: translateX(-50%);
         z-index: 0;
-        display: none; /* Hidden by default (mobile) */
     }
 
-    @media (min-width: 992px) {
-        .process-row::before {
-            display: block;
-        }
-    }
-
-    .process-step {
-        text-align: center;
+    .process-node {
+        margin-bottom: 40px;
         position: relative;
         z-index: 1;
-        background: transparent;
-        padding: 0 10px;
-        margin-bottom: 40px;
     }
 
-    .step-num {
-        width: 50px;
-        height: 50px;
-        background-color: #3b9cfa;
+    .process-node-inner {
+        background: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        border-left: 5px solid #3b9cfa;
+        position: relative;
+        transition: transform 0.3s;
+    }
+    
+    .process-node-inner:hover {
+        transform: scale(1.02);
+    }
+
+    .node-number {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        width: 40px;
+        height: 40px;
+        background: #3b9cfa;
         color: #fff;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 700;
-        font-size: 20px;
-        margin: 0 auto 20px;
-        box-shadow: 0 0 0 5px #fafafa; /* Fake spacing from dashed line */
-        transition: transform 0.3s ease;
-    }
-    
-    .process-step:hover .step-num {
-        transform: scale(1.1);
-        background-color: #03509d;
+        box-shadow: 0 3px 10px rgba(215, 90, 99, 0.4);
     }
 
-    .process-step h5 {
-        font-weight: 700;
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-        color: #222;
+    /* Hide center line on mobile */
+    @media (max-width: 768px) {
+        .process-line-center { display: none; }
     }
 
-    .process-step p {
-        font-size: 0.9rem;
-        color: #555;
-        line-height: 1.5;
+    /* --- Sectors Section: Dark Tile Grid --- */
+    .sectors-section {
+        background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-attachment: fixed;
+        color: #fff;
+        padding: 80px 0;
+    }
+
+    .sector-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.2);
+        transition: background 0.3s;
+    }
+
+    .sector-item:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .sector-icon {
+        color: #3b9cfa;
+        margin-right: 15px;
+        font-size: 1.2rem;
+    }
+
+    .sector-text {
+        font-weight: 500;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
     }
   </style>
 </head>
@@ -191,6 +215,8 @@
                 <a href="mechanical-engineering.html" class="dropdown-item">Mechanical Engineering</a>
                 <div class="dropdown-divider"></div>
                 <a href="electrical-engineering.html" class="dropdown-item active">Electrical Engineering</a>
+                <!-- Sub-menu item -->
+                <a href="solar-panel-design.html" class="dropdown-item ps-4 active" style="font-size: 0.9em;">&nbsp;&nbsp;↳ Solar Panel Design</a>
                 <div class="dropdown-divider"></div>
                 <a href="engineering-simulation.html" class="dropdown-item">Engineering Simulation</a>
                 <div class="dropdown-divider"></div>
@@ -246,6 +272,8 @@
             <a href="cad-services.html">CAD Services</a>
             <a href="mechanical-engineering.html">Mechanical Engineering</a>
             <a href="electrical-engineering.html">Electrical Engineering</a>
+             <!-- Sub-menu items -->
+             <a href="solar-panel-design.html" style="padding-left: 20px; font-size: 0.9em;">↳ Solar Panel Design</a>
             <a href="machine-design.html">Machine Design & Dev</a>
             <a href="sheet-metal-design.html">Sheet Metal Design</a>
             <a href="fea-services.html">Finite Element Analysis</a>
@@ -276,17 +304,20 @@
   <!-- ==================== HERO SECTION ==================== -->
   <section class="header-section">
     <div class="hero-img-container">
-      <img src="https://i.pinimg.com/1200x/10/bd/ce/10bdcee5acece5da5ea77a89d61ee653.jpg" alt="Electrical Engineering Services">
+      <!-- Solar related background -->
+      <img src="https://i.pinimg.com/1200x/26/94/ce/2694ce01e59ec824c1372bd7af15c459.jpg" alt="Solar Panel Layout Design Services">
     </div>
 
     <div class="header-content">
-      <h1 class="header-title">Electrical Engineering Services</h1>
+      <h1 class="header-title">Solar Panel Layout Design Services</h1>
       <div class="breadcrumb">
         <a href="index.html">Home</a>
         <span class="arrow">&#x2192;</span>
         <a href="#">Services</a>
         <span class="arrow">&#x2192;</span>
-        <span>Electrical Engineering</span>
+        <a href="electrical-engineering.html">Electrical Engineering</a>
+        <span class="arrow">&#x2192;</span>
+        <span>Solar Design</span>
       </div>
     </div>
   </section>
@@ -297,162 +328,139 @@
   <section class="services-intro-section">
     <div class="container">
       <div class="section-head">
-        <h2 style="color: #3b9cfa;">Electrical Engineering Design Services We Offer</h2>
-        <p>Explore our end-to-end electrical engineering services, designed to handle complex electrical projects with uncompromised accuracy and safety. Optimized for energy efficiency and smooth smart technology integration, our comprehensive electrical engineering solutions include:</p>
+        <h2 style="color: #3b9cfa;">Rooftop Solar Panel Design Services We Offer</h2>
+        <p>Our solar panel layout design solutions are tailored to meet the unique requirements of each project, ensuring optimal performance and efficiency. From comprehensive site assessments to advanced simulation tools, we employ a strategic approach to deliver designs that maximize energy output and drive business success.</p>
       </div>
 
       <div class="row g-4">
         
         <!-- Card 1 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-project-diagram"></i></div>
-            <h4>Electrical Design and Layout Services</h4>
-            <p>Meet precision and safety standards in your projects with professionally created layouts for low, medium, and high voltage systems. With state-of-the-art CAD software and engineering practices, we provide optimized designs that minimize errors, lower risks, and ensure durability.</p>
+        <div class="col-md-6">
+          <div class="solar-card fade-in">
+            <div class="solar-img-box">
+              <img src="https://i.pinimg.com/736x/a1/03/c7/a103c72a7c4f08f84de1d7ef5557f185.jpg" alt="Site Assessment">
+            </div>
+            <div class="solar-card-body">
+              <h4>Site Assessment</h4>
+              <p>Our experienced team utilizes advanced tools and techniques to gather precise information, ensuring that your solar panel layout design is based on reliable data, leading to optimal system performance.</p>
+            </div>
           </div>
         </div>
 
         <!-- Card 2 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="far fa-lightbulb"></i></div>
-            <h4>Electrical Drafting & Schematic Services</h4>
-            <p>Error-free drafting solutions leveraging advanced electrical engineering tools. We deliver accurate power and lighting plans, load estimations, and fixture layouts.</p>
+        <div class="col-md-6">
+          <div class="solar-card fade-in">
+            <div class="solar-img-box">
+              <img src="https://i.pinimg.com/736x/cb/cb/74/cbcb74d7c06b56b3249ef31f5aa9e6a2.jpg" alt="System Sizing">
+            </div>
+            <div class="solar-card-body">
+              <h4>System Sizing</h4>
+              <p>By outsourcing system sizing to us, you can ensure that your solar panel system is accurately sized based on your energy requirements and site conditions. Our experts perform detailed calculations considering energy consumption patterns and efficiency.</p>
+            </div>
           </div>
         </div>
 
         <!-- Card 3 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-drafting-compass"></i></div>
-            <h4>Electrical 2D Drafting Services</h4>
-            <p>Streamline your project workflows with precise 2D plans for small circuits, power distribution, and layouts. Using leading tools like ProDesign, AutoCAD, and SmartDraw, our experts offer accurate designs for better coordination and easy execution of electrical works with any degree of complexity.</p>
+        <div class="col-md-6">
+          <div class="solar-card fade-in">
+            <div class="solar-img-box">
+              <img src="https://i.pinimg.com/736x/cb/19/23/cb1923527a292b8144d90f2b9927eef5.jpg" alt="Shade Analysis">
+            </div>
+            <div class="solar-card-body">
+              <h4>Shade Analysis</h4>
+              <p>Take the assistance of our experts to design an optimized solar panel layout that minimizes shading issues, maximizes energy production, and ensures the overall effectiveness of your system.</p>
+            </div>
           </div>
         </div>
 
         <!-- Card 4 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-microchip"></i></div>
-            <h4>PCB Design and Layout Services</h4>
-            <p>Enhance product performance with customized PCB layouts that are optimized for reliability and efficiency. From schematic capture to prototype fabrication and certified engineering skill, we guarantee to meet functional specifications, decrease iterations, and get your product to market faster.</p>
+        <div class="col-md-6">
+          <div class="solar-card fade-in">
+            <div class="solar-img-box">
+              <img src="https://i.pinimg.com/736x/d2/1b/f5/d21bf584e6caf3813475807377865ba0.jpg" alt="Panel Placement and Array Design">
+            </div>
+            <div class="solar-card-body">
+              <h4>Panel Placement and Array Design</h4>
+              <p>Our goal is to maximize the energy output of your solar system while ensuring it seamlessly integrates with the surrounding environment. Benefit from our expertise in designing layouts that consider available space and aesthetics.</p>
+            </div>
           </div>
         </div>
 
         <!-- Card 5 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-sync-alt"></i></div>
-            <h4>PCB Reverse Engineering Services</h4>
-            <p>Salvage valuable design information and enhance current systems through cutting-edge PCB reverse engineering. We are updated with the leading electrical engineering software and equipment to assist in modernizing boards, solving supply chain issues, and designing cost-saving alternatives for sustained production.</p>
+        <div class="col-md-6">
+          <div class="solar-card fade-in">
+            <div class="solar-img-box">
+              <img src="https://i.pinimg.com/736x/c4/06/28/c406280d81f7e0e32f6b5f3af36d4282.jpg" alt="Electrical Design">
+            </div>
+            <div class="solar-card-body">
+              <h4>Electrical Design</h4>
+              <p>Our expertise in electrical design allows us to optimize the performance and efficiency of your solar panel system. We ensure compliance with the required electrical codes and standards for your solar panel installation.</p>
+            </div>
           </div>
         </div>
 
         <!-- Card 6 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-bolt"></i></div>
-            <h4>Power Engineering Services</h4>
-            <p>Robust and reliable power infrastructure with solutions encompassing generation, transmission, and distribution. Our experts work on high-end simulation tools and lean-optimized design techniques to maximize performance and minimize energy losses.</p>
+        <div class="col-md-6">
+          <div class="solar-card fade-in">
+            <div class="solar-img-box">
+              <img src="https://i.pinimg.com/736x/1d/82/30/1d823051d52c1a387612fb3ddf88910e.jpg" alt="Structural Analysis">
+            </div>
+            <div class="solar-card-body">
+              <h4>Structural Analysis</h4>
+              <p>Employ our expertise to develop cost-effective design solutions without compromising on quality and safety, ensuring that your project stays within budget and maximizes your return on investment.</p>
+            </div>
           </div>
         </div>
 
         <!-- Card 7 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-industry"></i></div>
-            <h4>Power Distribution Services</h4>
-            <p>Carefully designed power distribution plans customized to your needs and optimized for efficiency. Through load demand analysis and optimized routing, we guarantee balanced distribution, minimized downtime, and scalable infrastructure.</p>
+        <div class="col-md-6">
+          <div class="solar-card fade-in">
+            <div class="solar-img-box">
+              <img src="https://i.pinimg.com/1200x/cd/0c/13/cd0c1323b58a6d1d9b69cfa19ac36a4e.jpg" alt="Performance and Financial Analysis">
+            </div>
+            <div class="solar-card-body">
+              <h4>Performance and Financial Analysis</h4>
+              <p>With our analytical insights, you can accurately assess the performance of your solar panel installation. Identify areas for improvement, and make informed decisions to optimize energy output and maximize financial returns.</p>
+            </div>
           </div>
         </div>
 
         <!-- Card 8 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-arrow-down"></i></div>
-            <h4>Electrical Grounding System Design Services</h4>
-            <p>Secure your assets and personnel through grounding systems that leverage the latest testing and design methods. We design safe grounding solutions to help firms maintain compliance with safety standards and prevent losses caused by electrical failures.</p>
+        <div class="col-md-6">
+          <div class="solar-card fade-in">
+            <div class="solar-img-box">
+              <img src="https://i.pinimg.com/736x/20/d6/40/20d640e611c0de75d50d6c4325f829f9.jpg" alt="Energy Consumption Analysis">
+            </div>
+            <div class="solar-card-body">
+              <h4>Energy Consumption Analysis</h4>
+              <p>With our expertise, you can make data-driven decisions to optimize your energy consumption, reduce wastage, and identify opportunities for energy savings, ultimately leading to cost reductions and improved sustainability.</p>
+            </div>
           </div>
         </div>
 
         <!-- Card 9 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-solar-panel"></i></div>
-            <h4>Solar Panel Design Services</h4>
-            <p>Optimize renewable energy yield with tailored solar panel configurations based on residential, commercial, and industrial applications. Our designs integrate site conditions, load demands, and cutting-edge modeling to provide efficient and scalable solar power solutions.</p>
+        <div class="col-md-6">
+          <div class="solar-card fade-in">
+            <div class="solar-img-box">
+              <img src="https://i.pinimg.com/736x/04/60/fc/0460fcb1c6aa85a6d88ccce7f7214c0b.jpg" alt="Energy Storage Integration">
+            </div>
+            <div class="solar-card-body">
+              <h4>Energy Storage Integration</h4>
+              <p>Our experienced professionals will handle integrating energy storage technologies into your system, ensuring compatibility, safety, and optimal performance.</p>
+            </div>
           </div>
         </div>
 
         <!-- Card 10 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-wifi"></i></div>
-            <h4>Lighting Control and Design Services</h4>
-            <p>Smart energy management with advanced lighting control design tailored to the needs of various spaces, like commercial and industrial environments. Our lighting control includes dimming systems, occupancy sensors, and IoT-enabled lighting modules for responsive and energy-efficient solutions.</p>
-          </div>
-        </div>
-
-        <!-- Card 11 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-server"></i></div>
-            <h4>Smart Panel Layout Drawing Service</h4>
-            <p>Gain better energy management with custom smart panel layouts designed for IoT integration. Using advanced electrical engineering software, we deliver intuitive and flexible panel schematics that support monitoring, control, and optimization across diverse applications.</p>
-          </div>
-        </div>
-
-        <!-- Card 12 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-tools"></i></div>
-            <h4>Electrical Calibration Services</h4>
-            <p>Rest assured of the precision and compliance of your equipment with our professional calibration services. Our technical experts, possessing state-of-the-art testing tools, deliver fast, reliable calibration to maximize your equipment life and reduce downtime.</p>
-          </div>
-        </div>
-
-        <!-- Card 13 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-hard-hat"></i></div>
-            <h4>Electrical Equipment Support Services</h4>
-            <p>Tailored support for electrical equipment installation, commissioning, and lifecycle maintenance. Our electrical engineers leverage the best tools with the industry's best practices to perform calibration, fault diagnosis, and compliance testing, driving uptime and increasing your asset life.</p>
-          </div>
-        </div>
-
-        <!-- Card 14 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-cogs"></i></div>
-            <h4>Control System Engineering & Architecture Services</h4>
-            <p>Advanced control system architecture tailored with the latest electrical engineering tools for industrial automation. We design and integrate Programmable Logic Controllers (PLCs), Supervisory Control and Data Acquisition (SCADA) systems, and Distributed Control Systems (DCS) for seamless coordination and minimal downtime.</p>
-          </div>
-        </div>
-
-        <!-- Card 15 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-tachometer-alt"></i></div>
-            <h4>Electrical Instrumentation Services</h4>
-            <p>Precision-driven instrumentation services for designing, installing, calibrating, and maintaining instruments and devices for accurate measurements and monitoring of electrical and industrial processes. We conduct rigorous quality checks to ensure functional reliability to help our clients meet demanding project specifications.</p>
-          </div>
-        </div>
-
-        <!-- Card 16 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-map-marked-alt"></i></div>
-            <h4>Field Instrument Location Services</h4>
-            <p>Enhance project success through appropriately mapped instrument locations, plans, and charts. Using systematic analysis and sophisticated drafting, we provide reliable layouts that promote easy installation, minimize the risk of misplacement, and facilitate smooth project implementation.</p>
-          </div>
-        </div>
-        
-         <!-- Card 17 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-home"></i></div>
-            <h4>Energy Modeling Services</h4>
-            <p>Innovative modeling technologies optimized to help enterprises maintain high standards of sustainability. Utilizing best-in-class tools and industry standards such as ASHRAE and LEED, our simulations support green building certifications and comply with changing standards of energy management.</p>
+        <div class="col-md-6">
+          <div class="solar-card fade-in">
+            <div class="solar-img-box">
+              <img src="https://i.pinimg.com/736x/7c/0f/63/7c0f63e3f0b09c04c364991d9475d64d.jpg" alt="Inverter Selection and Sizing">
+            </div>
+            <div class="solar-card-body">
+              <h4>Inverter Selection and Sizing</h4>
+              <p>By relying on our expertise, you can rest assured that we will select the most suitable inverter that matches your specific project requirements, ensuring maximum energy production and system efficiency.</p>
+            </div>
           </div>
         </div>
 
@@ -463,61 +471,168 @@
 
 
   <!-- ==================== PROCESS TIMELINE ==================== -->
-  <section class="process-section">
+  <section class="services-intro-section" style="background-color: #fafafa;">
     <div class="container">
       <div class="section-head">
-        <h2 style="color: #3b9cfa;">Our Electrical Engineering Design Process</h2>
-        <p>We work with a systematic, client-centric methodology that delivers safe, efficient, and cost-effective electrical engineering services. Every phase of our project lifecycle is properly planned to minimize risks, speed up project timelines, and ensure maximum performance. Here is how we do it:</p>
+        <h2 style="color: #3b9cfa;">Our Solar Panel Design Process</h2>
+        <p>Delve into our detailed process flow and uncover how our systematic approach guarantees superior solar panel layout designs tailored to your specific needs:</p>
       </div>
 
-      <div class="row process-row">
-        
-        <!-- Step 1 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">1</div>
-          <h5>Requirement Analysis</h5>
-          <p>We thoroughly analyze your project requirements, client expectations, and compliance requirements to identify potential issues up front. This allows us to create a plan to meet your timelines, budgets, and industry standards.</p>
-        </div>
+      <div class="process-container">
+        <!-- Center line for visual guide (hidden on mobile) -->
+        <div class="process-line-center"></div>
 
-        <!-- Step 2 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">2</div>
-          <h5>Concept Development</h5>
-          <p>We take your requirements and develop effective system concepts, incorporating critical constraints such as load balancing, sustainability goals, and compatibility with a building or factory plan.</p>
-        </div>
+        <div class="row">
+          
+          <!-- Step 1 (Left) -->
+          <div class="col-md-6 offset-md-0 process-node fade-in">
+            <div class="process-node-inner">
+              <div class="node-number">1</div>
+              <h5>Initial Consultation</h5>
+              <p>Engage in an in-depth discussion to understand your project requirements and objectives, setting the foundation for a successful solar panel layout design.</p>
+            </div>
+          </div>
+          <div class="col-md-6"></div> <!-- Spacer -->
 
-        <!-- Step 3 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">3</div>
-          <h5>Detailed Design</h5>
-          <p>Our experts use their relevant field knowledge along with AutoCAD technology and electrical CAD to create accurate layouts, wiring diagrams, and circuit designs. Our designs are accurate, scalable, and optimized for safety, performance, and longevity.</p>
-        </div>
+          <!-- Step 2 (Right) -->
+          <div class="col-md-6"></div> <!-- Spacer -->
+          <div class="col-md-6 process-node fade-in">
+            <div class="process-node-inner" style="border-left: none; border-right: 5px solid #3b9cfa;">
+              <div class="node-number" style="right: auto; left: -20px;">2</div>
+              <h5>Site Assessment</h5>
+              <p>Conduct a meticulous analysis of site conditions, including solar irradiation, shading patterns, and structural considerations, to develop an optimized and efficient layout.</p>
+            </div>
+          </div>
 
-        <!-- Step 4 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">4</div>
-          <h5>Implementation Planning</h5>
-          <p>We work with contractors, developers, and designers to develop application-ready execution plans, including equipment selection, compliance checks, and measures to mitigate risk, consequently decreasing installation impacts and maximizing operational efficiencies.</p>
-        </div>
+          <!-- Step 3 (Left) -->
+          <div class="col-md-6 process-node fade-in">
+            <div class="process-node-inner">
+              <div class="node-number">3</div>
+              <h5>Design Proposal</h5>
+              <p>Present a comprehensive design proposal encompassing the solar panel placement, array configuration, and electrical design tailored to your specific needs.</p>
+            </div>
+          </div>
+          <div class="col-md-6"></div> <!-- Spacer -->
 
-        <!-- Step 5 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">5</div>
-          <h5>System Delivery</h5>
-          <p>Our specialists manage electrical systems installation and integration without compromising on quality, compliance, or the handover process.</p>
-        </div>
+          <!-- Step 4 (Right) -->
+          <div class="col-md-6"></div> <!-- Spacer -->
+          <div class="col-md-6 process-node fade-in">
+            <div class="process-node-inner" style="border-left: none; border-right: 5px solid #3b9cfa;">
+              <div class="node-number" style="right: auto; left: -20px;">4</div>
+              <h5>Design Refinement</h5>
+              <p>Collaborate closely with you to refine and fine-tune the design, ensuring it aligns perfectly with your project goals and specifications.</p>
+            </div>
+          </div>
 
-        <!-- Step 6 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">6</div>
-          <h5>Ongoing Support</h5>
-          <p>After delivering our electrical engineering services, we offer post-service support like preventive maintenance, troubleshooting, and upgrade support to extend your equipment life cycles.</p>
-        </div>
+          <!-- Step 5 (Left) -->
+          <div class="col-md-6 process-node fade-in">
+            <div class="process-node-inner">
+              <div class="node-number">5</div>
+              <h5>Regulatory Compliance</h5>
+              <p>Ensure full compliance with local regulations, codes, and permits, guaranteeing a smooth and hassle-free installation process.</p>
+            </div>
+          </div>
+          <div class="col-md-6"></div> <!-- Spacer -->
 
+          <!-- Step 6 (Right) -->
+          <div class="col-md-6"></div> <!-- Spacer -->
+          <div class="col-md-6 process-node fade-in">
+            <div class="process-node-inner" style="border-left: none; border-right: 5px solid #3b9cfa;">
+              <div class="node-number" style="right: auto; left: -20px;">6</div>
+              <h5>Documentation and Deliverables</h5>
+              <p>Provide detailed documentation and deliverables, including electrical schematics, placement diagrams, and comprehensive reports, for easy implementation and reference.</p>
+            </div>
+          </div>
+
+          <!-- Step 7 (Center) -->
+          <div class="col-md-8 offset-md-2 process-node fade-in text-center">
+            <div class="process-node-inner" style="border: none; border-top: 5px solid #3b9cfa;">
+              <div class="node-number" style="left: 50%; transform: translateX(-50%); top: -25px; right: auto;">7</div>
+              <h5>Ongoing Support</h5>
+              <p>Extend continuous support and guidance throughout the project lifecycle, offering expertise and assistance whenever needed for a successful outcome.</p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
   <!-- ==================== END PROCESS TIMELINE ==================== -->
+
+
+  <!-- ==================== SECTORS SECTION ==================== -->
+  <section class="sectors-section">
+    <div class="container">
+      <div class="section-head" style="margin-bottom: 40px;">
+        <h2 style="color: #fff;">Sectors We Cater To</h2>
+        <div style="width: 60px; height: 3px; background: #3b9cfa; margin: 15px auto;"></div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="sector-item fade-in">
+            <i class="fas fa-solar-panel sector-icon"></i>
+            <span class="sector-text">Solar Installation Companies and Contractors</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="sector-item fade-in">
+             <i class="fas fa-leaf sector-icon"></i>
+            <span class="sector-text">Renewable Energy Developers</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="sector-item fade-in">
+             <i class="fas fa-bolt sector-icon"></i>
+            <span class="sector-text">Electrical Contractors</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="sector-item fade-in">
+             <i class="fas fa-building sector-icon"></i>
+            <span class="sector-text">Construction Companies</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="sector-item fade-in">
+             <i class="fas fa-drafting-compass sector-icon"></i>
+            <span class="sector-text">Engineering Firms</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="sector-item fade-in">
+             <i class="fas fa-lightbulb sector-icon"></i>
+            <span class="sector-text">Energy Consultants</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="sector-item fade-in">
+             <i class="fas fa-tasks sector-icon"></i>
+            <span class="sector-text">Project Management Companies</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="sector-item fade-in">
+             <i class="fas fa-city sector-icon"></i>
+            <span class="sector-text">Facility Management Companies</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="sector-item fade-in">
+             <i class="fas fa-landmark sector-icon"></i>
+            <span class="sector-text">Government Agencies</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="sector-item fade-in">
+             <i class="fas fa-industry sector-icon"></i>
+            <span class="sector-text">Solar Panel Manufacturers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ==================== END SECTORS SECTION ==================== -->
 
 
   <!-- ==================== CONTACT SECTION ==================== -->
@@ -576,8 +691,11 @@
             <div class="form-group">
               <label for="service">Select Service Type *</label>
               <select id="service" name="service" required>
-                <!-- Set Electrical as default -->
-                <option value="Electrical" selected>Electrical Engineering</option>
+                <!-- Set Solar as default -->
+                <option value="Solar" selected>Solar Panel Design</option>
+                <option value="Schematic">Electrical Schematic Drawing</option>
+                <option value="Electrical">Electrical Engineering</option>
+                <option value="PCB-RE">PCB Reverse Engineering</option>
                 <option value="FEA">Finite Element Analysis</option>
                 <option value="Reverse Engineering">Reverse Engineering</option>
                 <option value="Sheet Metal">Sheet Metal Design</option>

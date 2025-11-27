@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electrical Engineering Services - VMTL</title>
+  <title>Electrical Schematic Drawing Services - VMTL</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,136 +17,190 @@
   <link rel="stylesheet" href="./ASSETS/CSS/cfd_service.css">
   <link rel="stylesheet" href="./ASSETS/CSS/scroll.css">
 
-  <!-- Custom CSS for Electrical Page -->
+  <!-- Custom CSS for Schematic Page -->
   <style>
-    /* --- Premium Service Cards (Floating Icon Style) --- */
-    .elec-card {
+    /* --- Hero Overlay (Technical Blue tint) --- */
+    .header-section {
+        background: linear-gradient(rgba(10, 25, 40, -1.8), rgba(10, 25, 40, -1.8));
+    }
+
+    /* --- Services Grid: Technical Blueprint Style --- */
+    .schematic-card {
         background: #fff;
-        padding: 80px 30px 30px;
         height: 100%;
+        border: 1px solid #e0e0e0;
         border-radius: 8px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
         position: relative;
-        margin-top: 30px; /* Space for the floating icon */
-        border-left: 3px solid transparent;
+        padding: 30px 25px;
+        transition: all 0.4s ease;
         overflow: hidden;
+        z-index: 1;
     }
 
-    .elec-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        border-left: 3px solid #3b9cfa; /* Red accent */
+    /* Blueprint Grid Background Effect on Hover */
+    .schematic-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(rgba(215, 90, 99, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(215, 90, 99, 0.05) 1px, transparent 1px);
+        background-size: 20px 20px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: -1;
     }
 
-    .elec-icon-box {
+    .schematic-card:hover {
+        transform: translateY(-5px);
+        border-color: #3b9cfa;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .schematic-card:hover::before {
+        opacity: 1;
+    }
+
+    /* Corner Accents */
+    .card-corner {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border: 2px solid transparent;
+        transition: all 0.4s ease;
+    }
+
+    .schematic-card:hover .card-corner-tl {
+        top: 10px; left: 10px;
+        border-top-color: #3b9cfa;
+        border-left-color: #3b9cfa;
+    }
+    .schematic-card:hover .card-corner-br {
+        bottom: 10px; right: 10px;
+        border-bottom-color: #3b9cfa;
+        border-right-color: #3b9cfa;
+    }
+
+    .schematic-icon {
+        font-size: 2.5rem;
+        color: #3b9cfa;
+        margin-bottom: 20px;
+        display: inline-block;
+        background: #fff0f0;
         width: 70px;
         height: 70px;
-        background: linear-gradient(135deg, #3b9cfa 0%, #046bd2 100%);
+        line-height: 70px;
+        text-align: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+
+    .schematic-card:hover .schematic-icon {
+        background: #3b9cfa;
         color: #fff;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 32px;
-        position: absolute;
-        top: 10px;
-        left: 30px;
-        box-shadow: 0 5px 15px rgba(179, 0, 0, 0.3);
-        transition: transform 0.3s ease;
+        transform: rotateY(360deg);
     }
 
-    .elec-card:hover .elec-icon-box {
-        transform: scale(1.1) rotate(3deg);
-    }
-
-    .elec-card h4 {
+    .schematic-card h4 {
         font-size: 1.25rem;
         font-weight: 700;
-        margin-top: 25px;
         margin-bottom: 15px;
-        color: #333;
+        color: #222;
     }
 
-    .elec-card p {
-        color: #666;
+    .schematic-card p {
         font-size: 0.95rem;
+        color: #555;
         line-height: 1.6;
         margin-bottom: 0;
     }
 
-    /* --- Process Timeline Section (Horizontal on Desktop) --- */
-    .process-section {
-        background-color: #fafafa;
-        padding: 80px 0;
+    /* --- Process Section: Circuit Flow --- */
+    .circuit-process-wrapper {
         position: relative;
+        padding: 40px 0;
     }
 
-    .process-row {
-        position: relative;
-        margin-top: 50px;
-    }
-
-    /* Dashed Line Connector */
-    .process-row::before {
-        content: '';
+    /* Vertical connecting line */
+    .circuit-line {
         position: absolute;
-        top: 25px; /* Center of the number circle */
-        left: 5%;
-        width: 90%;
-        height: 2px;
-        border-top: 2px dashed #3b9cfa;
+        left: 50px;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: #e0e0e0;
         z-index: 0;
-        display: none; /* Hidden by default (mobile) */
     }
 
-    @media (min-width: 992px) {
-        .process-row::before {
-            display: block;
-        }
-    }
-
-    .process-step {
-        text-align: center;
+    .process-item {
         position: relative;
+        margin-bottom: 50px;
+        padding-left: 100px;
         z-index: 1;
-        background: transparent;
-        padding: 0 10px;
-        margin-bottom: 40px;
     }
 
-    .step-num {
-        width: 50px;
-        height: 50px;
-        background-color: #3b9cfa;
-        color: #fff;
+    /* Circuit Node */
+    .process-node {
+        position: absolute;
+        left: 28px; /* Aligns with line center */
+        top: 0;
+        width: 48px;
+        height: 48px;
+        background: #fff;
+        border: 4px solid #3b9cfa;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 700;
-        font-size: 20px;
-        margin: 0 auto 20px;
-        box-shadow: 0 0 0 5px #fafafa; /* Fake spacing from dashed line */
+        color: #333;
+        font-size: 1.2rem;
+        box-shadow: 0 0 0 5px #f9f9f9; /* Gap effect */
+        transition: all 0.3s ease;
+    }
+
+    .process-item:hover .process-node {
+        background: #3b9cfa;
+        color: #fff;
+        transform: scale(1.1);
+    }
+
+    .process-content {
+        background: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        border-left: 4px solid #3b9cfa;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
         transition: transform 0.3s ease;
     }
-    
-    .process-step:hover .step-num {
-        transform: scale(1.1);
-        background-color: #03509d;
+
+    .process-item:hover .process-content {
+        transform: translateX(10px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     }
 
-    .process-step h5 {
+    .process-content h5 {
+        font-size: 1.3rem;
         font-weight: 700;
-        font-size: 1.1rem;
         margin-bottom: 10px;
-        color: #222;
+        color: #333;
     }
 
-    .process-step p {
-        font-size: 0.9rem;
-        color: #555;
-        line-height: 1.5;
+    .process-content p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    /* Mobile responsiveness for process */
+    @media (max-width: 768px) {
+        .circuit-line { left: 20px; }
+        .process-node { left: 0; width: 40px; height: 40px; font-size: 1rem; }
+        .process-item { padding-left: 60px; }
     }
   </style>
 </head>
@@ -191,6 +245,9 @@
                 <a href="mechanical-engineering.html" class="dropdown-item">Mechanical Engineering</a>
                 <div class="dropdown-divider"></div>
                 <a href="electrical-engineering.html" class="dropdown-item active">Electrical Engineering</a>
+                <!-- Sub-menu items -->
+                <a href="solar-panel-design.html" class="dropdown-item ps-4" style="font-size: 0.9em;">&nbsp;&nbsp;↳ Solar Panel Design</a>
+                <a href="schematic-services.html" class="dropdown-item ps-4 active" style="font-size: 0.9em;">&nbsp;&nbsp;↳ Electrical Schematic Drawing</a>
                 <div class="dropdown-divider"></div>
                 <a href="engineering-simulation.html" class="dropdown-item">Engineering Simulation</a>
                 <div class="dropdown-divider"></div>
@@ -246,6 +303,9 @@
             <a href="cad-services.html">CAD Services</a>
             <a href="mechanical-engineering.html">Mechanical Engineering</a>
             <a href="electrical-engineering.html">Electrical Engineering</a>
+             <!-- Sub-menu items -->
+             <a href="solar-panel-design.html" style="padding-left: 20px; font-size: 0.9em;">↳ Solar Panel Design</a>
+             <a href="schematic-services.html" style="padding-left: 20px; font-size: 0.9em;">↳ Electrical Schematic Drawing</a>
             <a href="machine-design.html">Machine Design & Dev</a>
             <a href="sheet-metal-design.html">Sheet Metal Design</a>
             <a href="fea-services.html">Finite Element Analysis</a>
@@ -276,17 +336,20 @@
   <!-- ==================== HERO SECTION ==================== -->
   <section class="header-section">
     <div class="hero-img-container">
-      <img src="https://i.pinimg.com/1200x/10/bd/ce/10bdcee5acece5da5ea77a89d61ee653.jpg" alt="Electrical Engineering Services">
+      <!-- Technical Blueprint Background -->
+      <img src="https://i.pinimg.com/1200x/26/a5/52/26a5527ee5f1c22552fdb6c337ece52c.jpg" alt="Electrical Schematic Drawing Services">
     </div>
 
     <div class="header-content">
-      <h1 class="header-title">Electrical Engineering Services</h1>
+      <h1 class="header-title">Electrical Schematic Drawing Services</h1>
       <div class="breadcrumb">
         <a href="index.html">Home</a>
         <span class="arrow">&#x2192;</span>
         <a href="#">Services</a>
         <span class="arrow">&#x2192;</span>
-        <span>Electrical Engineering</span>
+        <a href="electrical-engineering.html">Electrical Engineering</a>
+        <span class="arrow">&#x2192;</span>
+        <span>Schematic Drawing</span>
       </div>
     </div>
   </section>
@@ -297,162 +360,86 @@
   <section class="services-intro-section">
     <div class="container">
       <div class="section-head">
-        <h2 style="color: #3b9cfa;">Electrical Engineering Design Services We Offer</h2>
-        <p>Explore our end-to-end electrical engineering services, designed to handle complex electrical projects with uncompromised accuracy and safety. Optimized for energy efficiency and smooth smart technology integration, our comprehensive electrical engineering solutions include:</p>
+        <h2 style="color: #3b9cfa;">Electrical Schematic Drawing Services We Offer</h2>
+        <p>Flatworld Solutions offers a complete range of electrical schematic drawing services by leveraging the latest and agile CAD software for increased efficiency. We work with CAD technicians and engineers with significant experience. Following are the electrical schematic drawing services that we provide:</p>
       </div>
 
       <div class="row g-4">
         
-        <!-- Card 1 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-project-diagram"></i></div>
-            <h4>Electrical Design and Layout Services</h4>
-            <p>Meet precision and safety standards in your projects with professionally created layouts for low, medium, and high voltage systems. With state-of-the-art CAD software and engineering practices, we provide optimized designs that minimize errors, lower risks, and ensure durability.</p>
+        <!-- Service 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="schematic-card fade-in">
+            <div class="card-corner card-corner-tl"></div>
+            <div class="card-corner card-corner-br"></div>
+            <div class="schematic-icon"><i class="fas fa-project-diagram"></i></div>
+            <h4>General Electrical Schematic Drawings</h4>
+            <p>We believe that electrical schematic drawings, irrespective of how simple or complex they are, should characterize perfection. Our team of engineers is proficient in creating general schematic drawings that constitute every circuit component. These drawings comply with international quality standards and take into account the local guides to offer functional drawings.</p>
           </div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="far fa-lightbulb"></i></div>
-            <h4>Electrical Drafting & Schematic Services</h4>
-            <p>Error-free drafting solutions leveraging advanced electrical engineering tools. We deliver accurate power and lighting plans, load estimations, and fixture layouts.</p>
+        <!-- Service 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="schematic-card fade-in">
+            <div class="card-corner card-corner-tl"></div>
+            <div class="card-corner card-corner-br"></div>
+            <div class="schematic-icon"><i class="fas fa-network-wired"></i></div>
+            <h4>Component Wiring Diagrams</h4>
+            <p>Component wiring diagrams help represent the complete layout of the physical components of an electrical system. These diagrams provide an insight into how different electrical wires are interconnected along with the connections between components and the wiring. We understand your specifications to come up with an appropriate design objective.</p>
           </div>
         </div>
 
-        <!-- Card 3 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-drafting-compass"></i></div>
-            <h4>Electrical 2D Drafting Services</h4>
-            <p>Streamline your project workflows with precise 2D plans for small circuits, power distribution, and layouts. Using leading tools like ProDesign, AutoCAD, and SmartDraw, our experts offer accurate designs for better coordination and easy execution of electrical works with any degree of complexity.</p>
+        <!-- Service 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="schematic-card fade-in">
+            <div class="card-corner card-corner-tl"></div>
+            <div class="card-corner card-corner-br"></div>
+            <div class="schematic-icon"><i class="fas fa-building"></i></div>
+            <h4>Building Service Schematics</h4>
+            <p>Our team also creates building service schematics for different purposes like data networks, lighting, and access control. These designs consist of the overall schematics in addition to nuances and detailing of the power supply and component-based information.</p>
           </div>
         </div>
 
-        <!-- Card 4 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-microchip"></i></div>
-            <h4>PCB Design and Layout Services</h4>
-            <p>Enhance product performance with customized PCB layouts that are optimized for reliability and efficiency. From schematic capture to prototype fabrication and certified engineering skill, we guarantee to meet functional specifications, decrease iterations, and get your product to market faster.</p>
+        <!-- Service 4 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="schematic-card fade-in">
+            <div class="card-corner card-corner-tl"></div>
+            <div class="card-corner card-corner-br"></div>
+            <div class="schematic-icon"><i class="fas fa-microchip"></i></div>
+            <h4>Detailed Diagrams of Circuits</h4>
+            <p>We also create detailed diagrams of the circuits when our clients require these services. A detailed circuit diagram consists of different symbols that are used to represent the different components and parts of a circuit. We include details like the source of electrical energy and the direction that the charge flow follows.</p>
           </div>
         </div>
 
-        <!-- Card 5 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-sync-alt"></i></div>
-            <h4>PCB Reverse Engineering Services</h4>
-            <p>Salvage valuable design information and enhance current systems through cutting-edge PCB reverse engineering. We are updated with the leading electrical engineering software and equipment to assist in modernizing boards, solving supply chain issues, and designing cost-saving alternatives for sustained production.</p>
+        <!-- Service 5 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="schematic-card fade-in">
+            <div class="card-corner card-corner-tl"></div>
+            <div class="card-corner card-corner-br"></div>
+            <div class="schematic-icon"><i class="fas fa-plug"></i></div>
+            <h4>Closed System Power Supply</h4>
+            <p>We have years of experience in understanding closed systems and creating circuitry diagrams and power supply schematic drawings for closed systems. Many of the engineering contractors and industries partner with us for our precision and accuracy in offering these services.</p>
           </div>
         </div>
 
-        <!-- Card 6 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-bolt"></i></div>
-            <h4>Power Engineering Services</h4>
-            <p>Robust and reliable power infrastructure with solutions encompassing generation, transmission, and distribution. Our experts work on high-end simulation tools and lean-optimized design techniques to maximize performance and minimize energy losses.</p>
+        <!-- Service 6 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="schematic-card fade-in">
+            <div class="card-corner card-corner-tl"></div>
+            <div class="card-corner card-corner-br"></div>
+            <div class="schematic-icon"><i class="fas fa-laptop-code"></i></div>
+            <h4>Electronic Product Schematics</h4>
+            <p>Designing electronic products is an easier endeavor when there are precise electrical schematics in place for them. They're like recipes that depict the ingredients needed for electronic products. We take up client projects for a variety of electronic products like specialized products and consumer electronics.</p>
           </div>
         </div>
 
-        <!-- Card 7 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-industry"></i></div>
-            <h4>Power Distribution Services</h4>
-            <p>Carefully designed power distribution plans customized to your needs and optimized for efficiency. Through load demand analysis and optimized routing, we guarantee balanced distribution, minimized downtime, and scalable infrastructure.</p>
-          </div>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-arrow-down"></i></div>
-            <h4>Electrical Grounding System Design Services</h4>
-            <p>Secure your assets and personnel through grounding systems that leverage the latest testing and design methods. We design safe grounding solutions to help firms maintain compliance with safety standards and prevent losses caused by electrical failures.</p>
-          </div>
-        </div>
-
-        <!-- Card 9 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-solar-panel"></i></div>
-            <h4>Solar Panel Design Services</h4>
-            <p>Optimize renewable energy yield with tailored solar panel configurations based on residential, commercial, and industrial applications. Our designs integrate site conditions, load demands, and cutting-edge modeling to provide efficient and scalable solar power solutions.</p>
-          </div>
-        </div>
-
-        <!-- Card 10 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-wifi"></i></div>
-            <h4>Lighting Control and Design Services</h4>
-            <p>Smart energy management with advanced lighting control design tailored to the needs of various spaces, like commercial and industrial environments. Our lighting control includes dimming systems, occupancy sensors, and IoT-enabled lighting modules for responsive and energy-efficient solutions.</p>
-          </div>
-        </div>
-
-        <!-- Card 11 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-server"></i></div>
-            <h4>Smart Panel Layout Drawing Service</h4>
-            <p>Gain better energy management with custom smart panel layouts designed for IoT integration. Using advanced electrical engineering software, we deliver intuitive and flexible panel schematics that support monitoring, control, and optimization across diverse applications.</p>
-          </div>
-        </div>
-
-        <!-- Card 12 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-tools"></i></div>
-            <h4>Electrical Calibration Services</h4>
-            <p>Rest assured of the precision and compliance of your equipment with our professional calibration services. Our technical experts, possessing state-of-the-art testing tools, deliver fast, reliable calibration to maximize your equipment life and reduce downtime.</p>
-          </div>
-        </div>
-
-        <!-- Card 13 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-hard-hat"></i></div>
-            <h4>Electrical Equipment Support Services</h4>
-            <p>Tailored support for electrical equipment installation, commissioning, and lifecycle maintenance. Our electrical engineers leverage the best tools with the industry's best practices to perform calibration, fault diagnosis, and compliance testing, driving uptime and increasing your asset life.</p>
-          </div>
-        </div>
-
-        <!-- Card 14 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-cogs"></i></div>
-            <h4>Control System Engineering & Architecture Services</h4>
-            <p>Advanced control system architecture tailored with the latest electrical engineering tools for industrial automation. We design and integrate Programmable Logic Controllers (PLCs), Supervisory Control and Data Acquisition (SCADA) systems, and Distributed Control Systems (DCS) for seamless coordination and minimal downtime.</p>
-          </div>
-        </div>
-
-        <!-- Card 15 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-tachometer-alt"></i></div>
-            <h4>Electrical Instrumentation Services</h4>
-            <p>Precision-driven instrumentation services for designing, installing, calibrating, and maintaining instruments and devices for accurate measurements and monitoring of electrical and industrial processes. We conduct rigorous quality checks to ensure functional reliability to help our clients meet demanding project specifications.</p>
-          </div>
-        </div>
-
-        <!-- Card 16 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-map-marked-alt"></i></div>
-            <h4>Field Instrument Location Services</h4>
-            <p>Enhance project success through appropriately mapped instrument locations, plans, and charts. Using systematic analysis and sophisticated drafting, we provide reliable layouts that promote easy installation, minimize the risk of misplacement, and facilitate smooth project implementation.</p>
-          </div>
-        </div>
-        
-         <!-- Card 17 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-home"></i></div>
-            <h4>Energy Modeling Services</h4>
-            <p>Innovative modeling technologies optimized to help enterprises maintain high standards of sustainability. Utilizing best-in-class tools and industry standards such as ASHRAE and LEED, our simulations support green building certifications and comply with changing standards of energy management.</p>
+        <!-- Service 7 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="schematic-card fade-in">
+            <div class="card-corner card-corner-tl"></div>
+            <div class="card-corner card-corner-br"></div>
+            <div class="schematic-icon"><i class="fas fa-tools"></i></div>
+            <h4>As-Installed Schematics</h4>
+            <p>If you have an 'as-installed' site sketch, we can help you create electrical schematic drawings using CAD software for operation and maintenance manuals. Send your sketch our way and we can take care of the rest.</p>
           </div>
         </div>
 
@@ -463,57 +450,63 @@
 
 
   <!-- ==================== PROCESS TIMELINE ==================== -->
-  <section class="process-section">
+  <section class="services-intro-section" style="background-color: #fafafa;">
     <div class="container">
       <div class="section-head">
-        <h2 style="color: #3b9cfa;">Our Electrical Engineering Design Process</h2>
-        <p>We work with a systematic, client-centric methodology that delivers safe, efficient, and cost-effective electrical engineering services. Every phase of our project lifecycle is properly planned to minimize risks, speed up project timelines, and ensure maximum performance. Here is how we do it:</p>
+        <h2 style="color: #3b9cfa;">Electrical Schematic Drawing Process We Follow</h2>
+        <p>Flatworld Solutions is a reliable electrical schematic drawing service provider with a systematic protocol in place for complete accuracy. We break down the entire process into broad steps which are further divided into intricate stages to keep a check on the quality:</p>
       </div>
 
-      <div class="row process-row">
-        
-        <!-- Step 1 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">1</div>
-          <h5>Requirement Analysis</h5>
-          <p>We thoroughly analyze your project requirements, client expectations, and compliance requirements to identify potential issues up front. This allows us to create a plan to meet your timelines, budgets, and industry standards.</p>
-        </div>
+      <div class="circuit-process-wrapper">
+        <div class="circuit-line"></div>
 
-        <!-- Step 2 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">2</div>
-          <h5>Concept Development</h5>
-          <p>We take your requirements and develop effective system concepts, incorporating critical constraints such as load balancing, sustainability goals, and compatibility with a building or factory plan.</p>
-        </div>
+        <div class="row">
+          <!-- Step 1 -->
+          <div class="col-lg-8 process-item fade-in">
+            <div class="process-node">1</div>
+            <div class="process-content">
+              <h5>Receiving Order</h5>
+              <p>When you reach us for our electrical schematic drawing services, we give the initial consultation its due importance to understand your requirements. The first stage lays the foundation for the other stages because understanding your needs helps us completely align our services to your expectations and recommend suitable solutions.</p>
+            </div>
+          </div>
 
-        <!-- Step 3 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">3</div>
-          <h5>Detailed Design</h5>
-          <p>Our experts use their relevant field knowledge along with AutoCAD technology and electrical CAD to create accurate layouts, wiring diagrams, and circuit designs. Our designs are accurate, scalable, and optimized for safety, performance, and longevity.</p>
-        </div>
+          <!-- Step 2 -->
+          <div class="col-lg-8 process-item fade-in">
+            <div class="process-node">2</div>
+            <div class="process-content">
+              <h5>Receiving Files</h5>
+              <p>Once we know what you expect and give you cost and time estimates for the project completion, we request you to send us any existing sketches, drafts, or any other useful resources. We receive the files through a secure FTP channel, ensuring complete data security.</p>
+            </div>
+          </div>
 
-        <!-- Step 4 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">4</div>
-          <h5>Implementation Planning</h5>
-          <p>We work with contractors, developers, and designers to develop application-ready execution plans, including equipment selection, compliance checks, and measures to mitigate risk, consequently decreasing installation impacts and maximizing operational efficiencies.</p>
-        </div>
+          <!-- Step 3 -->
+          <div class="col-lg-8 process-item fade-in">
+            <div class="process-node">3</div>
+            <div class="process-content">
+              <h5>Drafting</h5>
+              <p>We get to work soon after receiving data from you and going through all the files. We deploy different software like AutoCAD and ProDesign for error-free and clear schematics. After completing the first draft, our senior electrical engineer performs a quality check to ensure there are no loopholes in the draft.</p>
+            </div>
+          </div>
 
-        <!-- Step 5 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">5</div>
-          <h5>System Delivery</h5>
-          <p>Our specialists manage electrical systems installation and integration without compromising on quality, compliance, or the handover process.</p>
-        </div>
+          <!-- Step 4 -->
+          <div class="col-lg-8 process-item fade-in">
+            <div class="process-node">4</div>
+            <div class="process-content">
+              <h5>Feedback and Editing</h5>
+              <p>We send you the first draft and receive feedback from you. We work upon the changes as per your requests and make edits to make the required revisions.</p>
+            </div>
+          </div>
 
-        <!-- Step 6 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">6</div>
-          <h5>Ongoing Support</h5>
-          <p>After delivering our electrical engineering services, we offer post-service support like preventive maintenance, troubleshooting, and upgrade support to extend your equipment life cycles.</p>
-        </div>
+          <!-- Step 5 -->
+          <div class="col-lg-8 process-item fade-in">
+            <div class="process-node">5</div>
+            <div class="process-content">
+              <h5>Delivery</h5>
+              <p>After making the edits, we again pass the whole draft through a strict quality check to be completely confident. Once that is done, we send the final drawings to you via a secure FTP channel.</p>
+            </div>
+          </div>
 
+        </div>
       </div>
     </div>
   </section>
@@ -576,8 +569,11 @@
             <div class="form-group">
               <label for="service">Select Service Type *</label>
               <select id="service" name="service" required>
-                <!-- Set Electrical as default -->
-                <option value="Electrical" selected>Electrical Engineering</option>
+                <!-- Set Schematic as default -->
+                <option value="Schematic" selected>Electrical Schematic Drawing</option>
+                <option value="Solar">Solar Panel Design</option>
+                <option value="Electrical">Electrical Engineering</option>
+                <option value="PCB-RE">PCB Reverse Engineering</option>
                 <option value="FEA">Finite Element Analysis</option>
                 <option value="Reverse Engineering">Reverse Engineering</option>
                 <option value="Sheet Metal">Sheet Metal Design</option>

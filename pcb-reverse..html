@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electrical Engineering Services - VMTL</title>
+  <title>PCB Reverse Engineering Services - VMTL</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,136 +17,173 @@
   <link rel="stylesheet" href="./ASSETS/CSS/cfd_service.css">
   <link rel="stylesheet" href="./ASSETS/CSS/scroll.css">
 
-  <!-- Custom CSS for Electrical Page -->
+  <!-- Custom CSS for PCB Reverse Engineering Page -->
   <style>
-    /* --- Premium Service Cards (Floating Icon Style) --- */
-    .elec-card {
+    /* --- Hero Section Specifics --- */
+    .header-section {
+        background: linear-gradient(rgba(0,0,0,-1.6), rgba(0,0,0,-1.6));
+        /* We will let the image tag in HTML handle the background image via inline style or img tag, 
+           but ensuring text is readable */
+    }
+
+    /* --- Service Cards with Horizontal Layout & Hover Reveal --- */
+    .pcb-service-card {
         background: #fff;
-        padding: 80px 30px 30px;
-        height: 100%;
-        border-radius: 8px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-        margin-top: 30px; /* Space for the floating icon */
-        border-left: 3px solid transparent;
-        overflow: hidden;
-    }
-
-    .elec-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        border-left: 3px solid #3b9cfa; /* Red accent */
-    }
-
-    .elec-icon-box {
-        width: 70px;
-        height: 70px;
-        background: linear-gradient(135deg, #3b9cfa 0%, #046bd2 100%);
-        color: #fff;
         border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        transition: all 0.4s ease;
+        height: 100%;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 32px;
-        position: absolute;
-        top: 10px;
-        left: 30px;
-        box-shadow: 0 5px 15px rgba(179, 0, 0, 0.3);
-        transition: transform 0.3s ease;
+        flex-direction: column;
+        border: 1px solid #f0f0f0;
     }
 
-    .elec-card:hover .elec-icon-box {
-        transform: scale(1.1) rotate(3deg);
+    .pcb-service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        border-color: #3b9cfa;
     }
 
-    .elec-card h4 {
+    .pcb-img-thumb {
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .pcb-img-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .pcb-service-card:hover .pcb-img-thumb img {
+        transform: scale(1.1);
+    }
+
+    .pcb-content {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pcb-content h4 {
         font-size: 1.25rem;
         font-weight: 700;
-        margin-top: 25px;
         margin-bottom: 15px;
         color: #333;
+        position: relative;
+        padding-bottom: 15px;
     }
 
-    .elec-card p {
+    .pcb-content h4::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: #3b9cfa;
+        transition: width 0.3s ease;
+    }
+
+    .pcb-service-card:hover .pcb-content h4::after {
+        width: 100px;
+    }
+
+    .pcb-content p {
         color: #666;
         font-size: 0.95rem;
         line-height: 1.6;
         margin-bottom: 0;
     }
 
-    /* --- Process Timeline Section (Horizontal on Desktop) --- */
-    .process-section {
-        background-color: #fafafa;
+    /* --- "Why Outsource" Section (Circular Steps) --- */
+    .outsource-section {
+        background-color: #f8f9fa;
         padding: 80px 0;
-        position: relative;
     }
 
-    .process-row {
+    .reason-card {
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        height: 100%;
+        transition: all 0.3s ease;
         position: relative;
-        margin-top: 50px;
+        overflow: hidden;
+        z-index: 1;
     }
 
-    /* Dashed Line Connector */
-    .process-row::before {
+    .reason-card::before {
         content: '';
         position: absolute;
-        top: 25px; /* Center of the number circle */
-        left: 5%;
-        width: 90%;
-        height: 2px;
-        border-top: 2px dashed #3b9cfa;
-        z-index: 0;
-        display: none; /* Hidden by default (mobile) */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: #3b9cfa;
+        transition: height 0.4s ease;
+        z-index: -1;
     }
 
-    @media (min-width: 992px) {
-        .process-row::before {
-            display: block;
-        }
-    }
-
-    .process-step {
-        text-align: center;
-        position: relative;
-        z-index: 1;
-        background: transparent;
-        padding: 0 10px;
-        margin-bottom: 40px;
-    }
-
-    .step-num {
-        width: 50px;
-        height: 50px;
-        background-color: #3b9cfa;
+    .reason-card:hover {
         color: #fff;
+        transform: translateY(-5px);
+    }
+
+    .reason-card:hover::before {
+        height: 100%;
+    }
+
+    .reason-num-circle {
+        width: 70px;
+        height: 70px;
+        border: 2px solid #333;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 24px;
+        font-weight: 300;
+        margin: 0 auto 25px;
+        color: #333;
+        transition: all 0.4s ease;
+        font-family: 'Poppins', sans-serif;
+        font-style: italic;
+    }
+
+    .reason-card:hover .reason-num-circle {
+        border-color: #fff;
+        color: #fff;
+        transform: rotate(360deg);
+        background: rgba(255,255,255,0.2);
+    }
+
+    .reason-card h5 {
         font-weight: 700;
-        font-size: 20px;
-        margin: 0 auto 20px;
-        box-shadow: 0 0 0 5px #fafafa; /* Fake spacing from dashed line */
-        transition: transform 0.3s ease;
+        margin-bottom: 15px;
+        font-size: 1.15rem;
+    }
+
+    .reason-card p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 0;
     }
     
-    .process-step:hover .step-num {
-        transform: scale(1.1);
-        background-color: #03509d;
+    .reason-card:hover p, .reason-card:hover h5 {
+        color: #fff;
     }
 
-    .process-step h5 {
-        font-weight: 700;
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-        color: #222;
-    }
-
-    .process-step p {
-        font-size: 0.9rem;
-        color: #555;
-        line-height: 1.5;
+    /* --- Responsive Tweaks --- */
+    @media (max-width: 768px) {
+        .pcb-img-thumb {
+            height: 180px;
+        }
     }
   </style>
 </head>
@@ -191,6 +228,8 @@
                 <a href="mechanical-engineering.html" class="dropdown-item">Mechanical Engineering</a>
                 <div class="dropdown-divider"></div>
                 <a href="electrical-engineering.html" class="dropdown-item active">Electrical Engineering</a>
+                <!-- Sub-menu item for this specific service -->
+                <a href="pcb-reverse-engineering.html" class="dropdown-item ps-4 active" style="font-size: 0.9em;">&nbsp;&nbsp;↳ PCB Reverse Engineering</a>
                 <div class="dropdown-divider"></div>
                 <a href="engineering-simulation.html" class="dropdown-item">Engineering Simulation</a>
                 <div class="dropdown-divider"></div>
@@ -246,6 +285,8 @@
             <a href="cad-services.html">CAD Services</a>
             <a href="mechanical-engineering.html">Mechanical Engineering</a>
             <a href="electrical-engineering.html">Electrical Engineering</a>
+             <!-- Sub-menu item -->
+             <a href="pcb-reverse-engineering.html" style="padding-left: 20px; font-size: 0.9em;">↳ PCB Reverse Engineering</a>
             <a href="machine-design.html">Machine Design & Dev</a>
             <a href="sheet-metal-design.html">Sheet Metal Design</a>
             <a href="fea-services.html">Finite Element Analysis</a>
@@ -276,248 +317,188 @@
   <!-- ==================== HERO SECTION ==================== -->
   <section class="header-section">
     <div class="hero-img-container">
-      <img src="https://i.pinimg.com/1200x/10/bd/ce/10bdcee5acece5da5ea77a89d61ee653.jpg" alt="Electrical Engineering Services">
+      <!-- You can update this image with a specific PCB related banner if available -->
+      <img src="https://i.pinimg.com/736x/c2/94/68/c29468c51b4bac762741202c46bc88ae.jpg" alt="PCB Reverse Engineering Services">
     </div>
 
     <div class="header-content">
-      <h1 class="header-title">Electrical Engineering Services</h1>
+      <h1 class="header-title">PCB Reverse Engineering Services</h1>
       <div class="breadcrumb">
         <a href="index.html">Home</a>
         <span class="arrow">&#x2192;</span>
         <a href="#">Services</a>
         <span class="arrow">&#x2192;</span>
-        <span>Electrical Engineering</span>
+        <a href="electrical-engineering.html">Electrical Engineering</a>
+        <span class="arrow">&#x2192;</span>
+        <span>PCB Reverse Engineering</span>
       </div>
     </div>
   </section>
   <!-- ==================== END HERO SECTION ==================== -->
 
 
-  <!-- ==================== SERVICES GRID ==================== -->
+  <!-- ==================== SERVICES WE OFFER SECTION ==================== -->
   <section class="services-intro-section">
     <div class="container">
       <div class="section-head">
-        <h2 style="color: #3b9cfa;">Electrical Engineering Design Services We Offer</h2>
-        <p>Explore our end-to-end electrical engineering services, designed to handle complex electrical projects with uncompromised accuracy and safety. Optimized for energy efficiency and smooth smart technology integration, our comprehensive electrical engineering solutions include:</p>
+        <h2 style="color: #3b9cfa;">PCB Reverse Engineering Services We Offer</h2>
+        <p>VMTL is a global leader for multi-purpose PCB cloning, inspection, and measurement systems. Outsource your requirement to us. Our services include:</p>
       </div>
 
       <div class="row g-4">
         
-        <!-- Card 1 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-project-diagram"></i></div>
-            <h4>Electrical Design and Layout Services</h4>
-            <p>Meet precision and safety standards in your projects with professionally created layouts for low, medium, and high voltage systems. With state-of-the-art CAD software and engineering practices, we provide optimized designs that minimize errors, lower risks, and ensure durability.</p>
+        <!-- Service 1: Disassembling Components -->
+        <div class="col-md-6">
+          <div class="pcb-service-card fade-in">
+            <div class="pcb-img-thumb">
+               <img src="https://i.pinimg.com/736x/70/5a/98/705a9866b25d66c331ec90e0a3a5d38d.jpg" alt="Disassembling Components">
+            </div>
+            <div class="pcb-content">
+              <h4>Disassembling Components</h4>
+              <p>Our experts make a detailed record of components - their location number, package, temperature, and value. They scan and save a backup of the existing PCB, after which they start disassembling the components.</p>
+            </div>
           </div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="far fa-lightbulb"></i></div>
-            <h4>Electrical Drafting & Schematic Services</h4>
-            <p>Error-free drafting solutions leveraging advanced electrical engineering tools. We deliver accurate power and lighting plans, load estimations, and fixture layouts.</p>
+        <!-- Service 2: Preparing BOM -->
+        <div class="col-md-6">
+          <div class="pcb-service-card fade-in">
+            <div class="pcb-img-thumb">
+              <img src="https://i.pinimg.com/736x/c9/8f/d7/c98fd754b643148cdd249734fce4f0dd.jpg" alt="Preparing BOM">
+            </div>
+            <div class="pcb-content">
+              <h4>Preparing BOM</h4>
+              <p>The next step in the reverse engineering mechanism is to prepare a BOM. Our experts take your sample PCB and reverse engineer it down to the last component. Then, we assemble a bill of materials for the project that includes the measured values for resistors and capacitors.</p>
+            </div>
           </div>
         </div>
 
-        <!-- Card 3 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-drafting-compass"></i></div>
-            <h4>Electrical 2D Drafting Services</h4>
-            <p>Streamline your project workflows with precise 2D plans for small circuits, power distribution, and layouts. Using leading tools like ProDesign, AutoCAD, and SmartDraw, our experts offer accurate designs for better coordination and easy execution of electrical works with any degree of complexity.</p>
+        <!-- Service 3: Shade Analysis -->
+        <div class="col-md-6">
+          <div class="pcb-service-card fade-in">
+            <div class="pcb-img-thumb">
+              <img src="https://i.pinimg.com/736x/81/7d/cc/817dcc9b0a99a9299e8fabc2651a8fbc.jpg" alt="Shade Analysis">
+            </div>
+            <div class="pcb-content">
+              <h4>Shade Analysis</h4>
+              <p>Take the assistance of our experts to design an optimized solar panel layout that minimizes shading issues, maximizes energy production, and ensures the overall effectiveness of your system.</p>
+            </div>
           </div>
         </div>
 
-        <!-- Card 4 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-microchip"></i></div>
-            <h4>PCB Design and Layout Services</h4>
-            <p>Enhance product performance with customized PCB layouts that are optimized for reliability and efficiency. From schematic capture to prototype fabrication and certified engineering skill, we guarantee to meet functional specifications, decrease iterations, and get your product to market faster.</p>
+        <!-- Service 4: Physical PCB Duplication -->
+        <div class="col-md-6">
+          <div class="pcb-service-card fade-in">
+            <div class="pcb-img-thumb">
+              <img src="https://i.pinimg.com/736x/31/09/3f/31093fb909dbc4c726487c1cd23e8822.jpg" alt="Physical Circuit Board Duplication">
+            </div>
+            <div class="pcb-content">
+              <h4>Physical Circuit Board (PCB) Duplication</h4>
+              <p>Not just the BOM, our experts reversely analyze the circuit boards and look into other engineering and production documents like the original PCB file, schematic file, PCB Gerber, and PCB silkscreen.</p>
+            </div>
           </div>
         </div>
 
-        <!-- Card 5 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-sync-alt"></i></div>
-            <h4>PCB Reverse Engineering Services</h4>
-            <p>Salvage valuable design information and enhance current systems through cutting-edge PCB reverse engineering. We are updated with the leading electrical engineering software and equipment to assist in modernizing boards, solving supply chain issues, and designing cost-saving alternatives for sustained production.</p>
+        <!-- Service 5: Using RE Software -->
+        <div class="col-md-6">
+          <div class="pcb-service-card fade-in">
+            <div class="pcb-img-thumb">
+              <img src="https://i.pinimg.com/736x/26/99/79/26997984e76c16d4cbecb81836e10d01.jpg" alt="Using Reverse Engineering Software">
+            </div>
+            <div class="pcb-content">
+              <h4>Using A Reverse Engineering Software</h4>
+              <p>Further, we prep and scan the surface of the PCB board and put the images through copying software. We adopt the perfect inspection method to produce high-quality PCB drawings. We leverage PCB drawing software, image processing software, and the physical connection of the circuit to make an accurate judgment.</p>
+            </div>
           </div>
         </div>
 
-        <!-- Card 6 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-bolt"></i></div>
-            <h4>Power Engineering Services</h4>
-            <p>Robust and reliable power infrastructure with solutions encompassing generation, transmission, and distribution. Our experts work on high-end simulation tools and lean-optimized design techniques to maximize performance and minimize energy losses.</p>
-          </div>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-industry"></i></div>
-            <h4>Power Distribution Services</h4>
-            <p>Carefully designed power distribution plans customized to your needs and optimized for efficiency. Through load demand analysis and optimized routing, we guarantee balanced distribution, minimized downtime, and scalable infrastructure.</p>
-          </div>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-arrow-down"></i></div>
-            <h4>Electrical Grounding System Design Services</h4>
-            <p>Secure your assets and personnel through grounding systems that leverage the latest testing and design methods. We design safe grounding solutions to help firms maintain compliance with safety standards and prevent losses caused by electrical failures.</p>
-          </div>
-        </div>
-
-        <!-- Card 9 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-solar-panel"></i></div>
-            <h4>Solar Panel Design Services</h4>
-            <p>Optimize renewable energy yield with tailored solar panel configurations based on residential, commercial, and industrial applications. Our designs integrate site conditions, load demands, and cutting-edge modeling to provide efficient and scalable solar power solutions.</p>
-          </div>
-        </div>
-
-        <!-- Card 10 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-wifi"></i></div>
-            <h4>Lighting Control and Design Services</h4>
-            <p>Smart energy management with advanced lighting control design tailored to the needs of various spaces, like commercial and industrial environments. Our lighting control includes dimming systems, occupancy sensors, and IoT-enabled lighting modules for responsive and energy-efficient solutions.</p>
-          </div>
-        </div>
-
-        <!-- Card 11 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-server"></i></div>
-            <h4>Smart Panel Layout Drawing Service</h4>
-            <p>Gain better energy management with custom smart panel layouts designed for IoT integration. Using advanced electrical engineering software, we deliver intuitive and flexible panel schematics that support monitoring, control, and optimization across diverse applications.</p>
-          </div>
-        </div>
-
-        <!-- Card 12 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-tools"></i></div>
-            <h4>Electrical Calibration Services</h4>
-            <p>Rest assured of the precision and compliance of your equipment with our professional calibration services. Our technical experts, possessing state-of-the-art testing tools, deliver fast, reliable calibration to maximize your equipment life and reduce downtime.</p>
-          </div>
-        </div>
-
-        <!-- Card 13 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-hard-hat"></i></div>
-            <h4>Electrical Equipment Support Services</h4>
-            <p>Tailored support for electrical equipment installation, commissioning, and lifecycle maintenance. Our electrical engineers leverage the best tools with the industry's best practices to perform calibration, fault diagnosis, and compliance testing, driving uptime and increasing your asset life.</p>
-          </div>
-        </div>
-
-        <!-- Card 14 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-cogs"></i></div>
-            <h4>Control System Engineering & Architecture Services</h4>
-            <p>Advanced control system architecture tailored with the latest electrical engineering tools for industrial automation. We design and integrate Programmable Logic Controllers (PLCs), Supervisory Control and Data Acquisition (SCADA) systems, and Distributed Control Systems (DCS) for seamless coordination and minimal downtime.</p>
-          </div>
-        </div>
-
-        <!-- Card 15 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-tachometer-alt"></i></div>
-            <h4>Electrical Instrumentation Services</h4>
-            <p>Precision-driven instrumentation services for designing, installing, calibrating, and maintaining instruments and devices for accurate measurements and monitoring of electrical and industrial processes. We conduct rigorous quality checks to ensure functional reliability to help our clients meet demanding project specifications.</p>
-          </div>
-        </div>
-
-        <!-- Card 16 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-map-marked-alt"></i></div>
-            <h4>Field Instrument Location Services</h4>
-            <p>Enhance project success through appropriately mapped instrument locations, plans, and charts. Using systematic analysis and sophisticated drafting, we provide reliable layouts that promote easy installation, minimize the risk of misplacement, and facilitate smooth project implementation.</p>
-          </div>
-        </div>
-        
-         <!-- Card 17 -->
-        <div class="col-md-6 col-lg-3">
-          <div class="elec-card fade-in">
-            <div class="elec-icon-box"><i class="fas fa-home"></i></div>
-            <h4>Energy Modeling Services</h4>
-            <p>Innovative modeling technologies optimized to help enterprises maintain high standards of sustainability. Utilizing best-in-class tools and industry standards such as ASHRAE and LEED, our simulations support green building certifications and comply with changing standards of energy management.</p>
+        <!-- Service 6: PCB Testing Services -->
+        <div class="col-md-6">
+          <div class="pcb-service-card fade-in">
+            <div class="pcb-img-thumb">
+              <img src="https://i.pinimg.com/1200x/03/82/e1/0382e11ae5373c80417b33336d82fcee.jpg" alt="PCB Testing Services">
+            </div>
+            <div class="pcb-content">
+              <h4>PCB Testing Services</h4>
+              <p>We test the PCB and scrutinize the dielectric of the substrate constant to ensure that the newly engineered PCB indicators are consistent with the original board.</p>
+            </div>
           </div>
         </div>
 
       </div>
     </div>
   </section>
-  <!-- ==================== END SERVICES GRID ==================== -->
+  <!-- ==================== END SERVICES WE OFFER SECTION ==================== -->
 
 
-  <!-- ==================== PROCESS TIMELINE ==================== -->
-  <section class="process-section">
+  <!-- ==================== WHY OUTSOURCE SECTION ==================== -->
+  <section class="outsource-section">
     <div class="container">
       <div class="section-head">
-        <h2 style="color: #3b9cfa;">Our Electrical Engineering Design Process</h2>
-        <p>We work with a systematic, client-centric methodology that delivers safe, efficient, and cost-effective electrical engineering services. Every phase of our project lifecycle is properly planned to minimize risks, speed up project timelines, and ensure maximum performance. Here is how we do it:</p>
+        <h2 style="color: #3b9cfa;">Why Outsource PCB Reverse Engineering Solutions to VMTL?</h2>
+        <p>VMTL is a premier PCB reverse engineering service providing company. Here are a few great reasons to partner with us:</p>
       </div>
 
-      <div class="row process-row">
+      <div class="row g-4">
         
-        <!-- Step 1 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">1</div>
-          <h5>Requirement Analysis</h5>
-          <p>We thoroughly analyze your project requirements, client expectations, and compliance requirements to identify potential issues up front. This allows us to create a plan to meet your timelines, budgets, and industry standards.</p>
+        <!-- Reason 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card fade-in">
+            <div class="reason-num-circle">1</div>
+            <h5>Quality Management</h5>
+            <p>We are a reliable, ISO/IEC 27001:2022-certified organization with an impeccable reputation in the industry. We are obsessed with quality, and we run multi-level checks to deliver error-free assignments.</p>
+          </div>
         </div>
 
-        <!-- Step 2 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">2</div>
-          <h5>Concept Development</h5>
-          <p>We take your requirements and develop effective system concepts, incorporating critical constraints such as load balancing, sustainability goals, and compatibility with a building or factory plan.</p>
+        <!-- Reason 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card fade-in">
+            <div class="reason-num-circle">2</div>
+            <h5>Top-notch Resources & Technologies</h5>
+            <p>We leverage the best and the latest PCB software to cater to the varying needs of our global clientele. Our engineers comply with international engineering standards.</p>
+          </div>
         </div>
 
-        <!-- Step 3 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">3</div>
-          <h5>Detailed Design</h5>
-          <p>Our experts use their relevant field knowledge along with AutoCAD technology and electrical CAD to create accurate layouts, wiring diagrams, and circuit designs. Our designs are accurate, scalable, and optimized for safety, performance, and longevity.</p>
+        <!-- Reason 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card fade-in">
+            <div class="reason-num-circle">3</div>
+            <h5>High-quality Services</h5>
+            <p>We guarantee that you will always receive the most cutting-edge and relevant services when you outsource to us.</p>
+          </div>
         </div>
 
-        <!-- Step 4 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">4</div>
-          <h5>Implementation Planning</h5>
-          <p>We work with contractors, developers, and designers to develop application-ready execution plans, including equipment selection, compliance checks, and measures to mitigate risk, consequently decreasing installation impacts and maximizing operational efficiencies.</p>
+        <!-- Reason 4 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card fade-in">
+            <div class="reason-num-circle">4</div>
+            <h5>Privacy & Data Security</h5>
+            <p>You take your data privacy seriously. We sign off on Non-Disclosure Agreements and leverage carefully monitored storage systems to prevent data breaches and unauthorized access.</p>
+          </div>
         </div>
 
-        <!-- Step 5 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">5</div>
-          <h5>System Delivery</h5>
-          <p>Our specialists manage electrical systems installation and integration without compromising on quality, compliance, or the handover process.</p>
+        <!-- Reason 5 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card fade-in">
+            <div class="reason-num-circle">5</div>
+            <h5>Quick Turnaround Time</h5>
+            <p>We work around the clock to ensure the fastest TATs. We assign you dedicated project managers who are available 24/7. They keep you updated about your project status with real-time reports.</p>
+          </div>
         </div>
-
-        <!-- Step 6 -->
-        <div class="col-lg-2 col-md-4 process-step fade-in">
-          <div class="step-num">6</div>
-          <h5>Ongoing Support</h5>
-          <p>After delivering our electrical engineering services, we offer post-service support like preventive maintenance, troubleshooting, and upgrade support to extend your equipment life cycles.</p>
-        </div>
+        
+         <!-- Reason 6 (Placeholder if needed to balance grid, or leave empty if exactly 5 items) -->
+        <!-- <div class="col-md-6 col-lg-4">
+          <div class="reason-card fade-in">
+            <div class="reason-num-circle">6</div>
+            <h5>Cost Effective</h5>
+            <p>Our solutions are designed to be budget-friendly without compromising on the quality or precision of the final output.</p>
+          </div>
+        </div> -->
 
       </div>
     </div>
   </section>
-  <!-- ==================== END PROCESS TIMELINE ==================== -->
+  <!-- ==================== END WHY OUTSOURCE SECTION ==================== -->
 
 
   <!-- ==================== CONTACT SECTION ==================== -->
@@ -576,8 +557,9 @@
             <div class="form-group">
               <label for="service">Select Service Type *</label>
               <select id="service" name="service" required>
-                <!-- Set Electrical as default -->
+                <!-- Set Electrical as default due to relation -->
                 <option value="Electrical" selected>Electrical Engineering</option>
+                <option value="PCB-RE">PCB Reverse Engineering</option>
                 <option value="FEA">Finite Element Analysis</option>
                 <option value="Reverse Engineering">Reverse Engineering</option>
                 <option value="Sheet Metal">Sheet Metal Design</option>
